@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Anna's Blog]]></title>
-  <link href="http://annaershova.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: School | Anna's Blog]]></title>
+  <link href="http://annaershova.github.io/blog/categories/school/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
   <updated>2015-06-09T22:12:01-04:00</updated>
   <id>http://annaershova.github.io/</id>
@@ -41,15 +41,6 @@
 <p>But we re-did it from scratch and that fixed it. And by then I had realized that Avi was right. I spent too much time on writing and editing my post, without trying to see if it would even go through. Murphy’s Law dictates that it is the very situation when it wouldn’t.  So instead of using my original post, I am writing this one as a very public note to self to not get caught up in aesthetics of things if I don&rsquo;t even know if they are going to work.</p>
 
 <p>And those dozens of ways to iterate over arrays? Brace yourselves, I&rsquo;ll come back to that.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[My First Post on Octopress]]></title>
-    <link href="http://annaershova.github.io/blog/2015/06/09/my-first-post-on-octopress/"/>
-    <updated>2015-06-09T19:10:35-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/06/09/my-first-post-on-octopress</id>
-    <content type="html"><![CDATA[<p>&ldquo;hello world&rdquo;</p>
 ]]></content>
   </entry>
   
