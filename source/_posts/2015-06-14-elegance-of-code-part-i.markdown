@@ -1,18 +1,12 @@
----
-layout: post
-title: "Elegance of Code -- Part I"
-date: 2015-06-14 18:43:27 -0400
-comments: true
-categories: Flatiron School
---
-
 When one first starts coding, the main concern is writing something that works and produces desired result.
 
 You get irb to output "Hello World!" -- excellent. Then you get a nested hash-array monster to return a very specific key hidden 7 levels deep -- great. Then you write your CLI interface that runs in your command line and shows scraped data from your fellow students' bio -- good job. And you even use cowsay to format interactions with the user and format command line output using escape sequences, so that user interface looks less boring. And when you hit rspec, most tests pass.
 
 And then the next task comes -- how do you make your actual code look good? 
 
-“Code so beautiful that tears are shed.” — Why’s Poignant Guide to Ruby
+>“Code so beautiful that tears are shed.” 
+
+*Why’s Poignant Guide to Ruby*
 
 So how do you write code that indeed is so beautiful and elegant that tears will be shed by those reading your pull request?
 
