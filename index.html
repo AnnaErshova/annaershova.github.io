@@ -9,7 +9,7 @@
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="A book on Ruby I have been reading brought up an interesting fact: it is common for programmers to be evaluated based on how many lines of code (a.k. &hellip;">
+  <meta name="description" content="I remember curiously peeking at code on GitHub before starting Flatiron. Even then, despite not understanding all too well what the code was meant to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +71,97 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/06/27/writing-elegant-code-part-ii-the-rules/">Writing Elegant Code Part II: The Rules</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-06-27T20:22:39-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:22 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I remember curiously peeking at code on GitHub before starting Flatiron. Even then, despite not understanding all too well what the code was meant to do, I could tell that some of it was easier to read than others. My favorite samples had methods that were short and clearly named, code was organized logically and everything was properly indented.</p>
+
+<p>Now that I can (mostly) write some functioning code, it is time to make sure it is easy to understand to those who may read it at a later point.</p>
+
+<p>And so I went in search of re-factoring rules &ndash; and I found them.</p>
+
+<p>The Rules are Sandi Metz' Rules for Developers and are discussed <a href="https://robots.thoughtbot.com/sandi-metz-rules-for-developers">here</a>.</p>
+
+<p>I am paraphrasing them slightly below:</p>
+
+<blockquote><ol>
+<li><p>Classes can be no longer than 100 lines of code ( # sloc &ndash; we are not counting blank lines) to ensure they stay within the single responsibility principle for classes.</p></li>
+<li><p>Methods can be no longer than five lines of code in Ruby proper (Rails is hard, and I am still not sure how it is meant to work). And yes, if statements with else and elfish count. Don&rsquo;t do them. Break your code into reasonable methods with easy-to-follow names [use neonates as an example].</p></li>
+<li><p>Pass no more than four parameters into a method. Hash options are parameters, too.</p></li>
+<li><p>Controllers can instantiate only one object. Views can only know about one instance variable; views should only send messages to that particular object.</p></li>
+</ol>
+</blockquote>
+
+<p>I will touch on all of these later,  but in this post, I wanted to discuss applying the first 2 in real life (insofar as solving labs can count as &lsquo;real life&rsquo;, of course).</p>
+
+<p>For a lab this week, we had to write a simple game of Rock Paper Scissors and then turn it into a simple web app using Sinatra. To create such a game is far from challenging, and my code was already reasonably succinct at the point when I got all the rspec tests to pass. (NB: that is not how I would actually write the game, but it worked in a lab context).</p>
+
+<p>But the code still felt it could use some re-factoring:</p>
+
+<p><img class="center" src="/images/RPpre-refactoring.png"></p>
+
+<p>Enter The Rules.</p>
+
+<p>My class was much shorter than the mandated 100 lines of code &ndash; check.</p>
+
+<p>Most of my methods were one-liners with 3 winning scenario helper methods designed to not clutter my  won? method. So far, so good.</p>
+
+<p>But what is going on lines 33 to 41? (that method is called on in app.rb to integrate into Sinatra.)</p>
+
+<p><img class="center" src="/images/outcome.png"></p>
+
+<p>It felt too simplistic &ndash; just an if-then statement? really? And I was just itching to improve it somehow. It certthe explicitly frowned upon elsif was there!).</p>
+
+<p>I was not entirely sure how to improve it other than via a nested ternary operator. While I like ternary operators as much as the next noob Ruby developer who thinks they are really cool-looking, nesting them is just the opposite of my goal of writing code that is easily understood by others.</p>
+
+<p>I had a very vague notion of experimenting with something else instead: calling on all 3 methods, checking which one returns true (and in this case, one and only one will return true) and then returning interpolated name of that method with an exclamation point instead of a question mark. So if method won? is the one that returns true, then the game response would be &lsquo;you won!&rsquo;</p>
+
+<p>I went to one of the instructors, Sophie, seeking her counsel on how to execute just that. After some pry-ing around, we have decided that such a solution would not actually save me any lines of code, because I woulf have to write new methods that will take up the very lines I have saved.</p>
+
+<p>But Sophie did point out something the test did not cover: the computer_play method was sampling the USER_CHOICES (previosuly known as VALID_MOVES) array every time, so I needed to assign it to an instance variable (and that is why pair programming with a more senior professional is so important).</p>
+
+<p>Upon some consideration, I also got rid of the winning scenarios methods (3 basically identicaly methods? sounds like something in need of abtraction to me) by creating a VICTORY_HASH constant.
+<img class="center" src="/images/victory_hash.png"></p>
+
+<p>At that point, I could have gotten rid of the VALID_MOVES array, reading it as keys or values of VICTORY_HASH instead, but to keep it allows for better code comprehension, so it was spared from culling.</p>
+
+<p><img class="center" src="/images/valid_moves.png"></p>
+
+<p>To make everything orderly, I re-named &lsquo;user_move&rsquo; as &lsquo;user_play&rsquo;, because I wanted its name to be symmetrical to the computer_play method (whose name was in turn mandated by Rspec).</p>
+
+<p><img class="center" src="/images/user_move.png">
+<img class="center" src="/images/user_play.png"></p>
+
+<p>The final code ended up being shorter than before by around 10 lines:</p>
+
+<p><img class="center" src="/images/refactored_rps.png"></p>
+
+<p>And the &lsquo;outcome&rsquo; method? It is still there, staring at me in its simple flow control glory. Rules exist to be broken, I suppose.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/06/21/lines-of-code-is-more-always-better/">Lines of Code: Is More Always Better?</a></h1>
     
     
@@ -109,7 +200,7 @@
 
 <p><img class="center" src="/images/factorial.png"></p>
 
-<p><img class="center" src="/images/factorialternary.png"></p>
+<p><img class="center" src="/images/FactorialTernary.png"></p>
 
 <p><img class="center" src="/images/inject.png"></p>
 
@@ -128,6 +219,35 @@
 <blockquote><p>Measuring programming progress by lines of code is like measuring aircraft building progress by weight.</p></blockquote>
 
 <p>Don&rsquo;t waste your code &ndash; write it succinctly.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/06/21/lines-of-code-follow-up/">Lines of Code Follow Up</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-06-21T00:00:00-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
 </div>
   
   
@@ -285,7 +405,15 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/06/27/writing-elegant-code-part-ii-the-rules/">Writing Elegant Code Part II: The Rules</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/06/21/lines-of-code-is-more-always-better/">Lines of Code: Is More Always Better?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/21/lines-of-code-follow-up/">Lines of Code Follow Up</a>
       </li>
     
       <li class="post">
@@ -294,10 +422,6 @@
     
       <li class="post">
         <a href="/blog/2015/06/09/beautifying-non-working-blog-posts/">Beautifying Non-Working Blog Posts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/06/09/my-first-post-on-octopress/">My First Post on Octopress</a>
       </li>
     
   </ul>
