@@ -29,7 +29,7 @@ My current steep learning code means that sometimes I see a new method and reali
 
 {% img center /images/factorial.png %}
 
-{% img center /images/factorialternary.png %}
+{% img center /images/FactorialTernary.png %}
 
 {% img center /images/inject.png %}
 
