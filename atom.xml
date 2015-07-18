@@ -4,7 +4,7 @@
   <title><![CDATA[Anna's Blog]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-07-07T07:27:14-04:00</updated>
+  <updated>2015-07-17T21:06:15-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Why I Don't Like Semicolons]]></title>
+    <link href="http://annaershova.github.io/blog/2015/07/17/why-ruby-is-not-javascript/"/>
+    <updated>2015-07-17T20:40:56-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/07/17/why-ruby-is-not-javascript</id>
+    <content type="html"><![CDATA[<p>So I started learning Javascript.</p>
+
+<p>They say that once you understand basic coding principles, learning a new programming language is mostly a matter of figuring out syntax and getting used to whatever special tricks that language has to offer. It certainly seems to be the case with this Ruby to JS transition.</p>
+
+<p>But I certainly miss the syntactic sugar that Ruby gives us &ndash; and what is with all the curly brackets and the semicolons?!</p>
+
+<p>Consider Project Euler Problem I (summing up multiples of 3 and 5 from 1 to 999).</p>
+
+<p>There is just so much we can do with it in Ruby:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/projecteulerp1ruby.png"></p>
+
+<p>And here comes JavaScript:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/projecteuler1js.png"></p>
+
+<p>But just like mastering a foreign language that allows one to express oneself in a new and expanded way (as an example, google &lsquo;toska&rsquo; and &lsquo;Nabokov&rsquo; &ndash; Russians take melancholy to a whole new level that does not exist in any other language), JavaScript offers something pretty cool: <em>for (var x = 0; x &lt; 1000; x++)</em> &ndash; now that is one handy way to guide one&rsquo;s iteration. I sort of wish Ruby had that&hellip;</p>
+
+<p>But for now, I need a T-shirt that says &lsquo;I don&rsquo;t really like semicolons.&rsquo;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Project Euler Problem 1, or Benchmarking Ruby Code]]></title>
