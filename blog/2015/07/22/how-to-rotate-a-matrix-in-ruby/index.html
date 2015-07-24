@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to Rotate a Matrix in Ruby - Anna's Blog</title>
+  <meta name="author" content="Anna Ershova">
+
+  
+  <meta name="description" content="Here is a problem that I recently stumbled upon while researching something completely different, as these things usually go, &ndash; and down the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://annaershova.github.io/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Anna's Blog</a></h1>
+  
+    <h2>Adventures in Coding</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="annaershova.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Rotate a Matrix in Ruby</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-22T17:58:06-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>5:58 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Here is a problem that I recently stumbled upon while researching something completely different, as these things usually go, &ndash; and down the rabbit hole I went.</p>
+
+<p>How does one rotate a matrix?</p>
+
+<p>First of all, let&rsquo;s define parameters of the exercise. We will take a matrix &ndash; an array of arrays &ndash; and turn it 90&deg; clockwise.</p>
+
+<p>So this is what it would look like, using Flatiron&rsquo;s whiteboard table tops (we are really a paper-free school):</p>
+
+<p><img class="center" src="/images/matrix-rotation-example.png"></p>
+
+<p>As you can see, numbers 1 (position[0][0] in zero-indexed terms) and 9 (position [2][2]) traded places. One thing is immediately obvious: this would only work if the matrix in question is &lsquo;square&rsquo;: that is, if there are x many rows with x many elements each.</p>
+
+<p>Now that we have defined that condition, let&rsquo;s start with a simple 3x3 matrix.</p>
+
+<p>If the original array looks like this, Ruby-style:</p>
+
+<blockquote><p>my_array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</p></blockquote>
+
+<p>The modified array would look like this:</p>
+
+<blockquote><p>rotated_array = [[7, 4, 1], [8, 5, 2], [9, 6, 3]]</p></blockquote>
+
+<p>But how to get there?</p>
+
+<p>Ruby actually comes with default methods that allow one to manipulate arrays. Most people know <em>pop</em>, <em>shift</em>, <em>unshift</em>, and <em>drop</em>, but there are way more useful methods.</p>
+
+<p>I was only marginally familiar with <em>rotate</em>, so here is an example:</p>
+
+<p>According to the <a href="http://ruby-doc.org/core-2.2.2/Array.html#method-i-rotate">docs</a>:</p>
+
+<blockquote><p>Returns a new array by rotating self so that the element at count is the first element of the new array.</p></blockquote>
+
+<p>When using it without an argument (or rather with the default count of 1), it works like this:</p>
+
+<p><img class="center" src="/images/rotate_simple_example.png"></p>
+
+<p>It effectively takes the first part of the array and places it at the end of the array. If we use that 5 times on the array with 5 elements, we will arrive at the original array (well, it will return what looks like the original array as the original array does not get modified).</p>
+
+<p>If used with a count that is not 1, it will move the elements down by the count number of places:</p>
+
+<p><img class="center" src="/images/rotate_example_with_count2.png"></p>
+
+<p>(array.rotate(2) is the same as <em>array.rotate.rotate</em>)</p>
+
+<p>Count can also be negative, in which case it will rotate the array in the opposite direction, taking items from the end of the array and placing them in the front:</p>
+
+<p><img class="center" src="/images/rotate-example-count-negative.png"></p>
+
+<p>As many other methods, it can be used with the bang to modify the original array: <em>return!</em></p>
+
+<p>I played around with <em>rotate</em>, and it became clear that I was going to need something else to complete the task:</p>
+
+<p><img class="center" src="/images/rotate-example.png"></p>
+
+<p>It handily re-arranged the nested components in the array, moving each &lsquo;inner&rsquo; array over by 1 at a time.</p>
+
+<p>There is also <a href="http://apidock.com/ruby/Array/transpose">transpose</a>. It is actually a bit trickier to comprehend:</p>
+
+<p><img class="center" src="/images/transpose-simple-example.png"></p>
+
+<p>For a nested array that contains 2 array of 2 elements each, it seems like all it does is switch elements that are in the [1][0] and [0][1] position with each other &ndash; in case below, only 2 and 3 traded places. But what is actually does, as becomes more obvious in case of a larger array (nexted with 3 arrays of 3 elements each) is make columns rows and rows columns.</p>
+
+<p>Here is an example:</p>
+
+<p><img class="center" src="/images/transpose-example.png"></p>
+
+<p>Unlike <em>rotate</em>, <em>transpose</em> does not take any arguments.</p>
+
+<p>By the way, although I won&rsquo;t be using it here, one of my favorite array methods is also <em>flatten</em>, which is a handy way to get nesting out of arrays:</p>
+
+<p><img class="center" src="/images/flatten-example.png"></p>
+
+<p>As an aside, <em>flatten</em> is is also a handy way of converting a hash into a simple array:</p>
+
+<p><img class="center" src="/images/hash-flatten-example.png"></p>
+
+<p>But back to the task at hand:</p>
+
+<p>Upon experimenting with <em>rotate</em>, <em>flatten</em>, and <em>transpose</em>, I think I came up with a pretty efficient technique using <em>transpose</em> and then <em>reverse</em>:</p>
+
+<p><img class="center" src="/images/rotation-execution-example.png"></p>
+
+<p>The array is first transposed and then iterated over, and each of the nexted arrays inside it is reversed.</p>
+
+<p>Works like a charm. But if you want to do something slightly more exciting:</p>
+
+<p>Let&rsquo;s look at the origin array again:</p>
+
+<blockquote><p>my_array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</p></blockquote>
+
+<p>And at the rotated_array:</p>
+
+<blockquote><p>rotated_array = [[7, 4, 1], [8, 5, 2], [9, 6, 3]]</p></blockquote>
+
+<p>For a zero-indexed language, the nested array will look like this, positions-wise:</p>
+
+<p>[6,3,0]<br>
+[7,4,1]<br>
+[8,5,2]<br></p>
+
+<p>OR:</p>
+
+<p>(position of first element (0 in this case) + 2*3) + (position of first element + 3*1 ) + (position of first element + 3*0)
+(position of second element + 2*3) + (position of first element + 3*1 ) + (position of second element + 3*0)
+(position of third element + 2*3) + (position of third element + 3*1 ) + (position of third element + 3*0)</p>
+
+<p>Or for a nested array:</p>
+
+<p>[[2][0],[1][0],[0][0]],<br>
+[[2][1],[1][1],[0][1]],<br>
+[[2][2],[1][2],[0][2]]<br></p>
+
+<p>Which is:</p>
+
+<p>[[my_array.length-1][my_array.length-3],[my_array.length-2][my_array.length-3],[my_array.length-3][my_array.length-3]],<br>
+[[my_array.length-1][my_array.length-2],[my_array.length-2][my_array.length-2],[my_array.length-3][my_array.length-2]],<br>
+[[my_array.length-1][my_array.length-1],[my_array.length-2][my_array.length-1],[my_array.length-3][my_array.length-1]]<br></p>
+
+<p>This would be a cool structure to use if pushing things into the array (I am using absolute positions instead of array.length-related as it is easier in this example):</p>
+
+<p><img class="center" src="/images/pushing-into-rotated-array.png"></p>
+
+<p>(as you can see I made a typo and then fixed it)All you need to do thereafter is convert it into a nested array.</p>
+
+<p>You can also do a chain of push statements:</p>
+
+<p><img class="center" src="/images/push-chain.png"></p>
+
+<p>All of these are pretty fun solutions to the problem.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Anna Ershova</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-07-22T17:58:06-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>5:58 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/flatiron/'>flatiron</a>, <a class='category' href='/blog/categories/school/'>school</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/" data-via="" data-counturl="http://annaershova.github.io/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/07/21/regex-is-just-like-mandarin-chinese/" title="Previous Post: RegEx Is Just Like Mandarin Chinese">&laquo; RegEx Is Just Like Mandarin Chinese</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">How to Rotate a Matrix in Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/21/regex-is-just-like-mandarin-chinese/">RegEx Is Just Like Mandarin Chinese</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/17/why-ruby-is-not-javascript/">Why I Don't Like Semicolons</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/07/project-euler-problem-1/">Project Euler Problem 1, or Benchmarking Ruby Code</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/27/writing-elegant-code-part-ii-the-rules/">Writing Elegant Code Part II: The Rules</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Anna Ershova -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
