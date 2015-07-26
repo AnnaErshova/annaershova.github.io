@@ -19,7 +19,7 @@
 
   
   <link rel="canonical" href="http://annaershova.github.io/blog/2015/07/17/why-ruby-is-not-javascript">
-  <link href="/favicon.ico" rel="icon">
+  <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -37,33 +37,33 @@
 </head>
 
 <body   >
-  <nav role="navigation">
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:annaershova.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Type to Search"/>
-  </fieldset>
-</form>
+  <header role="banner"><div class="header-left">
+  <hgroup>
+  <h1><a href="/">Anna's Blog</a></h1>
   
-
-<ul class="main-navigation">
-  <li><a href="/">Home</a></li>
-  <li><a href="/archives">Archives</a></li>
-  <li><a href="/about">About</a></li>
-</ul>
-
-</nav>
-  <header role="banner"><div class='hero'>
-	<div class='wrap'>
-	  <h1><a href="/">Anna's Blog</a></h1>
-	  
-	    <h2>Adventures in Coding</h2>
-	  
-	</div>
+  <div class="subtitle">
+    <h2>Adventures in Coding</h2>
+  </div>
+  
+  </hgroup>
+  
 </div>
 
-</header>
+<div class="header-right">
+  <ul class="main-navigation">
+ <div> 
+  <li><a href="/">blog</a></li></div><div class="spacer"></div>
+     <div> 
+  <li><a href="/projects">projects</a></li></div><div class="spacer"></div>
+       <div> 
+  <li><a href="/work">work</a></li></div><div class="spacer"></div>
+         <div> 
+  <li><a href="/about">about</a></li></div>
+</ul>
   
+
+</div>
+</header>
   <div id="main">
     <div id="content">
       <div>
@@ -149,7 +149,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/07/17/why-ruby-is-not-javascript/" data-via="" data-counturl="http://annaershova.github.io/blog/2015/07/17/why-ruby-is-not-javascript/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/07/17/why-ruby-is-not-javascript/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/07/17/why-ruby-is-not-javascript/" >Tweet</a>
   
   
   
@@ -168,11 +168,34 @@
 </article>
 
 </div>
-<!-- 
+
 <aside class="sidebar">
+  <section>
+  <p>Hi, I'm <a href="https://twitter.com/martinbjeldbak">Martin Bjeldbak Madsen</a>!</p>
   
-    <section>
-  <h1>Recent Posts</h1>
+
+  <p>You can read more about me on my <a href="/about/">about</a> page. To see what I'm working on, check out my GitHub page <a href="https://github.com/fapper">here</a>.</p>
+  <p>My resume can be found <a href="cv.pdf">here</a>.</p>
+  <div class="social-icons">
+    
+
+    
+
+    
+
+    
+  <a href="https://github.com/https://github.com/AnnaErshova"><i class="fa fa-github fa-3x"></i></a>
+
+
+    
+  <a href="https://twitter.com/https://twitter.com/AnnaErshova"><i class="fa fa-twitter fa-3x"></i></a>
+
+
+  </div>
+</section>
+
+  <section>
+  <h1>Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
@@ -198,24 +221,84 @@
   </ul>
 </section>
 
+  
+    <section>
+  <h1>Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/26/twitter-sentiment-analysis-rails-app/">On a Scale of Dalai Lama to Kanye West, How Narcissistic Are You? A Rails App That Lets You Find Out Just That.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">How to Rotate a Matrix in Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/21/regex-is-just-like-mandarin-chinese/">RegEx Is Just Like Mandarin Chinese</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/17/why-ruby-is-not-javascript/">Why I Don't Like Semicolons</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/07/project-euler-problem-1/">Project Euler Problem 1, or Benchmarking Ruby Code</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/https://github.com/AnnaErshova">@https://github.com/AnnaErshova</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'https://github.com/AnnaErshova',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
 
 
 
 
   
 </aside>
- -->
+
 
     </div>
   </div>
-  <!-- <footer role="contentinfo"><p>
+  <footer role="contentinfo"><p>
   Copyright &copy; 2015 - Anna Ershova -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 
-
-</footer> -->
+<p>
+<span>Copyright &copy; 2015  Anna Ershova -</span>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a> using the <a href="https://github.com/fapper/classic-martinb">classic-martinb</a> theme</span>
+</p>
+</footer>
   
 
 
@@ -238,44 +321,5 @@
 
 
 
-  
-  <aside class="sidebar">
-    
-      <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2015/07/26/twitter-sentiment-analysis-rails-app/">On a Scale of Dalai Lama to Kanye West, How Narcissistic Are You? A Rails App That Lets You Find Out Just That.</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">How to Rotate a Matrix in Ruby</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/21/regex-is-just-like-mandarin-chinese/">RegEx Is Just Like Mandarin Chinese</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/17/why-ruby-is-not-javascript/">Why I Don't Like Semicolons</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/07/project-euler-problem-1/">Project Euler Problem 1, or Benchmarking Ruby Code</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-    
-  </aside>
-  
 </body>
-
-
 </html>

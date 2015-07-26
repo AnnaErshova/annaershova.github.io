@@ -4,11 +4,11 @@
   <title><![CDATA[Anna's Blog]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-07-26T19:47:47-04:00</updated>
+  <updated>2015-07-26T19:56:42-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
-    
+    <email><![CDATA[anna.ershova@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
