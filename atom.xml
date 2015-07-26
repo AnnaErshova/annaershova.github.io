@@ -4,7 +4,7 @@
   <title><![CDATA[Anna's Blog]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-07-26T10:23:58-04:00</updated>
+  <updated>2015-07-26T19:47:47-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -447,15 +447,6 @@
 <blockquote><p>Measuring programming progress by lines of code is like measuring aircraft building progress by weight.</p></blockquote>
 
 <p>Don&rsquo;t waste your code &ndash; write it succinctly.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Lines of Code Follow Up]]></title>
-    <link href="http://annaershova.github.io/blog/2015/06/21/lines-of-code-follow-up/"/>
-    <updated>2015-06-21T00:00:00-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/06/21/lines-of-code-follow-up</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
