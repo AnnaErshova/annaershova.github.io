@@ -1,10 +1,10 @@
 /*
-Error: Undefined variable: "$theme-color".
-        on line 33 of /Users/annaershova/Flatiron/octopress/sass/custom/_styles.scss
+Error: Undefined variable: "$main-title-color".
+        on line 60 of /Users/annaershova/Flatiron/octopress/sass/custom/_styles.scss
         from line 14 of /Users/annaershova/Flatiron/octopress/sass/screen.scss
 
 Backtrace:
-/Users/annaershova/Flatiron/octopress/sass/custom/_styles.scss:33
+/Users/annaershova/Flatiron/octopress/sass/custom/_styles.scss:60
 /Users/annaershova/Flatiron/octopress/sass/screen.scss:14
 /Users/annaershova/.rvm/gems/ruby-2.2.1/gems/sass-3.4.14/lib/sass/script/tree/variable.rb:49:in `_perform'
 /Users/annaershova/.rvm/gems/ruby-2.2.1/gems/sass-3.4.14/lib/sass/script/tree/node.rb:50:in `perform'
@@ -74,4 +74,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$theme-color\".\A         on line 33 of /Users/annaershova/Flatiron/octopress/sass/custom/_styles.scss\A         from line 14 of /Users/annaershova/Flatiron/octopress/sass/screen.scss"; }
+  content: "Error: Undefined variable: \"$main-title-color\".\A         on line 60 of /Users/annaershova/Flatiron/octopress/sass/custom/_styles.scss\A         from line 14 of /Users/annaershova/Flatiron/octopress/sass/screen.scss"; }
