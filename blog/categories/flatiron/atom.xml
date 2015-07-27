@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Flatiron | Anna's Blog]]></title>
+  <title><![CDATA[Category: flatiron | Anna's Blog]]></title>
   <link href="http://annaershova.github.io/blog/categories/flatiron/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-07-26T20:00:32-04:00</updated>
+  <updated>2015-07-26T20:02:35-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -55,7 +55,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Rotate a Matrix in Ruby]]></title>
+    <title type="html"><![CDATA[How To Rotate a Matrix in Ruby]]></title>
     <link href="http://annaershova.github.io/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/"/>
     <updated>2015-07-22T17:58:06-04:00</updated>
     <id>http://annaershova.github.io/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby</id>
