@@ -1,127 +1,79 @@
 
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
-	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	<meta charset="utf-8">
-	<title>Adventures in Coding  | Anna's Blog</title>
+  <meta charset="utf-8">
+  <title>Anna's Blog</title>
+  <meta name="author" content="Anna Ershova">
 
-<meta name="author" content="Anna Ershova"> 
+  
+  <meta name="description" content="&hellip;and we are officially in Project Mode here at the Flatiron School, working on project 1 of 2, which is meant to be a short project to be &hellip;">
+  
 
-<meta name="description" content="&hellip;and we are officially in Project Mode here at the Flatiron School, working on project 1 of 2, which is meant to be a short project to be &hellip;"> <meta name="keywords" content="">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="canonical" href="http://annaershova.github.io">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
-	<link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/favicon.png" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
 
-<script language="Javascript" type="text/javascript">
-$(document).ready(
-  function() {
-    (function($) {
-      $(".fancybox[data-content-id]").each(function() {
-        this.href = $(this).data('content-id');
-      });
-      $(".fancybox").fancybox({
-        beforeLoad: function() {
-          var el, 
-              id = $(this.element).data('title-id');
+  
 
-          if (id) {
-            el = $('#' + id);
-
-            if (el.length) {
-              this.title = el.html();
-            }
-          }
-          if ($(this).data('content')) {
-            this.content = $(this).data('content');
-          }
-        },
-        helpers: {
-          title: {
-            type: 'inside'
-          }
-        }
-      });
-    })(jQuery);
-  }
-);
-</script>
-
-	
 </head>
 
-
-
-<body>
-	<header id="header" class="inner"><h1><a href="/">Anna's Blog</a></h1>
-<h4>Adventures in Coding</h4>
-<nav id="main-nav"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/about">About</a></li>
-	<li><a href="/portfolio">Portfolio</a></li>
-	<li><a href="/archives">Archive</a></li>
-</ul>
-</nav>
-<nav id="mobile-nav">
-	<div class="alignleft menu">
-		<a class="button">Menu</a>
-		<div class="container"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/about">About</a></li>
-	<li><a href="/portfolio">Portfolio</a></li>
-	<li><a href="/archives">Archive</a></li>
-</ul>
-</div>
-	</div>
-	<div class="alignright search">
-		<a class="button"></a>
-		<div class="container">
-			<form action="https://www.google.com/search" method="get">
-				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:annaershova.github.io">
-			</form>
-		</div>
-	</div>
-</nav>
-
+<body   >
+  <header role="banner"><hgroup>
+</hgroup>
 
 </header>
+  <!-- <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:annaershova.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
 
-	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/07/29/project-mode-week-1/">
-		
-			Project Mode -- Week 1, Day 2</a>
-	</h2>
-	<div class="entry-content">
-		<p>&hellip;and we are officially in Project Mode here at the Flatiron School, working on project 1 of 2, which is meant to be a short project to be conceptualized, pitched, designed, built, and presented within a scope of 5 business days.</p>
-
-<p><a href="https://youtu.be/7fx6AknguzI">Here</a> is a very short video showcasing functionality that we have built in 2 days. We have deployed to Heroku since the video was made, which turned out to be much easier than expected, minus some fiddling with the Figaro gem.)</p>
-
-<p>Primary goal right now is to make it aesthetically pleasing.</p>
-
-<p>It looks fairly simple, but it actually features some pretty advanced weather-related logic. Who would have thought that energy trading background would come in handy.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
+</nav> -->
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/29/project-mode-week-1/">Project Mode -- Week 1, Day 2</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -133,29 +85,56 @@ $(document).ready(
   
 
 
-<time datetime="2015-07-29T11:08:32-04:00" pubdate data-updated="true"></time></div>
-	
+<time datetime="2015-07-29T11:08:32-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
 
-<div class="tags">
 
-	<a class='category' href='/blog/categories/flatiron/'>flatiron</a>, <a class='category' href='/blog/categories/school/'>school</a>
+  <div class="entry-content"><p>&hellip;and we are officially in Project Mode here at the Flatiron School, working on project 1 of 2, which is meant to be a short project to be conceptualized, pitched, designed, built, and presented within a scope of 5 business days.</p>
 
+<p><a href="https://youtu.be/7fx6AknguzI">Here</a> is a very short video showcasing functionality that we have built in 2 days. We have deployed to Heroku since the video was made, which turned out to be much easier than expected, minus some fiddling with the Figaro gem.)</p>
+
+<p>Primary goal right now is to make it aesthetically pleasing.</p>
+
+<p>It looks fairly simple, but it actually features some pretty advanced weather-related logic. Who would have thought that energy trading background would come in handy.</p>
 </div>
+  
+  
 
 
-	
-</div></article>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/26/twitter-sentiment-analysis-rails-app/">On a Scale of Dalai Lama to Kanye West, How Narcissistic Are You? A Rails App That Lets You Find Out Just That.</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/07/26/twitter-sentiment-analysis-rails-app/">
-		
-			On a Scale of Dalai Lama to Kanye West, How Narcissistic Are You? A Rails App That Lets You Find Out Just That.</a>
-	</h2>
-	<div class="entry-content">
-		<p>For a small side project to be shared with our Flatiron School classmates and some <a href="http://www.meetup.com/Flatiron-School-Presents/">Flatiron School Presents Meetup</a> guests, my partner Mitch and I decided to build an app that measures people&rsquo;s narcissism levels via their Twitter feed. A linguistic analysis-baased social insights algorithm, if you will.</p>
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-26T09:32:26-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For a small side project to be shared with our Flatiron School classmates and some <a href="http://www.meetup.com/Flatiron-School-Presents/">Flatiron School Presents Meetup</a> guests, my partner Mitch and I decided to build an app that measures people&rsquo;s narcissism levels via their Twitter feed. A linguistic analysis-baased social insights algorithm, if you will.</p>
 
 <p><img class="center" src="/images/kanye-meme.png"></p>
 
@@ -188,14 +167,23 @@ $(document).ready(
 <p>And here is a link to the Github <a href="https://github.com/mitchellhart/twitter_analyzer">repo</a>.</p>
 
 <p>I will update this post once the app actually goes live as is our goal.</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">How to Rotate a Matrix in Ruby</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -207,29 +195,14 @@ $(document).ready(
   
 
 
-<time datetime="2015-07-26T09:32:26-04:00" pubdate data-updated="true"></time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/flatiron/'>flatiron</a>, <a class='category' href='/blog/categories/school/'>school</a>
-
-</div>
+<time datetime="2015-07-22T17:58:06-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
 
 
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">
-		
-			How to Rotate a Matrix in Ruby</a>
-	</h2>
-	<div class="entry-content">
-		<p>Here is a problem that I recently stumbled upon while researching something completely different, as these things usually go, &ndash; and down the rabbit hole I went.</p>
+  <div class="entry-content"><p>Here is a problem that I recently stumbled upon while researching something completely different, as these things usually go, &ndash; and down the rabbit hole I went.</p>
 
 <p>How does one rotate a matrix?</p>
 
@@ -360,14 +333,23 @@ $(document).ready(
 <p><img class="center" src="/images/push-chain.png"></p>
 
 <p>All of these are pretty fun solutions to the problem.</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/21/regex-is-just-like-mandarin-chinese/">RegEx Is Just Like Mandarin Chinese</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -379,29 +361,14 @@ $(document).ready(
   
 
 
-<time datetime="2015-07-22T17:58:06-04:00" pubdate data-updated="true"></time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/flatiron/'>flatiron</a>, <a class='category' href='/blog/categories/school/'>school</a>
-
-</div>
+<time datetime="2015-07-21T08:26:33-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
 
 
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/07/21/regex-is-just-like-mandarin-chinese/">
-		
-			RegEx Is Just Like Mandarin Chinese</a>
-	</h2>
-	<div class="entry-content">
-		<p>When I was in primary school in Russia, we had an intro to computer science class that taught up the basics of programming to produce good post-Communist STEM-oriented comrades. It used Basic to teach the fundamentals. As I spoke no English at the time, I spent more time memorizing words like GOTO and GOSUB than actually figuring out coding logic.</p>
+  <div class="entry-content"><p>When I was in primary school in Russia, we had an intro to computer science class that taught up the basics of programming to produce good post-Communist STEM-oriented comrades. It used Basic to teach the fundamentals. As I spoke no English at the time, I spent more time memorizing words like GOTO and GOSUB than actually figuring out coding logic.</p>
 
 <p>English speakers have a very distinct advantage when it comes to programming in most languages: we know all the words already. One doesn&rsquo;t even have to be an actual native speaker: Ruby was famously written by a Japanese programmer.</p>
 
@@ -428,14 +395,23 @@ $(document).ready(
 <p>On top of that, to use RegEx is like writing an application without a good test suite: you think that you have thought of everything, but there is always that one edge case that can pop up and screw it over. I felt like that when learning Mandarin: something always pops up where the word has a diferent meaning or is really meant to be used with a different character to really &lsquo;work.&rsquo;</p>
 
 <p>The good news is that both RegEx and Mandarin are possible to master. Perseverance and a healthy amount of grunt work is key. But just like Mandarin is handy for freaking out Chinese restaurant employees and nail salon workers, RegEx is handy too &ndash; in fact, it might have a greater utility of being used oftenf or the rest of one&rsquo;s Web Development career.</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/17/why-ruby-is-not-javascript/">Why I Don't Like Semicolons</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -447,29 +423,14 @@ $(document).ready(
   
 
 
-<time datetime="2015-07-21T08:26:33-04:00" pubdate data-updated="true"></time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/flatiron/'>flatiron</a>, <a class='category' href='/blog/categories/school/'>school</a>
-
-</div>
+<time datetime="2015-07-17T20:40:56-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
 
 
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/07/17/why-ruby-is-not-javascript/">
-		
-			Why I Don't Like Semicolons</a>
-	</h2>
-	<div class="entry-content">
-		<p>So I started learning Javascript.</p>
+  <div class="entry-content"><p>So I started learning Javascript.</p>
 
 <p>They say that once you understand basic coding principles, learning a new programming language is mostly a matter of figuring out syntax and getting used to whatever special tricks that language has to offer. It certainly seems to be the case with this Ruby to JS transition.</p>
 
@@ -488,14 +449,23 @@ $(document).ready(
 <p>But just like mastering a foreign language that allows one to express oneself in a new and expanded way (as an example, google &lsquo;toska&rsquo; and &lsquo;Nabokov&rsquo; &ndash; Russians take melancholy to a whole new level that does not exist in any other language), JavaScript offers something pretty cool: <em>for (var x = 0; x &lt; 1000; x++)</em> &ndash; now that is one handy way to guide one&rsquo;s iteration. I sort of wish Ruby had that&hellip;</p>
 
 <p>But for now, I need a T-shirt that says &lsquo;I don&rsquo;t really like semicolons.&rsquo;</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/07/project-euler-problem-1/">Project Euler Problem 1, or Benchmarking Ruby Code</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -507,29 +477,14 @@ $(document).ready(
   
 
 
-<time datetime="2015-07-17T20:40:56-04:00" pubdate data-updated="true"></time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/flatiron/'>flatiron</a>, <a class='category' href='/blog/categories/school/'>school</a>
-
-</div>
+<time datetime="2015-07-07T05:56:19-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
 
 
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/07/07/project-euler-problem-1/">
-		
-			Project Euler Problem 1, or Benchmarking Ruby Code</a>
-	</h2>
-	<div class="entry-content">
-		<p>Everyone loves a good coding challenge. But where do you find good brainteasers outside of StackOverflow&rsquo;s endless Ruby 101 questions?</p>
+  <div class="entry-content"><p>Everyone loves a good coding challenge. But where do you find good brainteasers outside of StackOverflow&rsquo;s endless Ruby 101 questions?</p>
 
 <p>Enter <a href="https://projecteuler.net/">Project Euler</a>. At 513 problems and counting, it is a great way to practice both your math and coding skills.</p>
 
@@ -594,14 +549,23 @@ $(document).ready(
 <p>However &ndash; all of the evaluted solutions took well under a second, so it is not really significant for this particular problem. But speed is a major concern for many industries (see a very interesting NYTimes article that discusses how it applies in finance (<a href="http://www.nytimes.com/2014/04/14/opinion/krugman-three-expensive-milliseconds.html?_r=0">article here &ndash; paywall</a>)).</p>
 
 <p>Certain companies employ entire teams of people whose job description is to shave off milliseconds of algorithm running times. While Ruby&rsquo;s Benchmarking module is not powerful enough for those commercial purposes, it is a fun way to experiment with the code one writes to see how it compares against other options.</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/06/27/writing-elegant-code-part-ii-the-rules/">Writing Elegant Code Part II: The Rules</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -613,29 +577,14 @@ $(document).ready(
   
 
 
-<time datetime="2015-07-07T05:56:19-04:00" pubdate data-updated="true"></time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/euler/'>euler</a>, <a class='category' href='/blog/categories/flatiron/'>flatiron</a>, <a class='category' href='/blog/categories/project/'>project</a>, <a class='category' href='/blog/categories/school/'>school,</a>
-
-</div>
+<time datetime="2015-06-27T20:22:39-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
 
 
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/06/27/writing-elegant-code-part-ii-the-rules/">
-		
-			Writing Elegant Code Part II: The Rules</a>
-	</h2>
-	<div class="entry-content">
-		<p>I remember curiously peeking at code on GitHub before starting Flatiron. Even then, despite not understanding all too well what the code was meant to do, I could tell that some of it was easier to read than others. My favorite samples had methods that were short and clearly named, variables has clear names, code was organized logically and everything was properly indented.</p>
+  <div class="entry-content"><p>I remember curiously peeking at code on GitHub before starting Flatiron. Even then, despite not understanding all too well what the code was meant to do, I could tell that some of it was easier to read than others. My favorite samples had methods that were short and clearly named, variables has clear names, code was organized logically and everything was properly indented.</p>
 
 <p>Now that I can (mostly) write some functioning code, it is time to make sure it is easy to understand to those who may read it at a later point.</p>
 
@@ -700,14 +649,23 @@ $(document).ready(
 <p><img class="center" src="/images/refactored_rps.png"></p>
 
 <p>And the &lsquo;outcome&rsquo; method? It is still there, staring at me in its simple flow control glory. Rules exist to be broken, I suppose.</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/06/21/lines-of-code-is-more-always-better/">Lines of Code: Is More Always Better?</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -719,29 +677,14 @@ $(document).ready(
   
 
 
-<time datetime="2015-06-27T20:22:39-04:00" pubdate data-updated="true"></time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/flatiron/'>flatiron</a>, <a class='category' href='/blog/categories/school/'>school</a>
-
-</div>
+<time datetime="2015-06-21T11:24:04-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
 
 
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/06/21/lines-of-code-is-more-always-better/">
-		
-			Lines of Code: Is More Always Better?</a>
-	</h2>
-	<div class="entry-content">
-		<p>A book on Ruby I have been reading brought up an interesting fact: it is common for programmers to be evaluated based on how many lines of code (a.k.a. source lines of code, SLOC) they write per unit of time.</p>
+  <div class="entry-content"><p>A book on Ruby I have been reading brought up an interesting fact: it is common for programmers to be evaluated based on how many lines of code (a.k.a. source lines of code, SLOC) they write per unit of time.</p>
 
 <p>I see how that is commonly applied in a corporate environment. Everyone needs to be evaluated on something. Traders are evaluated on their profit-and-loss statements. Teachers are evaluated on their students' standardized test performance. My cat is evaluated on his cuteness.</p>
 
@@ -782,14 +725,23 @@ $(document).ready(
 <blockquote><p>Measuring programming progress by lines of code is like measuring aircraft building progress by weight.</p></blockquote>
 
 <p>Don&rsquo;t waste your code &ndash; write it succinctly.</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/06/14/elegance-of-code-part-i/">Elegance of Code Part I</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -801,29 +753,14 @@ $(document).ready(
   
 
 
-<time datetime="2015-06-21T11:24:04-04:00" pubdate data-updated="true"></time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/flatiron/'>flatiron</a>, <a class='category' href='/blog/categories/school/'>school</a>
-
-</div>
+<time datetime="2015-06-14T00:00:00-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
 
 
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/06/14/elegance-of-code-part-i/">
-		
-			Elegance of Code Part I</a>
-	</h2>
-	<div class="entry-content">
-		<p>When one first starts coding, the main concern is writing something that works and produces desired result.</p>
+  <div class="entry-content"><p>When one first starts coding, the main concern is writing something that works and produces desired result.</p>
 
 <p>You get irb to output &ldquo;Hello World!&rdquo; &ndash; excellent. Then you get a nested hash-array monster to return a very specific key hidden 7 levels deep &ndash; great. Then you write your CLI interface that runs in your command line and shows scraped data from your fellow students' bio &ndash; good job. And you even use cowsay to format interactions with the user and format command line output using escape sequences, so that user interface looks less boring. And when you hit rspec, most tests pass.</p>
 
@@ -852,14 +789,23 @@ $(document).ready(
 <p> It is is a very comprehensive but not excessively lengthy GitHub repo that will answer most of the questions you have ever had about, say, indenting when and case together — turns out they are supposed to be indented at the same level! (That means if I re-visit some earlier labs, cosmetic edits will need to be made.) The best part if, anyone is welcome to contribute and submit a pull request &ndash; and maybe your take on comment indentation will be shared with the next generation of newbie developers.</p>
 
 <p>Now, if there was only a website that did my Ruby code formatting for me&hellip;</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/06/09/beautifying-non-working-blog-posts/">Beautifying Non-Working Blog Posts</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -871,23 +817,14 @@ $(document).ready(
   
 
 
-<time datetime="2015-06-14T00:00:00-04:00" pubdate data-updated="true"></time></div>
-	
+<time datetime="2015-06-09T22:02:40-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
 
 
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/06/09/beautifying-non-working-blog-posts/">
-		
-			Beautifying Non-Working Blog Posts</a>
-	</h2>
-	<div class="entry-content">
-		<p>Avi said on Day 1 of Flatiron School: don&rsquo;t fix non-functioning code. But how about editing a non-working blog post?</p>
+  <div class="entry-content"><p>Avi said on Day 1 of Flatiron School: don&rsquo;t fix non-functioning code. But how about editing a non-working blog post?</p>
 
 <p>I had a post all written up and ready to go. It was about ways to iterate over arrays and had several A4 pages' worth of text (come to think of it, it’s a good thing that post did not happen).</p>
 
@@ -910,60 +847,88 @@ $(document).ready(
 <p>But we re-did it from scratch and that fixed it. And by then I had realized that Avi was right. I spent too much time on writing and editing my post, without trying to see if it would even go through. Murphy’s Law dictates that it is the very situation when it wouldn’t.  So instead of using my original post, I am writing this one as a very public note to self to not get caught up in aesthetics of things if I don&rsquo;t even know if they are going to work.</p>
 
 <p>And those dozens of ways to iterate over arrays? Brace yourselves, I&rsquo;ll come back to that.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
   
 
 
-<time datetime="2015-06-09T22:02:40-04:00" pubdate data-updated="true"></time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/flatiron/'>flatiron</a>, <a class='category' href='/blog/categories/school/'>school</a>
-
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="2">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
 </div>
-
-
-	
-</div></article>
-
-<nav id="pagenavi">
+<aside class="sidebar">
+  
+    <section>
+  <ul id="recent_posts">
+      <li class="post">
+      <a href="http://annaershova.github.io" alt="Home"><img src="/images/Home.png"></a>
+      <a href="http://annaershova.github.io/archives/" alt="Archives"><img src="/images/Calendar.png"></a>
+      <a href="mailto:anna.ershova@gmail.com" alt="E-Mail"><img src="/images/Envelope.png"></a>
+      <a href="http://annaershova.github.io/atom.xml" alt="subscribe feed"><img src="/images/rss_big.png"></a>
+      </li>
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
     
+      <li class="post">
+        <a href="/blog/2015/07/29/project-mode-week-1/">Project Mode -- Week 1, Day 2</a>
+      </li>
     
-        <a href="2" class="next">Next</a>
+      <li class="post">
+        <a href="/blog/2015/07/26/twitter-sentiment-analysis-rails-app/">On a Scale of Dalai Lama to Kanye West, How Narcissistic Are You? A Rails App That Lets You Find Out Just That.</a>
+      </li>
     
-    <div class="center"><a href="/archives">Blog Archives</a></div>
-</nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
+      <li class="post">
+        <a href="/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">How to Rotate a Matrix in Ruby</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/21/regex-is-just-like-mandarin-chinese/">RegEx Is Just Like Mandarin Chinese</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/17/why-ruby-is-not-javascript/">Why I Don't Like Semicolons</a>
+      </li>
+    
+  </ul>
+</section>
 
-    Anna Ershova
+  
+</aside>
 
-<br>
-Powered by Octopress.
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Anna Ershova -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
 </footer>
-	<script src="/javascripts/slash.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox();
-})(jQuery);
-</script> <!-- Delete or comment this line to disable Fancybox -->
+  
 
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
 
 
 
