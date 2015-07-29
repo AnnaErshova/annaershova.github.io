@@ -4,7 +4,7 @@
   <title><![CDATA[Anna's Blog]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-07-26T20:02:35-04:00</updated>
+  <updated>2015-07-29T11:14:09-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Project Mode -- Week 1, Day 2]]></title>
+    <link href="http://annaershova.github.io/blog/2015/07/29/project-mode-week-1/"/>
+    <updated>2015-07-29T11:08:32-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/07/29/project-mode-week-1</id>
+    <content type="html"><![CDATA[<p>&hellip;and we are officially in Project Mode here at the Flatiron School, working on project 1 of 2, which is meant to be a short project to be conceptualized, pitched, designed, built, and presented within a scope of 5 business days.</p>
+
+<p><a href="https://youtu.be/7fx6AknguzI">Here</a> is a very short video showcasing functionality that we have built in 2 days. We have deployed to Heroku since the video was made, which turned out to be much easier than expected, minus some fiddling with the Figaro gem.)</p>
+
+<p>Primary goal right now is to make it aesthetically pleasing.</p>
+
+<p>It looks fairly simple, but it actually features some pretty advanced weather-related logic. Who would have thought that energy trading background would come in handy.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On a Scale of Dalai Lama to Kanye West, How Narcissistic Are You? A Rails App That Lets You Find Out Just That.]]></title>
