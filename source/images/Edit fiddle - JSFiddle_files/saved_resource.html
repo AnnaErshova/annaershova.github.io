@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://fiddle.jshell.net/cdpZg/show/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title> - jsFiddle demo</title>
+  
+  <script type="text/javascript" src="jquery-1.7.1.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="normalize(1).css">
+  
+  
+  <link rel="stylesheet" type="text/css" href="result-light.css">
+  
+  <style type="text/css">
+    #popup {
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    vertical-align:middle;
+    background-color: cornflowerblue;
+    color: white;
+    display: none;
+    padding-top: 8px;
+    
+
+    position: absolute;
+}
+  </style>
+  
+
+
+<script type="text/javascript">//<![CDATA[ 
+$(window).load(function(){
+$('#user').hover(function() {
+    $('#popup').show();
+}, function() {
+    $('#popup').hide();
+});
+});//]]>  
+
+</script>
+
+
+</head>
+<body class=" hasGoogleVoiceExt">
+  <div id="user">I am a user. Move your mouse over me</div>
+<div id="popup" style="display: none;">Extended info about a user</div>
+<div>I a piece of useless information. No use hovering over me.</div>
+
+  
+
+
+
+
+
+</body></html>
