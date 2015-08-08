@@ -4,7 +4,7 @@
   <title><![CDATA[Anna's Blog]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-07-29T15:20:05-04:00</updated>
+  <updated>2015-08-08T19:19:18-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[And the new app is done]]></title>
+    <link href="http://annaershova.github.io/blog/2015/08/08/and-the-new-app-is-done/"/>
+    <updated>2015-08-08T19:15:00-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/08/08/and-the-new-app-is-done</id>
+    <content type="html"><![CDATA[<p>Behold &ndash; a real <a href="http://theweatherproject.herokuapp.com/">app</a>!</p>
+
+<p>We used meteorological knowledge to convert weather forecasts into a &lsquo;real-life&rsquo; weather forecast. It takes into account humidity and wind speed for a variety of different scenarios to tell you what will it actually feel like outside in the next 36 hours. Some days, it will feel colder / cooler than what the weather forecasts say, and some days it will much hotter / warmer.</p>
+
+<p>This was really fun to work on, and I really enjoyed making something useful &ndash; I have been using it every day to make sartorial choices and to figure out best time of the day to run outside.</p>
+
+<p>And it&rsquo;s sassy.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Project Mode -- Week 1, Day 2]]></title>
