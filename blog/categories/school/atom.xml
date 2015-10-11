@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: school, | Anna's Blog]]></title>
+  <link href="http://annaershova.github.io/blog/categories/school/atom.xml" rel="self"/>
+  <link href="http://annaershova.github.io/"/>
+  <updated>2015-10-11T18:49:23-04:00</updated>
+  <id>http://annaershova.github.io/</id>
+  <author>
+    <name><![CDATA[Anna Ershova]]></name>
+    <email><![CDATA[anna.ershova@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Running edge Rails -- Living Dangerously]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/11/running-edge-rails-living-dangerously/"/>
+    <updated>2015-10-11T18:43:11-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/11/running-edge-rails-living-dangerously</id>
+    <content type="html"><![CDATA[<p>Rails is constantly being updated and improved. Sometimes, the changes that have been announced are just too exciting to wait for an official release.</p>
+
+<p>When I first read about ‘Edge Rails’, I was quite confused because it sounded like yet another JS library. Then when I was reading The Rails Way (Amazon <a href="http://www.amazon.com/The-Rails-Way-Obie-Fernandez/dp/0321445619">link</a> if you have somehow never heard of it), I realized I had been mistaken.</p>
+
+<p>Grammatically speaking, it should be spelled <em>edge Rails</em>, as in lowercase <em>e</em>. But that is really between you and your text editor. In this context, ‘edge' just means the latest, cutting-edge version of Rails that has not been officially released yet.</p>
+
+<p>Rails 5 looming upon us, but there is no official release date. I gather the best guess is late 2015 — early 2016. It does have some exciting features, such as merging of the rails-api gem / built-in support of the JSON APIs). So what do you do if you want to play around with that and don’t want to wait until the official release?</p>
+
+<p>Ruby -v to see if you are using ruby 2.2.2+  as Rails 5 requires it. Use rvm to make sure you are running a suitable version.</p>
+
+<p>The best instructions to install edge Rails can be found <a href="http://www.christopherbloom.com/2015/04/26/setting-up-a-rails-5-app-from-edge/">here</a> on Christopher Bloom&rsquo;s blog — they are straightforward and and I used them successfully, so I’d rather send you to the source than to copy-paste them here.</p>
+
+<p>RailsGuides has an <a href="http://edgeguides.rubyonrails.org/">EdgeGuides</a> section specifically targeting the current master branch of the Rails repo.</p>
+
+<p>Running edge Rails comes at a cost of potentially unstable dependencies. Having said that, it is not <em>that</em> unstable. Rails has a very extensive test coverage, which should help prevent regressions.</p>
+
+<p>So do you want to run edge Rails? Probably not, unless you really plan to take advantage of groundbreaking unleashed feature or if you are particularly curious. But it’s nice to know it’s there.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Project Euler Problem 1, or Benchmarking Ruby Code]]></title>
+    <link href="http://annaershova.github.io/blog/2015/07/07/project-euler-problem-1/"/>
+    <updated>2015-07-07T05:56:19-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/07/07/project-euler-problem-1</id>
+    <content type="html"><![CDATA[<p>Everyone loves a good coding challenge. But where do you find good brainteasers outside of StackOverflow&rsquo;s endless Ruby 101 questions?</p>
+
+<p>Enter <a href="https://projecteuler.net/">Project Euler</a>. At 513 problems and counting, it is a great way to practice both your math and coding skills.</p>
+
+<p>Many of the initial problems are on the easier side, and when I was assigned <a href="https://projecteuler.net/problem=1">Problem 1</a>, it did not take long to figure out how to approach solving it:</p>
+
+<blockquote><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.</p>
+
+<p>Find the sum of all the multiples of 3 or 5 below 1000.</p></blockquote>
+
+<p>We were supposed to code both a &lsquo;regular&rsquo; procedural and an object-oriented solution.</p>
+
+<p>Here is a very quickly written procedural one in a lab context (the two methods used and their names came from rspec suite):</p>
+
+<p><img class="center" src="/images/pe1procedural.png"></p>
+
+<p>It&rsquo;s pretty straightforward. There is a simple loop to find all the multiples of 3 or 5 and push them into an array; inject method is then used to sum up all of them (yes, one can iterate over the array instead, but inject is perfect for summing or multiplying array contents, so I was not going to bother).</p>
+
+<p>It works perfectly fine &ndash; the answer is 233168, by the way.</p>
+
+<p>But then I got thinking: there are just <em>too many lines of code</em>, and writing them is not exactly efficient. I create an empty array; I create a variable with initial value of 3 (or 1, but our common sense tells us we don&rsquo;t need 1 and 2 anyway), I increment by 1; I push things into the array. It just feels like too much effort.</p>
+
+<p>So for the &lsquo;object-oriented solution&rsquo;, I made things a little more elegant:</p>
+
+<p><img class="center" src="/images/pe1oo.png"></p>
+
+<p>That is easier to read and it just <em>looks</em> a lot better, and it produces the same result. But ultimately, it is not enough for code to be handsome, it also has to be fast and efficient. It was a good chance to use Ruby&rsquo;s <a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/benchmark/rdoc/Benchmark.html">Benchmark Module</a> to see if one solution was preferable to another due to it being faster.</p>
+
+<p>Quoting straight from the source:</p>
+
+<blockquote><p>The Benchmark module provides methods to measure and report the time used to execute Ruby code.</p></blockquote>
+
+<p>It is pretty straightforward. One has to &lsquo;require 'Benchmark&rsquo; and then use Benchmark.measure { <em>whatever expression one is evaluating</em> } &ndash; use &lsquo;puts&rsquo; to see the actual outcome.</p>
+
+<p>My initial plan was to benchmark my &lsquo;longer&rsquo; loop solution vs. select vs. a similarly-coded reject solution, vs. several conditions ( using || for modulo or using min) and see if one was preferable to another.</p>
+
+<p>So I ran benchmark on the select statement. And then I ran it again on the same statement. And again. And the processing times were different. And again &ndash; still different. Here is what it ended up looking like:</p>
+
+<p><img class="center" src="/images/benchmarkselectcomparison.png"></p>
+
+<p>The time on the right is &lsquo;elapsed real time&rsquo;, which is basically time it took the program to run from beginning to and end.</p>
+
+<p>Since the unit of time in which the output is shown is seconds, the amount of time it takes to execute is very small. In the 14 examples above, we are talking the slowest example taking just above a millisecond.</p>
+
+<p>But I expected running the <em>same</em> line of code to take the <em>same</em> time each and every time. After all, there are no random number generators in that code, and Ruby should evaluate the line of code in the same order each time &ndash; the result doesn&rsquo;t change, why would processing time?</p>
+
+<p>What&rsquo;s interesting about Benchmark is that it is affected by CPU, and your CPU will be running differently every time you run Benchmark. Although it took me several seconds before benchmarking attempts in the example above, and I did not start of exit any new software (or Chrome Tabs) in between attempts, my CPU clearly was doing different things at the time, hence the time variations.</p>
+
+<p>So how is one supposed to benchmark one process against another if it is also affected by &lsquo;outside&rsquo; factors such as whatever else your computer is doing in the background? The trick is to run your line of code against the other ones multiple times simultaneously, and then average processing times.</p>
+
+<p>There is a very handy solution suggested in the documentation, which I have used to run 5 different statements 100 times and then evaluate results:</p>
+
+<p><img class="center" src="/images/benchmarkingcode.png"></p>
+
+<p>Here is the outcome, run within 3 seconds of each other:</p>
+
+<p><img class="center" src="/images/benchmarkingcomparison.png"></p>
+
+<p>While the absolute numbers are different each time benchmarking is run, the relative numbers remain the same (I ran it a few more dozen times and charted it, but I won&rsquo;t bore you with the details).</p>
+
+<p>The fastests solutions were using logical operators vs. applying min&lt;1 &ndash; the latter took at least 2.5x longer than the 3 solutions that used Boolean operators &ndash; can you guess why?</p>
+
+<p>However &ndash; all of the evaluted solutions took well under a second, so it is not really significant for this particular problem. But speed is a major concern for many industries (see a very interesting NYTimes article that discusses how it applies in finance (<a href="http://www.nytimes.com/2014/04/14/opinion/krugman-three-expensive-milliseconds.html?_r=0">article here &ndash; paywall</a>)).</p>
+
+<p>Certain companies employ entire teams of people whose job description is to shave off milliseconds of algorithm running times. While Ruby&rsquo;s Benchmarking module is not powerful enough for those commercial purposes, it is a fun way to experiment with the code one writes to see how it compares against other options.</p>
+]]></content>
+  </entry>
+  
+</feed>

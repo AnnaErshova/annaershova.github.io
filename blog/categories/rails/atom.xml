@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rails | Anna's Blog]]></title>
+  <link href="http://annaershova.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://annaershova.github.io/"/>
+  <updated>2015-10-11T18:49:23-04:00</updated>
+  <id>http://annaershova.github.io/</id>
+  <author>
+    <name><![CDATA[Anna Ershova]]></name>
+    <email><![CDATA[anna.ershova@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Running edge Rails -- Living Dangerously]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/11/running-edge-rails-living-dangerously/"/>
+    <updated>2015-10-11T18:43:11-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/11/running-edge-rails-living-dangerously</id>
+    <content type="html"><![CDATA[<p>Rails is constantly being updated and improved. Sometimes, the changes that have been announced are just too exciting to wait for an official release.</p>
+
+<p>When I first read about ‘Edge Rails’, I was quite confused because it sounded like yet another JS library. Then when I was reading The Rails Way (Amazon <a href="http://www.amazon.com/The-Rails-Way-Obie-Fernandez/dp/0321445619">link</a> if you have somehow never heard of it), I realized I had been mistaken.</p>
+
+<p>Grammatically speaking, it should be spelled <em>edge Rails</em>, as in lowercase <em>e</em>. But that is really between you and your text editor. In this context, ‘edge' just means the latest, cutting-edge version of Rails that has not been officially released yet.</p>
+
+<p>Rails 5 looming upon us, but there is no official release date. I gather the best guess is late 2015 — early 2016. It does have some exciting features, such as merging of the rails-api gem / built-in support of the JSON APIs). So what do you do if you want to play around with that and don’t want to wait until the official release?</p>
+
+<p>Ruby -v to see if you are using ruby 2.2.2+  as Rails 5 requires it. Use rvm to make sure you are running a suitable version.</p>
+
+<p>The best instructions to install edge Rails can be found <a href="http://www.christopherbloom.com/2015/04/26/setting-up-a-rails-5-app-from-edge/">here</a> on Christopher Bloom&rsquo;s blog — they are straightforward and and I used them successfully, so I’d rather send you to the source than to copy-paste them here.</p>
+
+<p>RailsGuides has an <a href="http://edgeguides.rubyonrails.org/">EdgeGuides</a> section specifically targeting the current master branch of the Rails repo.</p>
+
+<p>Running edge Rails comes at a cost of potentially unstable dependencies. Having said that, it is not <em>that</em> unstable. Rails has a very extensive test coverage, which should help prevent regressions.</p>
+
+<p>So do you want to run edge Rails? Probably not, unless you really plan to take advantage of groundbreaking unleashed feature or if you are particularly curious. But it’s nice to know it’s there.</p>
+]]></content>
+  </entry>
+  
+</feed>

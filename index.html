@@ -1,0 +1,910 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Anna's Blog</title>
+  <meta name="author" content="Anna Ershova">
+
+  
+  <meta name="description" content="Rails is constantly being updated and improved. Sometimes, the changes that have been announced are just too exciting to wait for an official release &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://annaershova.github.io">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+</hgroup>
+
+</header>
+  <!-- <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:annaershova.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav> -->
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/11/running-edge-rails-living-dangerously/">Running Edge Rails -- Living Dangerously</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-10-11T18:43:11-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Rails is constantly being updated and improved. Sometimes, the changes that have been announced are just too exciting to wait for an official release.</p>
+
+<p>When I first read about ‘Edge Rails’, I was quite confused because it sounded like yet another JS library. Then when I was reading The Rails Way (Amazon <a href="http://www.amazon.com/The-Rails-Way-Obie-Fernandez/dp/0321445619">link</a> if you have somehow never heard of it), I realized I had been mistaken.</p>
+
+<p>Grammatically speaking, it should be spelled <em>edge Rails</em>, as in lowercase <em>e</em>. But that is really between you and your text editor. In this context, ‘edge' just means the latest, cutting-edge version of Rails that has not been officially released yet.</p>
+
+<p>Rails 5 looming upon us, but there is no official release date. I gather the best guess is late 2015 — early 2016. It does have some exciting features, such as merging of the rails-api gem / built-in support of the JSON APIs). So what do you do if you want to play around with that and don’t want to wait until the official release?</p>
+
+<p>Ruby -v to see if you are using ruby 2.2.2+  as Rails 5 requires it. Use rvm to make sure you are running a suitable version.</p>
+
+<p>The best instructions to install edge Rails can be found <a href="http://www.christopherbloom.com/2015/04/26/setting-up-a-rails-5-app-from-edge/">here</a> on Christopher Bloom&rsquo;s blog — they are straightforward and and I used them successfully, so I’d rather send you to the source than to copy-paste them here.</p>
+
+<p>RailsGuides has an <a href="http://edgeguides.rubyonrails.org/">EdgeGuides</a> section specifically targeting the current master branch of the Rails repo.</p>
+
+<p>Running edge Rails comes at a cost of potentially unstable dependencies. Having said that, it is not <em>that</em> unstable. Rails has a very extensive test coverage, which should help prevent regressions.</p>
+
+<p>So do you want to run edge Rails? Probably not, unless you really plan to take advantage of groundbreaking unleashed feature or if you are particularly curious. But it’s nice to know it’s there.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/08/08/and-the-new-app-is-done/">And the New App Is Done</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-08-08T19:15:00-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Behold &ndash; a real <a href="http://theweatherproject.herokuapp.com/">app</a>!</p>
+
+<p>We used meteorological knowledge to convert weather forecasts into a &lsquo;real-life&rsquo; weather forecast. It takes into account humidity and wind speed for a variety of different scenarios to tell you what will it actually feel like outside in the next 36 hours. Some days, it will feel colder / cooler than what the weather forecasts say, and some days it will much hotter / warmer.</p>
+
+<p>This was really fun to work on, and I really enjoyed making something useful &ndash; I have been using it every day to make sartorial choices and to figure out best time of the day to run outside.</p>
+
+<p>And it&rsquo;s sassy.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/29/project-mode-week-1/">Project Mode -- Week 1, Day 2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-29T11:08:32-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>&hellip;and we are officially in Project Mode here at the Flatiron School, working on project 1 of 2, which is meant to be a short project to be conceptualized, pitched, designed, built, and presented within a scope of 5 business days.</p>
+
+<p><a href="https://youtu.be/7fx6AknguzI">Here</a> is a very short video showcasing functionality that we have built in 2 days. We have deployed to Heroku since the video was made, which turned out to be much easier than expected, minus some fiddling with the Figaro gem.)</p>
+
+<p>Primary goal right now is to make it aesthetically pleasing.</p>
+
+<p>It looks fairly simple, but it actually features some pretty advanced weather-related logic. Who would have thought that energy trading background would come in handy.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/26/twitter-sentiment-analysis-rails-app/">On a Scale of Dalai Lama to Kanye West, How Narcissistic Are You? A Rails App That Lets You Find Out Just That.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-26T09:32:26-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For a small side project to be shared with our Flatiron School classmates and some <a href="http://www.meetup.com/Flatiron-School-Presents/">Flatiron School Presents Meetup</a> guests, my partner Mitch and I decided to build an app that measures people&rsquo;s narcissism levels via their Twitter feed. A linguistic analysis-baased social insights algorithm, if you will.</p>
+
+<p><img class="center" src="/images/kanye-meme.png"></p>
+
+<p>(meme taken from <a href="http://knowyourmeme.com/photos/688363-kanye-west">here</a> &ndash; spoiler alert for celebrities' narcissism levels)</p>
+
+<p>Much has been said and done and invested into when it comes to social media sentiment analysis in finance, with many financial institutions investing heavily in it. A cursory Google search offers up names of many start-ups involved in mining, mapping, analyzing, and plain having fun with Twitter. We figured that as tech professionals, working with social media and building a fun prototype for understanding the tools and the medium is a valuable experience.</p>
+
+<p>Our original idea was parsing through people&rsquo;s Instagram feed to see how many posted photos were selfies for a better narcissism indicator, but considering advanced facial recognizition technology needed and the fact it was meant to be a small side project executed while carrying on a full school work load, we have settled on the twitter-based project.</p>
+
+<p>The <a href="https://github.com/sferik/twitter">Twitter gem</a> made working with Twitter a breeze, although there were limitations for how many posts could be parsed through at once and of course the max number of timeout requests every minute.</p>
+
+<p>We designed everything through the use of good ol' Rails New NarcissismProject. We had one user model that we worked with.</p>
+
+<p>The front page invites a user to check how narcissistic the are by entering a twitter handle (which will work whether or not prefixed with an @ to make user&rsquo;s life easier; we have also allowed for the first or last typed character to be blank space in case a user is very space-key-trigger-happy; other than that, the handle has to follow Twitter rules as ensured by a RegEx check):</p>
+
+<p><img class="center" src="/images/narcissism-app-front-page.png"></p>
+
+<p>Once a user enters a twitter handle, it parses their feed for key narcissism-related words that we have pre-determined in the app; it then checks it against a scale of celebrities. It then returns user&rsquo;s score and their celebrity match (mine is Flatiron School&rsquo;s very own <a href="https://twitter.com/aviflombaum">Avi Flombaum</a>)</p>
+
+<p>We don&rsquo;t share the celbrity scale on the app, as it is more fun for the user to discover it him/herself. To built it, we have parsed through the top 100 most-followed twitter accounts (most of which are individual celebrities) and some more and scored them. We then picked some representatives for each scale gradation, throwing in a few Flatiron School-related Easter Eggs, just for fun. If this was a commercial product, we would have to update the celebrity scale just in case some of them go into narcissism rehab or new self-loving celebrities merger.</p>
+
+<p>Most of our findings were unsurprising: Dalai Lama and the Pope were at the very bottom (with Dalai Lama being slightly less narcissistic and thus representing no. 1 on our scale); Kanye West was 9 out of 10 (beat only by the likes of Lena Dunham); Mr. West was closely followed by Kim Kardashian in the 8th place. To me, this means that are simplistic prototype algorithm actually works!</p>
+
+<p>I stopped to pondered if it is unethical to make fun of people&rsquo;s narcissism levels, but considering the celeberities that came up on top and their interest in self-promotion, I figured out their high tankings it would be quite a compliment to them (I am really, really tempted to tweet Mr. West and ask him how he feels about being outdone by Ms Dunham).</p>
+
+<p>What turned out to be incredibly fun was soliciting our friends' and classmates' twitter handles and checking their narcissism levels. A few were truly off-the-charts! (We even had to design more model logic for those cases) The top 10 narcissistic twitter handles are then saved separately and published on the Top 10 page &ndash; with many people I know outdoing our celebrities of choice. Uh oh.</p>
+
+<p>A short demo video can be found <a href="http://youtu.be/T_tTweOvDqs">here</a> &ndash; YouTube link.</p>
+
+<p>And here is a link to the Github <a href="https://github.com/mitchellhart/twitter_analyzer">repo</a>.</p>
+
+<p>I will update this post once the app actually goes live as is our goal.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">How to Rotate a Matrix in Ruby</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-22T17:58:06-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here is a problem that I recently stumbled upon while researching something completely different, as these things usually go, &ndash; and down the rabbit hole I went.</p>
+
+<p>How does one rotate a matrix?</p>
+
+<p>First of all, let&rsquo;s define parameters of the exercise. We will take a matrix &ndash; an array of arrays &ndash; and turn it 90&deg; clockwise.</p>
+
+<p>So this is what it would look like, using Flatiron&rsquo;s whiteboard table tops (we are really a paper-free school):</p>
+
+<p><img class="center" src="/images/matrix-rotation-example.png"></p>
+
+<p>As you can see, numbers 1 (position[0][0] in zero-indexed terms) and 9 (position [2][2]) traded places. One thing is immediately obvious: this would only work if the matrix in question is &lsquo;square&rsquo;: that is, if there are x many rows with x many elements each.</p>
+
+<p>Now that we have defined that condition, let&rsquo;s start with a simple 3x3 matrix.</p>
+
+<p>If the original array looks like this, Ruby-style:</p>
+
+<blockquote><p>my_array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</p></blockquote>
+
+<p>The modified array would look like this:</p>
+
+<blockquote><p>rotated_array = [[7, 4, 1], [8, 5, 2], [9, 6, 3]]</p></blockquote>
+
+<p>But how to get there?</p>
+
+<p>Ruby actually comes with default methods that allow one to manipulate arrays. Most people know <em>pop</em>, <em>shift</em>, <em>unshift</em>, and <em>drop</em>, but there are way more useful methods.</p>
+
+<p>I was only marginally familiar with <em>rotate</em>, so here is an example:</p>
+
+<p>According to the <a href="http://ruby-doc.org/core-2.2.2/Array.html#method-i-rotate">docs</a>:</p>
+
+<blockquote><p>Returns a new array by rotating self so that the element at count is the first element of the new array.</p></blockquote>
+
+<p>When using it without an argument (or rather with the default count of 1), it works like this:</p>
+
+<p><img class="center" src="/images/rotate_simple_example.png"></p>
+
+<p>It effectively takes the first part of the array and places it at the end of the array. If we use that 5 times on the array with 5 elements, we will arrive at the original array (well, it will return what looks like the original array as the original array does not get modified).</p>
+
+<p>If used with a count that is not 1, it will move the elements down by the count number of places:</p>
+
+<p><img class="center" src="/images/rotate_example_with_count2.png"></p>
+
+<p>(array.rotate(2) is the same as <em>array.rotate.rotate</em>)</p>
+
+<p>Count can also be negative, in which case it will rotate the array in the opposite direction, taking items from the end of the array and placing them in the front:</p>
+
+<p><img class="center" src="/images/rotate-example-count-negative.png"></p>
+
+<p>As many other methods, it can be used with the bang to modify the original array: <em>return!</em></p>
+
+<p>I played around with <em>rotate</em>, and it became clear that I was going to need something else to complete the task:</p>
+
+<p><img class="center" src="/images/rotate-example.png"></p>
+
+<p>It handily re-arranged the nested components in the array, moving each &lsquo;inner&rsquo; array over by 1 at a time.</p>
+
+<p>There is also <a href="http://apidock.com/ruby/Array/transpose">transpose</a>. It is actually a bit trickier to comprehend:</p>
+
+<p><img class="center" src="/images/transpose-simple-example.png"></p>
+
+<p>For a nested array that contains 2 array of 2 elements each, it seems like all it does is switch elements that are in the [1][0] and [0][1] position with each other &ndash; in case below, only 2 and 3 traded places. But what is actually does, as becomes more obvious in case of a larger array (nexted with 3 arrays of 3 elements each) is make columns rows and rows columns.</p>
+
+<p>Here is an example:</p>
+
+<p><img class="center" src="/images/transpose-example.png"></p>
+
+<p>Unlike <em>rotate</em>, <em>transpose</em> does not take any arguments.</p>
+
+<p>By the way, although I won&rsquo;t be using it here, one of my favorite array methods is also <em>flatten</em>, which is a handy way to get nesting out of arrays:</p>
+
+<p><img class="center" src="/images/flatten-example.png"></p>
+
+<p>As an aside, <em>flatten</em> is is also a handy way of converting a hash into a simple array:</p>
+
+<p><img class="center" src="/images/hash-flatten-example.png"></p>
+
+<p>But back to the task at hand:</p>
+
+<p>Upon experimenting with <em>rotate</em>, <em>flatten</em>, and <em>transpose</em>, I think I came up with a pretty efficient technique using <em>transpose</em> and then <em>reverse</em>:</p>
+
+<p><img class="center" src="/images/rotation-execution-example.png"></p>
+
+<p>The array is first transposed and then iterated over, and each of the nexted arrays inside it is reversed.</p>
+
+<p>Works like a charm. But if you want to do something slightly more exciting:</p>
+
+<p>Let&rsquo;s look at the origin array again:</p>
+
+<blockquote><p>my_array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</p></blockquote>
+
+<p>And at the rotated_array:</p>
+
+<blockquote><p>rotated_array = [[7, 4, 1], [8, 5, 2], [9, 6, 3]]</p></blockquote>
+
+<p>For a zero-indexed language, the nested array will look like this, positions-wise:</p>
+
+<p>[6,3,0]<br>
+[7,4,1]<br>
+[8,5,2]<br></p>
+
+<p>OR:</p>
+
+<p>(position of first element (0 in this case) + 2*3) + (position of first element + 3*1 ) + (position of first element + 3*0)
+(position of second element + 2*3) + (position of first element + 3*1 ) + (position of second element + 3*0)
+(position of third element + 2*3) + (position of third element + 3*1 ) + (position of third element + 3*0)</p>
+
+<p>Or for a nested array:</p>
+
+<p>[[2][0],[1][0],[0][0]],<br>
+[[2][1],[1][1],[0][1]],<br>
+[[2][2],[1][2],[0][2]]<br></p>
+
+<p>Which is:</p>
+
+<p>[[my_array.length-1][my_array.length-3],[my_array.length-2][my_array.length-3],[my_array.length-3][my_array.length-3]],<br>
+[[my_array.length-1][my_array.length-2],[my_array.length-2][my_array.length-2],[my_array.length-3][my_array.length-2]],<br>
+[[my_array.length-1][my_array.length-1],[my_array.length-2][my_array.length-1],[my_array.length-3][my_array.length-1]]<br></p>
+
+<p>This would be a cool structure to use if pushing things into the array (I am using absolute positions instead of array.length-related as it is easier in this example):</p>
+
+<p><img class="center" src="/images/pushing-into-rotated-array.png"></p>
+
+<p>(as you can see I made a typo and then fixed it)</p>
+
+<p>All you need to do thereafter is convert it into a nested array.</p>
+
+<p>You can also do a chain of push statements:</p>
+
+<p><img class="center" src="/images/push-chain.png"></p>
+
+<p>All of these are pretty fun solutions to the problem.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/21/regex-is-just-like-mandarin-chinese/">RegEx Is Just Like Mandarin Chinese</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-21T08:26:33-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When I was in primary school in Russia, we had an intro to computer science class that taught up the basics of programming to produce good post-Communist STEM-oriented comrades. It used Basic to teach the fundamentals. As I spoke no English at the time, I spent more time memorizing words like GOTO and GOSUB than actually figuring out coding logic.</p>
+
+<p>English speakers have a very distinct advantage when it comes to programming in most languages: we know all the words already. One doesn&rsquo;t even have to be an actual native speaker: Ruby was famously written by a Japanese programmer.</p>
+
+<p>Whether a native speaker or not, it is a lot easier to memorize certain methods in Ruby (see: any?; none?; all?) when one actually understands how to use those words in a sentence.</p>
+
+<p>Learning to code is comparable to learning a foreign language: a large part of it is comprehending the principles and then complementing it with memorizing quirks of grammar.</p>
+
+<p>I compared SQL to German in class before. German is a very structured language where sentences have to be built and organized a very certain way, just like SQL.</p>
+
+<p>Compare that to an Eastern European language, where we take major liberties with positioning words in a sentence. I used to tutor Russian as an undergrad at Yale; I remember students coming to me panicking because they could not figure out why subjects and objects were creatively arranged in a sentence and what to do about it. All I could say at the time is they were lucky because they did not learn Ukrainian, which has same creativity, by more complex grammar.</p>
+
+<p>Ruby feels like an Eastern European language to me &ndash; there are many ways to write code, but there are still very specific &lsquo;grammar&rsquo; rules one needs to follow to make code &lsquo;grammatically correct.&rsquo; The stakes of course are differnet: while one can make oneself understood and convery the message well in broken Russian, Ruby won&rsquo;t run broken code at all or run it incorrectly.</p>
+
+<p>Here is the problem with RegEx: it is just like Mandarin Chinese. Judging by the number of desperate, hate-filled posts on StackOverflow, it is as hard to learn.</p>
+
+<p>Mandarin Chinese, and most its other dialects of Chinese actually have no well-developed grammar. There are ways to structure sentences, but there are no 7 cases of Ukrainian or 12 tenses of English. Past tense is barely denoted, yet alone formed in a miriad ways that hapless students of Germanic languages spend years memorizing.</p>
+
+<p>When I first started Ruby, I routinely had to spend a fair bit of time ensuring I had an appropriate number of &lsquo;end&rsquo; key words: one to end an if statement, one to end a do block, one to end a method, one to end a class&hellip; That&rsquo;s a lot of &lsquo;grammar&rsquo; to learn &ndash; but at least we all know what the word &lsquo;end&rsquo; means, so that makes it easier. With RegEx, you have to poke around various seemingly randomly assigned symbols and hope that they work. Just like with Mandarin, half the time you are hoping you are refering to the correct character that has no real linguistic content and that you are using it correctly.</p>
+
+<p>For a project in class, I had to write the following expression to validate a potential twitter handle: /^[A-Za-z0-9<em>]{1,15}|^@[A-Za-z0-9</em>]{1,15}/. It&rsquo;s not technically that difficult, but who decided that ^ stands for start of line? Or that $, for that matter, stands for end of line? Or that &lsquo;a?&rsquo;&lsquo; means zero or more of soemthing?</p>
+
+<p>There might be some internal logic to it, just like with Chinese (vestiges of old-school computer science perhaps?), but for a modern-day person without much linguistic&hellip;I mean computer science background, it is not intuitive.</p>
+
+<p>On top of that, to use RegEx is like writing an application without a good test suite: you think that you have thought of everything, but there is always that one edge case that can pop up and screw it over. I felt like that when learning Mandarin: something always pops up where the word has a diferent meaning or is really meant to be used with a different character to really &lsquo;work.&rsquo;</p>
+
+<p>The good news is that both RegEx and Mandarin are possible to master. Perseverance and a healthy amount of grunt work is key. But just like Mandarin is handy for freaking out Chinese restaurant employees and nail salon workers, RegEx is handy too &ndash; in fact, it might have a greater utility of being used oftenf or the rest of one&rsquo;s Web Development career.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/17/why-ruby-is-not-javascript/">Why I Don't Like Semicolons</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-17T20:40:56-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So I started learning Javascript.</p>
+
+<p>They say that once you understand basic coding principles, learning a new programming language is mostly a matter of figuring out syntax and getting used to whatever special tricks that language has to offer. It certainly seems to be the case with this Ruby to JS transition.</p>
+
+<p>But I certainly miss the syntactic sugar that Ruby gives us &ndash; and what is with all the curly brackets and the semicolons?!</p>
+
+<p>Consider Project Euler Problem I (summing up multiples of 3 and 5 from 1 to 999).</p>
+
+<p>There is just so much we can do with it in Ruby:</p>
+
+<p><img class="center" src="/images/projecteulerp1ruby.png"></p>
+
+<p>And here comes JavaScript:</p>
+
+<p><img class="center" src="/images/projecteuler1js.png"></p>
+
+<p>But just like mastering a foreign language that allows one to express oneself in a new and expanded way (as an example, google &lsquo;toska&rsquo; and &lsquo;Nabokov&rsquo; &ndash; Russians take melancholy to a whole new level that does not exist in any other language), JavaScript offers something pretty cool: <em>for (var x = 0; x &lt; 1000; x++)</em> &ndash; now that is one handy way to guide one&rsquo;s iteration. I sort of wish Ruby had that&hellip;</p>
+
+<p>But for now, I need a T-shirt that says &lsquo;I don&rsquo;t really like semicolons.&rsquo;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/07/project-euler-problem-1/">Project Euler Problem 1, or Benchmarking Ruby Code</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-07T05:56:19-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Everyone loves a good coding challenge. But where do you find good brainteasers outside of StackOverflow&rsquo;s endless Ruby 101 questions?</p>
+
+<p>Enter <a href="https://projecteuler.net/">Project Euler</a>. At 513 problems and counting, it is a great way to practice both your math and coding skills.</p>
+
+<p>Many of the initial problems are on the easier side, and when I was assigned <a href="https://projecteuler.net/problem=1">Problem 1</a>, it did not take long to figure out how to approach solving it:</p>
+
+<blockquote><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.</p>
+
+<p>Find the sum of all the multiples of 3 or 5 below 1000.</p></blockquote>
+
+<p>We were supposed to code both a &lsquo;regular&rsquo; procedural and an object-oriented solution.</p>
+
+<p>Here is a very quickly written procedural one in a lab context (the two methods used and their names came from rspec suite):</p>
+
+<p><img class="center" src="/images/pe1procedural.png"></p>
+
+<p>It&rsquo;s pretty straightforward. There is a simple loop to find all the multiples of 3 or 5 and push them into an array; inject method is then used to sum up all of them (yes, one can iterate over the array instead, but inject is perfect for summing or multiplying array contents, so I was not going to bother).</p>
+
+<p>It works perfectly fine &ndash; the answer is 233168, by the way.</p>
+
+<p>But then I got thinking: there are just <em>too many lines of code</em>, and writing them is not exactly efficient. I create an empty array; I create a variable with initial value of 3 (or 1, but our common sense tells us we don&rsquo;t need 1 and 2 anyway), I increment by 1; I push things into the array. It just feels like too much effort.</p>
+
+<p>So for the &lsquo;object-oriented solution&rsquo;, I made things a little more elegant:</p>
+
+<p><img class="center" src="/images/pe1oo.png"></p>
+
+<p>That is easier to read and it just <em>looks</em> a lot better, and it produces the same result. But ultimately, it is not enough for code to be handsome, it also has to be fast and efficient. It was a good chance to use Ruby&rsquo;s <a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/benchmark/rdoc/Benchmark.html">Benchmark Module</a> to see if one solution was preferable to another due to it being faster.</p>
+
+<p>Quoting straight from the source:</p>
+
+<blockquote><p>The Benchmark module provides methods to measure and report the time used to execute Ruby code.</p></blockquote>
+
+<p>It is pretty straightforward. One has to &lsquo;require 'Benchmark&rsquo; and then use Benchmark.measure { <em>whatever expression one is evaluating</em> } &ndash; use &lsquo;puts&rsquo; to see the actual outcome.</p>
+
+<p>My initial plan was to benchmark my &lsquo;longer&rsquo; loop solution vs. select vs. a similarly-coded reject solution, vs. several conditions ( using || for modulo or using min) and see if one was preferable to another.</p>
+
+<p>So I ran benchmark on the select statement. And then I ran it again on the same statement. And again. And the processing times were different. And again &ndash; still different. Here is what it ended up looking like:</p>
+
+<p><img class="center" src="/images/benchmarkselectcomparison.png"></p>
+
+<p>The time on the right is &lsquo;elapsed real time&rsquo;, which is basically time it took the program to run from beginning to and end.</p>
+
+<p>Since the unit of time in which the output is shown is seconds, the amount of time it takes to execute is very small. In the 14 examples above, we are talking the slowest example taking just above a millisecond.</p>
+
+<p>But I expected running the <em>same</em> line of code to take the <em>same</em> time each and every time. After all, there are no random number generators in that code, and Ruby should evaluate the line of code in the same order each time &ndash; the result doesn&rsquo;t change, why would processing time?</p>
+
+<p>What&rsquo;s interesting about Benchmark is that it is affected by CPU, and your CPU will be running differently every time you run Benchmark. Although it took me several seconds before benchmarking attempts in the example above, and I did not start of exit any new software (or Chrome Tabs) in between attempts, my CPU clearly was doing different things at the time, hence the time variations.</p>
+
+<p>So how is one supposed to benchmark one process against another if it is also affected by &lsquo;outside&rsquo; factors such as whatever else your computer is doing in the background? The trick is to run your line of code against the other ones multiple times simultaneously, and then average processing times.</p>
+
+<p>There is a very handy solution suggested in the documentation, which I have used to run 5 different statements 100 times and then evaluate results:</p>
+
+<p><img class="center" src="/images/benchmarkingcode.png"></p>
+
+<p>Here is the outcome, run within 3 seconds of each other:</p>
+
+<p><img class="center" src="/images/benchmarkingcomparison.png"></p>
+
+<p>While the absolute numbers are different each time benchmarking is run, the relative numbers remain the same (I ran it a few more dozen times and charted it, but I won&rsquo;t bore you with the details).</p>
+
+<p>The fastests solutions were using logical operators vs. applying min&lt;1 &ndash; the latter took at least 2.5x longer than the 3 solutions that used Boolean operators &ndash; can you guess why?</p>
+
+<p>However &ndash; all of the evaluted solutions took well under a second, so it is not really significant for this particular problem. But speed is a major concern for many industries (see a very interesting NYTimes article that discusses how it applies in finance (<a href="http://www.nytimes.com/2014/04/14/opinion/krugman-three-expensive-milliseconds.html?_r=0">article here &ndash; paywall</a>)).</p>
+
+<p>Certain companies employ entire teams of people whose job description is to shave off milliseconds of algorithm running times. While Ruby&rsquo;s Benchmarking module is not powerful enough for those commercial purposes, it is a fun way to experiment with the code one writes to see how it compares against other options.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/06/27/writing-elegant-code-part-ii-the-rules/">Writing Elegant Code Part II: The Rules</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-27T20:22:39-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I remember curiously peeking at code on GitHub before starting Flatiron. Even then, despite not understanding all too well what the code was meant to do, I could tell that some of it was easier to read than others. My favorite samples had methods that were short and clearly named, variables has clear names, code was organized logically and everything was properly indented.</p>
+
+<p>Now that I can (mostly) write some functioning code, it is time to make sure it is easy to understand to those who may read it at a later point.</p>
+
+<p>And so I went in search of re-factoring rules &ndash; and I found them.</p>
+
+<p>The Rules are Sandi Metz' Rules for Developers and are discussed <a href="https://robots.thoughtbot.com/sandi-metz-rules-for-developers">here</a>.</p>
+
+<p>I am paraphrasing them slightly below:</p>
+
+<blockquote><ol>
+<li><p>Classes can be no longer than 100 lines of code ( # sloc &ndash; we are not counting blank lines) to ensure they stay within the single responsibility principle for classes.</p></li>
+<li><p>Methods can be no longer than five lines of code in Ruby proper (Rails is hard, and I am still not sure how it is meant to work). And yes, if statements with else and elfish count. Don&rsquo;t do them. Break your code into reasonable methods with easy-to-follow names [use neonates as an example].</p></li>
+<li><p>Pass no more than four parameters into a method. Hash options are parameters, too.</p></li>
+<li><p>Controllers can instantiate only one object. Views can only know about one instance variable; views should only send messages to that particular object.</p></li>
+</ol>
+</blockquote>
+
+<p>I will touch on all of these later,  but in this post, I wanted to discuss applying the first 2 in real life (insofar as solving labs can count as &lsquo;real life&rsquo;, of course).</p>
+
+<p>For a lab this week, we had to write a simple game of Rock Paper Scissors and then turn it into a simple web app using Sinatra. To create such a game is far from challenging, and my code was already reasonably succinct at the point when I got all the rspec tests to pass. (NB: that is not how I would actually write the game, but it worked in a lab context).</p>
+
+<p>But the code still felt it could use some re-factoring:</p>
+
+<p><img class="center" src="/images/RPpre-refactoring.png"></p>
+
+<p>Enter The Rules.</p>
+
+<p>My class was much shorter than the mandated 100 lines of code &ndash; check.</p>
+
+<p>Most of my methods were one-liners with 3 winning scenario helper methods designed to not clutter my  won? method. So far, so good.</p>
+
+<p>But what is going on lines 33 to 41? (that method is called on in app.rb to integrate into Sinatra.)</p>
+
+<p><img class="center" src="/images/outcome.png"></p>
+
+<p>It felt too simplistic &ndash; just an if-then statement? really? And I was just itching to improve it somehow. It certthe explicitly frowned upon elsif was there!).</p>
+
+<p>I was not entirely sure how to improve it other than via a nested ternary operator. While I like ternary operators as much as the next noob Ruby developer who thinks they are really cool-looking, nesting them is just the opposite of my goal of writing code that is easily understood by others.</p>
+
+<p><img class="center" src="/images/nestedternary.png"></p>
+
+<p>I had a very vague notion of experimenting with something else instead: calling on all 3 methods, checking which one returns true (and in this case, one and only one will return true) and then returning interpolated name of that method with an exclamation point instead of a question mark. So if method won? is the one that returns true, then the game response would be &lsquo;you won!&rsquo;</p>
+
+<p>I went to one of the instructors, Sophie, seeking her counsel on how to execute just that. After some pry-ing around, we have decided that such a solution would not actually save me any lines of code, because I woulf have to write new methods that will take up the very lines I have saved.</p>
+
+<p>But Sophie did point out something the test did not cover: the computer_play method was sampling the USER_CHOICES (previosuly known as VALID_MOVES) array every time, so I needed to assign it to an instance variable (and that is why pair programming with a more senior professional is so important).</p>
+
+<p>Upon some consideration, I also got rid of the winning scenarios methods (3 basically identicaly methods? sounds like something in need of abtraction to me) by creating a VICTORY_HASH constant.
+<img class="center" src="/images/victory_hash.png"></p>
+
+<p>At that point, I could have gotten rid of the VALID_MOVES array, reading it as keys or values of VICTORY_HASH instead, but to keep it allows for better code comprehension, so it was spared from culling.</p>
+
+<p><img class="center" src="/images/valid_moves.png"></p>
+
+<p>To make everything orderly, I re-named &lsquo;user_move&rsquo; as &lsquo;user_play&rsquo;, because I wanted its name to be symmetrical to the computer_play method (whose name was in turn mandated by Rspec).</p>
+
+<p><img class="center" src="/images/user_move.png">
+<img class="center" src="/images/user_play.png"></p>
+
+<p>The final code ended up being shorter than before by around 10 lines:</p>
+
+<p><img class="center" src="/images/refactored_rps.png"></p>
+
+<p>And the &lsquo;outcome&rsquo; method? It is still there, staring at me in its simple flow control glory. Rules exist to be broken, I suppose.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/06/21/lines-of-code-is-more-always-better/">Lines of Code: Is More Always Better?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-21T11:24:04-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A book on Ruby I have been reading brought up an interesting fact: it is common for programmers to be evaluated based on how many lines of code (a.k.a. source lines of code, SLOC) they write per unit of time.</p>
+
+<p>I see how that is commonly applied in a corporate environment. Everyone needs to be evaluated on something. Traders are evaluated on their profit-and-loss statements. Teachers are evaluated on their students' standardized test performance. My cat is evaluated on his cuteness.</p>
+
+<p>So programmers also should be evaluated based on something they do day in and out: writing code. And the more they write, the better their performance is. Right?</p>
+
+<p>It seems to be a no-brainer: if you write a lot of code, surely you are very productive and, by extension, also a very capable programmer.</p>
+
+<p>Furthermore, if you wrote 1,000 lines a week on average for the past few weeks, and your colleague wrote only 500 lines while working in the same language &ndash; you work much harder and your colleague is not pulling her weight. Right?</p>
+
+<p>It&rsquo;s not all as clear-cut.</p>
+
+<p>There is no doubt that complex programs require a lot of lines of code. A cursory <a href="http://www.quora.com/How-many-lines-of-code-does-Windows-7-have">internet search</a> suggests Windows 7 has 2,085,772 lines of code, although I am sure that can be much improved upon if re-written from scratch; but not even the most capable programmer can convert it into 2,000 lines of code.</p>
+
+<p>It is obvious that a program that has several million lines of code is much more complex than that that has several thousands. But for the same complexity level, is it better to have more code?</p>
+
+<p>So far, most of my own Ruby code refactoring &ndash; once I got past the &lsquo;Hello, World&rsquo; stage - involved abbreviating number of lines of code once I got the program to work (outside of maybe using modules, but even then, I probably end up with fewer lines of codes on a net-net basis).</p>
+
+<p>My current steep learning code means that sometimes I see a new method and realize I should have used that on a lab from a week ago, so I go in and apply it, which usually results in fewer lines of code:</p>
+
+<p><img class="center" src="/images/factorial.png"></p>
+
+<p><img class="center" src="/images/FactorialTernary.png"></p>
+
+<p><img class="center" src="/images/inject.png"></p>
+
+<p>Why go and create a custom factorial method if one can just use &lsquo;inject&rsquo;?</p>
+
+<p>So to me, a metric of learning performance has been being able to remove code and replace it with something more efficient and elegant that does not take away from the program&rsquo;s performance.</p>
+
+<p>I stumbled upon a relevant E.W. Dijkstra&rsquo;s quote when researching the topic; It was featured in his 1988 paper <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD10xx/EWD1036.html">&lsquo;On the Cruelty of Really Teaching Computer Science&rsquo;</a>:</p>
+
+<blockquote><p>&ldquo;&hellip; [there] is only a small step to measuring "programmer productivity&rdquo; in terms of &ldquo;number of lines of code produced per month&rdquo;. This is a very costly measuring unit because it encourages the writing of insipid code [&hellip;]</p>
+
+<p>My point today is that, if we wish to count lines of code, we should not regard them as &ldquo;lines produced&rdquo; but as &ldquo;lines spent&rdquo;: the current conventional wisdom is so foolish as to book that count on the wrong side of the ledger."</p></blockquote>
+
+<p>I will leave you with another quote by Bill Gates:</p>
+
+<blockquote><p>Measuring programming progress by lines of code is like measuring aircraft building progress by weight.</p></blockquote>
+
+<p>Don&rsquo;t waste your code &ndash; write it succinctly.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="2">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <ul id="recent_posts">
+      <li class="post">
+      <a href="http://annaershova.github.io" alt="Home"><img src="/images/Home.png"></a>
+      <a href="http://annaershova.github.io/archives/" alt="Archives"><img src="/images/Calendar.png"></a>
+      <a href="mailto:anna.ershova@gmail.com" alt="E-Mail"><img src="/images/Envelope.png"></a>
+      <a href="http://annaershova.github.io/atom.xml" alt="subscribe feed"><img src="/images/rss_big.png"></a>
+      </li>
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/10/11/running-edge-rails-living-dangerously/">Running Edge Rails -- Living Dangerously</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/08/08/and-the-new-app-is-done/">And the New App Is Done</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/29/project-mode-week-1/">Project Mode -- Week 1, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/26/twitter-sentiment-analysis-rails-app/">On a Scale of Dalai Lama to Kanye West, How Narcissistic Are You? A Rails App That Lets You Find Out Just That.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">How to Rotate a Matrix in Ruby</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Anna Ershova -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
