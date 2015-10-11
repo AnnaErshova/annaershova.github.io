@@ -9,7 +9,7 @@
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="Behold &ndash; a real app! We used meteorological knowledge to convert weather forecasts into a &lsquo;real-life&rsquo; weather forecast. It takes &hellip;">
+  <meta name="description" content="Rails is constantly being updated and improved. Sometimes, the changes that have been announced are just too exciting to wait for an official release &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -63,6 +63,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/11/running-edge-rails-living-dangerously/">Running Edge Rails -- Living Dangerously</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-10-11T18:43:11-04:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Rails is constantly being updated and improved. Sometimes, the changes that have been announced are just too exciting to wait for an official release.</p>
+
+<p>When I first read about ‘Edge Rails’, I was quite confused because it sounded like yet another JS library. Then when I was reading The Rails Way (Amazon <a href="http://www.amazon.com/The-Rails-Way-Obie-Fernandez/dp/0321445619">link</a> if you have somehow never heard of it), I realized I had been mistaken.</p>
+
+<p>Grammatically speaking, it should be spelled <em>edge Rails</em>, as in lowercase <em>e</em>. But that is really between you and your text editor. In this context, ‘edge' just means the latest, cutting-edge version of Rails that has not been officially released yet.</p>
+
+<p>Rails 5 looming upon us, but there is no official release date. I gather the best guess is late 2015 — early 2016. It does have some exciting features, such as merging of the rails-api gem / built-in support of the JSON APIs). So what do you do if you want to play around with that and don’t want to wait until the official release?</p>
+
+<p>Ruby -v to see if you are using ruby 2.2.2+  as Rails 5 requires it. Use rvm to make sure you are running a suitable version.</p>
+
+<p>The best instructions to install edge Rails can be found <a href="http://www.christopherbloom.com/2015/04/26/setting-up-a-rails-5-app-from-edge/">here</a> on Christopher Bloom&rsquo;s blog — they are straightforward and and I used them successfully, so I’d rather send you to the source than to copy-paste them here.</p>
+
+<p>RailsGuides has an <a href="http://edgeguides.rubyonrails.org/">EdgeGuides</a> section specifically targeting the current master branch of the Rails repo.</p>
+
+<p>Running edge Rails comes at a cost of potentially unstable dependencies. Having said that, it is not <em>that</em> unstable. Rails has a very extensive test coverage, which should help prevent regressions.</p>
+
+<p>So do you want to run edge Rails? Probably not, unless you really plan to take advantage of groundbreaking unleashed feature or if you are particularly curious. But it’s nice to know it’s there.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -774,70 +826,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/06/14/elegance-of-code-part-i/">Elegance of Code Part I</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-06-14T00:00:00-04:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When one first starts coding, the main concern is writing something that works and produces desired result.</p>
-
-<p>You get irb to output &ldquo;Hello World!&rdquo; &ndash; excellent. Then you get a nested hash-array monster to return a very specific key hidden 7 levels deep &ndash; great. Then you write your CLI interface that runs in your command line and shows scraped data from your fellow students' bio &ndash; good job. And you even use cowsay to format interactions with the user and format command line output using escape sequences, so that user interface looks less boring. And when you hit rspec, most tests pass.</p>
-
-<p>And then the next task comes &ndash; how do you make your actual code look good?</p>
-
-<blockquote><p>“Code so beautiful that tears are shed.”</p></blockquote>
-
-<p><em>Why’s Poignant Guide to Ruby</em></p>
-
-<p>So how do you write code that indeed is so beautiful and elegant that tears will be shed by those reading your pull request?</p>
-
-<p>There are multiple parts to the puzzle, but let&rsquo;s start with aesthetics of formatting first.</p>
-
-<p>Do you remember when Avi said that he had been looking at our code, and we all needed to abide by basic indentation and not leave not-working code bits floating around commented out?</p>
-
-<p>Ruby is perfectly fine with reading your code without any and all indentations and any real formatting. It can easily ignore all the hashed-out random comments. But once the code we read and write gets more and more complex, us humans really benefit from proper formatting to figure out what goes where &ndash; especially when the code is revisited at a later point and no one remembers anymore what it was really supposed to do.</p>
-
-<p>To use proper formatting is also kind to anyone who might work on the code after you, so that they won&rsquo;t have to spend hours doing forensic coding and figuring out what end statement closes what block.</p>
-
-<p>And it is simply and elegant thing to do. And it&rsquo;s Step 1 to Writing Elegant Code.</p>
-
-<p>You know how when you went to college you had to format your essay footnotes a very specific way using a style manual or a helpful website or two? Well, there is a Ruby style manual, too!</p>
-
-<p><a "href=https://github.com/airbnb/ruby">The Airbnb Ruby Style Guide</a> is what I suggest as a reference for all the formatting questions that are keeping you up at night.(Airbnb website is in Ruby and Ruby on Rails by the way &ndash; see, real companies use it!)</p>
-
-<p> It is is a very comprehensive but not excessively lengthy GitHub repo that will answer most of the questions you have ever had about, say, indenting when and case together — turns out they are supposed to be indented at the same level! (That means if I re-visit some earlier labs, cosmetic edits will need to be made.) The best part if, anyone is welcome to contribute and submit a pull request &ndash; and maybe your take on comment indentation will be shared with the next generation of newbie developers.</p>
-
-<p>Now, if there was only a website that did my Ruby code formatting for me&hellip;</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="2">&larr; Older</a>
@@ -863,6 +851,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/10/11/running-edge-rails-living-dangerously/">Running Edge Rails -- Living Dangerously</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/08/08/and-the-new-app-is-done/">And the New App Is Done</a>
       </li>
     
@@ -876,10 +868,6 @@
     
       <li class="post">
         <a href="/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">How to Rotate a Matrix in Ruby</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/21/regex-is-just-like-mandarin-chinese/">RegEx Is Just Like Mandarin Chinese</a>
       </li>
     
   </ul>

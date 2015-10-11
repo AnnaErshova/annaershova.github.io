@@ -4,7 +4,7 @@
   <title><![CDATA[Category: flatiron | Anna's Blog]]></title>
   <link href="http://annaershova.github.io/blog/categories/flatiron/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-08-08T19:19:18-04:00</updated>
+  <updated>2015-10-11T18:49:23-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Running edge Rails -- Living Dangerously]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/11/running-edge-rails-living-dangerously/"/>
+    <updated>2015-10-11T18:43:11-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/11/running-edge-rails-living-dangerously</id>
+    <content type="html"><![CDATA[<p>Rails is constantly being updated and improved. Sometimes, the changes that have been announced are just too exciting to wait for an official release.</p>
+
+<p>When I first read about ‘Edge Rails’, I was quite confused because it sounded like yet another JS library. Then when I was reading The Rails Way (Amazon <a href="http://www.amazon.com/The-Rails-Way-Obie-Fernandez/dp/0321445619">link</a> if you have somehow never heard of it), I realized I had been mistaken.</p>
+
+<p>Grammatically speaking, it should be spelled <em>edge Rails</em>, as in lowercase <em>e</em>. But that is really between you and your text editor. In this context, ‘edge' just means the latest, cutting-edge version of Rails that has not been officially released yet.</p>
+
+<p>Rails 5 looming upon us, but there is no official release date. I gather the best guess is late 2015 — early 2016. It does have some exciting features, such as merging of the rails-api gem / built-in support of the JSON APIs). So what do you do if you want to play around with that and don’t want to wait until the official release?</p>
+
+<p>Ruby -v to see if you are using ruby 2.2.2+  as Rails 5 requires it. Use rvm to make sure you are running a suitable version.</p>
+
+<p>The best instructions to install edge Rails can be found <a href="http://www.christopherbloom.com/2015/04/26/setting-up-a-rails-5-app-from-edge/">here</a> on Christopher Bloom&rsquo;s blog — they are straightforward and and I used them successfully, so I’d rather send you to the source than to copy-paste them here.</p>
+
+<p>RailsGuides has an <a href="http://edgeguides.rubyonrails.org/">EdgeGuides</a> section specifically targeting the current master branch of the Rails repo.</p>
+
+<p>Running edge Rails comes at a cost of potentially unstable dependencies. Having said that, it is not <em>that</em> unstable. Rails has a very extensive test coverage, which should help prevent regressions.</p>
+
+<p>So do you want to run edge Rails? Probably not, unless you really plan to take advantage of groundbreaking unleashed feature or if you are particularly curious. But it’s nice to know it’s there.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Project Mode -- Week 1, Day 2]]></title>
@@ -240,33 +265,6 @@
 <p>On top of that, to use RegEx is like writing an application without a good test suite: you think that you have thought of everything, but there is always that one edge case that can pop up and screw it over. I felt like that when learning Mandarin: something always pops up where the word has a diferent meaning or is really meant to be used with a different character to really &lsquo;work.&rsquo;</p>
 
 <p>The good news is that both RegEx and Mandarin are possible to master. Perseverance and a healthy amount of grunt work is key. But just like Mandarin is handy for freaking out Chinese restaurant employees and nail salon workers, RegEx is handy too &ndash; in fact, it might have a greater utility of being used oftenf or the rest of one&rsquo;s Web Development career.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Why I Don't Like Semicolons]]></title>
-    <link href="http://annaershova.github.io/blog/2015/07/17/why-ruby-is-not-javascript/"/>
-    <updated>2015-07-17T20:40:56-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/07/17/why-ruby-is-not-javascript</id>
-    <content type="html"><![CDATA[<p>So I started learning Javascript.</p>
-
-<p>They say that once you understand basic coding principles, learning a new programming language is mostly a matter of figuring out syntax and getting used to whatever special tricks that language has to offer. It certainly seems to be the case with this Ruby to JS transition.</p>
-
-<p>But I certainly miss the syntactic sugar that Ruby gives us &ndash; and what is with all the curly brackets and the semicolons?!</p>
-
-<p>Consider Project Euler Problem I (summing up multiples of 3 and 5 from 1 to 999).</p>
-
-<p>There is just so much we can do with it in Ruby:</p>
-
-<p><img class="center" src="/images/projecteulerp1ruby.png"></p>
-
-<p>And here comes JavaScript:</p>
-
-<p><img class="center" src="/images/projecteuler1js.png"></p>
-
-<p>But just like mastering a foreign language that allows one to express oneself in a new and expanded way (as an example, google &lsquo;toska&rsquo; and &lsquo;Nabokov&rsquo; &ndash; Russians take melancholy to a whole new level that does not exist in any other language), JavaScript offers something pretty cool: <em>for (var x = 0; x &lt; 1000; x++)</em> &ndash; now that is one handy way to guide one&rsquo;s iteration. I sort of wish Ruby had that&hellip;</p>
-
-<p>But for now, I need a T-shirt that says &lsquo;I don&rsquo;t really like semicolons.&rsquo;</p>
 ]]></content>
   </entry>
   

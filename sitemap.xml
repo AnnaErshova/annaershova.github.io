@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://annaershova.github.io/blog/2015/10/11/running-edge-rails-living-dangerously/</loc>
+    <lastmod>2015-10-11T18:43:11-04:00</lastmod>
+  </url>
+  <url>
     <loc>http://annaershova.github.io/blog/2015/08/08/and-the-new-app-is-done/</loc>
     <lastmod>2015-08-08T19:15:00-04:00</lastmod>
   </url>
@@ -74,6 +78,15 @@
   </url>
   <url>
     <loc>http://annaershova.github.io/blog/categories/euler/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/rails/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/edge/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/rails/</loc>
   </url>
   <url>
     <loc>http://annaershova.github.io/images/Edit fiddle - JSFiddle.html</loc>
