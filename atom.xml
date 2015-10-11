@@ -4,7 +4,7 @@
   <title><![CDATA[Anna's Blog]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-11T18:49:23-04:00</updated>
+  <updated>2015-10-11T19:03:36-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Running edge Rails -- Living Dangerously]]></title>
+    <title type="html"><![CDATA[Running Edge Rails -- Living Dangerously]]></title>
     <link href="http://annaershova.github.io/blog/2015/10/11/running-edge-rails-living-dangerously/"/>
     <updated>2015-10-11T18:43:11-04:00</updated>
     <id>http://annaershova.github.io/blog/2015/10/11/running-edge-rails-living-dangerously</id>
@@ -39,7 +39,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[And the new app is done]]></title>
+    <title type="html"><![CDATA[And the New App Is Done]]></title>
     <link href="http://annaershova.github.io/blog/2015/08/08/and-the-new-app-is-done/"/>
     <updated>2015-08-08T19:15:00-04:00</updated>
     <id>http://annaershova.github.io/blog/2015/08/08/and-the-new-app-is-done</id>
@@ -110,7 +110,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How To Rotate a Matrix in Ruby]]></title>
+    <title type="html"><![CDATA[How to Rotate a Matrix in Ruby]]></title>
     <link href="http://annaershova.github.io/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/"/>
     <updated>2015-07-22T17:58:06-04:00</updated>
     <id>http://annaershova.github.io/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby</id>
@@ -506,7 +506,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Elegance Of Code Part I]]></title>
+    <title type="html"><![CDATA[Elegance of Code Part I]]></title>
     <link href="http://annaershova.github.io/blog/2015/06/14/elegance-of-code-part-i/"/>
     <updated>2015-06-14T00:00:00-04:00</updated>
     <id>http://annaershova.github.io/blog/2015/06/14/elegance-of-code-part-i</id>
