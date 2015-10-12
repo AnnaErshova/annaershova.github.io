@@ -4,7 +4,7 @@
   <title><![CDATA[Anna's Blog]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-12T11:41:16-04:00</updated>
+  <updated>2015-10-12T12:04:01-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Uptime and Reboot Stats]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/12/mac-uptime-and-reboot-stats/"/>
+    <updated>2015-10-12T11:46:01-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/12/mac-uptime-and-reboot-stats</id>
+    <content type="html"><![CDATA[<p>While we are on a subject of controlling your Mac from your Terminal, here is something else that is useful:</p>
+
+<p>Mac uptime is how long it has been since the system has been re-booted or re-started. Type in <em>uptime</em> in your Terminal, and you will see the stats in minutes, hours, or days, depending on how long it has been for your Mac:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/uptime.png"></p>
+
+<p>(I just re-booted when installing a new OS X hence such a short uptime for me. Uptime can extend into months for some users as Macs tend to be very stable unlike Windows machines.)</p>
+
+<p>You will also see number of users using your machine during said uptime as well as load averages in 1, 5, and 15 minute intervals from left to right &ndash; mine actually indicate I may want a more powerful system.</p>
+
+<p>Type in <em>last reboot</em> to see rebooting history:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/lastreboot.png"></p>
+
+<p>Another neat trick is to type in <em>last</em> to see last sessions of users, hosts and ttys in a reverse chronological order:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/last.png"></p>
+
+<p>There are handy gadgets for uptime and reboot stats, but I doubt that most regular users would really need them on a regular basis. Checking in with your Terminal now and then should be sufficient.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Updating OS X From Your Command Line]]></title>
