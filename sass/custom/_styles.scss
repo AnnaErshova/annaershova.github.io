@@ -1,186 +1,142 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
-
-@font-face {
-	  font-family: "League";
-	    src: url('/font/LeagueGothic.otf');
+html {
+  background:$page-bg;
+}
+body {
+  line-height: 1.8em;
+  font-size:1.1em;
+  max-width:1320px;
+  > div {
+    background: #fff !important;
+    border-bottom:2px solid #f2f2f2;
+    > div {
+      border-right:2px solid #f2f2f2;
+      background: #fff !important;
     }
-
-    a:visited, #content .blog-index article h1 a:hover { color: #F2583E; }
-
-
-    /* ----- main layout ----- */
-
-
-    html {
-      background: #262C33 url("../images/background.png");
-      background-attachment: fixed;
+  }
+  > nav {
+    border-bottom:2px solid #f2f2f2;
+    li+li {
+      border-left:2px solid #f2f2f2;
     }
+    a {
+      font-family: $serif;
+    }
+  }
+  >header {
+    h1 a {
+    font-weight: bold;
+    }
+  }
 
-    body { font-size: 1em; }
+  #content .blog-index article {
+  table {
+    font-size: 90%;
+    margin-bottom: 1.5em;
+    thead tr {
+      border-bottom: 1px solid $sidebar-border;
+    }
+    th {
+      font-weight: bold;
+      padding-right: 20px;
+    }
+    td {
+      padding: 0 20px 10px 0;
+      vertical-align: top;
+    }
+  }
 
-    body > div { background-image: none; }
+  header {
+    h1 {
+      margin: 0;
+      a { text-decoration: none;
+        &:hover { 
+          text-decoration: none;
+          color:$link-color;
+          } 
+          }
+        }
+      }
+    }
+  #blog-archives {
+    h1 {
+      a { text-decoration: none;
+        &:hover { text-decoration:none; } }
+    }
+  }
+  aside.sidebar {
+    background:#fff;
+    border-left:2px solid #f2f2f2;
+    height:100%;
+    form .search {
+      padding: .3em .5em 0;
+      font-size: .85em;
+      font-family: $serif;
+      line-height: 1.1em;
+      width: 95%;
+      background-color: #fff;
+      border: 2px solid #f2f2f2;
+      color: #000;
+      }
+    input[type=text]:focus, textarea:focus {
+      box-shadow: 0 0 0 rgba(255,255,255,1);
+    }
+  }
 
-    body > div > div { background-image: none; }
+  .toggle-sidebar {
+    display:none;
+  }
+}
+@media only screen and (max-width: 749px) {
+  aside.sidebar {
+    padding-top:15px;
+    padding-bottom:15px;
+  }
+}
+@media only screen and (min-width: 750px) {
+  aside.sidebar {
+    border-top:0px solid black;
+  }
+}
+@media only screen and (min-width:992px) {
+  body { 
+    font-size: 1.3em; 
+  }
+  .collapse-sidebar aside.sidebar {
+    background: #fff;
+  }
+}
+.meta {
+  font-family: $serif;
+}
+.sticky {  
+    position: fixed;  
+    width:100%;  
+    left: 0;  
+    top: 0;  
+    z-index: 100;  
+}
+::-webkit-input-placeholder {
+   color: $link-color;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: $link-color;  
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $link-color;  
+}
+:-ms-input-placeholder {  
+   color: $link-color;  
+}  
 
-
-    /* ----- header ----- */
-
-
-    body > header{
-	      background: none;
-	        /*padding: 1.6em 0 1em 0*/
-	        padding: 0.5em 0 0.5em 0
-	}
-
-	body > header h1{
-	  font-size: 2.8em;
-	    padding-left: 20px;
-	      text-shadow: rgba(0, 0, 0, 0.8) 0 0 8px;
-	      }
-
-	      body > header h2{
-	        font-size: 0.5em;
-	  letter-spacing: 1px;
-	    margin-top: -1.4em;
-	      padding-left: 20px;
-	      }
-
-	      body > nav {
-	        padding-top: .15em;
-	  padding-bottom: .15em;
-	  }
-
-	  body > nav a{
-	    font-size: 1em;
-	      line-height: 1.4em;
-	      }
-
-	      body > nav form .search{
-	        padding: .2em .3em;
-	}
-
-
-	/* ----- Content ----- */
-
-
-	#content .blog-index article h1 {
-	  font-size: 1.8em;
-	    font-weight: normal;
-	    }
-
-	    #content .blog-index article h1, #content .blog-index article h1 a, article header h1, article header h1 a{
-	      color: #555555 !important;
-	      }
-
-	      h1 { font-size: 1.8em; }
-
-	      h1 span{
-	        font-weight: normal;
-	  color: #E0841B;
-	  }
-
-	  article h2, article h3, article header h1{
-	    font-weight: normal;
-	    }
-
-	    .blog-index article h1 a:hover{ text-decoration: none; }
-
-	    article p {
-	      text-align:justify;
-	        margin-bottom: 1em;
-	}
-
-
-	/* ----- Sidebar ----- */
-
-
-	aside.sidebar section h1 { letter-spacing: 0.1em; }
-
-	aside.sidebar a { text-decoration: none; }
-
-	.toggle-sidebar{display: none;}
-
-	ul#gh_repos > li > a{
-	  display: block;
-	    font-weight: bold;
-	      margin-bottom: 0.4em;
-	      }
-
-	      aside.sidebar{
-	        -moz-border-radius-topright: 0.4em;
-	  -webkit-border-radius: 0 0.4em 0 0;
-	    border-radius: 0 0.4em 0 0;
-	    }
-
-
-	    /* ----- Footer ----- */
-
-
-	    body > footer{
-	      -moz-border-radius: 0;
-	        -webkit-border-radius: 0;
-	  border-radius:0;
-	    margin-bottom: 0;
-	    }
-
-
-	    /* ----- 404 ----- */
-
-
-	    .notfound404 article{
-	      margin-left: 0 !important;
-	      }
-
-
-	      /* ----- Media queries ----- */
-
-
-	      @media only screen and (min-width: 550px) {
-
-	        body > header h1{
-	      background: url("/favicon.png") no-repeat 0 8px;
-	            padding-left: 60px;
-	      }
-
-	        body > header h2 { padding-left: 60px; }
-
-	  body > footer { margin-bottom: 3em; }
-	  }
-
-	  @media only screen and (min-width: 1040px) {
-
-	    body > nav {
-	        -moz-border-radius: 0.4em;
-	    -webkit-border-radius: 0.4em;
-	        border-radius:0.4em;
-	    margin-bottom: 2em;
-	      }
-
-	        body > footer{
-	      -moz-border-radius-bottomleft: 0.4em;
-	            -moz-border-radius-bottomright: 0.4em;
-	          -webkit-border-radius: 0 0 0.4em 0.4em;
-	        border-radius: 0 0 0.4em 0.4em;
-	  }
-
-	    #main{
-	          -moz-border-radius-topleft: 0.4em;
-	        -moz-border-radius-topright: 0.4em;
-	      -webkit-border-radius: 0.4em 0.4em 0 0;
-	            border-radius: 0.4em 0.4em 0 0;
-	      }
-
-	        #content{
-	      -moz-border-radius-topleft: 0.4em;
-	            -webkit-border-radius: 0.4em 0 0 0;
-	          border-radius: 0.4em 0 0 0;
-	    }
-
-	      #content .blog-index a[rel="full-article"]{
-	            -webkit-border-radius: 6px;
-	          -moz-border-radius: 6px;
-	        border-radius: 6px;
-	  }
-	  }
-
+.highlight, html .gist .gist-file .gist-syntax .gist-highlight {
+  table {
+    margin: 0;
+    td {
+      padding: 0;
+      &.code { width: 100%; }
+    }
+  }
+  border: 1px solid $pre-border !important;
+}
