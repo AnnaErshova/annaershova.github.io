@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Terminal | Anna's Blog]]></title>
+  <link href="http://annaershova.github.io/blog/categories/terminal/atom.xml" rel="self"/>
+  <link href="http://annaershova.github.io/"/>
+  <updated>2015-10-12T11:41:16-04:00</updated>
+  <id>http://annaershova.github.io/</id>
+  <author>
+    <name><![CDATA[Anna Ershova]]></name>
+    <email><![CDATA[anna.ershova@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Updating OS X From Your Command Line]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/12/updating-os-x-from-your-command-line/"/>
+    <updated>2015-10-12T11:16:32-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/12/updating-os-x-from-your-command-line</id>
+    <content type="html"><![CDATA[<p>I am really used to seeing a pop up that says something along the lines of ‘a new version of OS X / iOS is available, do you want to update now?’</p>
+
+<p>Upon some research on potential issues of an update in question (I learned the hard way after having my iPhone bricked post-update when living in China), I generally go back and click &lsquo;update.&rsquo; But there is actually an easy way to do it from your Terminal. All you need is a <em>softwareupdate</em> command.</p>
+
+<p>Type in <em>man softwareupdate</em> to see this command&rsquo;s manual:</p>
+
+<p><img class="center" src="/images/softwareupdatemanual.png"></p>
+
+<p>Run <em>softwareupdate -l</em> to see available updates. You will see something like this:</p>
+
+<p><img class="center" src="/images/softwareupdate_l.png"></p>
+
+<p>While you are at it, you can turn on automatic update checker from your Terminal:</p>
+
+<p><img class="center" src="/images/softwareupdateautomaticcheck.png"></p>
+
+<p>Then run this to install the specific update you want:</p>
+
+<p><img class="center" src="/images/supdinstall.png"></p>
+
+<p>(Use -d flag to just download the update, but not install it.)</p>
+
+<p>And of course to re-boot your computer, you can simply run this command instead of going through the Mac menu:</p>
+
+<p><img class="center" src="/images/shutdown.png"></p>
+
+<p>Voila!</p>
+]]></content>
+  </entry>
+  
+</feed>

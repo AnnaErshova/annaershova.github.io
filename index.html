@@ -9,7 +9,7 @@
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="Rails is constantly being updated and improved. Sometimes, the changes that have been announced are just too exciting to wait for an official release &hellip;">
+  <meta name="description" content="I am really used to seeing a pop up that says something along the lines of ‘a new version of OS X / iOS is available, do you want to update now?’ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -58,6 +58,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/12/updating-os-x-from-your-command-line/">Updating OS X From Your Command Line</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-12T11:16:32-04:00" pubdate data-updated="true">Oct 12th, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I am really used to seeing a pop up that says something along the lines of ‘a new version of OS X / iOS is available, do you want to update now?’</p>
+
+<p>Upon some research on potential issues of an update in question (I learned the hard way after having my iPhone bricked post-update when living in China), I generally go back and click &lsquo;update.&rsquo; But there is actually an easy way to do it from your Terminal. All you need is a <em>softwareupdate</em> command.</p>
+
+<p>Type in <em>man softwareupdate</em> to see this command&rsquo;s manual:</p>
+
+<p><img class="center" src="/images/softwareupdatemanual.png"></p>
+
+<p>Run <em>softwareupdate -l</em> to see available updates. You will see something like this:</p>
+
+<p><img class="center" src="/images/softwareupdate_l.png"></p>
+
+<p>While you are at it, you can turn on automatic update checker from your Terminal:</p>
+
+<p><img class="center" src="/images/softwareupdateautomaticcheck.png"></p>
+
+<p>Then run this to install the specific update you want:</p>
+
+<p><img class="center" src="/images/supdinstall.png"></p>
+
+<p>(Use -d flag to just download the update, but not install it.)</p>
+
+<p>And of course to re-boot your computer, you can simply run this command instead of going through the Mac menu:</p>
+
+<p><img class="center" src="/images/shutdown.png"></p>
+
+<p>Voila!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -754,83 +817,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/06/21/lines-of-code-is-more-always-better/">Lines of Code: Is More Always Better?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2015-06-21T11:24:04-04:00" pubdate data-updated="true">Jun 21st, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A book on Ruby I have been reading brought up an interesting fact: it is common for programmers to be evaluated based on how many lines of code (a.k.a. source lines of code, SLOC) they write per unit of time.</p>
-
-<p>I see how that is commonly applied in a corporate environment. Everyone needs to be evaluated on something. Traders are evaluated on their profit-and-loss statements. Teachers are evaluated on their students' standardized test performance. My cat is evaluated on his cuteness.</p>
-
-<p>So programmers also should be evaluated based on something they do day in and out: writing code. And the more they write, the better their performance is. Right?</p>
-
-<p>It seems to be a no-brainer: if you write a lot of code, surely you are very productive and, by extension, also a very capable programmer.</p>
-
-<p>Furthermore, if you wrote 1,000 lines a week on average for the past few weeks, and your colleague wrote only 500 lines while working in the same language &ndash; you work much harder and your colleague is not pulling her weight. Right?</p>
-
-<p>It&rsquo;s not all as clear-cut.</p>
-
-<p>There is no doubt that complex programs require a lot of lines of code. A cursory <a href="http://www.quora.com/How-many-lines-of-code-does-Windows-7-have">internet search</a> suggests Windows 7 has 2,085,772 lines of code, although I am sure that can be much improved upon if re-written from scratch; but not even the most capable programmer can convert it into 2,000 lines of code.</p>
-
-<p>It is obvious that a program that has several million lines of code is much more complex than that that has several thousands. But for the same complexity level, is it better to have more code?</p>
-
-<p>So far, most of my own Ruby code refactoring &ndash; once I got past the &lsquo;Hello, World&rsquo; stage - involved abbreviating number of lines of code once I got the program to work (outside of maybe using modules, but even then, I probably end up with fewer lines of codes on a net-net basis).</p>
-
-<p>My current steep learning code means that sometimes I see a new method and realize I should have used that on a lab from a week ago, so I go in and apply it, which usually results in fewer lines of code:</p>
-
-<p><img class="center" src="/images/factorial.png"></p>
-
-<p><img class="center" src="/images/FactorialTernary.png"></p>
-
-<p><img class="center" src="/images/inject.png"></p>
-
-<p>Why go and create a custom factorial method if one can just use &lsquo;inject&rsquo;?</p>
-
-<p>So to me, a metric of learning performance has been being able to remove code and replace it with something more efficient and elegant that does not take away from the program&rsquo;s performance.</p>
-
-<p>I stumbled upon a relevant E.W. Dijkstra&rsquo;s quote when researching the topic; It was featured in his 1988 paper <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD10xx/EWD1036.html">&lsquo;On the Cruelty of Really Teaching Computer Science&rsquo;</a>:</p>
-
-<blockquote><p>&ldquo;&hellip; [there] is only a small step to measuring "programmer productivity&rdquo; in terms of &ldquo;number of lines of code produced per month&rdquo;. This is a very costly measuring unit because it encourages the writing of insipid code [&hellip;]</p>
-
-<p>My point today is that, if we wish to count lines of code, we should not regard them as &ldquo;lines produced&rdquo; but as &ldquo;lines spent&rdquo;: the current conventional wisdom is so foolish as to book that count on the wrong side of the ledger."</p></blockquote>
-
-<p>I will leave you with another quote by Bill Gates:</p>
-
-<blockquote><p>Measuring programming progress by lines of code is like measuring aircraft building progress by weight.</p></blockquote>
-
-<p>Don&rsquo;t waste your code &ndash; write it succinctly.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="2">&larr; Older</a>
@@ -864,6 +850,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/10/12/updating-os-x-from-your-command-line/">Updating OS X From Your Command Line</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/11/running-edge-rails-living-dangerously/">Running Edge Rails -- Living Dangerously</a>
       </li>
     
@@ -877,10 +867,6 @@
     
       <li class="post">
         <a href="/blog/2015/07/26/twitter-sentiment-analysis-rails-app/">On a Scale of Dalai Lama to Kanye West, How Narcissistic Are You? A Rails App That Lets You Find Out Just That.</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">How to Rotate a Matrix in Ruby</a>
       </li>
     
   </ul>
