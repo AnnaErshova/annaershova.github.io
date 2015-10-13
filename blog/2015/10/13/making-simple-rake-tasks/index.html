@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mac Uptime and Reboot Stats - Anna's Blog</title>
+  <title>Making Simple Rake Tasks and Using Them With ERD - Anna's Blog</title>
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="While we are on a subject of controlling your Mac from your Terminal, here is something else that is useful: Mac uptime is how long it has been since &hellip;">
+  <meta name="description" content="I started making my own rake tasks recently to help with specific repetitive tasks that I need to do while working on projects. Rake is a project of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://annaershova.github.io/blog/2015/10/12/mac-uptime-and-reboot-stats">
+  <link rel="canonical" href="http://annaershova.github.io/blog/2015/10/13/making-simple-rake-tasks">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
@@ -61,7 +61,7 @@
   
   <header>
     
-      <h1 class="entry-title">Mac Uptime and Reboot Stats</h1>
+      <h1 class="entry-title">Making Simple Rake Tasks and Using Them With ERD</h1>
     
     
       <p class="meta">
@@ -78,32 +78,59 @@
 
 
 
-<time datetime="2015-10-12T11:46:01-04:00" pubdate data-updated="true">Oct 12th, 2015</time>
+<time datetime="2015-10-13T08:52:15-04:00" pubdate data-updated="true">Oct 13th, 2015</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>While we are on a subject of controlling your Mac from your Terminal, here is something else that is useful:</p>
+<div class="entry-content"><p>I started making my own rake tasks recently to help with specific repetitive tasks that I need to do while working on projects.</p>
 
-<p>Mac uptime is how long it has been since the system has been re-booted or re-started. Type in <em>uptime</em> in your Terminal, and you will see the stats in minutes, hours, or days, depending on how long it has been for your Mac:</p>
+<p>Rake is a project of Jim Weinrich; check out his rationale for making rake <a href="http://rake.rubyforge.org/files/doc/rational_rdoc.html">here</a>.</p>
 
-<p><img class="center" src="/images/uptime.png"></p>
+<p>My favorite part is his explanation of why it is called rake. No, it has nothing to do with garden tools. It was supposed to be a portmanteau of &lsquo;ruby&rsquo; and &lsquo;make&rsquo; (since Rake was inspired by Makefile). Hence, rake.</p>
 
-<p>(I just re-booted when installing a new OS X hence such a short uptime for me. Uptime can extend into months for some users as Macs tend to be very stable unlike Windows machines.)</p>
+<p><em>rake -T</em> will give you a list of rake tasks available for a given project.</p>
 
-<p>You will also see number of users using your machine during said uptime as well as load averages in 1, 5, and 15 minute intervals from left to right &ndash; mine actually indicate I may want a more powerful system.</p>
+<p>This is what it looks like for a standard octopress directory:</p>
 
-<p>Type in <em>last reboot</em> to see rebooting history:</p>
+<p><img class="center" src="/images/take_t.png"></p>
 
-<p><img class="center" src="/images/lastreboot.png"></p>
+<p>So if I forget that my normal routine is <code>rake generate</code> followed by <code>rake preview</code>, I can see it listed above.</p>
 
-<p>Another neat trick is to type in <em>last</em> to see last sessions of users, hosts and ttys in a reverse chronological order:</p>
+<p>I was working with the <a href="https://github.com/voormedia/rails-erd">erd</a> gem, which uses <a href="http://www.graphviz.org/">Graphviz</a> to visualize complex database relationships in rails. If you want to understand what exactly is happening in your schema, it&rsquo;s the gem for you.</p>
 
-<p><img class="center" src="/images/last.png"></p>
+<p>I haven&rsquo;t used it in a bit, so I googled it, and <a href="https://ryanboland.com/blog/creating-a-database-diagram-with-rails-erd/">this tutorial</a> popped up.</p>
 
-<p>There are handy gadgets for uptime and reboot stats, but I doubt that most regular users would really need them on a regular basis. Checking in with your Terminal now and then should be sufficient.</p>
+<p>It had a suggestion to make a simple rake task to run the erd command with specific attributes to get just the type of a diagram you want:</p>
+
+<pre><code class="``ruby desc 'Generate Entity Relationship Diagram'">  task :generate_erd do
+    system "erd --inheritance --filetype=dot --direct --attributes=foreign_keys,content"
+    system "dot -Tpng erd.dot &gt; erd.png"
+    File.delete('erd.dot')
+  end
+</code></pre>
+
+<p>The idea there is have a task that runs <code>erd --inheritance --filetype=dot --direct --attributes=foreign_keys,content</code>. The system then generated a .dot files, which is when converted into a .png file, with the rationale being that Graphviz has issues generating files that are not .dot.</p>
+
+<p>You can just put it in a rake file, or run <code>rails g task erd generate_erd</code>. It adds a erd.rake file to lib/tasks (or you can add one manually and just type your code instead of using a generator).</p>
+
+<p>To use that task, you type <code>rake erd:generate_erd</code> in your Terminal.</p>
+
+<p>I ended up using these rake tasks to demonstrate the idea behind using namespace. They generate a png file as per an example above and a default pdf one:</p>
+
+<p><img class="center" src="/images/rake_commands.png"></p>
+
+<p>And running these tasks in Terminal:</p>
+
+<p><img class="center" src="/images/rake_terminal.png"></p>
+
+<p>And you are done! Two file types of database schema charts have been generated:</p>
+
+<p><img class="center" src="/images/erd_directory.png"></p>
+
+<p>NB: if all you wanted was to simplify running one long command (such as the aforementioned <em>erd &ndash;inheritance &ndash;filetype=dot &ndash;direct &ndash;attributes=foreign_keys,content</em>), you could just create a shell alias that you could then use across all your projects if they have erd installed.</p>
 </div>
 
 
@@ -127,7 +154,7 @@
 
 
 
-<time datetime="2015-10-12T11:46:01-04:00" pubdate data-updated="true">Oct 12th, 2015</time>
+<time datetime="2015-10-13T08:52:15-04:00" pubdate data-updated="true">Oct 13th, 2015</time>
       
 
 
@@ -135,7 +162,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/10/12/mac-uptime-and-reboot-stats/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/10/12/mac-uptime-and-reboot-stats/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/10/13/making-simple-rake-tasks/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/10/13/making-simple-rake-tasks/" >Tweet</a>
   
   
   
@@ -144,10 +171,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/10/12/updating-os-x-from-your-command-line/" title="Previous Post: Updating OS X From Your Command Line">&laquo; Updating OS X From Your Command Line</a>
+        <a class="basic-alignment left" href="/blog/2015/10/12/mac-uptime-and-reboot-stats/" title="Previous Post: Mac Uptime and Reboot Stats">&laquo; Mac Uptime and Reboot Stats</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/10/13/making-simple-rake-tasks/" title="Next Post: Making Simple Rake Tasks and Using Them With ERD">Making Simple Rake Tasks and Using Them With ERD &raquo;</a>
       
     </p>
   </footer>
