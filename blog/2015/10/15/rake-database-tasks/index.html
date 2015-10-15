@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Rake Database Tasks - Anna's Blog</title>
+  <meta name="author" content="Anna Ershova">
+
+  
+  <meta name="description" content="There are multiple db namespace rake tasks, which are very useful for a Rails developer. I don&rsquo;t often see them covered in Rails tutorials as a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://annaershova.github.io/blog/2015/10/15/rake-database-tasks">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Anna's Blog</a></h1>
+  
+    <h2>Getting de-railed</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rake Database Tasks</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-15T10:47:23-04:00" pubdate data-updated="true">Oct 15th, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>There are multiple db namespace rake tasks, which are very useful for a Rails developer.</p>
+
+<p>I don&rsquo;t often see them covered in Rails tutorials as a task list, and it took me a while to figure out which commands I needed to use while developing.</p>
+
+<p>Most beginner developers stick to <code>rake db:migrate</code>, <code>rake db:seed</code> and <code>rake db:reset</code>, but there are quite a few more options.</p>
+
+<p><em>Migration</em> is a version of a database (I <em>still</em> don&rsquo;t understand what we are migrating and where, but oh well, such is conventional terminology).</p>
+
+<p>Each new migration modifies a database schema (which starts out blank) by adding and removing data, changing data types etc.</p>
+
+<p>Your schema is normally stored in  <code>db/schema.rb</code>, although for some developers, it will be in <code>db/structure.sql</code>.</p>
+
+<p>(To create and use <code>structure.sql</code>, use <code>config.active_record.schema_format = :sql</code> in your <code>config/application.rb</code>. Most beginners should be sticking to schema.rb, the default version.)</p>
+
+<p>First, some schema-related tasks:</p>
+
+<ul>
+<li><p><code>rake db:version</code> - to see your current schema version. Schemar versions are normally also listed as timestamps, so you will see something like <code>Current version: 20151014015045</code>.</p></li>
+<li><p><code>rake db:forward</code> will push the schema one step up.</p></li>
+<li><p><code>rake db:schema:load</code> &ndash; loads she schema into your database. Good practice is using it when you first put your app in production; then run migrations from there on.</p></li>
+<li><p><code>rake db:schema:dump</code> &ndash; dumps she schema.</p></li>
+</ul>
+
+
+<p>Now back to migrations:</p>
+
+<p>The easiest way to generate a migration is to run <code>rails g migration AddUseridToPosts user_id:integer</code>.</p>
+
+<p>Once a migration has been generated, it will be listed in your <code>db/migrate</code> folder, usually with a format <code>datestamp_migration_name.rb</code>. Running <code>rails g</code> generates a timestamp prefix because that is the order that Rails uses to execute pending migrations.</p>
+
+<p>If you are creating a migration manually or copying over from another file, you need to use any alphanumeric prefix (even if it&rsquo;s one 1,2, and 3) that allows Rails to run pending migrations in correct order; or use a manual datestamp if that&rsquo;s what your other migrations use.</p>
+
+<p>The migration in the example above adds a new colume of <code>user_id</code>, which is a type <code>integer</code>, to a table named <code>Posts</code> &ndash; assumption here is that one user <code>has_many</code> posts and a post <code>belongs_to</code> user (if you don&rsquo;t know what that means, see <a href="http://guides.rubyonrails.org/association_basics.html">Active Record Association Basics</a> ).</p>
+
+<p>You can generate a migration to add a new table altogether, to remove a table or a column, to change a data type of a column, etc.</p>
+
+<p>Even if the migration is in your migrate folder, it does not mean it is in the database schema yet. To incorporate it into the schema, you have any pending migrations into it. And that&rsquo;s when <code>rake db:migrate</code> task comes in.</p>
+
+<p>Before I get started, see this <a href="https://github.com/rails/rails/blob/master/activerecord/lib/active_record/railties/databases.rake">rails source</a> to see the database.rake file that describes exactly what each task does.</p>
+
+<p>Rake tasks undergo changes between different versions of Rails, so it&rsquo;s good to keep an eye out for anything that might be coming soon.</p>
+
+<ul>
+<li><p><code>rake db:migrate</code> &ndash; runs the change or up method for all pending migrationsone by one in order indicated by name prefixes. If there are no such migrations, running the task won&rsquo;t produce any outcome. But when there are, it also executes <code>db:schema:dump</code> as it needs to dump the schema and build it anew considering the migration(s) that have been added.</p></li>
+<li><p><code>rake db:migrate VERSION=version_number/timestamp</code> &ndash; runs specific migration to which the datestamp refers.</p></li>
+<li><p>NB: <code>rake db:migrate VERSION=0&gt;</code> &ndash; roll back all migrations</p></li>
+<li><p><code>rake db:migrate RAILS_ENV=test</code> &ndash; runs migrations in an indicated envrionment.</p></li>
+</ul>
+
+
+<p>You should be able to get timestamp as a prefix to a migration file name if you used a rails g command as explained above.</p>
+
+<ul>
+<li><p><code>rake db:migrate:up</code> &ndash; runs up command for a given migration version (default is current version)</p></li>
+<li><p><code>rake db:migrate:down</code> &ndash; runs down command aka rolls back command for a given migration version</p></li>
+</ul>
+
+
+<p>NB: <code>Up</code> and <code>down</code> are actually old-school commands; <code>up</code> makes a change to the schema and <code>down</code> reverses the <code>up</code> change.</p>
+
+<ul>
+<li><p><code>rake db:migrate:redo</code> &ndash; &ldquo;Rollbacks the database one migration and re migrate up (options: STEP=x, version_number/timestamp).&rdquo;</p></li>
+<li><p><code>rake db:migrate:redo STEP=x</code> = rolls back x many migrations and re-runs them</p></li>
+<li><p><code>rake db:migrate:rollback</code> &ndash; roll back last migration to get user back one step.</p></li>
+<li><p><code>rake db:migrate:rollback STEP=x</code> &ndash; roll back x many steps</p></li>
+</ul>
+
+
+<p>Now this is interesting:</p>
+
+<ul>
+<li><code>rake db:migrate:reset</code> = <code>rake db:drop</code>+ <code>rake db:create</code> + <code>rake db:migrate</code> = undo and re-do migrations again for current environment. It does not rollback migrations.</li>
+</ul>
+
+
+<p>Note the difference from:</p>
+
+<ul>
+<li><code>rake db:reset</code> = <code>rake db:drop</code> + <code>rake db:setup</code></li>
+</ul>
+
+
+<p>where</p>
+
+<p><code>rake db:setup</code> = <code>rake db:schema:load</code> OR <code>rake db:structure:load</code> + &lsquo;rake db:seed&rsquo;</p>
+
+<ul>
+<li><p>(<code>rake db:schema:load</code> loads schema.rb into your database)</p></li>
+<li><p>(<code>rake db:structure:load</code> loads db/structure.sql if you have specified that in your config)</p></li>
+</ul>
+
+
+<p>Which means that <code>rake db:reset</code> drops database; recreates it from <code>db/schema.rb</code> or <code>db/structure.sql</code> in your current environment (and NOT from migrations); seeds database from <code>seeds.rb</code>.</p>
+
+<p><em>Note that <code>rake db:migrate:reset</code> won&rsquo;t seed your database and <code>rake db:setup</code> will.</em></p>
+
+<p>Another rake task is also useful to see where you are with regard to migrations:</p>
+
+<ul>
+<li><code>rake db:migrate:status</code> &ndash; display status of all migrations. It will alert you if there are no schema migrations in your project yet.</li>
+</ul>
+
+
+<p>And a heavy hitter:</p>
+
+<ul>
+<li><code>rake db:purge</code> &ndash; &ldquo;Empty the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:drop:all to drop all databases in the config). Without RAILS_ENV it defaults to purging the development and test databases.&rdquo;</li>
+</ul>
+
+
+<p>(The <code>rake db:purge</code> task was only added in January 2014 and is less known still.)</p>
+
+<p>There is a great Rails Guide explaining a lot of these <a href="http://edgeguides.rubyonrails.org/active_record_migrations.html">here</a>.</p>
+
+<p>Remember to restart your rails server when working with these.</p>
+
+<p>Should these tasks not meet your needs, you can always create a custom rake task to do exactly what you need.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Anna Ershova</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-15T10:47:23-04:00" pubdate data-updated="true">Oct 15th, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rake/'>rake</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/10/15/rake-database-tasks/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/10/15/rake-database-tasks/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/10/13/making-simple-rake-tasks/" title="Previous Post: Making Simple Rake Tasks and Using Them With ERD">&laquo; Making Simple Rake Tasks and Using Them With ERD</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:annaershova.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <ul id="recent_posts">
+      <li class="post">
+      <a href="http://annaershova.github.io" alt="Home"><img src="/images/Home.png"></a>
+      <a href="http://annaershova.github.io/archives/" alt="Archives"><img src="/images/Calendar.png"></a>
+      <a href="mailto:anna.ershova@gmail.com" alt="E-Mail"><img src="/images/Envelope.png"></a>
+      <a href="http://annaershova.github.io/atom.xml" alt="subscribe feed"><img src="/images/rss_big.png"></a>
+      </li>
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/10/15/rake-database-tasks/">Rake Database Tasks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/13/making-simple-rake-tasks/">Making Simple Rake Tasks and Using Them With ERD</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/12/mac-uptime-and-reboot-stats/">Mac Uptime and Reboot Stats</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/12/updating-os-x-from-your-command-line/">Updating OS X From Your Command Line</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/11/running-edge-rails-living-dangerously/">Running Edge Rails -- Living Dangerously</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Anna Ershova -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+    var stickyNavTop = $('nav').offset().top;  
+      
+    var stickyNav = function(){  
+      var scrollTop = $(window).scrollTop(); 
+      var navHasClassSticky = $('nav').hasClass('sticky');
+
+      if (scrollTop > stickyNavTop && navHasClassSticky) {   
+        return true;
+      } else if (scrollTop > stickyNavTop) {
+        $('nav').hide();
+        $('nav').addClass('sticky');
+        $('nav').fadeIn('2000');
+      } else {  
+        $('nav').removeClass('sticky');   
+      }  
+    };  
+      
+    stickyNav();  
+      
+    $(window).scroll(function() {  
+      stickyNav();  
+    });  
+  });  
+</script>
+
+
+</body>
+</html>
