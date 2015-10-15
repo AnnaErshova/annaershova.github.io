@@ -3,7 +3,7 @@ layout: post
 title: "Making Simple Rake Tasks and Using Them With ERD"
 date: 2015-10-13 08:52:15 -0400
 comments: true
-categories: 
+categories: rake
 ---
 
 I started making my own rake tasks recently to help with specific repetitive tasks that I need to do while working on projects.
