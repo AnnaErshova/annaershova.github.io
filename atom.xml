@@ -4,7 +4,7 @@
   <title><![CDATA[Anna's Blog]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-15T11:23:53-04:00</updated>
+  <updated>2015-10-18T13:52:08-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/"/>
+    <updated>2015-10-18T12:13:33-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/18/generating-and-deleting-a-rails-scaffold</id>
+    <content type="html"><![CDATA[<p>Rails comes with a number of very convenient <a href="http://guides.rubyonrails.org/generators.html">generators</a> that can take a lot of work out of creating models, controllers, views, tests, corresponding database migrations, etc.</p>
+
+<p>Like many other developers, I use Rails scaffold generation as an efficient and convenient time-saver.</p>
+
+<p>From <a href="http://guides.rubyonrails.org/command_line.html">Guides</a>:</p>
+
+<blockquote><p>A scaffold in Rails is a full set of model, database migration for that model, controller to manipulate it, views to view and manipulate the data, and a test suite for each of the above.</p></blockquote>
+
+<p>Of course, you can generate all of those components individually as well, depending on your needs. But I think the scaffold generator in particular gets quite overused.</p>
+
+<p>A regular scaffold Terminal command looks like this: <code>rails g scaffold Model_Name column_name:column_type:optional_index</code></p>
+
+<p><img class="center" src="http://annaershova.github.io/images/scaffold_generate.png"></p>
+
+<p><code>Model_Name</code> should be in singular, either under_scored or CamelCased.</p>
+
+<p>Sometimes you hit the <code>return</code> button too soon, and deleting generated files by hand is just too much trouble.</p>
+
+<p>There is a way to undo your entire scaffold: <code>rails d scaffold Generated_Scaffold_Name</code>:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/scaffold_destroy.png"></p>
+
+<p>(You can type out <code>generate</code> instead of <code>g</code> and <code>destroy</code> instead of <code>d</code>.)</p>
+
+<p>Note that if you have already run <code>rake db:migrate</code> after generating your scaffold, the <code>destroy</code> command won&rsquo;t work. It will delete the files that the scaffold command has created, but it won&rsquo;t alter the schema and whatever alterations your migration has created will stay there. See my <a href="http://annaershova.github.io/blog/2015/10/15/rake-database-tasks/">previous post</a> on database-related rake commands to learn how to fix that (you will probably want <code>rake db:migrate:down</code> or <code>rake db:rollback</code>).</p>
+
+<p>And assuming you do version control, to see if the <code>destroy</code> command left any files, run <code>git status</code> or <code>git diff</code>.</p>
+
+<p>Realistically speaking, to create a scaffold that later needs to be edited (say, a new migration created etc &ndash; obviously a very common scenario) can cause more time-consuming bug-hunting than creating your MVC + other accoutrements from scratch.</p>
+
+<p>To generate a scaffold with tests (default option) stops a developer from proper test-driven development practices: writing a failing test first, and then making it pass.</p>
+
+<p>You can of course pass in an option to prevent tests from being generated when creating a scaffold. Run <code>rails generate scaffold -h</code> to see a list of options in your terminal:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/scaffold_options_1.png">
+<img class="center" src="http://annaershova.github.io/images/scaffold_options_2.png"></p>
+
+<p>The options above are for Rails 4.2.0 and might be quite different for your version of Rails.</p>
+
+<p>You can see that the command comes with a variety of options that allow for reasonable flexibility. For instance, to skip generating a migration, you can pass in <code>--skip-migration</code>. To skip creating tests, pass in <code>--no-test-framework</code>.</p>
+
+<p>Ultimately, once you know exactly what you are building to the extent that you end up passing in a lot of options, you don&rsquo;t really need generators anymore and can create files manually that fit your needs. You wouldn&rsquo;t want to use it for production. But if you are just learning Rails and experimenting with it, generators are very handy.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rake Database Tasks]]></title>

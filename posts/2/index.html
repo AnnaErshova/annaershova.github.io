@@ -9,7 +9,7 @@
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="So I started learning Javascript. They say that once you understand basic coding principles, learning a new programming language is mostly a matter &hellip;">
+  <meta name="description" content="When I was in primary school in Russia, we had an intro to computer science class that taught up the basics of programming to produce good post- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -58,6 +58,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/21/regex-is-just-like-mandarin-chinese/">RegEx Is Just Like Mandarin Chinese</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-07-21T08:26:33-04:00" pubdate data-updated="true">Jul 21st, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When I was in primary school in Russia, we had an intro to computer science class that taught up the basics of programming to produce good post-Communist STEM-oriented comrades. It used Basic to teach the fundamentals. As I spoke no English at the time, I spent more time memorizing words like GOTO and GOSUB than actually figuring out coding logic.</p>
+
+<p>English speakers have a very distinct advantage when it comes to programming in most languages: we know all the words already. One doesn&rsquo;t even have to be an actual native speaker: Ruby was famously written by a Japanese programmer.</p>
+
+<p>Whether a native speaker or not, it is a lot easier to memorize certain methods in Ruby (see: any?; none?; all?) when one actually understands how to use those words in a sentence.</p>
+
+<p>Learning to code is comparable to learning a foreign language: a large part of it is comprehending the principles and then complementing it with memorizing quirks of grammar.</p>
+
+<p>I compared SQL to German in class before. German is a very structured language where sentences have to be built and organized a very certain way, just like SQL.</p>
+
+<p>Compare that to an Eastern European language, where we take major liberties with positioning words in a sentence. I used to tutor Russian as an undergrad at Yale; I remember students coming to me panicking because they could not figure out why subjects and objects were creatively arranged in a sentence and what to do about it. All I could say at the time is they were lucky because they did not learn Ukrainian, which has same creativity, by more complex grammar.</p>
+
+<p>Ruby feels like an Eastern European language to me &ndash; there are many ways to write code, but there are still very specific &lsquo;grammar&rsquo; rules one needs to follow to make code &lsquo;grammatically correct.&rsquo; The stakes of course are differnet: while one can make oneself understood and convery the message well in broken Russian, Ruby won&rsquo;t run broken code at all or run it incorrectly.</p>
+
+<p>Here is the problem with RegEx: it is just like Mandarin Chinese. Judging by the number of desperate, hate-filled posts on StackOverflow, it is as hard to learn.</p>
+
+<p>Mandarin Chinese, and most its other dialects of Chinese actually have no well-developed grammar. There are ways to structure sentences, but there are no 7 cases of Ukrainian or 12 tenses of English. Past tense is barely denoted, yet alone formed in a miriad ways that hapless students of Germanic languages spend years memorizing.</p>
+
+<p>When I first started Ruby, I routinely had to spend a fair bit of time ensuring I had an appropriate number of &lsquo;end&rsquo; key words: one to end an if statement, one to end a do block, one to end a method, one to end a class&hellip; That&rsquo;s a lot of &lsquo;grammar&rsquo; to learn &ndash; but at least we all know what the word &lsquo;end&rsquo; means, so that makes it easier. With RegEx, you have to poke around various seemingly randomly assigned symbols and hope that they work. Just like with Mandarin, half the time you are hoping you are refering to the correct character that has no real linguistic content and that you are using it correctly.</p>
+
+<p>For a project in class, I had to write the following expression to validate a potential twitter handle: /^[A-Za-z0-9<em>]{1,15}|^@[A-Za-z0-9</em>]{1,15}/. It&rsquo;s not technically that difficult, but who decided that ^ stands for start of line? Or that $, for that matter, stands for end of line? Or that &lsquo;a?&rsquo;&lsquo; means zero or more of soemthing?</p>
+
+<p>There might be some internal logic to it, just like with Chinese (vestiges of old-school computer science perhaps?), but for a modern-day person without much linguistic&hellip;I mean computer science background, it is not intuitive.</p>
+
+<p>On top of that, to use RegEx is like writing an application without a good test suite: you think that you have thought of everything, but there is always that one edge case that can pop up and screw it over. I felt like that when learning Mandarin: something always pops up where the word has a diferent meaning or is really meant to be used with a different character to really &lsquo;work.&rsquo;</p>
+
+<p>The good news is that both RegEx and Mandarin are possible to master. Perseverance and a healthy amount of grunt work is key. But just like Mandarin is handy for freaking out Chinese restaurant employees and nail salon workers, RegEx is handy too &ndash; in fact, it might have a greater utility of being used oftenf or the rest of one&rsquo;s Web Development career.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -587,6 +650,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/15/rake-database-tasks/">Rake Database Tasks</a>
       </li>
     
@@ -600,10 +667,6 @@
     
       <li class="post">
         <a href="/blog/2015/10/12/updating-os-x-from-your-command-line/">Updating OS X From Your Command Line</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/10/11/running-edge-rails-living-dangerously/">Running Edge Rails -- Living Dangerously</a>
       </li>
     
   </ul>
