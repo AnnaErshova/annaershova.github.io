@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mastering Your Terminal -- Part II - Anna's Blog</title>
+  <meta name="author" content="Anna Ershova">
+
+  
+  <meta name="description" content="Finding your way around: find, mdfind, and locate find find &ldquo;walks a file hierarchy.&rdquo; You can always search for files using Spotlight, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://annaershova.github.io/blog/2015/10/19/mastering-your-terminal-part-ii">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Anna's Blog</a></h1>
+  
+    <h2>Getting de-railed</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mastering Your Terminal -- Part II</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-19T23:24:32-04:00" pubdate data-updated="true">Oct 19th, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><strong>Finding your way around: </strong><code>find</code><strong>, </strong><code>mdfind</code><strong>, and </strong><code>locate</code><strong> </strong></p>
+
+<hr />
+
+<p><strong><code>find</code></strong></p>
+
+<ul>
+<li><strong><code>find</code></strong> &ldquo;walks a file hierarchy.&rdquo; You can always search for files using Spotlight, but it is' easy on your Terminal as well.</li>
+<li><strong><code>find path/to/search -name name_to_search_for</code></strong> to search for a specific file name</li>
+<li><strong><code>find / -name name_to_search_for</code></strong> to search your entire computer</li>
+<li><strong><code>find ~ -name name_to_search_for</code></strong> to search your user directory</li>
+<li><strong><code>find path/to/search -iname name_to_search_for</code></strong> &ndash; add the <strong><code>-i</code></strong> flag to do a case-insensitive match.</li>
+<li><strong><code>find path/to/search -size name_to_search_for</code></strong> to search for a specific file size</li>
+<li><strong><code>find path/to/search -type name_to_search_for</code></strong> to search for a specific file type</li>
+</ul>
+
+
+<p>As usual, there are many other search options that running <strong><code>man</code></strong> find will showcase, and they can be stacked together to filter results.</p>
+
+<hr />
+
+<p><strong><code>mdfind</code></strong></p>
+
+<ul>
+<li><strong><code>mdfind query</code></strong> &ldquo;finds files matching a given query&rdquo; as per its manual. It uses metadata to search for queries, so it is basically a shell for your Spotlight search. Metadata, or data about data itself, is at the core of Spotlight &ndash; that is how pressing <strong><code>⌘ space bar</code></strong> and entering &lsquo;Ruby&rsquo; will show you a list of all documents that mention Ruby.</li>
+<li><strong><code>mdfind query</code></strong>  note that the query does not have to be 1 word, but can be several.</li>
+<li><strong><code>mdfind image</code></strong> will find all image files (if you run it from any directory, it will still search for all images for an existing user, just like Spotlight does). If you run it, and it starts giving you an endless output of image file paths, just run <strong><code>Ctrl + C</code></strong> to stop it.</li>
+<li><strong><code>mdfind image -onlyin path/to/directory</code></strong> searches for all images in a certain directory</li>
+</ul>
+
+
+<p><img class="center" src="/images/mdfindonlyin.png"></p>
+
+<ul>
+<li><p><strong><code>mdfind *query* -onlyin path/to/directory/1 -onlyin path/to/directory/2</code></strong> paths can be stacked just like other queries.</p></li>
+<li><p><strong><code>mdfind query -onlyin $PWD</code></strong> to search in a current directory.</p></li>
+</ul>
+
+
+<p><img class="center" src="/images/onlyin_pwd.png"></p>
+
+<ul>
+<li><strong><code>mdfind query -live</code></strong> watches outcome of a search for a certain query. So if a file with a matching metadata is added, the terminal tab/window in which you are running that command will show that file.</li>
+</ul>
+
+
+<p><img class="center" src="/images/onlyin_pwd.png"></p>
+
+<p><strong> Boolean operators and </strong><code>mdfind</code><strong>: </strong></p>
+
+<p>You are probably familiar with boolean operators if you are developer. <strong><code>mdfind</code></strong> uses a very simplified version of them:</p>
+
+<ul>
+<li><p><strong><code>mdfind query1|query2</code></strong> &ndash; OR; note no whitespace</p></li>
+<li><p><strong><code>mdfind query1(-query2</code>)</strong> &ndash; excludes query 2; note no whitespace</p></li>
+<li><p>Use <strong><code>()</code></strong> to group queries. To find matches to 2 queries, use <code>mdfind (query1 query2)</code>** as <code>mdfind query1 query2</code> will only search for the second word.</p></li>
+<li><p>Use <code>""</code> to escape apostrophes, otherwise your Terminal will think your query is incomplete.</p></li>
+</ul>
+
+
+<p><img class="center" src="/images/mdfind_apostrophe.png"></p>
+
+<hr />
+
+<p><strong><code>locate</code></strong></p>
+
+<ul>
+<li><strong><code>locate</code></strong> &ldquo;find filenames quickly.&rdquo; <em>Quickly</em> is the keyword here. It relies on an index database of all filenames to find the one you need. Think of it as a cookbook index: instead of parsing throughout every recipe that uses shiitake mushrooms, you go straight to the index in the back. look for shiitake, and it tells you where to look for it. The problem with it is that the index is only updated once a week or so, so if you are looking for a newly created file, it may not come up.</li>
+</ul>
+
+
+<p><img class="center" src="/images/locate_turkey.png"></p>
+
+<ul>
+<li>Using <strong><code>locate</code></strong> for the first time ever or after a major system update can cause a following error: &ldquo;WARNING: The locate database (/var/db/locate.database) does not exist.&rdquo;</li>
+</ul>
+
+
+<p><img class="center" src="/images/locate_missing_database.png"></p>
+
+<p>Follow the instructions to generate an index database; it will take some time to run as it will go through every file on your system to generate its index (in cookbook terms, someone had to go through and read every recipe and list every ingredient in the index.) It actually does not alert you to the fact it is being generated in the background, but it should work fine and if you run the command again an hour or so later, the database should be there.</p>
+
+<p>You can receive instructions your index database is outdates, in which case you similarly need to follow instructions to rebuild it.</p>
+
+<ul>
+<li>Note that both <strong><code>find</code></strong> and <strong><code>locate</code></strong> are case-sensitive when it comes to file names. Use <strong><code>-i</code></strong> flag to make them case-insensitive.</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Anna Ershova</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-19T23:24:32-04:00" pubdate data-updated="true">Oct 19th, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/terminal/'>terminal</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/10/19/mastering-your-terminal-part-ii/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/10/19/mastering-your-terminal-part-ii/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/10/19/mastering-your-terminal-part-i/" title="Previous Post: Mastering Your Terminal -- Part I">&laquo; Mastering Your Terminal -- Part I</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:annaershova.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <ul id="recent_posts">
+      <li class="post">
+      <a href="http://annaershova.github.io" alt="Home"><img src="/images/Home.png"></a>
+      <a href="http://annaershova.github.io/archives/" alt="Archives"><img src="/images/Calendar.png"></a>
+      <a href="mailto:anna.ershova@gmail.com" alt="E-Mail"><img src="/images/Envelope.png"></a>
+      <a href="http://annaershova.github.io/atom.xml" alt="subscribe feed"><img src="/images/rss_big.png"></a>
+      </li>
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/10/19/mastering-your-terminal-part-ii/">Mastering Your Terminal -- Part II</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/19/mastering-your-terminal-part-i/">Mastering Your Terminal -- Part I</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/15/rake-database-tasks/">Rake Database Tasks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/13/making-simple-rake-tasks/">Making Simple Rake Tasks and Using Them With ERD</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Anna Ershova -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+    var stickyNavTop = $('nav').offset().top;  
+      
+    var stickyNav = function(){  
+      var scrollTop = $(window).scrollTop(); 
+      var navHasClassSticky = $('nav').hasClass('sticky');
+
+      if (scrollTop > stickyNavTop && navHasClassSticky) {   
+        return true;
+      } else if (scrollTop > stickyNavTop) {
+        $('nav').hide();
+        $('nav').addClass('sticky');
+        $('nav').fadeIn('2000');
+      } else {  
+        $('nav').removeClass('sticky');   
+      }  
+    };  
+      
+    stickyNav();  
+      
+    $(window).scroll(function() {  
+      stickyNav();  
+    });  
+  });  
+</script>
+
+
+</body>
+</html>

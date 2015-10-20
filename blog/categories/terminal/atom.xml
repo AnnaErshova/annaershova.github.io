@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Terminal | Anna's Blog]]></title>
   <link href="http://annaershova.github.io/blog/categories/terminal/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-19T23:22:36-04:00</updated>
+  <updated>2015-10-20T12:43:25-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -14,10 +14,106 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Mastering Your Terminal -- Part II]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/19/mastering-your-terminal-part-ii/"/>
+    <updated>2015-10-19T23:24:32-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/19/mastering-your-terminal-part-ii</id>
+    <content type="html"><![CDATA[<p><strong>Finding your way around: </strong><code>find</code><strong>, </strong><code>mdfind</code><strong>, and </strong><code>locate</code><strong> </strong></p>
+
+<hr />
+
+<p><strong><code>find</code></strong></p>
+
+<ul>
+<li><strong><code>find</code></strong> &ldquo;walks a file hierarchy.&rdquo; You can always search for files using Spotlight, but it is' easy on your Terminal as well.</li>
+<li><strong><code>find path/to/search -name name_to_search_for</code></strong> to search for a specific file name</li>
+<li><strong><code>find / -name name_to_search_for</code></strong> to search your entire computer</li>
+<li><strong><code>find ~ -name name_to_search_for</code></strong> to search your user directory</li>
+<li><strong><code>find path/to/search -iname name_to_search_for</code></strong> &ndash; add the <strong><code>-i</code></strong> flag to do a case-insensitive match.</li>
+<li><strong><code>find path/to/search -size name_to_search_for</code></strong> to search for a specific file size</li>
+<li><strong><code>find path/to/search -type name_to_search_for</code></strong> to search for a specific file type</li>
+</ul>
+
+
+<p>As usual, there are many other search options that running <strong><code>man</code></strong> find will showcase, and they can be stacked together to filter results.</p>
+
+<hr />
+
+<p><strong><code>mdfind</code></strong></p>
+
+<ul>
+<li><strong><code>mdfind query</code></strong> &ldquo;finds files matching a given query&rdquo; as per its manual. It uses metadata to search for queries, so it is basically a shell for your Spotlight search. Metadata, or data about data itself, is at the core of Spotlight &ndash; that is how pressing <strong><code>⌘ space bar</code></strong> and entering &lsquo;Ruby&rsquo; will show you a list of all documents that mention Ruby.</li>
+<li><strong><code>mdfind query</code></strong>  note that the query does not have to be 1 word, but can be several.</li>
+<li><strong><code>mdfind image</code></strong> will find all image files (if you run it from any directory, it will still search for all images for an existing user, just like Spotlight does). If you run it, and it starts giving you an endless output of image file paths, just run <strong><code>Ctrl + C</code></strong> to stop it.</li>
+<li><strong><code>mdfind image -onlyin path/to/directory</code></strong> searches for all images in a certain directory</li>
+</ul>
+
+
+<p><img class="center" src="/images/mdfindonlyin.png"></p>
+
+<ul>
+<li><p><strong><code>mdfind *query* -onlyin path/to/directory/1 -onlyin path/to/directory/2</code></strong> paths can be stacked just like other queries.</p></li>
+<li><p><strong><code>mdfind query -onlyin $PWD</code></strong> to search in a current directory.</p></li>
+</ul>
+
+
+<p><img class="center" src="/images/onlyin_pwd.png"></p>
+
+<ul>
+<li><strong><code>mdfind query -live</code></strong> watches outcome of a search for a certain query. So if a file with a matching metadata is added, the terminal tab/window in which you are running that command will show that file.</li>
+</ul>
+
+
+<p><img class="center" src="/images/onlyin_pwd.png"></p>
+
+<p><strong> Boolean operators and </strong><code>mdfind</code><strong>: </strong></p>
+
+<p>You are probably familiar with boolean operators if you are developer. <strong><code>mdfind</code></strong> uses a very simplified version of them:</p>
+
+<ul>
+<li><p><strong><code>mdfind query1|query2</code></strong> &ndash; OR; note no whitespace</p></li>
+<li><p><strong><code>mdfind query1(-query2</code>)</strong> &ndash; excludes query 2; note no whitespace</p></li>
+<li><p>Use <strong><code>()</code></strong> to group queries. To find matches to 2 queries, use <code>mdfind (query1 query2)</code>** as <code>mdfind query1 query2</code> will only search for the second word.</p></li>
+<li><p>Use <code>""</code> to escape apostrophes, otherwise your Terminal will think your query is incomplete.</p></li>
+</ul>
+
+
+<p><img class="center" src="/images/mdfind_apostrophe.png"></p>
+
+<hr />
+
+<p><strong><code>locate</code></strong></p>
+
+<ul>
+<li><strong><code>locate</code></strong> &ldquo;find filenames quickly.&rdquo; <em>Quickly</em> is the keyword here. It relies on an index database of all filenames to find the one you need. Think of it as a cookbook index: instead of parsing throughout every recipe that uses shiitake mushrooms, you go straight to the index in the back. look for shiitake, and it tells you where to look for it. The problem with it is that the index is only updated once a week or so, so if you are looking for a newly created file, it may not come up.</li>
+</ul>
+
+
+<p><img class="center" src="/images/locate_turkey.png"></p>
+
+<ul>
+<li>Using <strong><code>locate</code></strong> for the first time ever or after a major system update can cause a following error: &ldquo;WARNING: The locate database (/var/db/locate.database) does not exist.&rdquo;</li>
+</ul>
+
+
+<p><img class="center" src="/images/locate_missing_database.png"></p>
+
+<p>Follow the instructions to generate an index database; it will take some time to run as it will go through every file on your system to generate its index (in cookbook terms, someone had to go through and read every recipe and list every ingredient in the index.) It actually does not alert you to the fact it is being generated in the background, but it should work fine and if you run the command again an hour or so later, the database should be there.</p>
+
+<p>You can receive instructions your index database is outdates, in which case you similarly need to follow instructions to rebuild it.</p>
+
+<ul>
+<li>Note that both <strong><code>find</code></strong> and <strong><code>locate</code></strong> are case-sensitive when it comes to file names. Use <strong><code>-i</code></strong> flag to make them case-insensitive.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Mastering Your Terminal -- Part I]]></title>
-    <link href="http://annaershova.github.io/blog/2015/10/19/controlling-your-mac-with-your-terminal/"/>
+    <link href="http://annaershova.github.io/blog/2015/10/19/mastering-your-terminal-part-i/"/>
     <updated>2015-10-19T16:15:58-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/10/19/controlling-your-mac-with-your-terminal</id>
+    <id>http://annaershova.github.io/blog/2015/10/19/mastering-your-terminal-part-i</id>
     <content type="html"><![CDATA[<p>Developers tend to spend a lot of time in their Terminals, and while most know all the basic commands to run, there are some that are less commonly used, but quite nifty to know.</p>
 
 <p>In an <a href="http://annaershova.github.io/blog/2015/10/12/updating-os-x-from-your-command-line/">earlier post</a>, I mentioned that one can use command line to run a software update command: <code>softwareupdate -l</code> to see what updates are available:</p>
