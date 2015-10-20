@@ -83,13 +83,13 @@ Note the difference from:
 
 where 
 
-`rake db:setup` = `rake db:schema:load` OR `rake db:structure:load` + 'rake db:seed'
+`rake db:setup` = `rake db:schema:load` OR `rake db:structure:load` + `rake db:seed`
 
 * (`rake db:schema:load` loads schema.rb into your database)
 
 * (`rake db:structure:load` loads db/structure.sql if you have specified that in your config)
 
-Which means that `rake db:reset` drops database; recreates it from `db/schema.rb` or `db/structure.sql` in your current environment (and NOT from migrations); seeds database from `seeds.rb`. 
+Which means that `rake db:reset` drops database; recreates it from `db/schema.rb` or `db/structure.sql` in your current environment (and NOT from migrations); seeds database from `seeds.rb`. Note that if you have had anything imported into your database from, say, a csv file, that content will also be gone.
 
 *Note that `rake db:migrate:reset` won't seed your database and `rake db:setup` will.* 
 
