@@ -9,7 +9,7 @@
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="Rails comes with a number of very convenient generators that can take a lot of work out of creating models, controllers, views, tests, corresponding &hellip;">
+  <meta name="description" content="Developers tend to spend a lot of time in their Terminals, and while most know all the basic commands to run, there are some that are less commonly &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -58,6 +58,199 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/19/controlling-your-mac-with-your-terminal/">Mastering Your Terminal -- Part I</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-19T16:15:58-04:00" pubdate data-updated="true">Oct 19th, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Developers tend to spend a lot of time in their Terminals, and while most know all the basic commands to run, there are some that are less commonly used, but quite nifty to know.</p>
+
+<p>In an <a href="http://annaershova.github.io/blog/2015/10/12/updating-os-x-from-your-command-line/">earlier post</a>, I mentioned that one can use command line to run a software update command: <code>softwareupdate -l</code> to see what updates are available:</p>
+
+<p><img class="center" src="/images/softwareupdate_list.png"></p>
+
+<p>Terminal, or more accurately, Terminal.app, is a terminal emulator program that provides a connection to your shell (most likely <strong><code>bash</code></strong>; run <strong><code>echo $0</code></strong> to see what yours is running).</p>
+
+<p>Technically speaking, running commands in Terminal is really running commands in a command-line interface that runs in a shell that runs in Terminal.</p>
+
+<p>Now that we got that out of the way &ndash;</p>
+
+<p><strong>Some basic tricks</strong>:</p>
+
+<ul>
+<li><p><strong><code>Up</code></strong> or <strong><code>down</code></strong> key to navigate between commands. I use <strong><code>up</code></strong> all the time when navigating to a previously used command that is too long to type again.</p></li>
+<li><p><strong><code>!!</code></strong> to repeat last command (this will be specific to your Terminal window or tab in which you run it)</p></li>
+</ul>
+
+
+<p><img class="center" src="/images/bang_bang.png"></p>
+
+<p>Ok, it is actually easier to press the <strong><code>up</code></strong> arrow once, but hey, saying <em>bang bang</em> out loud is a lot more fun.</p>
+
+<ul>
+<li>Drop file name from Finder into terminal to get its path &ndash; it can be then copy-pasted into a <strong><code>cd</code></strong> command etc.</li>
+</ul>
+
+
+<p><strong>More ways to navigate Terminal using familiar shortcuts</strong>:</p>
+
+<ul>
+<li><p><strong><code>Ctrl + T</code></strong> to open a new tab within the same Terminal session.</p></li>
+<li><p><strong><code>Ctrl + F</code></strong> to search your Terminal&rsquo;s tab or session (actual text output thereof).</p></li>
+<li><p><strong><code>Command + +</code></strong> or <strong><code>Command + -</code></strong> to zoom in or out.</p></li>
+<li><p><strong><code>Command + G</code></strong> to go to a next search match, <strong><code>Command + Shift + G</code></strong> to go to a previous match.</p></li>
+<li><p><strong><code>Control + C</code></strong> or <strong><code>Command + .</code></strong> to cancel a command. Rails developers use that a lot to stop Rails server from running, for instance.</p></li>
+<li><p>Use <strong><code>TAB</code></strong> to autocomplete a directory name. Use <strong><code>TAB</code></strong> <strong><code>TAB</code></strong> to show a list of options when there are multiple matches.</p></li>
+</ul>
+
+
+<p><strong>Who am I, where am I, and what time is it anyway?</strong></p>
+
+<ul>
+<li><strong><code>pwd</code></strong> to see user&rsquo;s current directory:</li>
+</ul>
+
+
+<p><img class="center" src="/images/pwd_use.png"></p>
+
+<ul>
+<li><strong><code>whoami</code></strong> to see username of the owner of the current login/connection session in the shell (or in manual&rsquo;s words, &ldquo;display effective user id&rdquo;)</li>
+</ul>
+
+
+<p><img class="center" src="/images/whoami.png"></p>
+
+<ul>
+<li>While <strong><code>whoami</code></strong> is a very commonly listed command in all of the top-20-Terminal-commands-you-must-learn-now list, its cousins <strong><code>WhoAmI</code></strong> and <strong><code>who am i</code></strong> are less known:</li>
+</ul>
+
+
+<p><img class="center" src="/images/whoami_variations.png"></p>
+
+<p>(There is no manual entry on <strong><code>WhoAmI</code></strong>, and that seems like a pretty rare command in general.)</p>
+
+<ul>
+<li>Another cousin <strong><code>who</code></strong> displays a more expanded version of <strong><code>who am i</code></strong>, effectivly showing all users that are currently logged in into a terminal session:</li>
+</ul>
+
+
+<p><img class="center" src="/images/who.png"></p>
+
+<ul>
+<li>And yet another cousin <strong><code>w</code></strong> &ldquo;displays who is logged in and what they are doing:</li>
+</ul>
+
+
+<p><img class="center" src="/images/w_command.png"></p>
+
+<ul>
+<li><strong><code>date</code></strong> to see current date and time:</li>
+</ul>
+
+
+<p><img class="center" src="/images/date_command.png"></p>
+
+<p><strong>How do I get around?</strong></p>
+
+<ul>
+<li><p><strong><code>cd directory_name</code></strong> or <strong><code>cd path/to/directory</code></strong> to move to a different directory</p></li>
+<li><p><strong><code>TAB</code></strong> can be used with <strong><code>cd</code></strong> to autocomplete a directory name, but using an asterix (*) as a wildcard also works:</p></li>
+</ul>
+
+
+<p><img class="center" src="/images/cd_wild_card.png"></p>
+
+<ul>
+<li><strong><code>?characters</code></strong> to search for a specific name:</li>
+</ul>
+
+
+<p><img class="center" src="/images/cd_wild_card.png"></p>
+
+<ul>
+<li><p><strong><code>cd ..</code></strong> to move up one directory, <strong><code>cd ../..</code></strong>  to move up two directories, and so forth.</p></li>
+<li><p><strong><code>cd ~</code></strong> or just <strong><code>cd</code></strong> to go to your home directory.</p></li>
+<li><p><strong><code>cd /</code></strong> to go to the level of your file hierarchy (this is not the same as home):</p></li>
+</ul>
+
+
+<p><img class="center" src="/images/root_vs_top.png"></p>
+
+<ul>
+<li><strong><code>cd -</code></strong> to go to the last visited directory:</li>
+</ul>
+
+
+<p><img class="center" src="/images/cd_minus.png"></p>
+
+<ul>
+<li>Note on case sensitivity: generally, names of files and directories (so that <strong><code>cd octopress</code></strong> is the same as <strong><code>cd Octopress</code></strong>) are not case sensitive unless you have specially set up your system to be that way.</li>
+</ul>
+
+
+<p><strong>So what am I seeing in here?</strong></p>
+
+<ul>
+<li><strong><code>ls</code></strong> to see a list of files in your directory (or <strong><code>ls directory/path</code></strong> for another directory)</li>
+</ul>
+
+
+<p><img class="center" src="/images/octopress_ls.png"></p>
+
+<ul>
+<li><strong><code>ls -l</code></strong> to see a <em>l</em>ong list of files, including creation dates and access permissions, number of links in the item, etc:</li>
+</ul>
+
+
+<p><img class="center" src="/images/du_sh.png"></p>
+
+<ul>
+<li><strong><code>ls -lh</code></strong> or <strong><code>ls -l -h</code></strong> (flags can be combined) to see a <em>h</em>uman readable output as long list. In this case, the only thing that changes is size in bytes is converted into units that make more sense such as kilobytes. Note that <strong><code>-h</code></strong> flag can be use with some other commands as well.</li>
+</ul>
+
+
+<p><img class="center" src="/images/ls_lh.png"></p>
+
+<p>(Try running <strong><code>ls</code></strong> first, then <strong><code>!! -l</code></strong>, then <strong><code>!! -h</code></strong> to stack these commands. Or just press an <strong><code>up</code></strong> key and add those flags before hitting enter).</p>
+
+<ul>
+<li><p><strong><code>ls /</code></strong> (or any other <strong><code>ls</code></strong> command with a <strong><code>flag</code></strong> and <strong><code>/</code></strong>) to see contents of home directory. Note that normally, you have to be in the directory which contents you are trying to view.</p></li>
+<li><p><strong><code>du -sh directory_name</code></strong> to see size of a directory:</p></li>
+</ul>
+
+
+<p><img class="center" src="/images/date_command.png"></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -698,173 +891,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/">How to Rotate a Matrix in Ruby</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2015-07-22T17:58:06-04:00" pubdate data-updated="true">Jul 22nd, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Here is a problem that I recently stumbled upon while researching something completely different, as these things usually go, &ndash; and down the rabbit hole I went.</p>
-
-<p>How does one rotate a matrix?</p>
-
-<p>First of all, let&rsquo;s define parameters of the exercise. We will take a matrix &ndash; an array of arrays &ndash; and turn it 90&deg; clockwise.</p>
-
-<p>So this is what it would look like, using Flatiron&rsquo;s whiteboard table tops (we are really a paper-free school):</p>
-
-<p><img class="center" src="/images/matrix-rotation-example.png"></p>
-
-<p>As you can see, numbers 1 (position[0][0] in zero-indexed terms) and 9 (position [2][2]) traded places. One thing is immediately obvious: this would only work if the matrix in question is &lsquo;square&rsquo;: that is, if there are x many rows with x many elements each.</p>
-
-<p>Now that we have defined that condition, let&rsquo;s start with a simple 3x3 matrix.</p>
-
-<p>If the original array looks like this, Ruby-style:</p>
-
-<blockquote><p>my_array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</p></blockquote>
-
-<p>The modified array would look like this:</p>
-
-<blockquote><p>rotated_array = [[7, 4, 1], [8, 5, 2], [9, 6, 3]]</p></blockquote>
-
-<p>But how to get there?</p>
-
-<p>Ruby actually comes with default methods that allow one to manipulate arrays. Most people know <em>pop</em>, <em>shift</em>, <em>unshift</em>, and <em>drop</em>, but there are way more useful methods.</p>
-
-<p>I was only marginally familiar with <em>rotate</em>, so here is an example:</p>
-
-<p>According to the <a href="http://ruby-doc.org/core-2.2.2/Array.html#method-i-rotate">docs</a>:</p>
-
-<blockquote><p>Returns a new array by rotating self so that the element at count is the first element of the new array.</p></blockquote>
-
-<p>When using it without an argument (or rather with the default count of 1), it works like this:</p>
-
-<p><img class="center" src="/images/rotate_simple_example.png"></p>
-
-<p>It effectively takes the first part of the array and places it at the end of the array. If we use that 5 times on the array with 5 elements, we will arrive at the original array (well, it will return what looks like the original array as the original array does not get modified).</p>
-
-<p>If used with a count that is not 1, it will move the elements down by the count number of places:</p>
-
-<p><img class="center" src="/images/rotate_example_with_count2.png"></p>
-
-<p>(array.rotate(2) is the same as <em>array.rotate.rotate</em>)</p>
-
-<p>Count can also be negative, in which case it will rotate the array in the opposite direction, taking items from the end of the array and placing them in the front:</p>
-
-<p><img class="center" src="/images/rotate-example-count-negative.png"></p>
-
-<p>As many other methods, it can be used with the bang to modify the original array: <em>return!</em></p>
-
-<p>I played around with <em>rotate</em>, and it became clear that I was going to need something else to complete the task:</p>
-
-<p><img class="center" src="/images/rotate-example.png"></p>
-
-<p>It handily re-arranged the nested components in the array, moving each &lsquo;inner&rsquo; array over by 1 at a time.</p>
-
-<p>There is also <a href="http://apidock.com/ruby/Array/transpose">transpose</a>. It is actually a bit trickier to comprehend:</p>
-
-<p><img class="center" src="/images/transpose-simple-example.png"></p>
-
-<p>For a nested array that contains 2 array of 2 elements each, it seems like all it does is switch elements that are in the [1][0] and [0][1] position with each other &ndash; in case below, only 2 and 3 traded places. But what is actually does, as becomes more obvious in case of a larger array (nexted with 3 arrays of 3 elements each) is make columns rows and rows columns.</p>
-
-<p>Here is an example:</p>
-
-<p><img class="center" src="/images/transpose-example.png"></p>
-
-<p>Unlike <em>rotate</em>, <em>transpose</em> does not take any arguments.</p>
-
-<p>By the way, although I won&rsquo;t be using it here, one of my favorite array methods is also <em>flatten</em>, which is a handy way to get nesting out of arrays:</p>
-
-<p><img class="center" src="/images/flatten-example.png"></p>
-
-<p>As an aside, <em>flatten</em> is is also a handy way of converting a hash into a simple array:</p>
-
-<p><img class="center" src="/images/hash-flatten-example.png"></p>
-
-<p>But back to the task at hand:</p>
-
-<p>Upon experimenting with <em>rotate</em>, <em>flatten</em>, and <em>transpose</em>, I think I came up with a pretty efficient technique using <em>transpose</em> and then <em>reverse</em>:</p>
-
-<p><img class="center" src="/images/rotation-execution-example.png"></p>
-
-<p>The array is first transposed and then iterated over, and each of the nexted arrays inside it is reversed.</p>
-
-<p>Works like a charm. But if you want to do something slightly more exciting:</p>
-
-<p>Let&rsquo;s look at the origin array again:</p>
-
-<blockquote><p>my_array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</p></blockquote>
-
-<p>And at the rotated_array:</p>
-
-<blockquote><p>rotated_array = [[7, 4, 1], [8, 5, 2], [9, 6, 3]]</p></blockquote>
-
-<p>For a zero-indexed language, the nested array will look like this, positions-wise:</p>
-
-<p>[6,3,0]<br>
-[7,4,1]<br>
-[8,5,2]<br></p>
-
-<p>OR:</p>
-
-<p>(position of first element (0 in this case) + 2*3) + (position of first element + 3*1 ) + (position of first element + 3*0)
-(position of second element + 2*3) + (position of first element + 3*1 ) + (position of second element + 3*0)
-(position of third element + 2*3) + (position of third element + 3*1 ) + (position of third element + 3*0)</p>
-
-<p>Or for a nested array:</p>
-
-<p>[[2][0],[1][0],[0][0]],<br>
-[[2][1],[1][1],[0][1]],<br>
-[[2][2],[1][2],[0][2]]<br></p>
-
-<p>Which is:</p>
-
-<p>[[my_array.length-1][my_array.length-3],[my_array.length-2][my_array.length-3],[my_array.length-3][my_array.length-3]],<br>
-[[my_array.length-1][my_array.length-2],[my_array.length-2][my_array.length-2],[my_array.length-3][my_array.length-2]],<br>
-[[my_array.length-1][my_array.length-1],[my_array.length-2][my_array.length-1],[my_array.length-3][my_array.length-1]]<br></p>
-
-<p>This would be a cool structure to use if pushing things into the array (I am using absolute positions instead of array.length-related as it is easier in this example):</p>
-
-<p><img class="center" src="/images/pushing-into-rotated-array.png"></p>
-
-<p>(as you can see I made a typo and then fixed it)</p>
-
-<p>All you need to do thereafter is convert it into a nested array.</p>
-
-<p>You can also do a chain of push statements:</p>
-
-<p><img class="center" src="/images/push-chain.png"></p>
-
-<p>All of these are pretty fun solutions to the problem.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="2">&larr; Older</a>
@@ -898,6 +924,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/10/19/controlling-your-mac-with-your-terminal/">Mastering Your Terminal -- Part I</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons</a>
       </li>
     
@@ -911,10 +941,6 @@
     
       <li class="post">
         <a href="/blog/2015/10/12/mac-uptime-and-reboot-stats/">Mac Uptime and Reboot Stats</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/10/12/updating-os-x-from-your-command-line/">Updating OS X From Your Command Line</a>
       </li>
     
   </ul>

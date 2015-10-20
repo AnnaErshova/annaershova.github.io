@@ -1,24 +1,91 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Terminal | Anna's Blog]]></title>
-  <link href="http://annaershova.github.io/blog/categories/terminal/atom.xml" rel="self"/>
-  <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-19T23:22:36-04:00</updated>
-  <id>http://annaershova.github.io/</id>
-  <author>
-    <name><![CDATA[Anna Ershova]]></name>
-    <email><![CDATA[anna.ershova@gmail.com]]></email>
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mastering Your Terminal -- Part I - Anna's Blog</title>
+  <meta name="author" content="Anna Ershova">
 
   
-  <entry>
-    <title type="html"><![CDATA[Mastering Your Terminal -- Part I]]></title>
-    <link href="http://annaershova.github.io/blog/2015/10/19/controlling-your-mac-with-your-terminal/"/>
-    <updated>2015-10-19T16:15:58-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/10/19/controlling-your-mac-with-your-terminal</id>
-    <content type="html"><![CDATA[<p>Developers tend to spend a lot of time in their Terminals, and while most know all the basic commands to run, there are some that are less commonly used, but quite nifty to know.</p>
+  <meta name="description" content="Developers tend to spend a lot of time in their Terminals, and while most know all the basic commands to run, there are some that are less commonly &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://annaershova.github.io/blog/2015/10/19/controlling-your-mac-with-your-terminal">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Anna's Blog</a></h1>
+  
+    <h2>Getting de-railed</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mastering Your Terminal -- Part I</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-19T16:15:58-04:00" pubdate data-updated="true">Oct 19th, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Developers tend to spend a lot of time in their Terminals, and while most know all the basic commands to run, there are some that are less commonly used, but quite nifty to know.</p>
 
 <p>In an <a href="http://annaershova.github.io/blog/2015/10/12/updating-os-x-from-your-command-line/">earlier post</a>, I mentioned that one can use command line to run a software update command: <code>softwareupdate -l</code> to see what updates are available:</p>
 
@@ -175,42 +242,168 @@
 
 
 <p><img class="center" src="/images/date_command.png"></p>
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <entry>
-    <title type="html"><![CDATA[Updating OS X From Your Command Line]]></title>
-    <link href="http://annaershova.github.io/blog/2015/10/12/updating-os-x-from-your-command-line/"/>
-    <updated>2015-10-12T11:16:32-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/10/12/updating-os-x-from-your-command-line</id>
-    <content type="html"><![CDATA[<p>I am really used to seeing a pop up that says something along the lines of ‘a new version of OS X / iOS is available, do you want to update now?’</p>
 
-<p>Upon some research on potential issues of an update in question (I learned the hard way after having my iPhone bricked post-update when living in China), I generally go back and click &lsquo;update.&rsquo; But there is actually an easy way to do it from your Terminal. All you need is a <em>softwareupdate</em> command.</p>
+<span class="byline author vcard">Posted by <span class="fn">Anna Ershova</span></span>
 
-<p>Type in <em>man softwareupdate</em> to see this command&rsquo;s manual:</p>
+      
 
-<p><img class="center" src="/images/softwareupdatemanual.png"></p>
 
-<p>Run <em>softwareupdate -l</em> to see available updates. You will see something like this:</p>
 
-<p><img class="center" src="/images/softwareupdate_l.png"></p>
 
-<p>While you are at it, you can turn on automatic update checker from your Terminal:</p>
 
-<p><img class="center" src="/images/softwareupdateautomaticcheck.png"></p>
 
-<p>Then run this to install the specific update you want:</p>
 
-<p><img class="center" src="/images/supdinstall.png"></p>
 
-<p>(Use -d flag to just download the update, but not install it.)</p>
-
-<p>And of course to re-boot your computer, you can simply run this command instead of going through the Mac menu:</p>
-
-<p><img class="center" src="/images/shutdown.png"></p>
-
-<p>Voila!</p>
-]]></content>
-  </entry>
   
-</feed>
+
+
+
+<time datetime="2015-10-19T16:15:58-04:00" pubdate data-updated="true">Oct 19th, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/terminal/'>terminal</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/10/19/controlling-your-mac-with-your-terminal/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/10/19/controlling-your-mac-with-your-terminal/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/" title="Previous Post: Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons">&laquo; Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:annaershova.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <ul id="recent_posts">
+      <li class="post">
+      <a href="http://annaershova.github.io" alt="Home"><img src="/images/Home.png"></a>
+      <a href="http://annaershova.github.io/archives/" alt="Archives"><img src="/images/Calendar.png"></a>
+      <a href="mailto:anna.ershova@gmail.com" alt="E-Mail"><img src="/images/Envelope.png"></a>
+      <a href="http://annaershova.github.io/atom.xml" alt="subscribe feed"><img src="/images/rss_big.png"></a>
+      </li>
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/10/19/controlling-your-mac-with-your-terminal/">Mastering Your Terminal -- Part I</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/15/rake-database-tasks/">Rake Database Tasks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/13/making-simple-rake-tasks/">Making Simple Rake Tasks and Using Them With ERD</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/12/mac-uptime-and-reboot-stats/">Mac Uptime and Reboot Stats</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Anna Ershova -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+    var stickyNavTop = $('nav').offset().top;  
+      
+    var stickyNav = function(){  
+      var scrollTop = $(window).scrollTop(); 
+      var navHasClassSticky = $('nav').hasClass('sticky');
+
+      if (scrollTop > stickyNavTop && navHasClassSticky) {   
+        return true;
+      } else if (scrollTop > stickyNavTop) {
+        $('nav').hide();
+        $('nav').addClass('sticky');
+        $('nav').fadeIn('2000');
+      } else {  
+        $('nav').removeClass('sticky');   
+      }  
+    };  
+      
+    stickyNav();  
+      
+    $(window).scroll(function() {  
+      stickyNav();  
+    });  
+  });  
+</script>
+
+
+</body>
+</html>
