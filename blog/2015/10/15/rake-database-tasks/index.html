@@ -169,7 +169,7 @@
 
 <p>where</p>
 
-<p><code>rake db:setup</code> = <code>rake db:schema:load</code> OR <code>rake db:structure:load</code> + &lsquo;rake db:seed&rsquo;</p>
+<p><code>rake db:setup</code> = <code>rake db:schema:load</code> OR <code>rake db:structure:load</code> + <code>rake db:seed</code></p>
 
 <ul>
 <li><p>(<code>rake db:schema:load</code> loads schema.rb into your database)</p></li>
@@ -177,7 +177,7 @@
 </ul>
 
 
-<p>Which means that <code>rake db:reset</code> drops database; recreates it from <code>db/schema.rb</code> or <code>db/structure.sql</code> in your current environment (and NOT from migrations); seeds database from <code>seeds.rb</code>.</p>
+<p>Which means that <code>rake db:reset</code> drops database; recreates it from <code>db/schema.rb</code> or <code>db/structure.sql</code> in your current environment (and NOT from migrations); seeds database from <code>seeds.rb</code>. Note that if you have had anything imported into your database from, say, a csv file, that content will also be gone.</p>
 
 <p><em>Note that <code>rake db:migrate:reset</code> won&rsquo;t seed your database and <code>rake db:setup</code> will.</em></p>
 
