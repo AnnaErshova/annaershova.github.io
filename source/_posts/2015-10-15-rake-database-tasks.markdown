@@ -8,32 +8,39 @@ categories: rake
 
 There are multiple db namespace rake tasks, which are very useful for a Rails developer. 
 
-I don't often see them covered in Rails tutorials as a task list, and it took me a while to figure out which commands I needed to use while developing.
+I don't often see them covered in Rails tutorials as a task list, and it took me a while to figure out which commands I needed to use in my regular workflow.
 
-Most beginner developers stick to `rake db:migrate`, `rake db:seed` and `rake db:reset`, but there are quite a few more options.
+======
+
+**Migrations**
+
+Most beginner developers stick to **`rake db:migrate`**, **`rake db:seed`** and **`rake db:reset`**, but there are quite a few more options.
 
 *Migration* is a version of a database (I *still* don't understand what we are migrating and where, but oh well, such is conventional terminology).
 
-Each new migration modifies a database schema (which starts out blank) by adding and removing data, changing data types etc. 
+Each new migration modifies a database schema (which starts out completely blank) by adding and removing data, changing data types etc. 
 
-Your schema is normally stored in  `db/schema.rb`, although for some developers, it will be in `db/structure.sql`.
+Your schema is normally stored in  **`db/schema.rb`**, although for some developers, it will be in `db/structure.sql`.
 
 (To create and use `structure.sql`, use `config.active_record.schema_format = :sql` in your `config/application.rb`. Most beginners should be sticking to schema.rb, the default version.)
 
-First, some schema-related tasks:
+======
 
-* `rake db:version` - to see your current schema version. Schemar versions are normally also listed as timestamps, so you will see something like `Current version: 20151014015045`.
+**First, some schema-related rake tasks:**
 
-* `rake db:forward` will push the schema one step up.
+* **`rake db:version`** - to see your current schema version. Schemar versions are normally also listed as timestamps, so you will see something like `Current version: 20151014015045`.
 
-* `rake db:schema:load` -- loads she schema into your database. Good practice is using it when you first put your app in production; then run migrations from there on.
+* **`rake db:forward`** will push the schema one step up.
 
-* `rake db:schema:dump` -- dumps she schema.
+* **`rake db:schema:load`** -- loads she schema into your database. Good practice is using it when you first put your app in production; then run migrations from there on.
 
-Now back to migrations:
+* **`rake db:schema:dump`** -- dumps she schema.
 
+======
 
-The easiest way to generate a migration is to run `rails g migration AddUseridToPosts user_id:integer`.
+** Now back to migrations: **
+
+The easiest way to generate a migration is to run **`rails g migration AddUseridToPosts user_id:integer`**.
 
 Once a migration has been generated, it will be listed in your `db/migrate` folder, usually with a format `datestamp_migration_name.rb`. Running `rails g` generates a timestamp prefix because that is the order that Rails uses to execute pending migrations.
 
@@ -48,6 +55,10 @@ Even if the migration is in your migrate folder, it does not mean it is in the d
 Before I get started, see this [rails source](https://github.com/rails/rails/blob/master/activerecord/lib/active_record/railties/databases.rake) to see the database.rake file that describes exactly what each task does. 
 
 Rake tasks undergo changes between different versions of Rails, so it's good to keep an eye out for anything that might be coming soon.
+
+======
+
+** Rake migration tasks ** 
 
 * `rake db:migrate` -- runs the change or up method for all pending migrationsone by one in order indicated by name prefixes. If there are no such migrations, running the task won't produce any outcome. But when there are, it also executes `db:schema:dump` as it needs to dump the schema and build it anew considering the migration(s) that have been added.
 
@@ -65,7 +76,7 @@ You should be able to get timestamp as a prefix to a migration file name if you 
 
 NB: `Up` and `down` are actually old-school commands; `up` makes a change to the schema and `down` reverses the `up` change.
 
-* `rake db:migrate:redo` -- "Rollbacks the database one migration and re migrate up (options: STEP=x, version_number/timestamp)."
+* `rake db:migrate:redo` -- "Rollbacks the database one migration and re migrate up (options: `STEP=x`, `version_number/timestamp`)."
 
 * `rake db:migrate:redo STEP=x` = rolls back x many migrations and re-runs them
 
@@ -75,35 +86,35 @@ NB: `Up` and `down` are actually old-school commands; `up` makes a change to the
 
 Now this is interesting:
 
-* `rake db:migrate:reset` = `rake db:drop`+ `rake db:create` + `rake db:migrate` = undo and re-do migrations again for current environment. It does not rollback migrations.
+* **`rake db:migrate:reset`** = **`rake db:drop`** + **`rake db:create`** + **`rake db:migrate`** = undo and re-do migrations again for current environment. It does not rollback migrations. You would want to use it when, say, running **`rails destroy scaffold Name`** as it will remove a corresponding migration and the schema would need to be re-created. You would still need to run **`rake db:seed`** if you have any seed data.
 
-Note the difference from: 
+Note the difference compared to: 
 
-* `rake db:reset` = `rake db:drop` + `rake db:setup` 
+* **`rake db:reset`** = **`rake db:drop`** + **`rake db:setup`** 
 
 where 
 
-`rake db:setup` = `rake db:schema:load` OR `rake db:structure:load` + `rake db:seed`
+**`rake db:setup`** = **`rake db:schema:load`** OR **`rake db:structure:load`** + **`rake db:seed`**
 
-* (`rake db:schema:load` loads schema.rb into your database)
+* (**`rake db:schema:load`** loads **`schema.rb`** into your database)
 
-* (`rake db:structure:load` loads db/structure.sql if you have specified that in your config)
+* (**`rake db:structure:load`** loads **`db/structure.sql`** if you have specified that in your config, otherwise it will load **`db/schema.rb`**)
 
-Which means that `rake db:reset` drops database; recreates it from `db/schema.rb` or `db/structure.sql` in your current environment (and NOT from migrations); seeds database from `seeds.rb`. Note that if you have had anything imported into your database from, say, a csv file, that content will also be gone.
+Which means that **`rake db:reset`** drops the database; recreates it from **`db/schema.rb`** or **`db/structure.sql`** in your current environment (and NOT from migrations); seeds database from **`seeds.rb`**. Note that if you have had anything imported into your database from, say, a **`csv`** file, that content will also be gone.
 
-*Note that `rake db:migrate:reset` won't seed your database and `rake db:setup` will.* 
+* Note that **`rake db:migrate:reset`** won't seed your database and **`rake db:setup`** will.* 
 
 Another rake task is also useful to see where you are with regard to migrations:
 
-* `rake db:migrate:status` -- display status of all migrations. It will alert you if there are no schema migrations in your project yet.
-
+* **`rake db:migrate:status`** -- display status of all migrations. It will alert you if there are no schema migrations in your project yet.
 
 And a heavy hitter:
 
-* `rake db:purge` -- "Empty the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:drop:all to drop all databases in the config). Without RAILS_ENV it defaults to purging the development and test databases." 
+* **`rake db:purge`** -- "Empty the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:drop:all to drop all databases in the config). Without RAILS_ENV it defaults to purging the development and test databases." 
 
-(The `rake db:purge` task was only added in January 2014 and is less known still.)
+(The **`rake db:purge`** task was only added in January 2014 and is less known.)
 
+======
 
 There is a great Rails Guide explaining a lot of these [here](http://edgeguides.rubyonrails.org/active_record_migrations.html).
 
