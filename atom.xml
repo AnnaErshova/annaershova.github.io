@@ -4,7 +4,7 @@
   <title><![CDATA[Anna's Blog]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-25T14:27:56-04:00</updated>
+  <updated>2015-10-25T18:00:50-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What's CSRF and What Exactly Are We Are Protecting From Forgery in Controllers?]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/"/>
+    <updated>2015-10-25T14:53:44-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers</id>
+    <content type="html"><![CDATA[<p>Running any <strong><code>Rails new</code></strong> command will produce a <strong><code>ApplicationDirectory/app/controllers/application_controller.rb</code></strong> file that looks like this initially:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/application_controller_csrf.png"></p>
+
+<p>Since Rails is so beginner-friendly, many new developers are too preoccupied with making an app that works (<em>why do my routes look like that?!</em>) than looking into each and every line of generated code. I find that the CSRF-related line of code in a standard <strong><code>ApplicationController</code></strong> is particularily often overlooked. I wanted to discuss it here as it is connected a serious security issue often encountered on the web.</p>
+
+<p>The Ruby on Rails API has a comprehensive <a href="http://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection/ClassMethods.html">guide</a> explaining what <strong><code>protect_from_forgery</code></strong> does. It still assumes a basic understanding of CSRF.</p>
+
+<p><strong>How CSRF Works</strong></p>
+
+<p>CSRF (sometimes spelled as XSRF) stands for <em>cross-side request forgery</em>. It is, according to <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Wikipedia</a>, sometimes pronounced as <em>see-surf</em> (which I absolutely did not know prior to reading the Wiki article). However it is pronounced, it involves an attacker submitting malicious commands to an app that appear to come from a user that the app has authorized and that the browser trusts. The hacker can therefore gain control of an account.</p>
+
+<p>CSRF is sometimes refered to as &lsquo;session riding,&rsquo; a pretty accurate description as you&rsquo;ll see.</p>
+
+<p>Note that this is different from XSS (cross-site scripting).</p>
+
+<p>Most Rails apps use cookie-based sessions. If an attacker can find a link s/he can reproduce (<em>forge</em>) that involves executing something on a target page while a user is logged in, they can then embed such a link &ndash; with a malicious action &ndash; on a page where a user can click it, thus giving an attacker control of the account.</p>
+
+<p>It is not uncommon for websites to be vulnerable to CSRF attacks. At various times, some major websites such as YouTube, The New York Times and INGDirect <a href="http://www.darkreading.com/risk/csrf-flaws-found-on-major-websites/d/d-id/1129743">famously</a> all had that issue.</p>
+
+<p>In INGDirect case, hackers could gain control of users' accounts and transfer money out to an account that was open in user&rsquo;s name but was not actually associated with them. In YouTube&rsquo;s case, hackers could friend other users on behalf of a hacked user, add videos to the user&rsquo;s favorites, and send messages on a user&rsquo;s behalf.</p>
+
+<p>A web developer generally needs to explicitly protect their app from CSRF attacks, and thankfully, Rails does it for us with default code. (Other languages often have plugins etc to help handle this issue, but Rails, as usual, makes things much easier.)</p>
+
+<p><strong>What Is Protect_From_Forgery?</strong></p>
+
+<p>According to to the <a href="https://github.com/rails/rails/blob/0450642c27af3af35b449208b21695fd55c30f90/actionpack/lib/action_controller/metal/request_forgery_protection.rb">Rails source</a>:</p>
+
+<blockquote><p>Controller actions are protected from Cross-Site Request Forgery (CSRF) attacks by including a token in the rendered HTML for your application. This token is stored as a random string in the session, to which an attacker does not have access. When a request reaches your application, Rails verifies the received token with the token in the session. All requests are checked except GET requests as these should be idempotent. Keep in mind that all session-oriented requests should be CSRF protected, including JavaScript and HTML requests.</p></blockquote>
+
+<p>That means that your app will protected against CSRF attacks with one line in your Application Controller: <strong><code>protect_from_forgery with: :exception</code></strong>. It protects your session via a <strong><code>:null_session method</code></strong>: an empty session is generated during a request.</p>
+
+<p><strong>How Is Protection Executed?</strong></p>
+
+<p>It does so by requiring a special CSRF token to be present before any <strong><code>POST</code></strong>, <strong><code>PUT</code></strong> or <strong><code>DELETE</code></strong> request is accepted. That token will be included as a hidden field when using Rails forms builders. (Most browsers only support <strong><code>GET</code></strong> or <strong><code>PUT</code></strong> instead of all the proper RESTful verbs, but we know that Rails uses a hidden field <strong><code>_method</code></strong> to fix it.)</p>
+
+<p><strong><code>GET</code></strong> requests are not protected since they don&rsquo;t have potential to leak sensitive data. That is why it is important to use <strong><code>GET</code></strong> requests appropriately in cases when a database is read or queried etc, but a user&rsquo;s state in the app is not modified.</p>
+
+<p>The required security token in question is known as <strong><code>authenticity_token</code></strong>. That token is known to its app, but not to others. To achieve that, its name and value must be added to every view that renders forms by adding <strong><code>csrf_meta_tags</code></strong> within html <strong><code>head</code></strong> tags. That is also a default option generated when using a <strong><code>Rails new</code></strong> command and places into a <strong><code>ApplicationDirectory/app/views/layouts/application.html.erb</code></strong> file, which is normally the only view file generated for a model-less app:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/applicationhtmlerb.png"></p>
+
+<p>It&rsquo;s interesting to see the <a href="https://github.com/rails/rails/blob/4-2-stable/railties/lib/rails/generators/rails/app/templates/app/views/layouts/application.html.erb.tt">source code</a> for this in the Rails repo:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/applicationhtmlerblayout.png"></p>
+
+<p>Is a CSRF token does not match, Rails will raise an <strong><code>InvalidAuthenticityToken</code></strong>.</p>
+
+<p><strong>What If I am Building an API?</strong></p>
+
+<p>Since XML or JSON formats are also affected by this code, default forgery protection should be turned off if you are building an API as the API is designed to be stateless: <strong><code>protect_from_forgery unless: -&gt; { request.format.json? }</code></strong></p>
+
+<p>There is more information on the <a href="http://guides.rubyonrails.org/security.html">Rails Security Guides</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mastering Your Terminal -- Part III]]></title>
@@ -612,29 +673,29 @@
     <link href="http://annaershova.github.io/blog/2015/10/12/updating-os-x-from-your-command-line/"/>
     <updated>2015-10-12T11:16:32-04:00</updated>
     <id>http://annaershova.github.io/blog/2015/10/12/updating-os-x-from-your-command-line</id>
-    <content type="html"><![CDATA[<p>I am really used to seeing a pop up that says something along the lines of ‘a new version of OS X / iOS is available, do you want to update now?’</p>
+    <content type="html"><![CDATA[<p>I am really used to seeing a pop up that says something along the lines of <strong><code>a new version of OS X / iOS is available, do you want to update now?</code></strong></p>
 
-<p>Upon some research on potential issues of an update in question (I learned the hard way after having my iPhone bricked post-update when living in China), I generally go back and click &lsquo;update.&rsquo; But there is actually an easy way to do it from your Terminal. All you need is a <em>softwareupdate</em> command.</p>
+<p>Upon some research on potential issues of an update in question (I learned the hard way after having my iPhone bricked post-update when living in China), I generally go back and click <strong><code>update</code></strong>. But there is actually an easy way to do it from your Terminal. All you need is a <strong><code>softwareupdate</code></strong> command.</p>
 
-<p>Type in <em>man softwareupdate</em> to see this command&rsquo;s manual:</p>
+<p>Type in <strong><code>man softwareupdate</code></strong> to see this command&rsquo;s manual:</p>
 
 <p><img class="center" src="http://annaershova.github.io/images/softwareupdatemanual.png"></p>
 
-<p>Run <em>softwareupdate -l</em> to see available updates. You will see something like this:</p>
+<p>Run <strong><code>softwareupdate -l</code></strong> to see available updates. You will see something like this:</p>
 
 <p><img class="center" src="http://annaershova.github.io/images/softwareupdate_l.png"></p>
 
-<p>While you are at it, you can turn on automatic update checker from your Terminal:</p>
+<p>While you are at it, you can turn on automatic update checker from your Terminal: <strong><code>sudo softwareupdate --schedule on</code></strong> (<strong><code>off</code></strong> to disable it).</p>
 
 <p><img class="center" src="http://annaershova.github.io/images/softwareupdateautomaticcheck.png"></p>
 
-<p>Then run this to install the specific update you want:</p>
+<p>Then run this to install the specific update you want: <strong><code>sudo softwareupdate --install UPDATE_NAME</code></strong></p>
 
 <p><img class="center" src="http://annaershova.github.io/images/supdinstall.png"></p>
 
-<p>(Use -d flag to just download the update, but not install it.)</p>
+<p>(Use the <strong><code>-d</code></strong> flag to just download the update, but not install it.)</p>
 
-<p>And of course to re-boot your computer, you can simply run this command instead of going through the Mac menu:</p>
+<p>And of course to re-boot your computer, you can simply run this command instead of going through the Mac menu: <strong><code>sudo shutdown -r now</code></strong></p>
 
 <p><img class="center" src="http://annaershova.github.io/images/shutdown.png"></p>
 
@@ -1168,37 +1229,6 @@
 <p> It is is a very comprehensive but not excessively lengthy GitHub repo that will answer most of the questions you have ever had about, say, indenting when and case together — turns out they are supposed to be indented at the same level! (That means if I re-visit some earlier labs, cosmetic edits will need to be made.) The best part if, anyone is welcome to contribute and submit a pull request &ndash; and maybe your take on comment indentation will be shared with the next generation of newbie developers.</p>
 
 <p>Now, if there was only a website that did my Ruby code formatting for me&hellip;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Beautifying Non-Working Blog Posts]]></title>
-    <link href="http://annaershova.github.io/blog/2015/06/09/beautifying-non-working-blog-posts/"/>
-    <updated>2015-06-09T22:02:40-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/06/09/beautifying-non-working-blog-posts</id>
-    <content type="html"><![CDATA[<p>Avi said on Day 1 of Flatiron School: don&rsquo;t fix non-functioning code. But how about editing a non-working blog post?</p>
-
-<p>I had a post all written up and ready to go. It was about ways to iterate over arrays and had several A4 pages' worth of text (come to think of it, it’s a good thing that post did not happen).</p>
-
-<p>I did some edits on it over the weekend, polishing my style, planning my fancy markup, and inserting clever programmer jokes  (“Make me a sandwich” “No” “Sudo make me a sandwich” “Sure”).</p>
-
-<p>All I had to do was set up Octopress and deploy it, which I conveniently postponed until the night before it was due. Because what could go wrong?</p>
-
-<p>Many things, as it turned out.</p>
-
-<p>I think I was the only person in my cohort (are there 27 of us? seems that we never did a headcount) who had issues setting up GitHub pages.</p>
-
-<p>While everyone seemed to have their nice and shiny parts of cyberspace in which to share their musings with the outside world, mine never allowed me deploy the mandatory &ldquo;hello world&rdquo; post.</p>
-
-<p>Several hours of feverish stack overflow-ing and tortured troubleshooting later (I would rather solve Hashketball both times all over again), it still wasn&rsquo;t working.</p>
-
-<p>After several more hours of precious instructor time (thank you, Rose!), we all threw our hands in the air, rm -rf'ed existing directories, deleted GitHub repos, and started from scratch. And it worked, ad oculos.</p>
-
-<p>We figured out what happened, but not how. It looks like GitHub Pages gave me setup meant for companies instead of private individuals. Octopress was not enthused about me being Anna Ershova LLC and refused to produce a live page.</p>
-
-<p>But we re-did it from scratch and that fixed it. And by then I had realized that Avi was right. I spent too much time on writing and editing my post, without trying to see if it would even go through. Murphy’s Law dictates that it is the very situation when it wouldn’t.  So instead of using my original post, I am writing this one as a very public note to self to not get caught up in aesthetics of things if I don&rsquo;t even know if they are going to work.</p>
-
-<p>And those dozens of ways to iterate over arrays? Brace yourselves, I&rsquo;ll come back to that.</p>
 ]]></content>
   </entry>
   

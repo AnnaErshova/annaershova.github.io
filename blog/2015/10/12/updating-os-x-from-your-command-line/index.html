@@ -9,7 +9,7 @@
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="I am really used to seeing a pop up that says something along the lines of ‘a new version of OS X / iOS is available, do you want to update now?’ &hellip;">
+  <meta name="description" content="I am really used to seeing a pop up that says something along the lines of a new version of OS X / iOS is available, do you want to update now? Upon &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,29 +85,29 @@
   </header>
 
 
-<div class="entry-content"><p>I am really used to seeing a pop up that says something along the lines of ‘a new version of OS X / iOS is available, do you want to update now?’</p>
+<div class="entry-content"><p>I am really used to seeing a pop up that says something along the lines of <strong><code>a new version of OS X / iOS is available, do you want to update now?</code></strong></p>
 
-<p>Upon some research on potential issues of an update in question (I learned the hard way after having my iPhone bricked post-update when living in China), I generally go back and click &lsquo;update.&rsquo; But there is actually an easy way to do it from your Terminal. All you need is a <em>softwareupdate</em> command.</p>
+<p>Upon some research on potential issues of an update in question (I learned the hard way after having my iPhone bricked post-update when living in China), I generally go back and click <strong><code>update</code></strong>. But there is actually an easy way to do it from your Terminal. All you need is a <strong><code>softwareupdate</code></strong> command.</p>
 
-<p>Type in <em>man softwareupdate</em> to see this command&rsquo;s manual:</p>
+<p>Type in <strong><code>man softwareupdate</code></strong> to see this command&rsquo;s manual:</p>
 
 <p><img class="center" src="/images/softwareupdatemanual.png"></p>
 
-<p>Run <em>softwareupdate -l</em> to see available updates. You will see something like this:</p>
+<p>Run <strong><code>softwareupdate -l</code></strong> to see available updates. You will see something like this:</p>
 
 <p><img class="center" src="/images/softwareupdate_l.png"></p>
 
-<p>While you are at it, you can turn on automatic update checker from your Terminal:</p>
+<p>While you are at it, you can turn on automatic update checker from your Terminal: <strong><code>sudo softwareupdate --schedule on</code></strong> (<strong><code>off</code></strong> to disable it).</p>
 
 <p><img class="center" src="/images/softwareupdateautomaticcheck.png"></p>
 
-<p>Then run this to install the specific update you want:</p>
+<p>Then run this to install the specific update you want: <strong><code>sudo softwareupdate --install UPDATE_NAME</code></strong></p>
 
 <p><img class="center" src="/images/supdinstall.png"></p>
 
-<p>(Use -d flag to just download the update, but not install it.)</p>
+<p>(Use the <strong><code>-d</code></strong> flag to just download the update, but not install it.)</p>
 
-<p>And of course to re-boot your computer, you can simply run this command instead of going through the Mac menu:</p>
+<p>And of course to re-boot your computer, you can simply run this command instead of going through the Mac menu: <strong><code>sudo shutdown -r now</code></strong></p>
 
 <p><img class="center" src="/images/shutdown.png"></p>
 
@@ -194,6 +194,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/">What's CSRF and What Exactly Are We Are Protecting From Forgery in Controllers?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/20/mastering-your-terminal-part-iii/">Mastering Your Terminal -- Part III</a>
       </li>
     
@@ -207,10 +211,6 @@
     
       <li class="post">
         <a href="/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/10/15/rake-database-tasks/">Rake Database Tasks</a>
       </li>
     
   </ul>

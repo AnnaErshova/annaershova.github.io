@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>What's CSRF and What Exactly Are We Are Protecting From Forgery in Controllers? - Anna's Blog</title>
+  <meta name="author" content="Anna Ershova">
+
+  
+  <meta name="description" content="Running any Rails new command will produce a ApplicationDirectory/app/controllers/application_controller.rb file that looks like this initially: &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Anna's Blog</a></h1>
+  
+    <h2>Getting de-railed</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">What's CSRF and What Exactly Are We Are Protecting From Forgery in Controllers?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-25T14:53:44-04:00" pubdate data-updated="true">Oct 25th, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Running any <strong><code>Rails new</code></strong> command will produce a <strong><code>ApplicationDirectory/app/controllers/application_controller.rb</code></strong> file that looks like this initially:</p>
+
+<p><img class="center" src="/images/application_controller_csrf.png"></p>
+
+<p>Since Rails is so beginner-friendly, many new developers are too preoccupied with making an app that works (<em>why do my routes look like that?!</em>) than looking into each and every line of generated code. I find that the CSRF-related line of code in a standard <strong><code>ApplicationController</code></strong> is particularily often overlooked. I wanted to discuss it here as it is connected a serious security issue often encountered on the web.</p>
+
+<p>The Ruby on Rails API has a comprehensive <a href="http://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection/ClassMethods.html">guide</a> explaining what <strong><code>protect_from_forgery</code></strong> does. It still assumes a basic understanding of CSRF.</p>
+
+<p><strong>How CSRF Works</strong></p>
+
+<p>CSRF (sometimes spelled as XSRF) stands for <em>cross-side request forgery</em>. It is, according to <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Wikipedia</a>, sometimes pronounced as <em>see-surf</em> (which I absolutely did not know prior to reading the Wiki article). However it is pronounced, it involves an attacker submitting malicious commands to an app that appear to come from a user that the app has authorized and that the browser trusts. The hacker can therefore gain control of an account.</p>
+
+<p>CSRF is sometimes refered to as &lsquo;session riding,&rsquo; a pretty accurate description as you&rsquo;ll see.</p>
+
+<p>Note that this is different from XSS (cross-site scripting).</p>
+
+<p>Most Rails apps use cookie-based sessions. If an attacker can find a link s/he can reproduce (<em>forge</em>) that involves executing something on a target page while a user is logged in, they can then embed such a link &ndash; with a malicious action &ndash; on a page where a user can click it, thus giving an attacker control of the account.</p>
+
+<p>It is not uncommon for websites to be vulnerable to CSRF attacks. At various times, some major websites such as YouTube, The New York Times and INGDirect <a href="http://www.darkreading.com/risk/csrf-flaws-found-on-major-websites/d/d-id/1129743">famously</a> all had that issue.</p>
+
+<p>In INGDirect case, hackers could gain control of users' accounts and transfer money out to an account that was open in user&rsquo;s name but was not actually associated with them. In YouTube&rsquo;s case, hackers could friend other users on behalf of a hacked user, add videos to the user&rsquo;s favorites, and send messages on a user&rsquo;s behalf.</p>
+
+<p>A web developer generally needs to explicitly protect their app from CSRF attacks, and thankfully, Rails does it for us with default code. (Other languages often have plugins etc to help handle this issue, but Rails, as usual, makes things much easier.)</p>
+
+<p><strong>What Is Protect_From_Forgery?</strong></p>
+
+<p>According to to the <a href="https://github.com/rails/rails/blob/0450642c27af3af35b449208b21695fd55c30f90/actionpack/lib/action_controller/metal/request_forgery_protection.rb">Rails source</a>:</p>
+
+<blockquote><p>Controller actions are protected from Cross-Site Request Forgery (CSRF) attacks by including a token in the rendered HTML for your application. This token is stored as a random string in the session, to which an attacker does not have access. When a request reaches your application, Rails verifies the received token with the token in the session. All requests are checked except GET requests as these should be idempotent. Keep in mind that all session-oriented requests should be CSRF protected, including JavaScript and HTML requests.</p></blockquote>
+
+<p>That means that your app will protected against CSRF attacks with one line in your Application Controller: <strong><code>protect_from_forgery with: :exception</code></strong>. It protects your session via a <strong><code>:null_session method</code></strong>: an empty session is generated during a request.</p>
+
+<p><strong>How Is Protection Executed?</strong></p>
+
+<p>It does so by requiring a special CSRF token to be present before any <strong><code>POST</code></strong>, <strong><code>PUT</code></strong> or <strong><code>DELETE</code></strong> request is accepted. That token will be included as a hidden field when using Rails forms builders. (Most browsers only support <strong><code>GET</code></strong> or <strong><code>PUT</code></strong> instead of all the proper RESTful verbs, but we know that Rails uses a hidden field <strong><code>_method</code></strong> to fix it.)</p>
+
+<p><strong><code>GET</code></strong> requests are not protected since they don&rsquo;t have potential to leak sensitive data. That is why it is important to use <strong><code>GET</code></strong> requests appropriately in cases when a database is read or queried etc, but a user&rsquo;s state in the app is not modified.</p>
+
+<p>The required security token in question is known as <strong><code>authenticity_token</code></strong>. That token is known to its app, but not to others. To achieve that, its name and value must be added to every view that renders forms by adding <strong><code>csrf_meta_tags</code></strong> within html <strong><code>head</code></strong> tags. That is also a default option generated when using a <strong><code>Rails new</code></strong> command and places into a <strong><code>ApplicationDirectory/app/views/layouts/application.html.erb</code></strong> file, which is normally the only view file generated for a model-less app:</p>
+
+<p><img class="center" src="/images/applicationhtmlerb.png"></p>
+
+<p>It&rsquo;s interesting to see the <a href="https://github.com/rails/rails/blob/4-2-stable/railties/lib/rails/generators/rails/app/templates/app/views/layouts/application.html.erb.tt">source code</a> for this in the Rails repo:</p>
+
+<p><img class="center" src="/images/applicationhtmlerblayout.png"></p>
+
+<p>Is a CSRF token does not match, Rails will raise an <strong><code>InvalidAuthenticityToken</code></strong>.</p>
+
+<p><strong>What If I am Building an API?</strong></p>
+
+<p>Since XML or JSON formats are also affected by this code, default forgery protection should be turned off if you are building an API as the API is designed to be stateless: <strong><code>protect_from_forgery unless: -&gt; { request.format.json? }</code></strong></p>
+
+<p>There is more information on the <a href="http://guides.rubyonrails.org/security.html">Rails Security Guides</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Anna Ershova</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-25T14:53:44-04:00" pubdate data-updated="true">Oct 25th, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/controllers/'>controllers,</a>, <a class='category' href='/blog/categories/csrf/'>csrf,</a>, <a class='category' href='/blog/categories/security/'>security</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/10/20/mastering-your-terminal-part-iii/" title="Previous Post: Mastering Your Terminal -- Part III">&laquo; Mastering Your Terminal -- Part III</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:annaershova.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <ul id="recent_posts">
+      <li class="post">
+      <a href="http://annaershova.github.io" alt="Home"><img src="/images/Home.png"></a>
+      <a href="http://annaershova.github.io/archives/" alt="Archives"><img src="/images/Calendar.png"></a>
+      <a href="mailto:anna.ershova@gmail.com" alt="E-Mail"><img src="/images/Envelope.png"></a>
+      <a href="http://annaershova.github.io/atom.xml" alt="subscribe feed"><img src="/images/rss_big.png"></a>
+      </li>
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/">What's CSRF and What Exactly Are We Are Protecting From Forgery in Controllers?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/20/mastering-your-terminal-part-iii/">Mastering Your Terminal -- Part III</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/19/mastering-your-terminal-part-ii/">Mastering Your Terminal -- Part II</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/19/mastering-your-terminal-part-i/">Mastering Your Terminal -- Part I</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Anna Ershova -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+    var stickyNavTop = $('nav').offset().top;  
+      
+    var stickyNav = function(){  
+      var scrollTop = $(window).scrollTop(); 
+      var navHasClassSticky = $('nav').hasClass('sticky');
+
+      if (scrollTop > stickyNavTop && navHasClassSticky) {   
+        return true;
+      } else if (scrollTop > stickyNavTop) {
+        $('nav').hide();
+        $('nav').addClass('sticky');
+        $('nav').fadeIn('2000');
+      } else {  
+        $('nav').removeClass('sticky');   
+      }  
+    };  
+      
+    stickyNav();  
+      
+    $(window).scroll(function() {  
+      stickyNav();  
+    });  
+  });  
+</script>
+
+
+</body>
+</html>
