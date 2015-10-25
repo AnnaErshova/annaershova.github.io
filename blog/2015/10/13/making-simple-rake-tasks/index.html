@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Making Simple Rake Tasks and Using Them With ERD - Anna's Blog</title>
+  <title>Making Custom Rake Tasks and Using Them With ERD - Anna's Blog</title>
   <meta name="author" content="Anna Ershova">
 
   
@@ -61,7 +61,7 @@
   
   <header>
     
-      <h1 class="entry-title">Making Simple Rake Tasks and Using Them With ERD</h1>
+      <h1 class="entry-title">Making Custom Rake Tasks and Using Them With ERD</h1>
     
     
       <p class="meta">
@@ -89,15 +89,15 @@
 
 <p>Rake is a project of Jim Weinrich; check out his rationale for making rake <a href="http://rake.rubyforge.org/files/doc/rational_rdoc.html">here</a>.</p>
 
-<p>My favorite part is his explanation of why it is called rake. No, it has nothing to do with garden tools. It was supposed to be a portmanteau of &lsquo;ruby&rsquo; and &lsquo;make&rsquo; (since Rake was inspired by Makefile). Hence, rake.</p>
+<p>My favorite part is his explanation of why it is called rake. No, it has nothing to do with garden tools. It was supposed to be a portmanteau of <strong>&lsquo;ruby&rsquo;</strong> and <strong>&lsquo;make&rsquo;</strong> (since Rake was inspired by Makefile). Hence, rake.</p>
 
-<p><em>rake -T</em> will give you a list of rake tasks available for a given project.</p>
+<p><strong><code>rake -T</code></strong> will give you a list of rake tasks available for a given project.</p>
 
 <p>This is what it looks like for a standard octopress directory:</p>
 
 <p><img class="center" src="/images/take_t.png"></p>
 
-<p>So if I forget that my normal routine is <code>rake generate</code> followed by <code>rake preview</code>, I can see it listed above.</p>
+<p>So if I forget that my normal routine is <strong><code>rake generate</code></strong> followed by <strong><code>rake preview</code></strong>, I can see it listed above.</p>
 
 <p>I was working with the <a href="https://github.com/voormedia/rails-erd">erd</a> gem, which uses <a href="http://www.graphviz.org/">Graphviz</a> to visualize complex database relationships in rails. If you want to understand what exactly is happening in your schema, it&rsquo;s the gem for you.</p>
 
@@ -112,13 +112,13 @@
   end
 </code></pre>
 
-<p>The idea there is have a task that runs <code>erd --inheritance --filetype=dot --direct --attributes=foreign_keys,content</code>. The system then generated a .dot files, which is when converted into a .png file, with the rationale being that Graphviz has issues generating files that are not .dot.</p>
+<p>The idea there is have a task that runs <strong><code>erd --inheritance --filetype=dot --direct --attributes=foreign_keys,content</code></strong>. The system then generates a <strong><code>.dot</code></strong> file, which is when converted into a <strong><code>.png</code></strong> file, with the rationale being that Graphviz has issues generating files that are not <strong><code>.dot</code></strong>.</p>
 
-<p>You can just put it in a rake file, or run <code>rails g task erd generate_erd</code>. It adds a erd.rake file to lib/tasks (or you can add one manually and just type your code instead of using a generator).</p>
+<p>You can just put it in a rake file, or run <strong><code>rails g task erd generate_erd</code></strong>. It adds a <strong><code>erd.rake</code></strong> file to <strong><code>lib/tasks</code></strong> (or you can add one manually and just type your code instead of using a generator).</p>
 
-<p>To use that task, you type <code>rake erd:generate_erd</code> in your Terminal.</p>
+<p>To use that task, you type <strong><code>rake erd:generate_erd</code></strong> in your Terminal.</p>
 
-<p>I ended up using these rake tasks to demonstrate the idea behind using namespace. They generate a png file as per an example above and a default pdf one:</p>
+<p>I ended up using these rake tasks to demonstrate the idea behind using namespace. They generate a <strong><code>png</code></strong> file as per an example above and a default <strong><code>pdf</code></strong> one:</p>
 
 <p><img class="center" src="/images/rake_commands.png"></p>
 
@@ -130,7 +130,7 @@
 
 <p><img class="center" src="/images/erd_directory.png"></p>
 
-<p>NB: if all you wanted was to simplify running one long command (such as the aforementioned <em>erd &ndash;inheritance &ndash;filetype=dot &ndash;direct &ndash;attributes=foreign_keys,content</em>), you could just create a shell alias that you could then use across all your projects if they have erd installed.</p>
+<p>NB: if all you wanted was to simplify running one long command (such as the aforementioned <strong><code>erd --inheritance --filetype=dot --direct --attributes=foreign_keys,content</code></strong>), you could just create a shell alias that you could then use across all your projects if they have erd installed.</p>
 </div>
 
 
@@ -159,7 +159,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/rake/'>rake</a>
+    <a class='category' href='/blog/categories/erd/'>erd</a>, <a class='category' href='/blog/categories/rake/'>rake,</a>
   
 </span>
 
@@ -213,6 +213,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/10/20/mastering-your-terminal-part-iii/">Mastering Your Terminal -- Part III</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/19/mastering-your-terminal-part-ii/">Mastering Your Terminal -- Part II</a>
       </li>
     
@@ -226,10 +230,6 @@
     
       <li class="post">
         <a href="/blog/2015/10/15/rake-database-tasks/">Rake Database Tasks</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/10/13/making-simple-rake-tasks/">Making Simple Rake Tasks and Using Them With ERD</a>
       </li>
     
   </ul>

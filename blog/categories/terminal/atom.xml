@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Terminal | Anna's Blog]]></title>
   <link href="http://annaershova.github.io/blog/categories/terminal/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-20T19:27:19-04:00</updated>
+  <updated>2015-10-25T14:27:56-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mastering Your Terminal -- Part III]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/20/mastering-your-terminal-part-iii/"/>
+    <updated>2015-10-20T23:24:26-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/20/mastering-your-terminal-part-iii</id>
+    <content type="html"><![CDATA[<p><strong>Shutting Down Your Mac From Your Terminal:</strong></p>
+
+<p><strong><code>sudo shutdown -r now</code></strong></p>
+
+<p><strong><code>shutdown</code></strong> is the command you need.</p>
+
+<p>Pass in the following options:</p>
+
+<ul>
+<li><strong><code>-h</code></strong> &ndash; halt the session, re-starts the system</li>
+<li><strong><code>-s</code></strong> &ndash; sleep</li>
+<li><strong><code>-r</code></strong> &ndash; re-boot the system</li>
+<li><strong><code>-k</code></strong> &ndash; kick everyone off but the super-user</li>
+</ul>
+
+
+<p>And as for time options:</p>
+
+<ul>
+<li><strong><code>now</code></strong> &ndash; execute command immediately</li>
+<li><strong><code>+integer</code></strong> &ndash; execute command in x minutes (e.g., <strong><code>+10</code></strong> is in 10 minutes)</li>
+<li><strong><code>yymmddhhmm</code></strong> &ndash; execute command on a given time and date</li>
+</ul>
+
+
+<p>If you schedule a <strong><code>shutdown</code></strong> command, but decide to hold off of it, <strong><code>sudo shutdown -c</code></strong> will cancel it.</p>
+
+<p>In my understanding, <strong><code>sudo shutdown -r now</code></strong> is a functional equivalent of <strong><code>sudo reboot</code></strong></p>
+
+<p><strong>Changing What Your Power Button Does:</strong></p>
+
+<p>In the OS X prior to the 10.9 Maverick, a power button used to bring up a <strong><code>Restart</code></strong>, <strong><code>Sleep</code></strong>, <strong><code>Cancel</code></strong>, and <strong><code>Shut Down</code></strong> options.</p>
+
+<p>In later OS X versions, pressing it just puts your machine to sleep. If you want to have it bring up an earlier options menu, run this:</p>
+
+<p><strong><code>defaults write com.apple.loginwindow PowerButtonSleepsSystem -bool FALSE</code></strong></p>
+
+<p>Pressing the power button will then bring up this dialog:</p>
+
+<p><img class="center" src="/images/powerbuttondialog.png"></p>
+
+<p>If you want to switch back to the sleep-only option, run the same command with <strong><code>TRUE</code></strong> instead of <strong><code>FALSE</code></strong>.</p>
+
+<p><strong>Having Your System Restart Automatically If It Freezes:</strong></p>
+
+<p>While Macs tend to have relatively good uptimes (see <a href="http://annaershova.github.io/blog/2015/10/12/mac-uptime-and-reboot-stats/">here</a> for more info what that is and how to find it out), OS X can still freeze up. Most users press the power button for a couple of seconds to have it turn off, and then press it again to turn it back on. That generally works well, but you can also type this in your Terminal to have its equivalent happen automatically:</p>
+
+<p><strong><code>sudo systemsetup -setrestartfreeze on</code></strong></p>
+
+<p>(It&rsquo;s also useful if you are not there physically to press the restart button, for instance, if your Mac acts as a server.)</p>
+
+<p>To disable this option, run the same command with <strong><code>OFF</code></strong> instead of <strong><code>ON</code></strong>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mastering Your Terminal -- Part II]]></title>
@@ -271,6 +331,33 @@
 
 
 <p><img class="center" src="/images/date_command.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Uptime and Reboot Stats]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/12/mac-uptime-and-reboot-stats/"/>
+    <updated>2015-10-12T11:46:01-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/12/mac-uptime-and-reboot-stats</id>
+    <content type="html"><![CDATA[<p>While we are on a subject of controlling your Mac from your Terminal, here is something else that is useful:</p>
+
+<p>Mac uptime is how long it has been since the system has been re-booted or re-started. Type in <strong><code>uptime</code></strong> in your Terminal, and you will see the stats in minutes, hours, or days, depending on how long it has been for your Mac:</p>
+
+<p><img class="center" src="/images/uptime.png"></p>
+
+<p>(I just re-booted when installing a new OS X hence such a short uptime for me. Uptime can extend into months for some users as Macs tend to be very stable unlike Windows machines.)</p>
+
+<p>You will also see number of users using your machine during said uptime as well as load averages in 1, 5, and 15 minute intervals from left to right &ndash; mine actually indicate I may want a more powerful system.</p>
+
+<p>Run <strong><code>last reboot</code></strong>  to see rebooting history:</p>
+
+<p><img class="center" src="/images/lastreboot.png"></p>
+
+<p>Another neat trick is to run in <strong><code>last</code></strong> to see last sessions of users, hosts and ttys in a reverse chronological order:</p>
+
+<p><img class="center" src="/images/last.png"></p>
+
+<p>There are handy gadgets for uptime and reboot stats, but I doubt that most regular users would really need them on a regular basis. Checking in with your Terminal now and then should be sufficient.</p>
 ]]></content>
   </entry>
   

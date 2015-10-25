@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://annaershova.github.io/blog/2015/10/20/mastering-your-terminal-part-iii/</loc>
+    <lastmod>2015-10-20T23:24:26-04:00</lastmod>
+  </url>
+  <url>
     <loc>http://annaershova.github.io/blog/2015/10/19/mastering-your-terminal-part-ii/</loc>
     <lastmod>2015-10-19T23:24:32-04:00</lastmod>
   </url>
@@ -123,7 +127,19 @@
     <loc>http://annaershova.github.io/blog/categories/rake/</loc>
   </url>
   <url>
+    <loc>http://annaershova.github.io/blog/categories/erd/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/rake/</loc>
+  </url>
+  <url>
     <loc>http://annaershova.github.io/blog/categories/generators/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/posts/2/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/posts/3/</loc>
   </url>
   <url>
     <loc>http://annaershova.github.io/images/Edit fiddle - JSFiddle.html</loc>

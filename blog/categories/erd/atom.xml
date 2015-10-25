@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Erd | Anna's Blog]]></title>
+  <link href="http://annaershova.github.io/blog/categories/erd/atom.xml" rel="self"/>
+  <link href="http://annaershova.github.io/"/>
+  <updated>2015-10-25T14:27:56-04:00</updated>
+  <id>http://annaershova.github.io/</id>
+  <author>
+    <name><![CDATA[Anna Ershova]]></name>
+    <email><![CDATA[anna.ershova@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Making Custom Rake Tasks and Using Them With ERD]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/13/making-simple-rake-tasks/"/>
+    <updated>2015-10-13T08:52:15-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/13/making-simple-rake-tasks</id>
+    <content type="html"><![CDATA[<p>I started making my own rake tasks recently to help with specific repetitive tasks that I need to do while working on projects.</p>
+
+<p>Rake is a project of Jim Weinrich; check out his rationale for making rake <a href="http://rake.rubyforge.org/files/doc/rational_rdoc.html">here</a>.</p>
+
+<p>My favorite part is his explanation of why it is called rake. No, it has nothing to do with garden tools. It was supposed to be a portmanteau of <strong>&lsquo;ruby&rsquo;</strong> and <strong>&lsquo;make&rsquo;</strong> (since Rake was inspired by Makefile). Hence, rake.</p>
+
+<p><strong><code>rake -T</code></strong> will give you a list of rake tasks available for a given project.</p>
+
+<p>This is what it looks like for a standard octopress directory:</p>
+
+<p><img class="center" src="/images/take_t.png"></p>
+
+<p>So if I forget that my normal routine is <strong><code>rake generate</code></strong> followed by <strong><code>rake preview</code></strong>, I can see it listed above.</p>
+
+<p>I was working with the <a href="https://github.com/voormedia/rails-erd">erd</a> gem, which uses <a href="http://www.graphviz.org/">Graphviz</a> to visualize complex database relationships in rails. If you want to understand what exactly is happening in your schema, it&rsquo;s the gem for you.</p>
+
+<p>I haven&rsquo;t used it in a bit, so I googled it, and <a href="https://ryanboland.com/blog/creating-a-database-diagram-with-rails-erd/">this tutorial</a> popped up.</p>
+
+<p>It had a suggestion to make a simple rake task to run the erd command with specific attributes to get just the type of a diagram you want:</p>
+
+<pre><code class="``ruby desc 'Generate Entity Relationship Diagram'">  task :generate_erd do
+    system "erd --inheritance --filetype=dot --direct --attributes=foreign_keys,content"
+    system "dot -Tpng erd.dot &gt; erd.png"
+    File.delete('erd.dot')
+  end
+</code></pre>
+
+<p>The idea there is have a task that runs <strong><code>erd --inheritance --filetype=dot --direct --attributes=foreign_keys,content</code></strong>. The system then generates a <strong><code>.dot</code></strong> file, which is when converted into a <strong><code>.png</code></strong> file, with the rationale being that Graphviz has issues generating files that are not <strong><code>.dot</code></strong>.</p>
+
+<p>You can just put it in a rake file, or run <strong><code>rails g task erd generate_erd</code></strong>. It adds a <strong><code>erd.rake</code></strong> file to <strong><code>lib/tasks</code></strong> (or you can add one manually and just type your code instead of using a generator).</p>
+
+<p>To use that task, you type <strong><code>rake erd:generate_erd</code></strong> in your Terminal.</p>
+
+<p>I ended up using these rake tasks to demonstrate the idea behind using namespace. They generate a <strong><code>png</code></strong> file as per an example above and a default <strong><code>pdf</code></strong> one:</p>
+
+<p><img class="center" src="/images/rake_commands.png"></p>
+
+<p>And running these tasks in Terminal:</p>
+
+<p><img class="center" src="/images/rake_terminal.png"></p>
+
+<p>And you are done! Two file types of database schema charts have been generated:</p>
+
+<p><img class="center" src="/images/erd_directory.png"></p>
+
+<p>NB: if all you wanted was to simplify running one long command (such as the aforementioned <strong><code>erd --inheritance --filetype=dot --direct --attributes=foreign_keys,content</code></strong>), you could just create a shell alias that you could then use across all your projects if they have erd installed.</p>
+]]></content>
+  </entry>
+  
+</feed>

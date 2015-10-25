@@ -87,31 +87,39 @@
 
 <div class="entry-content"><p>There are multiple db namespace rake tasks, which are very useful for a Rails developer.</p>
 
-<p>I don&rsquo;t often see them covered in Rails tutorials as a task list, and it took me a while to figure out which commands I needed to use while developing.</p>
+<p>I don&rsquo;t often see them covered in Rails tutorials as a task list, and it took me a while to figure out which commands I needed to use in my regular workflow.</p>
 
-<p>Most beginner developers stick to <code>rake db:migrate</code>, <code>rake db:seed</code> and <code>rake db:reset</code>, but there are quite a few more options.</p>
+<hr />
+
+<p><strong>Migrations</strong></p>
+
+<p>Most beginner developers stick to <strong><code>rake db:migrate</code></strong>, <strong><code>rake db:seed</code></strong> and <strong><code>rake db:reset</code></strong>, but there are quite a few more options.</p>
 
 <p><em>Migration</em> is a version of a database (I <em>still</em> don&rsquo;t understand what we are migrating and where, but oh well, such is conventional terminology).</p>
 
-<p>Each new migration modifies a database schema (which starts out blank) by adding and removing data, changing data types etc.</p>
+<p>Each new migration modifies a database schema (which starts out completely blank) by adding and removing data, changing data types etc.</p>
 
-<p>Your schema is normally stored in  <code>db/schema.rb</code>, although for some developers, it will be in <code>db/structure.sql</code>.</p>
+<p>Your schema is normally stored in  <strong><code>db/schema.rb</code></strong>, although for some developers, it will be in <code>db/structure.sql</code>.</p>
 
 <p>(To create and use <code>structure.sql</code>, use <code>config.active_record.schema_format = :sql</code> in your <code>config/application.rb</code>. Most beginners should be sticking to schema.rb, the default version.)</p>
 
-<p>First, some schema-related tasks:</p>
+<hr />
+
+<p><strong>First, some schema-related rake tasks:</strong></p>
 
 <ul>
-<li><p><code>rake db:version</code> - to see your current schema version. Schemar versions are normally also listed as timestamps, so you will see something like <code>Current version: 20151014015045</code>.</p></li>
-<li><p><code>rake db:forward</code> will push the schema one step up.</p></li>
-<li><p><code>rake db:schema:load</code> &ndash; loads she schema into your database. Good practice is using it when you first put your app in production; then run migrations from there on.</p></li>
-<li><p><code>rake db:schema:dump</code> &ndash; dumps she schema.</p></li>
+<li><p><strong><code>rake db:version</code></strong> - to see your current schema version. Schemar versions are normally also listed as timestamps, so you will see something like <code>Current version: 20151014015045</code>.</p></li>
+<li><p><strong><code>rake db:forward</code></strong> will push the schema one step up.</p></li>
+<li><p><strong><code>rake db:schema:load</code></strong> &ndash; loads she schema into your database. Good practice is using it when you first put your app in production; then run migrations from there on.</p></li>
+<li><p><strong><code>rake db:schema:dump</code></strong> &ndash; dumps she schema.</p></li>
 </ul>
 
 
-<p>Now back to migrations:</p>
+<hr />
 
-<p>The easiest way to generate a migration is to run <code>rails g migration AddUseridToPosts user_id:integer</code>.</p>
+<p><strong> Now back to migrations: </strong></p>
+
+<p>The easiest way to generate a migration is to run <strong><code>rails g migration AddUseridToPosts user_id:integer</code></strong>.</p>
 
 <p>Once a migration has been generated, it will be listed in your <code>db/migrate</code> folder, usually with a format <code>datestamp_migration_name.rb</code>. Running <code>rails g</code> generates a timestamp prefix because that is the order that Rails uses to execute pending migrations.</p>
 
@@ -126,6 +134,10 @@
 <p>Before I get started, see this <a href="https://github.com/rails/rails/blob/master/activerecord/lib/active_record/railties/databases.rake">rails source</a> to see the database.rake file that describes exactly what each task does.</p>
 
 <p>Rake tasks undergo changes between different versions of Rails, so it&rsquo;s good to keep an eye out for anything that might be coming soon.</p>
+
+<hr />
+
+<p><strong> Rake migration tasks </strong></p>
 
 <ul>
 <li><p><code>rake db:migrate</code> &ndash; runs the change or up method for all pending migrationsone by one in order indicated by name prefixes. If there are no such migrations, running the task won&rsquo;t produce any outcome. But when there are, it also executes <code>db:schema:dump</code> as it needs to dump the schema and build it anew considering the migration(s) that have been added.</p></li>
@@ -146,7 +158,7 @@
 <p>NB: <code>Up</code> and <code>down</code> are actually old-school commands; <code>up</code> makes a change to the schema and <code>down</code> reverses the <code>up</code> change.</p>
 
 <ul>
-<li><p><code>rake db:migrate:redo</code> &ndash; &ldquo;Rollbacks the database one migration and re migrate up (options: STEP=x, version_number/timestamp).&rdquo;</p></li>
+<li><p><code>rake db:migrate:redo</code> &ndash; &ldquo;Rollbacks the database one migration and re migrate up (options: <code>STEP=x</code>, <code>version_number/timestamp</code>).&rdquo;</p></li>
 <li><p><code>rake db:migrate:redo STEP=x</code> = rolls back x many migrations and re-runs them</p></li>
 <li><p><code>rake db:migrate:rollback</code> &ndash; roll back last migration to get user back one step.</p></li>
 <li><p><code>rake db:migrate:rollback STEP=x</code> &ndash; roll back x many steps</p></li>
@@ -156,46 +168,51 @@
 <p>Now this is interesting:</p>
 
 <ul>
-<li><code>rake db:migrate:reset</code> = <code>rake db:drop</code>+ <code>rake db:create</code> + <code>rake db:migrate</code> = undo and re-do migrations again for current environment. It does not rollback migrations.</li>
+<li><strong><code>rake db:migrate:reset</code></strong> = <strong><code>rake db:drop</code></strong> + <strong><code>rake db:create</code></strong> + <strong><code>rake db:migrate</code></strong> = undo and re-do migrations again for current environment. It does not rollback migrations. You would want to use it when, say, running <strong><code>rails destroy scaffold Name</code></strong> as it will remove a corresponding migration and the schema would need to be re-created. You would still need to run <strong><code>rake db:seed</code></strong> if you have any seed data.</li>
 </ul>
 
 
-<p>Note the difference from:</p>
+<p>Note the difference compared to:</p>
 
 <ul>
-<li><code>rake db:reset</code> = <code>rake db:drop</code> + <code>rake db:setup</code></li>
+<li><strong><code>rake db:reset</code></strong> = <strong><code>rake db:drop</code></strong> + <strong><code>rake db:setup</code></strong></li>
 </ul>
 
 
 <p>where</p>
 
-<p><code>rake db:setup</code> = <code>rake db:schema:load</code> OR <code>rake db:structure:load</code> + <code>rake db:seed</code></p>
+<p><strong><code>rake db:setup</code></strong> = <strong><code>rake db:schema:load</code></strong> OR <strong><code>rake db:structure:load</code></strong> + <strong><code>rake db:seed</code></strong></p>
 
 <ul>
-<li><p>(<code>rake db:schema:load</code> loads schema.rb into your database)</p></li>
-<li><p>(<code>rake db:structure:load</code> loads db/structure.sql if you have specified that in your config)</p></li>
+<li><p>(<strong><code>rake db:schema:load</code></strong> loads <strong><code>schema.rb</code></strong> into your database)</p></li>
+<li><p>(<strong><code>rake db:structure:load</code></strong> loads <strong><code>db/structure.sql</code></strong> if you have specified that in your config, otherwise it will load <strong><code>db/schema.rb</code></strong>)</p></li>
 </ul>
 
 
-<p>Which means that <code>rake db:reset</code> drops database; recreates it from <code>db/schema.rb</code> or <code>db/structure.sql</code> in your current environment (and NOT from migrations); seeds database from <code>seeds.rb</code>. Note that if you have had anything imported into your database from, say, a csv file, that content will also be gone.</p>
+<p>Which means that <strong><code>rake db:reset</code></strong> drops the database; recreates it from <strong><code>db/schema.rb</code></strong> or <strong><code>db/structure.sql</code></strong> in your current environment (and NOT from migrations); seeds database from <strong><code>seeds.rb</code></strong>. Note that if you have had anything imported into your database from, say, a <strong><code>csv</code></strong> file, that content will also be gone.</p>
 
-<p><em>Note that <code>rake db:migrate:reset</code> won&rsquo;t seed your database and <code>rake db:setup</code> will.</em></p>
+<ul>
+<li>Note that <strong><code>rake db:migrate:reset</code></strong> won&rsquo;t seed your database and <strong><code>rake db:setup</code></strong> will.*</li>
+</ul>
+
 
 <p>Another rake task is also useful to see where you are with regard to migrations:</p>
 
 <ul>
-<li><code>rake db:migrate:status</code> &ndash; display status of all migrations. It will alert you if there are no schema migrations in your project yet.</li>
+<li><strong><code>rake db:migrate:status</code></strong> &ndash; display status of all migrations. It will alert you if there are no schema migrations in your project yet.</li>
 </ul>
 
 
 <p>And a heavy hitter:</p>
 
 <ul>
-<li><code>rake db:purge</code> &ndash; &ldquo;Empty the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:drop:all to drop all databases in the config). Without RAILS_ENV it defaults to purging the development and test databases.&rdquo;</li>
+<li><strong><code>rake db:purge</code></strong> &ndash; &ldquo;Empty the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:drop:all to drop all databases in the config). Without RAILS_ENV it defaults to purging the development and test databases.&rdquo;</li>
 </ul>
 
 
-<p>(The <code>rake db:purge</code> task was only added in January 2014 and is less known still.)</p>
+<p>(The <strong><code>rake db:purge</code></strong> task was only added in January 2014 and is less known.)</p>
+
+<hr />
 
 <p>There is a great Rails Guide explaining a lot of these <a href="http://edgeguides.rubyonrails.org/active_record_migrations.html">here</a>.</p>
 
@@ -248,7 +265,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/10/13/making-simple-rake-tasks/" title="Previous Post: Making Simple Rake Tasks and Using Them With ERD">&laquo; Making Simple Rake Tasks and Using Them With ERD</a>
+        <a class="basic-alignment left" href="/blog/2015/10/13/making-simple-rake-tasks/" title="Previous Post: Making Custom Rake Tasks and Using Them With ERD">&laquo; Making Custom Rake Tasks and Using Them With ERD</a>
       
       
         <a class="basic-alignment right" href="/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/" title="Next Post: Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons">Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons &raquo;</a>
@@ -284,6 +301,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/10/20/mastering-your-terminal-part-iii/">Mastering Your Terminal -- Part III</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/19/mastering-your-terminal-part-ii/">Mastering Your Terminal -- Part II</a>
       </li>
     
@@ -297,10 +318,6 @@
     
       <li class="post">
         <a href="/blog/2015/10/15/rake-database-tasks/">Rake Database Tasks</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/10/13/making-simple-rake-tasks/">Making Simple Rake Tasks and Using Them With ERD</a>
       </li>
     
   </ul>
