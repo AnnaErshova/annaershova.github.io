@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://annaershova.github.io/blog/2015/10/26/why-localhost-3000/</loc>
+    <lastmod>2015-10-26T12:10:56-04:00</lastmod>
+  </url>
+  <url>
     <loc>http://annaershova.github.io/blog/2015/10/26/some-ruby-slash-rails-slash-general-coding-resources/</loc>
     <lastmod>2015-10-26T09:01:07-04:00</lastmod>
   </url>
@@ -176,6 +180,12 @@
   </url>
   <url>
     <loc>http://annaershova.github.io/blog/categories/questions/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/localhost/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/server/</loc>
   </url>
   <url>
     <loc>http://annaershova.github.io/images/Edit fiddle - JSFiddle.html</loc>

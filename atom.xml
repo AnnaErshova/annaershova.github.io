@@ -4,7 +4,7 @@
   <title><![CDATA[Anna's Blog]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-26T09:38:27-04:00</updated>
+  <updated>2015-10-26T16:02:03-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Why Localhost:3000?]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/26/why-localhost-3000/"/>
+    <updated>2015-10-26T12:10:56-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/26/why-localhost-3000</id>
+    <content type="html"><![CDATA[<p>Most people new to rails go through some sort of &lsquo;make-an-app-in-under-15-minutes&rsquo; tutorial, which always includes instructions to run <strong><code>rails s</code></strong> or  <strong><code>rails server</code></strong> to get a preview of your app.</p>
+
+<p>Typing it into a console usually produces something like this:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/railss.png"></p>
+
+<p>And when you point your browser to <strong><code>localhost:3000</code></strong> (or alternatively <strong><code>http://127.0.0.1:3000/</code></strong>, where <strong><code>http://127.0.0.1</code></strong> is your computer&rsquo;s loopback address), you see the standard Welcome Aboard message:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/localhostscreenshot.png"></p>
+
+<p>In fact, <strong><code>localhost:3000</code></strong> is so common that someone registered a <a href="http://www.localhost3000.org/">website</a> that takes you to a website that reminds you you forgot to start your server, if that is indeed the case.</p>
+
+<hr />
+
+<p><strong>What if I want to use another port?</strong></p>
+
+<p>To switch port to, say, 80, run this:</p>
+
+<p><strong><code>bundle exec rails s -p 80</code></strong></p>
+
+<p>See documentation on it <a href="https://github.com/rails/rails/blob/4-2-stable/railties/lib/rails/commands/server.rb">here</a> as I could not find any actual description in Terminal:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/rails_server_docs.png"></p>
+
+<hr />
+
+<p>Rails servers.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Some Ruby / Rails / General Coding Resources]]></title>
@@ -1236,79 +1271,6 @@
 <p>However &ndash; all of the evaluted solutions took well under a second, so it is not really significant for this particular problem. But speed is a major concern for many industries (see a very interesting NYTimes article that discusses how it applies in finance (<a href="http://www.nytimes.com/2014/04/14/opinion/krugman-three-expensive-milliseconds.html?_r=0">article here &ndash; paywall</a>)).</p>
 
 <p>Certain companies employ entire teams of people whose job description is to shave off milliseconds of algorithm running times. While Ruby&rsquo;s Benchmarking module is not powerful enough for those commercial purposes, it is a fun way to experiment with the code one writes to see how it compares against other options.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Writing Elegant Code Part II: The Rules]]></title>
-    <link href="http://annaershova.github.io/blog/2015/06/27/writing-elegant-code-part-ii-the-rules/"/>
-    <updated>2015-06-27T20:22:39-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/06/27/writing-elegant-code-part-ii-the-rules</id>
-    <content type="html"><![CDATA[<p>I remember curiously peeking at code on GitHub before starting Flatiron. Even then, despite not understanding all too well what the code was meant to do, I could tell that some of it was easier to read than others. My favorite samples had methods that were short and clearly named, variables has clear names, code was organized logically and everything was properly indented.</p>
-
-<p>Now that I can (mostly) write some functioning code, it is time to make sure it is easy to understand to those who may read it at a later point.</p>
-
-<p>And so I went in search of re-factoring rules &ndash; and I found them.</p>
-
-<p>The Rules are Sandi Metz' Rules for Developers and are discussed <a href="https://robots.thoughtbot.com/sandi-metz-rules-for-developers">here</a>.</p>
-
-<p>I am paraphrasing them slightly below:</p>
-
-<blockquote><ol>
-<li><p>Classes can be no longer than 100 lines of code ( # sloc &ndash; we are not counting blank lines) to ensure they stay within the single responsibility principle for classes.</p></li>
-<li><p>Methods can be no longer than five lines of code in Ruby proper (Rails is hard, and I am still not sure how it is meant to work). And yes, if statements with else and elfish count. Don&rsquo;t do them. Break your code into reasonable methods with easy-to-follow names [use neonates as an example].</p></li>
-<li><p>Pass no more than four parameters into a method. Hash options are parameters, too.</p></li>
-<li><p>Controllers can instantiate only one object. Views can only know about one instance variable; views should only send messages to that particular object.</p></li>
-</ol>
-</blockquote>
-
-<p>I will touch on all of these later,  but in this post, I wanted to discuss applying the first 2 in real life (insofar as solving labs can count as &lsquo;real life&rsquo;, of course).</p>
-
-<p>For a lab this week, we had to write a simple game of Rock Paper Scissors and then turn it into a simple web app using Sinatra. To create such a game is far from challenging, and my code was already reasonably succinct at the point when I got all the rspec tests to pass. (NB: that is not how I would actually write the game, but it worked in a lab context).</p>
-
-<p>But the code still felt it could use some re-factoring:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/RPpre-refactoring.png"></p>
-
-<p>Enter The Rules.</p>
-
-<p>My class was much shorter than the mandated 100 lines of code &ndash; check.</p>
-
-<p>Most of my methods were one-liners with 3 winning scenario helper methods designed to not clutter my  won? method. So far, so good.</p>
-
-<p>But what is going on lines 33 to 41? (that method is called on in app.rb to integrate into Sinatra.)</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/outcome.png"></p>
-
-<p>It felt too simplistic &ndash; just an if-then statement? really? And I was just itching to improve it somehow. It certthe explicitly frowned upon elsif was there!).</p>
-
-<p>I was not entirely sure how to improve it other than via a nested ternary operator. While I like ternary operators as much as the next noob Ruby developer who thinks they are really cool-looking, nesting them is just the opposite of my goal of writing code that is easily understood by others.</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/nestedternary.png"></p>
-
-<p>I had a very vague notion of experimenting with something else instead: calling on all 3 methods, checking which one returns true (and in this case, one and only one will return true) and then returning interpolated name of that method with an exclamation point instead of a question mark. So if method won? is the one that returns true, then the game response would be &lsquo;you won!&rsquo;</p>
-
-<p>I went to one of the instructors, Sophie, seeking her counsel on how to execute just that. After some pry-ing around, we have decided that such a solution would not actually save me any lines of code, because I woulf have to write new methods that will take up the very lines I have saved.</p>
-
-<p>But Sophie did point out something the test did not cover: the computer_play method was sampling the USER_CHOICES (previosuly known as VALID_MOVES) array every time, so I needed to assign it to an instance variable (and that is why pair programming with a more senior professional is so important).</p>
-
-<p>Upon some consideration, I also got rid of the winning scenarios methods (3 basically identicaly methods? sounds like something in need of abtraction to me) by creating a VICTORY_HASH constant.
-<img class="center" src="http://annaershova.github.io/images/victory_hash.png"></p>
-
-<p>At that point, I could have gotten rid of the VALID_MOVES array, reading it as keys or values of VICTORY_HASH instead, but to keep it allows for better code comprehension, so it was spared from culling.</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/valid_moves.png"></p>
-
-<p>To make everything orderly, I re-named &lsquo;user_move&rsquo; as &lsquo;user_play&rsquo;, because I wanted its name to be symmetrical to the computer_play method (whose name was in turn mandated by Rspec).</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/user_move.png">
-<img class="center" src="http://annaershova.github.io/images/user_play.png"></p>
-
-<p>The final code ended up being shorter than before by around 10 lines:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/refactored_rps.png"></p>
-
-<p>And the &lsquo;outcome&rsquo; method? It is still there, staring at me in its simple flow control glory. Rules exist to be broken, I suppose.</p>
 ]]></content>
   </entry>
   

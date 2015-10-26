@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Rake, - Anna's Blog</title>
+  <title>Why Localhost:3000? - Anna's Blog</title>
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="Category: rake,">
+  <meta name="description" content="Most people new to rails go through some sort of &lsquo;make-an-app-in-under-15-minutes&rsquo; tutorial, which always includes instructions to run &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://annaershova.github.io/blog/categories/rake">
+  <link rel="canonical" href="http://annaershova.github.io/blog/2015/10/26/why-localhost-3000">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
@@ -57,49 +57,112 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Rake,</h1>
+    
+      <h1 class="entry-title">Why Localhost:3000?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-26T12:10:56-04:00" pubdate data-updated="true">Oct 26th, 2015</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>Most people new to rails go through some sort of &lsquo;make-an-app-in-under-15-minutes&rsquo; tutorial, which always includes instructions to run <strong><code>rails s</code></strong> or  <strong><code>rails server</code></strong> to get a preview of your app.</p>
 
-  
-  <h2>2015</h2>
+<p>Typing it into a console usually produces something like this:</p>
 
-<article>
-  
-<h1><a href="/blog/2015/10/15/rake-database-tasks/">Rake Database Tasks</a></h1>
-<time datetime="2015-10-15T10:47:23-04:00" pubdate><span class='month'>Oct</span> <span class='day'>15</span> <span class='year'>2015</span></time>
+<p><img class="center" src="/images/railss.png"></p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/database/'>database,</a>, <a class='category' href='/blog/categories/migration/'>migration,</a>, <a class='category' href='/blog/categories/rake/'>rake,</a>, <a class='category' href='/blog/categories/schema/'>schema</a></span>
-</footer>
+<p>And when you point your browser to <strong><code>localhost:3000</code></strong> (or alternatively <strong><code>http://127.0.0.1:3000/</code></strong>, where <strong><code>http://127.0.0.1</code></strong> is your computer&rsquo;s loopback address), you see the standard Welcome Aboard message:</p>
 
+<p><img class="center" src="/images/localhostscreenshot.png"></p>
 
-</article>
+<p>In fact, <strong><code>localhost:3000</code></strong> is so common that someone registered a <a href="http://www.localhost3000.org/">website</a> that takes you to a website that reminds you you forgot to start your server, if that is indeed the case.</p>
 
+<hr />
 
+<p><strong>What if I want to use another port?</strong></p>
 
-<article>
-  
-<h1><a href="/blog/2015/10/13/making-simple-rake-tasks/">Making Custom Rake Tasks and Using Them With ERD</a></h1>
-<time datetime="2015-10-13T08:52:15-04:00" pubdate><span class='month'>Oct</span> <span class='day'>13</span> <span class='year'>2015</span></time>
+<p>To switch port to, say, 80, run this:</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/erd/'>erd</a>, <a class='category' href='/blog/categories/rake/'>rake,</a></span>
-</footer>
+<p><strong><code>bundle exec rails s -p 80</code></strong></p>
 
+<p>See documentation on it <a href="https://github.com/rails/rails/blob/4-2-stable/railties/lib/rails/commands/server.rb">here</a> as I could not find any actual description in Terminal:</p>
 
-</article>
+<p><img class="center" src="/images/rails_server_docs.png"></p>
 
+<hr />
+
+<p>Rails servers.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Anna Ershova</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-26T12:10:56-04:00" pubdate data-updated="true">Oct 26th, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/localhost/'>localhost,</a>, <a class='category' href='/blog/categories/server/'>server</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/10/26/why-localhost-3000/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/10/26/why-localhost-3000/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/10/26/some-ruby-slash-rails-slash-general-coding-resources/" title="Previous Post: Some Ruby / Rails / General Coding Resources">&laquo; Some Ruby / Rails / General Coding Resources</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

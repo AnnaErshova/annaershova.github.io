@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Localhost, | Anna's Blog]]></title>
+  <link href="http://annaershova.github.io/blog/categories/localhost/atom.xml" rel="self"/>
+  <link href="http://annaershova.github.io/"/>
+  <updated>2015-10-26T16:02:03-04:00</updated>
+  <id>http://annaershova.github.io/</id>
+  <author>
+    <name><![CDATA[Anna Ershova]]></name>
+    <email><![CDATA[anna.ershova@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Why Localhost:3000?]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/26/why-localhost-3000/"/>
+    <updated>2015-10-26T12:10:56-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/26/why-localhost-3000</id>
+    <content type="html"><![CDATA[<p>Most people new to rails go through some sort of &lsquo;make-an-app-in-under-15-minutes&rsquo; tutorial, which always includes instructions to run <strong><code>rails s</code></strong> or  <strong><code>rails server</code></strong> to get a preview of your app.</p>
+
+<p>Typing it into a console usually produces something like this:</p>
+
+<p><img class="center" src="/images/railss.png"></p>
+
+<p>And when you point your browser to <strong><code>localhost:3000</code></strong> (or alternatively <strong><code>http://127.0.0.1:3000/</code></strong>, where <strong><code>http://127.0.0.1</code></strong> is your computer&rsquo;s loopback address), you see the standard Welcome Aboard message:</p>
+
+<p><img class="center" src="/images/localhostscreenshot.png"></p>
+
+<p>In fact, <strong><code>localhost:3000</code></strong> is so common that someone registered a <a href="http://www.localhost3000.org/">website</a> that takes you to a website that reminds you you forgot to start your server, if that is indeed the case.</p>
+
+<hr />
+
+<p><strong>What if I want to use another port?</strong></p>
+
+<p>To switch port to, say, 80, run this:</p>
+
+<p><strong><code>bundle exec rails s -p 80</code></strong></p>
+
+<p>See documentation on it <a href="https://github.com/rails/rails/blob/4-2-stable/railties/lib/rails/commands/server.rb">here</a> as I could not find any actual description in Terminal:</p>
+
+<p><img class="center" src="/images/rails_server_docs.png"></p>
+
+<hr />
+
+<p>Rails servers.</p>
+]]></content>
+  </entry>
+  
+</feed>

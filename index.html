@@ -9,7 +9,7 @@
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="I keep getting asked what my favorite coding resources are, Rails or otherwise, so this is an attempt at keeping a running list, in no particular &hellip;">
+  <meta name="description" content="Most people new to rails go through some sort of &lsquo;make-an-app-in-under-15-minutes&rsquo; tutorial, which always includes instructions to run &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -58,6 +58,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/26/why-localhost-3000/">Why Localhost:3000?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-26T12:10:56-04:00" pubdate data-updated="true">Oct 26th, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Most people new to rails go through some sort of &lsquo;make-an-app-in-under-15-minutes&rsquo; tutorial, which always includes instructions to run <strong><code>rails s</code></strong> or  <strong><code>rails server</code></strong> to get a preview of your app.</p>
+
+<p>Typing it into a console usually produces something like this:</p>
+
+<p><img class="center" src="/images/railss.png"></p>
+
+<p>And when you point your browser to <strong><code>localhost:3000</code></strong> (or alternatively <strong><code>http://127.0.0.1:3000/</code></strong>, where <strong><code>http://127.0.0.1</code></strong> is your computer&rsquo;s loopback address), you see the standard Welcome Aboard message:</p>
+
+<p><img class="center" src="/images/localhostscreenshot.png"></p>
+
+<p>In fact, <strong><code>localhost:3000</code></strong> is so common that someone registered a <a href="http://www.localhost3000.org/">website</a> that takes you to a website that reminds you you forgot to start your server, if that is indeed the case.</p>
+
+<hr />
+
+<p><strong>What if I want to use another port?</strong></p>
+
+<p>To switch port to, say, 80, run this:</p>
+
+<p><strong><code>bundle exec rails s -p 80</code></strong></p>
+
+<p>See documentation on it <a href="https://github.com/rails/rails/blob/4-2-stable/railties/lib/rails/commands/server.rb">here</a> as I could not find any actual description in Terminal:</p>
+
+<p><img class="center" src="/images/rails_server_docs.png"></p>
+
+<hr />
+
+<p>Rails servers.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1105,61 +1168,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/12/mac-uptime-and-reboot-stats/">Mac Uptime and Reboot Stats</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2015-10-12T11:46:01-04:00" pubdate data-updated="true">Oct 12th, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>While we are on a subject of controlling your Mac from your Terminal, here is something else that is useful:</p>
-
-<p>Mac uptime is how long it has been since the system has been re-booted or re-started. Type in <strong><code>uptime</code></strong> in your Terminal, and you will see the stats in minutes, hours, or days, depending on how long it has been for your Mac:</p>
-
-<p><img class="center" src="/images/uptime.png"></p>
-
-<p>(I just re-booted when installing a new OS X hence such a short uptime for me. Uptime can extend into months for some users as Macs tend to be very stable unlike Windows machines.)</p>
-
-<p>You will also see number of users using your machine during said uptime as well as load averages in 1, 5, and 15 minute intervals from left to right &ndash; mine actually indicate I may want a more powerful system.</p>
-
-<p>Run <strong><code>last reboot</code></strong>  to see rebooting history:</p>
-
-<p><img class="center" src="/images/lastreboot.png"></p>
-
-<p>Another neat trick is to run in <strong><code>last</code></strong> to see last sessions of users, hosts and ttys in a reverse chronological order:</p>
-
-<p><img class="center" src="/images/last.png"></p>
-
-<p>There are handy gadgets for uptime and reboot stats, but I doubt that most regular users would really need them on a regular basis. Checking in with your Terminal now and then should be sufficient.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="2">&larr; Older</a>
@@ -1193,6 +1201,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/10/26/why-localhost-3000/">Why Localhost:3000?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/26/some-ruby-slash-rails-slash-general-coding-resources/">Some Ruby / Rails / General Coding Resources</a>
       </li>
     
@@ -1206,10 +1218,6 @@
     
       <li class="post">
         <a href="/blog/2015/10/20/mastering-your-terminal-part-iii/">Mastering Your Terminal -- Part III</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/10/19/mastering-your-terminal-part-ii/">Mastering Your Terminal -- Part II</a>
       </li>
     
   </ul>
