@@ -29,6 +29,8 @@ If you schedule a **`shutdown`** command, but decide to hold off of it, **`sudo 
 
 In my understanding, **`sudo shutdown -r now`** is a functional equivalent of **`sudo reboot`**
 
+======
+
 **Changing What Your Power Button Does:**
 
 In the OS X prior to the 10.9 Maverick, a power button used to bring up a **`Restart`**, **`Sleep`**, **`Cancel`**, and **`Shut Down`** options.
@@ -42,6 +44,8 @@ Pressing the power button will then bring up this dialog:
 {% img center /images/powerbuttondialog.png %}
 
 If you want to switch back to the sleep-only option, run the same command with **`TRUE`** instead of **`FALSE`**.
+
+======
 
 **Having Your System Restart Automatically If It Freezes:**
 

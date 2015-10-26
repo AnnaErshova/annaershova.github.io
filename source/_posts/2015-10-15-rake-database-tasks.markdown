@@ -3,7 +3,7 @@ layout: post
 title: "Rake Database Tasks"
 date: 2015-10-15 10:47:23 -0400
 comments: true
-categories: rake
+categories: rake, database, migration, schema
 ---
 
 There are multiple db namespace rake tasks, which are very useful for a Rails developer. 
