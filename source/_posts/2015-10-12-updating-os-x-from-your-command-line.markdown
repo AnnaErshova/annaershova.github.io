@@ -3,7 +3,7 @@ layout: post
 title: "Updating OS X From Your Command Line"
 date: 2015-10-12 11:16:32 -0400
 comments: true
-categories: Terminal
+categories: terminal
 ---
 
 I am really used to seeing a pop up that says something along the lines of **`a new version of OS X / iOS is available, do you want to update now?`**
