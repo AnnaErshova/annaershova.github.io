@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>CSRF Part II -- CSRF vs. XSS - Anna's Blog</title>
+  <meta name="author" content="Anna Ershova">
+
+  
+  <meta name="description" content="I touched upon CSRF (cross-site request forgery) in my previous blog post, but as I was mentionining that it is distinct from XSS since the two get &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://annaershova.github.io/blog/2015/10/25/csrf-part-ii-csrf-vs-xss">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Anna's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Anna's Blog</a></h1>
+  
+    <h2>Getting de-railed</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">CSRF Part II -- CSRF vs. XSS</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-25T18:03:57-04:00" pubdate data-updated="true">Oct 25th, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I touched upon CSRF (cross-site request forgery) in my <a href="http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/">previous blog post</a>, but as I was mentionining that it is distinct from XSS since the two get mixed up sometimes (must be the multi-fricative-consonant abbreviation), I realized that I should discuss it in greater detail.</p>
+
+<hr />
+
+<p><strong>Web Attack Types Vulnerabilities: Gotta Catch &lsquo;Em All</strong></p>
+
+<p>Both XSS abd CSRF are types of web attacks (there are more than these two, but I have seen people get them confused, and they do have interesting parallels). XSS is <em>cross-site scripting</em>. CSRF, as previously mentioned, is <em>cross-side request forgery</em>.</p>
+
+<p><strong>The fundamental conceptual difference between CSRF and XSS is that CSRF exploits a website&rsquo;s trust (authentication) of a user, whereas XSS exploits a user&rsquo;s trust for a website.</strong></p>
+
+<hr />
+
+<p><strong>XSS: The Mechanics</strong></p>
+
+<p>XSS involves injecting malicious scripts (in the case of Rails, it would usually be JavaScript, potentially combined with HTML, often with a <strong><code>&lt;script&gt;</code></strong> tag) into a webpage. That script can be then executed when other users access the website.</p>
+
+<p>For instance, a hacker introduces some JavaScript to the comments section of a webpage, and when other users try to access it, the script is executed and, say, the user is re-directed to a porn website they otherwise from their original destination S.H.I.E.L.D. subreddit.</p>
+
+<p>XSS attacks are incredibly common and easy to execute if a website does not have appropriate security features.</p>
+
+<hr />
+
+<p><strong>XSS and Ruby on Rails: Opting Out of HTML Escape</strong></p>
+
+<p>As with CSRF, Rails comes with a reasonably strong protection against XSS attacks. That certainly makes life easier for most beginners who want to have a reasonably secure website without spending too much time researching security and focusing on building other skills first.</p>
+
+<p>The idea behind Rails XSS protection is automatically sanitizing user input so that nothing gets executed as a script if it&rsquo;s not meant to be. Back in the day, that had to be done manually, which, was extremely time-consuming and error-prone. So Rails 3 incorporated a simple idea: opting out of html escaping instead of opting in, if need be.</p>
+
+<p>It accomplished that by integrating <strong><code>RailsXss</code></strong> <a href="https://github.com/rails/rails_xss">plugin</a>, and the feature <a href="https://github.com/rails/rails/commit/9415935902f120a9bac0bfce7129725a0db38ed3">became part of Edge Rails</a> as early as <a href="http://weblog.rubyonrails.org/2009/10/12/what-s-new-in-edge-rails/">October 2009</a> (see more on Edge Rails in my post <a href="http://annaershova.github.io/blog/2015/10/11/running-edge-rails-living-dangerously/">here</a> ).</p>
+
+<p>Rails 3+ officially supports this feature, and it backports to earlier versions of Rails as well.</p>
+
+<p>I noticed from reading <a href="https://github.com/rails/rails/blob/4-2-stable/activesupport/lib/active_support/core_ext/string/output_safety.rb">source code</a> that Rails now assumes that no string input is <strong><code>html_safe?</code></strong> by default, while integers are:</p>
+
+<p><img class="center" src="/images/object_vs_numeric.png"></p>
+
+<p>This is what it looks like in Rails console:</p>
+
+<p><img class="center" src="/images/html_safe_int.png"></p>
+
+<p>Html escape it can be still done manually with an <a href="http://api.rubyonrails.org/classes/ERB/Util.html#method-c-html_escape"><strong><code>html_escape</code></strong></a> in front of whatever you are rendering within the erb tags.</p>
+
+<p><strong><code>html_escape</code></strong> can be also aliased as <strong><code>h</code></strong>, and it is fine to use it even if something is getting html escaped by default as Rails will recognize it as such and will only escape it once.</p>
+
+<p>See example from <a href="https://github.com/rails/rails/blob/4-2-stable/activesupport/lib/active_support/core_ext/string/output_safety.rb">source code</a>:</p>
+
+<p><img class="center" src="/images/html_escape.png"></p>
+
+<p>The potentially &lsquo;dangerous&rsquo; charactaters are converted into their human-readable equivalents as the same source code indicates:</p>
+
+<p><strong><code>HTML_ESCAPE = { '&amp;' =&gt; '&amp;amp;',  '&gt;' =&gt; '&amp;gt;',   '&lt;' =&gt; '&amp;lt;', '"' =&gt; '&amp;quot;', "'" =&gt; '&amp;#39;' }</code></strong></p>
+
+<p>Similarily, <a href="https://github.com/rails/rails/blob/4-2-stable/activesupport/lib/active_support/core_ext/string/output_safety.rb"><strong><code>html_escape_once</code></strong></a> escapes HTML code without affecting existing escaped code:</p>
+
+<p><img class="center" src="/images/escape_once.png"></p>
+
+<p>If you do not want user input to be sanitized, then using <strong><code>raw</code></strong> in the erb template is the way to go, e.g.:</p>
+
+<p><img class="center" src="/images/rawxss.png"></p>
+
+<hr />
+
+<p><strong>If That Were Not Enough</strong></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Cross-site_scripting">Wikipedia article</a> is a good starting point.</p>
+
+<p>This <a href="http://railscasts.com/episodes/204-xss-protection-in-rails-3?autoplay=true">Railscast episode</a> is worth spending 8 minutes on, even though it is a bit older.</p>
+
+<p>And as usual, more on XSS on the <a href="http://guides.rubyonrails.org/security.html#cross-site-scripting-xss">Rails Guides</a> website.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Anna Ershova</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-25T18:03:57-04:00" pubdate data-updated="true">Oct 25th, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/csrf/'>csrf,</a>, <a class='category' href='/blog/categories/security/'>security,</a>, <a class='category' href='/blog/categories/xss/'>xss</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/10/25/csrf-part-ii-csrf-vs-xss/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/10/25/csrf-part-ii-csrf-vs-xss/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/" title="Previous Post: What's CSRF and What Exactly Are We Are Protecting From Forgery?">&laquo; What's CSRF and What Exactly Are We Are Protecting From Forgery?</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:annaershova.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <ul id="recent_posts">
+      <li class="post">
+      <a href="http://annaershova.github.io" alt="Home"><img src="/images/Home.png"></a>
+      <a href="http://annaershova.github.io/archives/" alt="Archives"><img src="/images/Calendar.png"></a>
+      <a href="mailto:anna.ershova@gmail.com" alt="E-Mail"><img src="/images/Envelope.png"></a>
+      <a href="http://annaershova.github.io/atom.xml" alt="subscribe feed"><img src="/images/rss_big.png"></a>
+      </li>
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/10/25/csrf-part-ii-csrf-vs-xss/">CSRF Part II -- CSRF vs. XSS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/">What's CSRF and What Exactly Are We Are Protecting From Forgery?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/20/mastering-your-terminal-part-iii/">Mastering Your Terminal -- Part III</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/19/mastering-your-terminal-part-ii/">Mastering Your Terminal -- Part II</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/19/mastering-your-terminal-part-i/">Mastering Your Terminal -- Part I</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Anna Ershova -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+    var stickyNavTop = $('nav').offset().top;  
+      
+    var stickyNav = function(){  
+      var scrollTop = $(window).scrollTop(); 
+      var navHasClassSticky = $('nav').hasClass('sticky');
+
+      if (scrollTop > stickyNavTop && navHasClassSticky) {   
+        return true;
+      } else if (scrollTop > stickyNavTop) {
+        $('nav').hide();
+        $('nav').addClass('sticky');
+        $('nav').fadeIn('2000');
+      } else {  
+        $('nav').removeClass('sticky');   
+      }  
+    };  
+      
+    stickyNav();  
+      
+    $(window).scroll(function() {  
+      stickyNav();  
+    });  
+  });  
+</script>
+
+
+</body>
+</html>

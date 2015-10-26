@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Security | Anna's Blog]]></title>
+  <title><![CDATA[Category: Security, | Anna's Blog]]></title>
   <link href="http://annaershova.github.io/blog/categories/security/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-25T18:00:50-04:00</updated>
+  <updated>2015-10-25T21:55:24-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -14,63 +14,79 @@
 
   
   <entry>
-    <title type="html"><![CDATA[What's CSRF and What Exactly Are We Are Protecting From Forgery in Controllers?]]></title>
-    <link href="http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/"/>
-    <updated>2015-10-25T14:53:44-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers</id>
-    <content type="html"><![CDATA[<p>Running any <strong><code>Rails new</code></strong> command will produce a <strong><code>ApplicationDirectory/app/controllers/application_controller.rb</code></strong> file that looks like this initially:</p>
+    <title type="html"><![CDATA[CSRF Part II -- CSRF vs. XSS]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/25/csrf-part-ii-csrf-vs-xss/"/>
+    <updated>2015-10-25T18:03:57-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/25/csrf-part-ii-csrf-vs-xss</id>
+    <content type="html"><![CDATA[<p>I touched upon CSRF (cross-site request forgery) in my <a href="http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/">previous blog post</a>, but as I was mentionining that it is distinct from XSS since the two get mixed up sometimes (must be the multi-fricative-consonant abbreviation), I realized that I should discuss it in greater detail.</p>
 
-<p><img class="center" src="/images/application_controller_csrf.png"></p>
+<hr />
 
-<p>Since Rails is so beginner-friendly, many new developers are too preoccupied with making an app that works (<em>why do my routes look like that?!</em>) than looking into each and every line of generated code. I find that the CSRF-related line of code in a standard <strong><code>ApplicationController</code></strong> is particularily often overlooked. I wanted to discuss it here as it is connected a serious security issue often encountered on the web.</p>
+<p><strong>Web Attack Types Vulnerabilities: Gotta Catch &lsquo;Em All</strong></p>
 
-<p>The Ruby on Rails API has a comprehensive <a href="http://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection/ClassMethods.html">guide</a> explaining what <strong><code>protect_from_forgery</code></strong> does. It still assumes a basic understanding of CSRF.</p>
+<p>Both XSS abd CSRF are types of web attacks (there are more than these two, but I have seen people get them confused, and they do have interesting parallels). XSS is <em>cross-site scripting</em>. CSRF, as previously mentioned, is <em>cross-side request forgery</em>.</p>
 
-<p><strong>How CSRF Works</strong></p>
+<p><strong>The fundamental conceptual difference between CSRF and XSS is that CSRF exploits a website&rsquo;s trust (authentication) of a user, whereas XSS exploits a user&rsquo;s trust for a website.</strong></p>
 
-<p>CSRF (sometimes spelled as XSRF) stands for <em>cross-side request forgery</em>. It is, according to <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Wikipedia</a>, sometimes pronounced as <em>see-surf</em> (which I absolutely did not know prior to reading the Wiki article). However it is pronounced, it involves an attacker submitting malicious commands to an app that appear to come from a user that the app has authorized and that the browser trusts. The hacker can therefore gain control of an account.</p>
+<hr />
 
-<p>CSRF is sometimes refered to as &lsquo;session riding,&rsquo; a pretty accurate description as you&rsquo;ll see.</p>
+<p><strong>XSS: The Mechanics</strong></p>
 
-<p>Note that this is different from XSS (cross-site scripting).</p>
+<p>XSS involves injecting malicious scripts (in the case of Rails, it would usually be JavaScript, potentially combined with HTML, often with a <strong><code>&lt;script&gt;</code></strong> tag) into a webpage. That script can be then executed when other users access the website.</p>
 
-<p>Most Rails apps use cookie-based sessions. If an attacker can find a link s/he can reproduce (<em>forge</em>) that involves executing something on a target page while a user is logged in, they can then embed such a link &ndash; with a malicious action &ndash; on a page where a user can click it, thus giving an attacker control of the account.</p>
+<p>For instance, a hacker introduces some JavaScript to the comments section of a webpage, and when other users try to access it, the script is executed and, say, the user is re-directed to a porn website they otherwise from their original destination S.H.I.E.L.D. subreddit.</p>
 
-<p>It is not uncommon for websites to be vulnerable to CSRF attacks. At various times, some major websites such as YouTube, The New York Times and INGDirect <a href="http://www.darkreading.com/risk/csrf-flaws-found-on-major-websites/d/d-id/1129743">famously</a> all had that issue.</p>
+<p>XSS attacks are incredibly common and easy to execute if a website does not have appropriate security features.</p>
 
-<p>In INGDirect case, hackers could gain control of users' accounts and transfer money out to an account that was open in user&rsquo;s name but was not actually associated with them. In YouTube&rsquo;s case, hackers could friend other users on behalf of a hacked user, add videos to the user&rsquo;s favorites, and send messages on a user&rsquo;s behalf.</p>
+<hr />
 
-<p>A web developer generally needs to explicitly protect their app from CSRF attacks, and thankfully, Rails does it for us with default code. (Other languages often have plugins etc to help handle this issue, but Rails, as usual, makes things much easier.)</p>
+<p><strong>XSS and Ruby on Rails: Opting Out of HTML Escape</strong></p>
 
-<p><strong>What Is Protect_From_Forgery?</strong></p>
+<p>As with CSRF, Rails comes with a reasonably strong protection against XSS attacks. That certainly makes life easier for most beginners who want to have a reasonably secure website without spending too much time researching security and focusing on building other skills first.</p>
 
-<p>According to to the <a href="https://github.com/rails/rails/blob/0450642c27af3af35b449208b21695fd55c30f90/actionpack/lib/action_controller/metal/request_forgery_protection.rb">Rails source</a>:</p>
+<p>The idea behind Rails XSS protection is automatically sanitizing user input so that nothing gets executed as a script if it&rsquo;s not meant to be. Back in the day, that had to be done manually, which, was extremely time-consuming and error-prone. So Rails 3 incorporated a simple idea: opting out of html escaping instead of opting in, if need be.</p>
 
-<blockquote><p>Controller actions are protected from Cross-Site Request Forgery (CSRF) attacks by including a token in the rendered HTML for your application. This token is stored as a random string in the session, to which an attacker does not have access. When a request reaches your application, Rails verifies the received token with the token in the session. All requests are checked except GET requests as these should be idempotent. Keep in mind that all session-oriented requests should be CSRF protected, including JavaScript and HTML requests.</p></blockquote>
+<p>It accomplished that by integrating <strong><code>RailsXss</code></strong> <a href="https://github.com/rails/rails_xss">plugin</a>, and the feature <a href="https://github.com/rails/rails/commit/9415935902f120a9bac0bfce7129725a0db38ed3">became part of Edge Rails</a> as early as <a href="http://weblog.rubyonrails.org/2009/10/12/what-s-new-in-edge-rails/">October 2009</a> (see more on Edge Rails in my post <a href="http://annaershova.github.io/blog/2015/10/11/running-edge-rails-living-dangerously/">here</a> ).</p>
 
-<p>That means that your app will protected against CSRF attacks with one line in your Application Controller: <strong><code>protect_from_forgery with: :exception</code></strong>. It protects your session via a <strong><code>:null_session method</code></strong>: an empty session is generated during a request.</p>
+<p>Rails 3+ officially supports this feature, and it backports to earlier versions of Rails as well.</p>
 
-<p><strong>How Is Protection Executed?</strong></p>
+<p>I noticed from reading <a href="https://github.com/rails/rails/blob/4-2-stable/activesupport/lib/active_support/core_ext/string/output_safety.rb">source code</a> that Rails now assumes that no string input is <strong><code>html_safe?</code></strong> by default, while integers are:</p>
 
-<p>It does so by requiring a special CSRF token to be present before any <strong><code>POST</code></strong>, <strong><code>PUT</code></strong> or <strong><code>DELETE</code></strong> request is accepted. That token will be included as a hidden field when using Rails forms builders. (Most browsers only support <strong><code>GET</code></strong> or <strong><code>PUT</code></strong> instead of all the proper RESTful verbs, but we know that Rails uses a hidden field <strong><code>_method</code></strong> to fix it.)</p>
+<p><img class="center" src="/images/object_vs_numeric.png"></p>
 
-<p><strong><code>GET</code></strong> requests are not protected since they don&rsquo;t have potential to leak sensitive data. That is why it is important to use <strong><code>GET</code></strong> requests appropriately in cases when a database is read or queried etc, but a user&rsquo;s state in the app is not modified.</p>
+<p>This is what it looks like in Rails console:</p>
 
-<p>The required security token in question is known as <strong><code>authenticity_token</code></strong>. That token is known to its app, but not to others. To achieve that, its name and value must be added to every view that renders forms by adding <strong><code>csrf_meta_tags</code></strong> within html <strong><code>head</code></strong> tags. That is also a default option generated when using a <strong><code>Rails new</code></strong> command and places into a <strong><code>ApplicationDirectory/app/views/layouts/application.html.erb</code></strong> file, which is normally the only view file generated for a model-less app:</p>
+<p><img class="center" src="/images/html_safe_int.png"></p>
 
-<p><img class="center" src="/images/applicationhtmlerb.png"></p>
+<p>Html escape it can be still done manually with an <a href="http://api.rubyonrails.org/classes/ERB/Util.html#method-c-html_escape"><strong><code>html_escape</code></strong></a> in front of whatever you are rendering within the erb tags.</p>
 
-<p>It&rsquo;s interesting to see the <a href="https://github.com/rails/rails/blob/4-2-stable/railties/lib/rails/generators/rails/app/templates/app/views/layouts/application.html.erb.tt">source code</a> for this in the Rails repo:</p>
+<p><strong><code>html_escape</code></strong> can be also aliased as <strong><code>h</code></strong>, and it is fine to use it even if something is getting html escaped by default as Rails will recognize it as such and will only escape it once.</p>
 
-<p><img class="center" src="/images/applicationhtmlerblayout.png"></p>
+<p>See example from <a href="https://github.com/rails/rails/blob/4-2-stable/activesupport/lib/active_support/core_ext/string/output_safety.rb">source code</a>:</p>
 
-<p>Is a CSRF token does not match, Rails will raise an <strong><code>InvalidAuthenticityToken</code></strong>.</p>
+<p><img class="center" src="/images/html_escape.png"></p>
 
-<p><strong>What If I am Building an API?</strong></p>
+<p>The potentially &lsquo;dangerous&rsquo; charactaters are converted into their human-readable equivalents as the same source code indicates:</p>
 
-<p>Since XML or JSON formats are also affected by this code, default forgery protection should be turned off if you are building an API as the API is designed to be stateless: <strong><code>protect_from_forgery unless: -&gt; { request.format.json? }</code></strong></p>
+<p><strong><code>HTML_ESCAPE = { '&amp;' =&gt; '&amp;amp;',  '&gt;' =&gt; '&amp;gt;',   '&lt;' =&gt; '&amp;lt;', '"' =&gt; '&amp;quot;', "'" =&gt; '&amp;#39;' }</code></strong></p>
 
-<p>There is more information on the <a href="http://guides.rubyonrails.org/security.html">Rails Security Guides</a>.</p>
+<p>Similarily, <a href="https://github.com/rails/rails/blob/4-2-stable/activesupport/lib/active_support/core_ext/string/output_safety.rb"><strong><code>html_escape_once</code></strong></a> escapes HTML code without affecting existing escaped code:</p>
+
+<p><img class="center" src="/images/escape_once.png"></p>
+
+<p>If you do not want user input to be sanitized, then using <strong><code>raw</code></strong> in the erb template is the way to go, e.g.:</p>
+
+<p><img class="center" src="/images/rawxss.png"></p>
+
+<hr />
+
+<p><strong>If That Were Not Enough</strong></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Cross-site_scripting">Wikipedia article</a> is a good starting point.</p>
+
+<p>This <a href="http://railscasts.com/episodes/204-xss-protection-in-rails-3?autoplay=true">Railscast episode</a> is worth spending 8 minutes on, even though it is a bit older.</p>
+
+<p>And as usual, more on XSS on the <a href="http://guides.rubyonrails.org/security.html#cross-site-scripting-xss">Rails Guides</a> website.</p>
 ]]></content>
   </entry>
   

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://annaershova.github.io/blog/2015/10/25/csrf-part-ii-csrf-vs-xss/</loc>
+    <lastmod>2015-10-25T18:03:57-04:00</lastmod>
+  </url>
+  <url>
     <loc>http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/</loc>
     <lastmod>2015-10-25T14:53:44-04:00</lastmod>
   </url>
@@ -134,7 +138,13 @@
     <loc>http://annaershova.github.io/blog/categories/erd/</loc>
   </url>
   <url>
-    <loc>http://annaershova.github.io/blog/categories/rake/</loc>
+    <loc>http://annaershova.github.io/blog/categories/database/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/migration/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/schema/</loc>
   </url>
   <url>
     <loc>http://annaershova.github.io/blog/categories/generators/</loc>
@@ -147,6 +157,18 @@
   </url>
   <url>
     <loc>http://annaershova.github.io/blog/categories/security/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/security/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/xss/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/posts/2/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/posts/3/</loc>
   </url>
   <url>
     <loc>http://annaershova.github.io/images/Edit fiddle - JSFiddle.html</loc>

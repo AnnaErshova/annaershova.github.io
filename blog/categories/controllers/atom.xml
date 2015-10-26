@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Controllers, | Anna's Blog]]></title>
   <link href="http://annaershova.github.io/blog/categories/controllers/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-25T18:00:50-04:00</updated>
+  <updated>2015-10-25T21:55:24-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[What's CSRF and What Exactly Are We Are Protecting From Forgery in Controllers?]]></title>
+    <title type="html"><![CDATA[What's CSRF and What Exactly Are We Are Protecting From Forgery?]]></title>
     <link href="http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/"/>
     <updated>2015-10-25T14:53:44-04:00</updated>
     <id>http://annaershova.github.io/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers</id>
@@ -25,6 +25,10 @@
 <p>Since Rails is so beginner-friendly, many new developers are too preoccupied with making an app that works (<em>why do my routes look like that?!</em>) than looking into each and every line of generated code. I find that the CSRF-related line of code in a standard <strong><code>ApplicationController</code></strong> is particularily often overlooked. I wanted to discuss it here as it is connected a serious security issue often encountered on the web.</p>
 
 <p>The Ruby on Rails API has a comprehensive <a href="http://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection/ClassMethods.html">guide</a> explaining what <strong><code>protect_from_forgery</code></strong> does. It still assumes a basic understanding of CSRF.</p>
+
+<p>CSRF, just like XSS, which will be discussed in the next post, is not a Rails-specific problem, and it really affects all computer systems and all languages, although this post will discuss in the context of Rails.</p>
+
+<hr />
 
 <p><strong>How CSRF Works</strong></p>
 
@@ -42,17 +46,23 @@
 
 <p>A web developer generally needs to explicitly protect their app from CSRF attacks, and thankfully, Rails does it for us with default code. (Other languages often have plugins etc to help handle this issue, but Rails, as usual, makes things much easier.)</p>
 
+<hr />
+
 <p><strong>What Is Protect_From_Forgery?</strong></p>
 
 <p>According to to the <a href="https://github.com/rails/rails/blob/0450642c27af3af35b449208b21695fd55c30f90/actionpack/lib/action_controller/metal/request_forgery_protection.rb">Rails source</a>:</p>
 
 <blockquote><p>Controller actions are protected from Cross-Site Request Forgery (CSRF) attacks by including a token in the rendered HTML for your application. This token is stored as a random string in the session, to which an attacker does not have access. When a request reaches your application, Rails verifies the received token with the token in the session. All requests are checked except GET requests as these should be idempotent. Keep in mind that all session-oriented requests should be CSRF protected, including JavaScript and HTML requests.</p></blockquote>
 
-<p>That means that your app will protected against CSRF attacks with one line in your Application Controller: <strong><code>protect_from_forgery with: :exception</code></strong>. It protects your session via a <strong><code>:null_session method</code></strong>: an empty session is generated during a request.</p>
+<p>That means that your app will protected against CSRF attacks with one line in your Application Controller: <strong><code>protect_from_forgery with: :exception</code></strong>.</p>
+
+<hr />
 
 <p><strong>How Is Protection Executed?</strong></p>
 
-<p>It does so by requiring a special CSRF token to be present before any <strong><code>POST</code></strong>, <strong><code>PUT</code></strong> or <strong><code>DELETE</code></strong> request is accepted. That token will be included as a hidden field when using Rails forms builders. (Most browsers only support <strong><code>GET</code></strong> or <strong><code>PUT</code></strong> instead of all the proper RESTful verbs, but we know that Rails uses a hidden field <strong><code>_method</code></strong> to fix it.)</p>
+<p>General principle of CSRF protection is introducing user-specific secret data into the request that would not be accessible by a hacker. That is exactly how Rails does it. It protects your session via a <strong><code>:null_session method</code></strong>: an empty session is generated during a request.</p>
+
+<p>It requires that a special CSRF token is present before any <strong><code>POST</code></strong>, <strong><code>PUT</code></strong> or <strong><code>DELETE</code></strong> request is accepted. That token will be included as a hidden field when using Rails forms builders. (Most browsers only support <strong><code>GET</code></strong> or <strong><code>PUT</code></strong> instead of all the proper RESTful verbs, but we know that Rails uses a hidden field <strong><code>_method</code></strong> to fix it.)</p>
 
 <p><strong><code>GET</code></strong> requests are not protected since they don&rsquo;t have potential to leak sensitive data. That is why it is important to use <strong><code>GET</code></strong> requests appropriately in cases when a database is read or queried etc, but a user&rsquo;s state in the app is not modified.</p>
 
@@ -65,6 +75,16 @@
 <p><img class="center" src="/images/applicationhtmlerblayout.png"></p>
 
 <p>Is a CSRF token does not match, Rails will raise an <strong><code>InvalidAuthenticityToken</code></strong>.</p>
+
+<hr />
+
+<p><strong>What if I am running tests?</strong></p>
+
+<p>To disactivate this feature for the test environment:</p>
+
+<p><strong><code>protect_from_forgery unless Rails.env.test?</code></strong></p>
+
+<hr />
 
 <p><strong>What If I am Building an API?</strong></p>
 

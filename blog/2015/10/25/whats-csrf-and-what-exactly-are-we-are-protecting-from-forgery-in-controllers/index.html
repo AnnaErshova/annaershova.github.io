@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>What's CSRF and What Exactly Are We Are Protecting From Forgery in Controllers? - Anna's Blog</title>
+  <title>What's CSRF and What Exactly Are We Are Protecting From Forgery? - Anna's Blog</title>
   <meta name="author" content="Anna Ershova">
 
   
@@ -61,7 +61,7 @@
   
   <header>
     
-      <h1 class="entry-title">What's CSRF and What Exactly Are We Are Protecting From Forgery in Controllers?</h1>
+      <h1 class="entry-title">What's CSRF and What Exactly Are We Are Protecting From Forgery?</h1>
     
     
       <p class="meta">
@@ -93,6 +93,10 @@
 
 <p>The Ruby on Rails API has a comprehensive <a href="http://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection/ClassMethods.html">guide</a> explaining what <strong><code>protect_from_forgery</code></strong> does. It still assumes a basic understanding of CSRF.</p>
 
+<p>CSRF, just like XSS, which will be discussed in the next post, is not a Rails-specific problem, and it really affects all computer systems and all languages, although this post will discuss in the context of Rails.</p>
+
+<hr />
+
 <p><strong>How CSRF Works</strong></p>
 
 <p>CSRF (sometimes spelled as XSRF) stands for <em>cross-side request forgery</em>. It is, according to <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Wikipedia</a>, sometimes pronounced as <em>see-surf</em> (which I absolutely did not know prior to reading the Wiki article). However it is pronounced, it involves an attacker submitting malicious commands to an app that appear to come from a user that the app has authorized and that the browser trusts. The hacker can therefore gain control of an account.</p>
@@ -109,17 +113,23 @@
 
 <p>A web developer generally needs to explicitly protect their app from CSRF attacks, and thankfully, Rails does it for us with default code. (Other languages often have plugins etc to help handle this issue, but Rails, as usual, makes things much easier.)</p>
 
+<hr />
+
 <p><strong>What Is Protect_From_Forgery?</strong></p>
 
 <p>According to to the <a href="https://github.com/rails/rails/blob/0450642c27af3af35b449208b21695fd55c30f90/actionpack/lib/action_controller/metal/request_forgery_protection.rb">Rails source</a>:</p>
 
 <blockquote><p>Controller actions are protected from Cross-Site Request Forgery (CSRF) attacks by including a token in the rendered HTML for your application. This token is stored as a random string in the session, to which an attacker does not have access. When a request reaches your application, Rails verifies the received token with the token in the session. All requests are checked except GET requests as these should be idempotent. Keep in mind that all session-oriented requests should be CSRF protected, including JavaScript and HTML requests.</p></blockquote>
 
-<p>That means that your app will protected against CSRF attacks with one line in your Application Controller: <strong><code>protect_from_forgery with: :exception</code></strong>. It protects your session via a <strong><code>:null_session method</code></strong>: an empty session is generated during a request.</p>
+<p>That means that your app will protected against CSRF attacks with one line in your Application Controller: <strong><code>protect_from_forgery with: :exception</code></strong>.</p>
+
+<hr />
 
 <p><strong>How Is Protection Executed?</strong></p>
 
-<p>It does so by requiring a special CSRF token to be present before any <strong><code>POST</code></strong>, <strong><code>PUT</code></strong> or <strong><code>DELETE</code></strong> request is accepted. That token will be included as a hidden field when using Rails forms builders. (Most browsers only support <strong><code>GET</code></strong> or <strong><code>PUT</code></strong> instead of all the proper RESTful verbs, but we know that Rails uses a hidden field <strong><code>_method</code></strong> to fix it.)</p>
+<p>General principle of CSRF protection is introducing user-specific secret data into the request that would not be accessible by a hacker. That is exactly how Rails does it. It protects your session via a <strong><code>:null_session method</code></strong>: an empty session is generated during a request.</p>
+
+<p>It requires that a special CSRF token is present before any <strong><code>POST</code></strong>, <strong><code>PUT</code></strong> or <strong><code>DELETE</code></strong> request is accepted. That token will be included as a hidden field when using Rails forms builders. (Most browsers only support <strong><code>GET</code></strong> or <strong><code>PUT</code></strong> instead of all the proper RESTful verbs, but we know that Rails uses a hidden field <strong><code>_method</code></strong> to fix it.)</p>
 
 <p><strong><code>GET</code></strong> requests are not protected since they don&rsquo;t have potential to leak sensitive data. That is why it is important to use <strong><code>GET</code></strong> requests appropriately in cases when a database is read or queried etc, but a user&rsquo;s state in the app is not modified.</p>
 
@@ -132,6 +142,16 @@
 <p><img class="center" src="/images/applicationhtmlerblayout.png"></p>
 
 <p>Is a CSRF token does not match, Rails will raise an <strong><code>InvalidAuthenticityToken</code></strong>.</p>
+
+<hr />
+
+<p><strong>What if I am running tests?</strong></p>
+
+<p>To disactivate this feature for the test environment:</p>
+
+<p><strong><code>protect_from_forgery unless Rails.env.test?</code></strong></p>
+
+<hr />
 
 <p><strong>What If I am Building an API?</strong></p>
 
@@ -187,6 +207,8 @@
         <a class="basic-alignment left" href="/blog/2015/10/20/mastering-your-terminal-part-iii/" title="Previous Post: Mastering Your Terminal -- Part III">&laquo; Mastering Your Terminal -- Part III</a>
       
       
+        <a class="basic-alignment right" href="/blog/2015/10/25/csrf-part-ii-csrf-vs-xss/" title="Next Post: CSRF Part II -- CSRF vs. XSS">CSRF Part II -- CSRF vs. XSS &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -218,7 +240,11 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/">What's CSRF and What Exactly Are We Are Protecting From Forgery in Controllers?</a>
+        <a href="/blog/2015/10/25/csrf-part-ii-csrf-vs-xss/">CSRF Part II -- CSRF vs. XSS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/">What's CSRF and What Exactly Are We Are Protecting From Forgery?</a>
       </li>
     
       <li class="post">
@@ -231,10 +257,6 @@
     
       <li class="post">
         <a href="/blog/2015/10/19/mastering-your-terminal-part-i/">Mastering Your Terminal -- Part I</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons</a>
       </li>
     
   </ul>
