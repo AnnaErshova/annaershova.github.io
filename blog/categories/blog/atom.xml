@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Blog, | Anna's Blog]]></title>
+  <link href="http://annaershova.github.io/blog/categories/blog/atom.xml" rel="self"/>
+  <link href="http://annaershova.github.io/"/>
+  <updated>2015-10-26T09:38:27-04:00</updated>
+  <id>http://annaershova.github.io/</id>
+  <author>
+    <name><![CDATA[Anna Ershova]]></name>
+    <email><![CDATA[anna.ershova@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Some Ruby / Rails / General Coding Resources]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/26/some-ruby-slash-rails-slash-general-coding-resources/"/>
+    <updated>2015-10-26T09:01:07-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/26/some-ruby-slash-rails-slash-general-coding-resources</id>
+    <content type="html"><![CDATA[<p>I keep getting asked what my favorite coding resources are, Rails or otherwise, so this is an attempt at keeping a running list, in no particular order. I fully intend to come back and edit this post as I stumbple upon new resources.</p>
+
+<p>There are a lot of really great blogs from people writing Rails, and sometimes when googling something, I see amazingly written posts on fairly esoteric subjects. The resources below tend to be consistently good and conventional &ndash; and enough to keep new developers occupied for a long, long time.</p>
+
+<hr />
+
+<p><strong>Rails newsletters:</strong></p>
+
+<ul>
+<li><p><a href="http://rubyweekly.com/">Ruby Weekly</a> &ndash; one email every Thursday.</p></li>
+<li><p><a href="http://greenruby.org/">Green Ruby</a> &ndash; one email every Sunday.</p></li>
+</ul>
+
+
+<p>They have a lot of overlap, but since they come out on different days, sometimes it&rsquo;s nice to see a reminder that I meant to read an article or explore a new gem.</p>
+
+<hr />
+
+<p><strong>Resources:</strong></p>
+
+<ul>
+<li><p><a href="https://practicingruby.com/">Practicing Ruby</a> &ndash; well worth the $8/month they suggest paying.</p></li>
+<li><p><a href="http://www.rubytapas.com/">Ruby Tapas</a> &ndash; also well worth the $9/month subscription fee.</p></li>
+<li><p><a href="https://devchat.tv/ruby-rogues/">Ruby Rogues</a></p></li>
+<li><p><a href="http://railscasts.com/">http://railscasts.com/</a> &ndash; amazing, well worth the subscription fee, although older poscasts are all free.</p></li>
+</ul>
+
+
+<hr />
+
+<p><strong>General Resources:</strong></p>
+
+<ul>
+<li><p><a href="http://codercareer.blogspot.com/">CoderCareer</a> &ndash; not Ruby/Rails-specific, but lots of cool content discussing coding interview questions and how to answer them. Gets updated very rarely though.</p></li>
+<li><p><a href="https://www.igvita.com/">Ignita</a> &ndash; also rarely updated, also lots of cool content.</p></li>
+<li><p><a href="(http://adam.herokuapp.com/">A Tornado of Razorblades</a> by Adam Wiggins, a founder of Heroku.  &ndash; also rarely updated, also pretty cool.</p></li>
+</ul>
+
+
+<hr />
+
+<p><strong>Blogs:</strong></p>
+
+<ul>
+<li><p><a href="https://www.justinweiss.com/articles/archives/">Justin Weiss</a>. Updated less often than many people would like, but still an amazing read.</p></li>
+<li><p><a href="https://robots.thoughtbot.com/tags/rails">Thoughtbot</a> blog. Those are the guys behind <a href="https://github.com/thoughtbot/factory_girl">FactoryGirl</a> and <a href="https://github.com/thoughtbot/paperclip">Paperclip</a> and many, many other projects. Enough said.</p></li>
+<li><p><a href="http://weblog.rubyonrails.org/">Official Rails Weblog</a> &ndash; great way to get a gist on what is happening in Rails.</p></li>
+<li><p><a href="https://www.reddit.com/r/rails">Ruby on Rails subreddit</a> &ndash; not the best daily read, and it&rsquo;s too easy to get distracted by the cat memes in other subreddits, but cool to check out once in a while.</p></li>
+<li><p><a href="http://www.rubyflow.com/">RubyFlow</a> &ndash; community-sourced. Content varies from &ldquo;what&rsquo;s new in Rails 5&rdquo; to discussing very technical subjects.</p></li>
+<li><p><a href="http://www.rubyinside.com/">RubyInside</a> &ndash; archive of some cool reads.</p></li>
+<li><p><a href="http://blog.arkency.com/">Blog by Arkency</a>, a dev shop. These guys know what they are talking about.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
