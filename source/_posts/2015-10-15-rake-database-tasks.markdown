@@ -6,7 +6,7 @@ comments: true
 categories: rake, database, migration, schema
 ---
 
-There are multiple db namespace rake tasks, which are very useful for a Rails developer. 
+There are multiple **`db`** namespace rake tasks, which are very useful for a Rails developer. 
 
 I don't often see them covered in Rails tutorials as a task list, and it took me a while to figure out which commands I needed to use in my regular workflow.
 
@@ -16,7 +16,7 @@ I don't often see them covered in Rails tutorials as a task list, and it took me
 
 Most beginner developers stick to **`rake db:migrate`**, **`rake db:seed`** and **`rake db:reset`**, but there are quite a few more options.
 
-*Migration* is a version of a database (I *still* don't understand what we are migrating and where, but oh well, such is conventional terminology).
+*Migration* is a version of a database (I *still* don't understand *what we are migrating and where*, but oh well, such is conventional terminology).
 
 Each new migration modifies a database schema (which starts out completely blank) by adding and removing data, changing data types etc. 
 
@@ -88,6 +88,8 @@ Now this is interesting:
 
 * **`rake db:migrate:reset`** = **`rake db:drop`** + **`rake db:create`** + **`rake db:migrate`** = undo and re-do migrations again for current environment. It does not rollback migrations. You would want to use it when, say, running **`rails destroy scaffold Name`** as it will remove a corresponding migration and the schema would need to be re-created. You would still need to run **`rake db:seed`** if you have any seed data.
 
+(**`rake db:create`** is rather straightforward and an opposite of **`rake db:drop`**; it needs to be run when a Rails project is first created or after a database has been dropped, as it the case with **`rake db:migrate:reset`** above).
+
 Note the difference compared to: 
 
 * **`rake db:reset`** = **`rake db:drop`** + **`rake db:setup`** 
@@ -108,7 +110,7 @@ Another rake task is also useful to see where you are with regard to migrations:
 
 * **`rake db:migrate:status`** -- display status of all migrations. It will alert you if there are no schema migrations in your project yet.
 
-And a heavy hitter:
+And a heavy hitter to get you re-started with a clean slate:
 
 * **`rake db:purge`** -- "Empty the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:drop:all to drop all databases in the config). Without RAILS_ENV it defaults to purging the development and test databases." 
 

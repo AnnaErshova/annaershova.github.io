@@ -29,6 +29,8 @@ If you schedule a **`shutdown`** command, but decide to hold off of it, **`sudo 
 
 In my understanding, **`sudo shutdown -r now`** is a functional equivalent of **`sudo reboot`**
 
+All those commands can be followed by a message that can be seen by other users who are logged in, for instance, **`sudo shutdown -r now 'Re-starting Now'`**.
+
 ======
 
 **Changing What Your Power Button Does:**
