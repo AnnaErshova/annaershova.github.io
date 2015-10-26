@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Server | Anna's Blog]]></title>
   <link href="http://annaershova.github.io/blog/categories/server/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-26T16:02:03-04:00</updated>
+  <updated>2015-10-26T17:01:50-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -14,21 +14,35 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Why Localhost:3000?]]></title>
-    <link href="http://annaershova.github.io/blog/2015/10/26/why-localhost-3000/"/>
+    <title type="html"><![CDATA[What About Localhost:3000?]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/26/what-about-localhost-3000/"/>
     <updated>2015-10-26T12:10:56-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/10/26/why-localhost-3000</id>
+    <id>http://annaershova.github.io/blog/2015/10/26/what-about-localhost-3000</id>
     <content type="html"><![CDATA[<p>Most people new to rails go through some sort of &lsquo;make-an-app-in-under-15-minutes&rsquo; tutorial, which always includes instructions to run <strong><code>rails s</code></strong> or  <strong><code>rails server</code></strong> to get a preview of your app.</p>
 
 <p>Typing it into a console usually produces something like this:</p>
 
 <p><img class="center" src="/images/railss.png"></p>
 
+<p>That means that a Rails server is now listening on port 3000.</p>
+
 <p>And when you point your browser to <strong><code>localhost:3000</code></strong> (or alternatively <strong><code>http://127.0.0.1:3000/</code></strong>, where <strong><code>http://127.0.0.1</code></strong> is your computer&rsquo;s loopback address), you see the standard Welcome Aboard message:</p>
 
-<p><img class="center" src="/images/localhostscreenshot.png"></p>
+<p><img class="center" src="/images/localhost_screenshot.png"></p>
+
+<p>Of course that is the case where the app is either blank (so that going to leads to a blank website or no root page has been set up) so that when you click on <a href="http://localhost:3000/rails/info">http://localhost:3000/rails/info</a> with server running, you see this:</p>
+
+<p><img class="center" src="/images/rails_info_routes.png"></p>
+
+<p>(note that it only works for development environment; once your app is deployed, say, <strong><code>my-app.herokuapps.com/rails/info</code></strong> won&rsquo;t work unless you have built that route and populated it.)</p>
 
 <p>In fact, <strong><code>localhost:3000</code></strong> is so common that someone registered a <a href="http://www.localhost3000.org/">website</a> that takes you to a website that reminds you you forgot to start your server, if that is indeed the case.</p>
+
+<p>Note that when using Chrome, you can just type in <strong><code>localhost:3000</code></strong>, but for Internet Explorer, you would need to point your browser to <strong><code>http://localhost:3000</code></strong>, otherwise, you will see an error message.</p>
+
+<hr />
+
+<p>Once your app has a model or two and corresponding migrations have been run, you will be able to point your browser to, say <strong><code>localhost:3000/users</code></strong> if a User model is present.</p>
 
 <hr />
 
@@ -36,15 +50,19 @@
 
 <p>To switch port to, say, 80, run this:</p>
 
-<p><strong><code>bundle exec rails s -p 80</code></strong></p>
+<p><strong><code>rails server -p 80</code></strong></p>
+
+<p>You might need to prepend it with <strong><code>bundle exec</code></strong>.</p>
 
 <p>See documentation on it <a href="https://github.com/rails/rails/blob/4-2-stable/railties/lib/rails/commands/server.rb">here</a> as I could not find any actual description in Terminal:</p>
 
 <p><img class="center" src="/images/rails_server_docs.png"></p>
 
-<hr />
+<p><strong><code>rails s</code></strong> will run as development, not production, by default. To change port for a different environment, run something like:</p>
 
-<p>Rails servers.</p>
+<p><strong><code>rails server -e production -p 4000</code></strong></p>
+
+<hr />
 ]]></content>
   </entry>
   
