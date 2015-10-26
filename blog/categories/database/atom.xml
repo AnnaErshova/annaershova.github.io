@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Database, | Anna's Blog]]></title>
   <link href="http://annaershova.github.io/blog/categories/database/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-25T21:55:24-04:00</updated>
+  <updated>2015-10-26T08:59:49-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -18,7 +18,7 @@
     <link href="http://annaershova.github.io/blog/2015/10/15/rake-database-tasks/"/>
     <updated>2015-10-15T10:47:23-04:00</updated>
     <id>http://annaershova.github.io/blog/2015/10/15/rake-database-tasks</id>
-    <content type="html"><![CDATA[<p>There are multiple db namespace rake tasks, which are very useful for a Rails developer.</p>
+    <content type="html"><![CDATA[<p>There are multiple <strong><code>db</code></strong> namespace rake tasks, which are very useful for a Rails developer.</p>
 
 <p>I don&rsquo;t often see them covered in Rails tutorials as a task list, and it took me a while to figure out which commands I needed to use in my regular workflow.</p>
 
@@ -28,7 +28,7 @@
 
 <p>Most beginner developers stick to <strong><code>rake db:migrate</code></strong>, <strong><code>rake db:seed</code></strong> and <strong><code>rake db:reset</code></strong>, but there are quite a few more options.</p>
 
-<p><em>Migration</em> is a version of a database (I <em>still</em> don&rsquo;t understand what we are migrating and where, but oh well, such is conventional terminology).</p>
+<p><em>Migration</em> is a version of a database (I <em>still</em> don&rsquo;t understand <em>what we are migrating and where</em>, but oh well, such is conventional terminology).</p>
 
 <p>Each new migration modifies a database schema (which starts out completely blank) by adding and removing data, changing data types etc.</p>
 
@@ -105,6 +105,8 @@
 </ul>
 
 
+<p>(<strong><code>rake db:create</code></strong> is rather straightforward and an opposite of <strong><code>rake db:drop</code></strong>; it needs to be run when a Rails project is first created or after a database has been dropped, as it the case with <strong><code>rake db:migrate:reset</code></strong> above).</p>
+
 <p>Note the difference compared to:</p>
 
 <ul>
@@ -136,7 +138,7 @@
 </ul>
 
 
-<p>And a heavy hitter:</p>
+<p>And a heavy hitter to get you re-started with a clean slate:</p>
 
 <ul>
 <li><strong><code>rake db:purge</code></strong> &ndash; &ldquo;Empty the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:drop:all to drop all databases in the config). Without RAILS_ENV it defaults to purging the development and test databases.&rdquo;</li>

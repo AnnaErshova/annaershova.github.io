@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Terminal | Anna's Blog]]></title>
   <link href="http://annaershova.github.io/blog/categories/terminal/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-25T21:55:24-04:00</updated>
+  <updated>2015-10-26T08:59:49-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -46,6 +46,8 @@
 <p>If you schedule a <strong><code>shutdown</code></strong> command, but decide to hold off of it, <strong><code>sudo shutdown -c</code></strong> will cancel it.</p>
 
 <p>In my understanding, <strong><code>sudo shutdown -r now</code></strong> is a functional equivalent of <strong><code>sudo reboot</code></strong></p>
+
+<p>All those commands can be followed by a message that can be seen by other users who are logged in, for instance, <strong><code>sudo shutdown -r now 'Re-starting Now'</code></strong>.</p>
 
 <hr />
 

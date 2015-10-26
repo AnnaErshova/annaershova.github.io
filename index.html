@@ -331,6 +331,8 @@
 
 <p>In my understanding, <strong><code>sudo shutdown -r now</code></strong> is a functional equivalent of <strong><code>sudo reboot</code></strong></p>
 
+<p>All those commands can be followed by a message that can be seen by other users who are logged in, for instance, <strong><code>sudo shutdown -r now 'Re-starting Now'</code></strong>.</p>
+
 <hr />
 
 <p><strong>Changing What Your Power Button Does:</strong></p>
@@ -789,7 +791,7 @@
   </header>
 
 
-  <div class="entry-content"><p>There are multiple db namespace rake tasks, which are very useful for a Rails developer.</p>
+  <div class="entry-content"><p>There are multiple <strong><code>db</code></strong> namespace rake tasks, which are very useful for a Rails developer.</p>
 
 <p>I don&rsquo;t often see them covered in Rails tutorials as a task list, and it took me a while to figure out which commands I needed to use in my regular workflow.</p>
 
@@ -799,7 +801,7 @@
 
 <p>Most beginner developers stick to <strong><code>rake db:migrate</code></strong>, <strong><code>rake db:seed</code></strong> and <strong><code>rake db:reset</code></strong>, but there are quite a few more options.</p>
 
-<p><em>Migration</em> is a version of a database (I <em>still</em> don&rsquo;t understand what we are migrating and where, but oh well, such is conventional terminology).</p>
+<p><em>Migration</em> is a version of a database (I <em>still</em> don&rsquo;t understand <em>what we are migrating and where</em>, but oh well, such is conventional terminology).</p>
 
 <p>Each new migration modifies a database schema (which starts out completely blank) by adding and removing data, changing data types etc.</p>
 
@@ -876,6 +878,8 @@
 </ul>
 
 
+<p>(<strong><code>rake db:create</code></strong> is rather straightforward and an opposite of <strong><code>rake db:drop</code></strong>; it needs to be run when a Rails project is first created or after a database has been dropped, as it the case with <strong><code>rake db:migrate:reset</code></strong> above).</p>
+
 <p>Note the difference compared to:</p>
 
 <ul>
@@ -907,7 +911,7 @@
 </ul>
 
 
-<p>And a heavy hitter:</p>
+<p>And a heavy hitter to get you re-started with a clean slate:</p>
 
 <ul>
 <li><strong><code>rake db:purge</code></strong> &ndash; &ldquo;Empty the database from DATABASE_URL or config/database.yml for the current RAILS_ENV (use db:drop:all to drop all databases in the config). Without RAILS_ENV it defaults to purging the development and test databases.&rdquo;</li>
