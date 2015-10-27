@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby, | Getting De-railed]]></title>
   <link href="http://annaershova.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-27T15:16:46-04:00</updated>
+  <updated>2015-10-27T15:30:59-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -116,9 +116,25 @@
 
 <hr />
 
-<p>Global variables can be traced:</p>
+<p><strong>Tracing Global Variables:</strong></p>
+
+<p>Check out this RosettaCode screenshot <a href="http://rosettacode.org/wiki/99_Bottles_of_Beer#Ruby">example</a> for the classic 99 Bottles of Beer coding exercise:</p>
+
+<p><img class="center" src="/images/rosetta_code_var_trace.png"></p>
+
+<p>The <a href="http://ruby-doc.org/core-2.2.1/Kernel.html#method-i-trace_var">docs</a> say this re: <strong><code>trace_var</code></strong>:</p>
+
+<blockquote><p>Controls tracing of assignments to global variables. The parameter symbol identifies the variable (as either a string name or a symbol identifier). cmd (which may be a string or a Proc object) or block is executed whenever the variable is assigned. The block or Proc object receives the variable&rsquo;s new value as a parameter. Also see Kernel::untrace_var.</p></blockquote>
+
+<p>This is the example that the Docs use:</p>
+
+<p><img class="center" src="/images/tracing_docs_ex.png"></p>
+
+<p>Which means:</p>
 
 <p><img class="center" src="/images/global_var_tracing.png"></p>
+
+<p>And this is exactly how the 99 Bottles of Beer example works!</p>
 ]]></content>
   </entry>
   
