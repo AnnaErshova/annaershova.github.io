@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Variables, | Getting De-railed]]></title>
+  <link href="http://annaershova.github.io/blog/categories/variables/atom.xml" rel="self"/>
+  <link href="http://annaershova.github.io/"/>
+  <updated>2015-10-27T14:14:30-04:00</updated>
+  <id>http://annaershova.github.io/</id>
+  <author>
+    <name><![CDATA[Anna Ershova]]></name>
+    <email><![CDATA[anna.ershova@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Global Variables in Ruby]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/26/variable-in-ruby/"/>
+    <updated>2015-10-26T19:02:49-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/26/variable-in-ruby</id>
+    <content type="html"><![CDATA[<p>There are five kinds of variables in Ruby:</p>
+
+<ul>
+<li>Global &ndash; stored globally</li>
+<li>Local &ndash; stored lexically</li>
+<li>Instance</li>
+<li>Class</li>
+<li>Constant</li>
+</ul>
+
+
+<hr />
+
+<p><strong>Global variables:</strong></p>
+
+<p>These are incredibly easy to use (<em>I see sooo many games of Tic Tac Toe with global variables written by Ruby beginners</em>), but also quite easy to abuse. I see a lot of code written by absolute beginners where global variables are used heavily because it is a lot harder to think of correct scope.</p>
+
+<p><img class="center" src="/images/global_variable_ill.png"></p>
+
+<p>Over-using them probably means that app was not thoroughly thought out.</p>
+
+<p>If you specify a global variable, but not name it, it will return <strong><code>nil</code></strong>:</p>
+
+<p><img class="center" src="/images/global_var_assignment.png"></p>
+
+<p>Global variables can be traced:</p>
+
+<p><img class="center" src="/images/global_var_tracing.png"></p>
+]]></content>
+  </entry>
+  
+</feed>

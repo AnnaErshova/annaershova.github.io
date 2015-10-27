@@ -4,7 +4,7 @@
   <title><![CDATA[Getting De-railed]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-26T17:06:42-04:00</updated>
+  <updated>2015-10-27T14:14:30-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -12,6 +12,84 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Global Variables in Ruby]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/26/variable-in-ruby/"/>
+    <updated>2015-10-26T19:02:49-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/26/variable-in-ruby</id>
+    <content type="html"><![CDATA[<p>There are five kinds of variables in Ruby:</p>
+
+<ul>
+<li>Global &ndash; stored globally</li>
+<li>Local &ndash; stored lexically</li>
+<li>Instance</li>
+<li>Class</li>
+<li>Constant</li>
+</ul>
+
+
+<hr />
+
+<p><strong>Global variables:</strong></p>
+
+<p>These are incredibly easy to use (<em>I see sooo many games of Tic Tac Toe with global variables written by Ruby beginners</em>), but also quite easy to abuse. I see a lot of code written by absolute beginners where global variables are used heavily because it is a lot harder to think of correct scope.</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/global_variable_ill.png"></p>
+
+<p>Over-using them probably means that app was not thoroughly thought out.</p>
+
+<p>If you specify a global variable, but not name it, it will return <strong><code>nil</code></strong>:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/global_var_assignment.png"></p>
+
+<p>Global variables can be traced:</p>
+
+<p><img class="center" src="http://annaershova.github.io/images/global_var_tracing.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Basics of Speeding Up Rails App]]></title>
+    <link href="http://annaershova.github.io/blog/2015/10/26/basics-of-speeding-up-rails-app/"/>
+    <updated>2015-10-26T18:06:22-04:00</updated>
+    <id>http://annaershova.github.io/blog/2015/10/26/basics-of-speeding-up-rails-app</id>
+    <content type="html"><![CDATA[<p>This is a 101 post, and I am planning on touching more on the topics below in greater details.</p>
+
+<hr />
+
+<p>There are three main ways to make Rails apps faster:</p>
+
+<ul>
+<li>Code optimization</li>
+<li>Scaling</li>
+<li>Caching</li>
+</ul>
+
+
+<hr />
+
+<p><strong>Scaling:</strong></p>
+
+<p>Scaling generally refers to making sure an app remains fast when number of users grows quickly.</p>
+
+<p>So you are a startup that built an app that uses Ruby and Ruby-on-Rails. You did not particularily optimize anything because you just wanted that sweet venture capital for your prototype &ndash; or maybe you did not know what you are doing. Then your startup hit it bit despite the odds, and now you have thousands of users coming to use the app everyday. And that&rsquo;s when things slow down.</p>
+
+<p>Pure Ruby is rather slow, compared to, say C, but there are still ways to make things work efficiently, and I will talk about these.</p>
+
+<p>Heroku scales things for you if that is your deployment tool of choice. Other hosting services tend to have similar solutions.</p>
+
+<hr />
+
+<p><strong>Caching:</strong></p>
+
+<hr />
+
+<p><strong>Code optimization:</strong></p>
+
+<p>This is the most realiable way to make</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What About Localhost:3000?]]></title>
@@ -1189,106 +1267,6 @@
 <p>On top of that, to use RegEx is like writing an application without a good test suite: you think that you have thought of everything, but there is always that one edge case that can pop up and screw it over. I felt like that when learning Mandarin: something always pops up where the word has a diferent meaning or is really meant to be used with a different character to really &lsquo;work.&rsquo;</p>
 
 <p>The good news is that both RegEx and Mandarin are possible to master. Perseverance and a healthy amount of grunt work is key. But just like Mandarin is handy for freaking out Chinese restaurant employees and nail salon workers, RegEx is handy too &ndash; in fact, it might have a greater utility of being used oftenf or the rest of one&rsquo;s Web Development career.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Why I Don't Like Semicolons]]></title>
-    <link href="http://annaershova.github.io/blog/2015/07/17/why-ruby-is-not-javascript/"/>
-    <updated>2015-07-17T20:40:56-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/07/17/why-ruby-is-not-javascript</id>
-    <content type="html"><![CDATA[<p>So I started learning Javascript.</p>
-
-<p>They say that once you understand basic coding principles, learning a new programming language is mostly a matter of figuring out syntax and getting used to whatever special tricks that language has to offer. It certainly seems to be the case with this Ruby to JS transition.</p>
-
-<p>But I certainly miss the syntactic sugar that Ruby gives us &ndash; and what is with all the curly brackets and the semicolons?!</p>
-
-<p>Consider Project Euler Problem I (summing up multiples of 3 and 5 from 1 to 999).</p>
-
-<p>There is just so much we can do with it in Ruby:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/projecteulerp1ruby.png"></p>
-
-<p>And here comes JavaScript:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/projecteuler1js.png"></p>
-
-<p>But just like mastering a foreign language that allows one to express oneself in a new and expanded way (as an example, google &lsquo;toska&rsquo; and &lsquo;Nabokov&rsquo; &ndash; Russians take melancholy to a whole new level that does not exist in any other language), JavaScript offers something pretty cool: <em>for (var x = 0; x &lt; 1000; x++)</em> &ndash; now that is one handy way to guide one&rsquo;s iteration. I sort of wish Ruby had that&hellip;</p>
-
-<p>But for now, I need a T-shirt that says &lsquo;I don&rsquo;t really like semicolons.&rsquo;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Project Euler Problem 1, or Benchmarking Ruby Code]]></title>
-    <link href="http://annaershova.github.io/blog/2015/07/07/project-euler-problem-1/"/>
-    <updated>2015-07-07T05:56:19-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/07/07/project-euler-problem-1</id>
-    <content type="html"><![CDATA[<p>Everyone loves a good coding challenge. But where do you find good brainteasers outside of StackOverflow&rsquo;s endless Ruby 101 questions?</p>
-
-<p>Enter <a href="https://projecteuler.net/">Project Euler</a>. At 513 problems and counting, it is a great way to practice both your math and coding skills.</p>
-
-<p>Many of the initial problems are on the easier side, and when I was assigned <a href="https://projecteuler.net/problem=1">Problem 1</a>, it did not take long to figure out how to approach solving it:</p>
-
-<blockquote><p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.</p>
-
-<p>Find the sum of all the multiples of 3 or 5 below 1000.</p></blockquote>
-
-<p>We were supposed to code both a &lsquo;regular&rsquo; procedural and an object-oriented solution.</p>
-
-<p>Here is a very quickly written procedural one in a lab context (the two methods used and their names came from rspec suite):</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/pe1procedural.png"></p>
-
-<p>It&rsquo;s pretty straightforward. There is a simple loop to find all the multiples of 3 or 5 and push them into an array; inject method is then used to sum up all of them (yes, one can iterate over the array instead, but inject is perfect for summing or multiplying array contents, so I was not going to bother).</p>
-
-<p>It works perfectly fine &ndash; the answer is 233168, by the way.</p>
-
-<p>But then I got thinking: there are just <em>too many lines of code</em>, and writing them is not exactly efficient. I create an empty array; I create a variable with initial value of 3 (or 1, but our common sense tells us we don&rsquo;t need 1 and 2 anyway), I increment by 1; I push things into the array. It just feels like too much effort.</p>
-
-<p>So for the &lsquo;object-oriented solution&rsquo;, I made things a little more elegant:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/pe1oo.png"></p>
-
-<p>That is easier to read and it just <em>looks</em> a lot better, and it produces the same result. But ultimately, it is not enough for code to be handsome, it also has to be fast and efficient. It was a good chance to use Ruby&rsquo;s <a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/benchmark/rdoc/Benchmark.html">Benchmark Module</a> to see if one solution was preferable to another due to it being faster.</p>
-
-<p>Quoting straight from the source:</p>
-
-<blockquote><p>The Benchmark module provides methods to measure and report the time used to execute Ruby code.</p></blockquote>
-
-<p>It is pretty straightforward. One has to &lsquo;require 'Benchmark&rsquo; and then use Benchmark.measure { <em>whatever expression one is evaluating</em> } &ndash; use &lsquo;puts&rsquo; to see the actual outcome.</p>
-
-<p>My initial plan was to benchmark my &lsquo;longer&rsquo; loop solution vs. select vs. a similarly-coded reject solution, vs. several conditions ( using || for modulo or using min) and see if one was preferable to another.</p>
-
-<p>So I ran benchmark on the select statement. And then I ran it again on the same statement. And again. And the processing times were different. And again &ndash; still different. Here is what it ended up looking like:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/benchmarkselectcomparison.png"></p>
-
-<p>The time on the right is &lsquo;elapsed real time&rsquo;, which is basically time it took the program to run from beginning to and end.</p>
-
-<p>Since the unit of time in which the output is shown is seconds, the amount of time it takes to execute is very small. In the 14 examples above, we are talking the slowest example taking just above a millisecond.</p>
-
-<p>But I expected running the <em>same</em> line of code to take the <em>same</em> time each and every time. After all, there are no random number generators in that code, and Ruby should evaluate the line of code in the same order each time &ndash; the result doesn&rsquo;t change, why would processing time?</p>
-
-<p>What&rsquo;s interesting about Benchmark is that it is affected by CPU, and your CPU will be running differently every time you run Benchmark. Although it took me several seconds before benchmarking attempts in the example above, and I did not start of exit any new software (or Chrome Tabs) in between attempts, my CPU clearly was doing different things at the time, hence the time variations.</p>
-
-<p>So how is one supposed to benchmark one process against another if it is also affected by &lsquo;outside&rsquo; factors such as whatever else your computer is doing in the background? The trick is to run your line of code against the other ones multiple times simultaneously, and then average processing times.</p>
-
-<p>There is a very handy solution suggested in the documentation, which I have used to run 5 different statements 100 times and then evaluate results:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/benchmarkingcode.png"></p>
-
-<p>Here is the outcome, run within 3 seconds of each other:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/benchmarkingcomparison.png"></p>
-
-<p>While the absolute numbers are different each time benchmarking is run, the relative numbers remain the same (I ran it a few more dozen times and charted it, but I won&rsquo;t bore you with the details).</p>
-
-<p>The fastests solutions were using logical operators vs. applying min&lt;1 &ndash; the latter took at least 2.5x longer than the 3 solutions that used Boolean operators &ndash; can you guess why?</p>
-
-<p>However &ndash; all of the evaluted solutions took well under a second, so it is not really significant for this particular problem. But speed is a major concern for many industries (see a very interesting NYTimes article that discusses how it applies in finance (<a href="http://www.nytimes.com/2014/04/14/opinion/krugman-three-expensive-milliseconds.html?_r=0">article here &ndash; paywall</a>)).</p>
-
-<p>Certain companies employ entire teams of people whose job description is to shave off milliseconds of algorithm running times. While Ruby&rsquo;s Benchmarking module is not powerful enough for those commercial purposes, it is a fun way to experiment with the code one writes to see how it compares against other options.</p>
 ]]></content>
   </entry>
   

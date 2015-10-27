@@ -5,11 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>And the New App Is Done - Getting De-railed</title>
+  <title>Global Variables in Ruby - Getting De-railed</title>
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="Behold &ndash; a real app! We used meteorological knowledge to convert weather forecasts into a &lsquo;real-life&rsquo; weather forecast. It takes &hellip;">
+  <meta name="description" content="There are five kinds of variables in Ruby: Global &ndash; stored globally
+Local &ndash; stored lexically
+Instance
+Class
+Constant Global variables: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://annaershova.github.io/blog/2015/08/08/and-the-new-app-is-done">
+  <link rel="canonical" href="http://annaershova.github.io/blog/2015/10/26/variable-in-ruby">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Getting De-railed" type="application/atom+xml">
@@ -74,7 +78,7 @@
   
   <header>
     
-      <h1 class="entry-title">And the New App Is Done</h1>
+      <h1 class="entry-title">Global Variables in Ruby</h1>
     
     
       <p class="meta">
@@ -91,20 +95,41 @@
 
 
 
-<time datetime="2015-08-08T19:15:00-04:00" pubdate data-updated="true">Aug 8th, 2015</time>
+<time datetime="2015-10-26T19:02:49-04:00" pubdate data-updated="true">Oct 26th, 2015</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Behold &ndash; a real <a href="http://theweatherproject.herokuapp.com/">app</a>!</p>
+<div class="entry-content"><p>There are five kinds of variables in Ruby:</p>
 
-<p>We used meteorological knowledge to convert weather forecasts into a &lsquo;real-life&rsquo; weather forecast. It takes into account humidity and wind speed for a variety of different scenarios to tell you what will it actually feel like outside in the next 36 hours. Some days, it will feel colder / cooler than what the weather forecasts say, and some days it will much hotter / warmer.</p>
+<ul>
+<li>Global &ndash; stored globally</li>
+<li>Local &ndash; stored lexically</li>
+<li>Instance</li>
+<li>Class</li>
+<li>Constant</li>
+</ul>
 
-<p>This was really fun to work on, and I really enjoyed making something useful &ndash; I have been using it every day to make sartorial choices and to figure out best time of the day to run outside.</p>
 
-<p>And it&rsquo;s sassy.</p>
+<hr />
+
+<p><strong>Global variables:</strong></p>
+
+<p>These are incredibly easy to use (<em>I see sooo many games of Tic Tac Toe with global variables written by Ruby beginners</em>), but also quite easy to abuse. I see a lot of code written by absolute beginners where global variables are used heavily because it is a lot harder to think of correct scope.</p>
+
+<p><img class="center" src="/images/global_variable_ill.png"></p>
+
+<p>Over-using them probably means that app was not thoroughly thought out.</p>
+
+<p>If you specify a global variable, but not name it, it will return <strong><code>nil</code></strong>:</p>
+
+<p><img class="center" src="/images/global_var_assignment.png"></p>
+
+<p>Global variables can be traced:</p>
+
+<p><img class="center" src="/images/global_var_tracing.png"></p>
 </div>
 
 
@@ -128,15 +153,21 @@
 
 
 
-<time datetime="2015-08-08T19:15:00-04:00" pubdate data-updated="true">Aug 8th, 2015</time>
+<time datetime="2015-10-26T19:02:49-04:00" pubdate data-updated="true">Oct 26th, 2015</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/variables/'>variables,</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/08/08/and-the-new-app-is-done/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/08/08/and-the-new-app-is-done/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/10/26/variable-in-ruby/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/10/26/variable-in-ruby/" >Tweet</a>
   
   
   
@@ -147,10 +178,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/07/29/project-mode-week-1/" title="Previous Post: Project Mode -- Week 1, Day 2">&laquo; Project Mode -- Week 1, Day 2</a>
+        <a class="basic-alignment left" href="/blog/2015/10/26/basics-of-speeding-up-rails-app/" title="Previous Post: Basics of Speeding Up Rails App">&laquo; Basics of Speeding Up Rails App</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/10/11/running-edge-rails-living-dangerously/" title="Next Post: Running edge Rails -- Living Dangerously">Running edge Rails -- Living Dangerously &raquo;</a>
       
     </p>
   </footer>

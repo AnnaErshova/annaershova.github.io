@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>And the New App Is Done - Getting De-railed</title>
+  <title>Basics of Speeding Up Rails App - Getting De-railed</title>
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="Behold &ndash; a real app! We used meteorological knowledge to convert weather forecasts into a &lsquo;real-life&rsquo; weather forecast. It takes &hellip;">
+  <meta name="description" content="This is a 101 post, and I am planning on touching more on the topics below in greater details. There are three main ways to make Rails apps faster: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://annaershova.github.io/blog/2015/08/08/and-the-new-app-is-done">
+  <link rel="canonical" href="http://annaershova.github.io/blog/2015/10/26/basics-of-speeding-up-rails-app">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Getting De-railed" type="application/atom+xml">
@@ -74,7 +74,7 @@
   
   <header>
     
-      <h1 class="entry-title">And the New App Is Done</h1>
+      <h1 class="entry-title">Basics of Speeding Up Rails App</h1>
     
     
       <p class="meta">
@@ -91,20 +91,47 @@
 
 
 
-<time datetime="2015-08-08T19:15:00-04:00" pubdate data-updated="true">Aug 8th, 2015</time>
+<time datetime="2015-10-26T18:06:22-04:00" pubdate data-updated="true">Oct 26th, 2015</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Behold &ndash; a real <a href="http://theweatherproject.herokuapp.com/">app</a>!</p>
+<div class="entry-content"><p>This is a 101 post, and I am planning on touching more on the topics below in greater details.</p>
 
-<p>We used meteorological knowledge to convert weather forecasts into a &lsquo;real-life&rsquo; weather forecast. It takes into account humidity and wind speed for a variety of different scenarios to tell you what will it actually feel like outside in the next 36 hours. Some days, it will feel colder / cooler than what the weather forecasts say, and some days it will much hotter / warmer.</p>
+<hr />
 
-<p>This was really fun to work on, and I really enjoyed making something useful &ndash; I have been using it every day to make sartorial choices and to figure out best time of the day to run outside.</p>
+<p>There are three main ways to make Rails apps faster:</p>
 
-<p>And it&rsquo;s sassy.</p>
+<ul>
+<li>Code optimization</li>
+<li>Scaling</li>
+<li>Caching</li>
+</ul>
+
+
+<hr />
+
+<p><strong>Scaling:</strong></p>
+
+<p>Scaling generally refers to making sure an app remains fast when number of users grows quickly.</p>
+
+<p>So you are a startup that built an app that uses Ruby and Ruby-on-Rails. You did not particularily optimize anything because you just wanted that sweet venture capital for your prototype &ndash; or maybe you did not know what you are doing. Then your startup hit it bit despite the odds, and now you have thousands of users coming to use the app everyday. And that&rsquo;s when things slow down.</p>
+
+<p>Pure Ruby is rather slow, compared to, say C, but there are still ways to make things work efficiently, and I will talk about these.</p>
+
+<p>Heroku scales things for you if that is your deployment tool of choice. Other hosting services tend to have similar solutions.</p>
+
+<hr />
+
+<p><strong>Caching:</strong></p>
+
+<hr />
+
+<p><strong>Code optimization:</strong></p>
+
+<p>This is the most realiable way to make</p>
 </div>
 
 
@@ -128,7 +155,7 @@
 
 
 
-<time datetime="2015-08-08T19:15:00-04:00" pubdate data-updated="true">Aug 8th, 2015</time>
+<time datetime="2015-10-26T18:06:22-04:00" pubdate data-updated="true">Oct 26th, 2015</time>
       
 
 
@@ -136,7 +163,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/08/08/and-the-new-app-is-done/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/08/08/and-the-new-app-is-done/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/10/26/basics-of-speeding-up-rails-app/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/10/26/basics-of-speeding-up-rails-app/" >Tweet</a>
   
   
   
@@ -147,10 +174,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/07/29/project-mode-week-1/" title="Previous Post: Project Mode -- Week 1, Day 2">&laquo; Project Mode -- Week 1, Day 2</a>
+        <a class="basic-alignment left" href="/blog/2015/10/26/what-about-localhost-3000/" title="Previous Post: What about localhost:3000?">&laquo; What about localhost:3000?</a>
       
       
-        <a class="basic-alignment right" href="/blog/2015/10/11/running-edge-rails-living-dangerously/" title="Next Post: Running edge Rails -- Living Dangerously">Running edge Rails -- Living Dangerously &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2015/10/26/variable-in-ruby/" title="Next Post: Global Variables in Ruby">Global Variables in Ruby &raquo;</a>
       
     </p>
   </footer>
