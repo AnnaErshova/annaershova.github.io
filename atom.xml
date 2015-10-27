@@ -4,7 +4,7 @@
   <title><![CDATA[Getting De-railed]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-27T15:30:59-04:00</updated>
+  <updated>2015-10-27T19:47:56-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -130,11 +130,15 @@
 
 <p><img class="center" src="http://annaershova.github.io/images/tracing_docs_ex.png"></p>
 
+<p>As you can see, one can pass a symbol that names a variable and a block of code or a string to the method. When the value of the variable changes, the block of code will evaluated or the string will be invoked (see more in <a href="http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1445989282&amp;sr=1-1&amp;keywords=9780596554651">The Ruby Programming Language</a>, 2008, p. 280)</p>
+
 <p>Which means:</p>
 
 <p><img class="center" src="http://annaershova.github.io/images/global_var_tracing.png"></p>
 
 <p>And this is exactly how the 99 Bottles of Beer example works!</p>
+
+<p>To stop tracing the variable, use <strong><code>untrace_var</code></strong> just like Ruby docs above specified.</p>
 ]]></content>
   </entry>
   
