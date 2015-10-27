@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Variables, | Getting De-railed]]></title>
   <link href="http://annaershova.github.io/blog/categories/variables/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-10-27T14:14:30-04:00</updated>
+  <updated>2015-10-27T15:16:46-04:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -18,30 +18,103 @@
     <link href="http://annaershova.github.io/blog/2015/10/26/variable-in-ruby/"/>
     <updated>2015-10-26T19:02:49-04:00</updated>
     <id>http://annaershova.github.io/blog/2015/10/26/variable-in-ruby</id>
-    <content type="html"><![CDATA[<p>There are five kinds of variables in Ruby:</p>
+    <content type="html"><![CDATA[<hr />
+
+<p><strong>Variables in Ruby and Their Scope:</strong></p>
+
+<p>There are four major kinds of variables in Ruby, like in most object-oriented languages:</p>
 
 <ul>
-<li>Global &ndash; stored globally</li>
-<li>Local &ndash; stored lexically</li>
-<li>Instance</li>
-<li>Class</li>
-<li>Constant</li>
+<li><strong>Global</strong></li>
+<li><strong>Local</strong></li>
+<li><strong>Instance</strong></li>
+<li><strong>Class</strong></li>
+</ul>
+
+
+<p>There are also special variables such as <strong><code>self</code></strong> or <strong><code>nil</code></strong>, and of course, one can classify constants as a kind of a variable.</p>
+
+<p>In this post, I want to talk about global variables, which, as the name implies, are stored globally and have global implications.</p>
+
+<p>All variables in Ruby outside of locals ones are indicated with a sigil (a prefix that denotes variable scope): <strong><code>@</code></strong> for instance variables, <strong><code>@@</code></strong> for class variables, and <strong><code>$</code></strong> for global variables.</p>
+
+<p>Since Ruby is a dynamically typed language, interpreter will determine data type of each and every variable when it is being assigned; there is no need to define each variable&rsquo;s data type when introducing it (so no need to type keyword <strong><code>global</code></strong> like in PHP).</p>
+
+<p>If you specify a global variable, but not initialize it, it will return a <strong><code>nil</code></strong> pseudo-variable:</p>
+
+<p><img class="center" src="/images/global_var_assignment.png"></p>
+
+<hr />
+
+<p><strong>The Problem with Using Global variables:</strong></p>
+
+<p>Global variables are incredibly easy to use (<em>I see sooo many games of Tic Tac Toe with global variables written by Ruby beginners</em>), but also quite easy to abuse as they cane be accessed from within anywhere in your code even though the code refers to two separate classes:</p>
+
+<p><img class="center" src="/images/global_variable_ill.png"></p>
+
+<p>Global variables violate the principle of <a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming">encapsulation</a>) by allowing one part of your code to modify another part of your code without an explicitly defined interface. Over-using them probably means that app was not thoroughly thought out.</p>
+
+<hr />
+
+<p><strong>When to Use Global variables: Pre-defined Global Variables</strong></p>
+
+<p>Even though global variables are generally considered to be un-Ruby-esque, Ruby does include a number of useful global variables (largely a Perl legacy) with a  <strong><code>$</code></strong> followed by a single character or a word that have a pre-defined meaning.</p>
+
+<p>Below is just a selection of those, see a full list in <a href="http://ruby-doc.org/core-2.0.0/doc/globals_rdoc.html">Ruby docs</a> or by running <strong><code>$global_variables</code></strong>:</p>
+
+<p><img class="center" src="/images/global_variables.png"></p>
+
+<p>Similarily, you can run  <strong><code>self.instance_variables</code></strong> on an class instance, or  <strong><code>Class.class_variables</code></strong> on a class.)</p>
+
+<ul>
+<li><strong><code>$0</code></strong> &ndash; contains the name of the script being executed. Is assignable.</li>
+</ul>
+
+
+<p><img class="center" src="/images/$0.png"></p>
+
+<ul>
+<li><strong><code>$0</code></strong> &ndash; current line number of last line from input.</li>
+</ul>
+
+
+<p><img class="center" src="/images/$dot.png"></p>
+
+<ul>
+<li><strong><code>$:</code></strong> &ndash; same as <strong><code>$LOAD_PATH</code></strong>, shows load path:</li>
+</ul>
+
+
+<p><img class="center" src="/images/load_path.png"></p>
+
+<ul>
+<li><strong><code>$$</code></strong> &ndash; shows process ID (PID) of current script:</li>
+</ul>
+
+
+<p><img class="center" src="/images/pid.png"></p>
+
+<hr />
+
+<p><strong>Pre-defined Global Variables vs. Global Constants:</strong></p>
+
+<p>Constants are an opposite of variables, but since Ruby has a number of global constants, I thought it would be good to briefly mention them as well.</p>
+
+<p>The most commonly used global constants are <strong><code>ENV</code></strong> and <strong><code>ARGV</code></strong>.</p>
+
+<ul>
+<li><strong><code>ENV</code></strong> gives access to environmental variables in a Ruby hash with variables as a hash key.</li>
+</ul>
+
+
+<p><img class="center" src="/images/ENV.png"></p>
+
+<ul>
+<li><strong><code>ARGV</code></strong> gives access to command-line argument values as strings in a Ruby array. It is also aliased as <strong><code>$*</code></strong>.</li>
 </ul>
 
 
 <hr />
-
-<p><strong>Global variables:</strong></p>
-
-<p>These are incredibly easy to use (<em>I see sooo many games of Tic Tac Toe with global variables written by Ruby beginners</em>), but also quite easy to abuse. I see a lot of code written by absolute beginners where global variables are used heavily because it is a lot harder to think of correct scope.</p>
-
-<p><img class="center" src="/images/global_variable_ill.png"></p>
-
-<p>Over-using them probably means that app was not thoroughly thought out.</p>
-
-<p>If you specify a global variable, but not name it, it will return <strong><code>nil</code></strong>:</p>
-
-<p><img class="center" src="/images/global_var_assignment.png"></p>
 
 <p>Global variables can be traced:</p>
 
