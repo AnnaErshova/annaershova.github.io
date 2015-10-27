@@ -84,8 +84,27 @@ The most commonly used global constants are **`ENV`** and **`ARGV`**.
 
 ======
 
+**Tracing Global Variables:**
 
-Global variables can be traced:
+Check out this RosettaCode screenshot [example](http://rosettacode.org/wiki/99_Bottles_of_Beer#Ruby) for the classic 99 Bottles of Beer coding exercise:
+
+{% img center /images/rosetta_code_var_trace.png %}
+
+The [docs](http://ruby-doc.org/core-2.2.1/Kernel.html#method-i-trace_var) say this re: **`trace_var`**:
+
+> Controls tracing of assignments to global variables. The parameter symbol identifies the variable (as either a string name or a symbol identifier). cmd (which may be a string or a Proc object) or block is executed whenever the variable is assigned. The block or Proc object receives the variable's new value as a parameter. Also see Kernel::untrace_var.
+
+This is the example that the Docs use:
+
+{% img center /images/tracing_docs_ex.png %}
+
+As you can see, one can pass a symbol that names a variable and a block of code or a string to the method. When the value of the variable changes, the block of code will evaluated or the string will be invoked (see more in [The Ruby Programming Language](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177/ref=sr_1_1?s=books&ie=UTF8&qid=1445989282&sr=1-1&keywords=9780596554651), 2008, p. 280)
+
+Which means:
 
 {% img center /images/global_var_tracing.png %}
+
+And this is exactly how the 99 Bottles of Beer example works!
+
+To stop tracing the variable, use **`untrace_var`** just like Ruby docs above specified.
 
