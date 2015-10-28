@@ -352,9 +352,13 @@ Instance &hellip;">
 
 <p>Note that when using Chrome, you can just type in <strong><code>localhost:3000</code></strong>, but for Internet Explorer, you would need to point your browser to <strong><code>http://localhost:3000</code></strong>, otherwise, you will see an error message.</p>
 
+<p>Once your app has a model or two and corresponding migrations have been run, you will be able to point your browser to, say <strong><code>localhost:3000/users</code></strong> if a User model is present.</p>
+
 <hr />
 
-<p>Once your app has a model or two and corresponding migrations have been run, you will be able to point your browser to, say <strong><code>localhost:3000/users</code></strong> if a User model is present.</p>
+<p><strong>Why 3000?</strong></p>
+
+<p>I haven&rsquo;t been able to find a comprehensive answer to why Rails uses port 3000 vs. any other port. Octopress uses 4000; Sinatra uses 4567; shotgun uses 9393. Meteor also uses 3000 as a development default. There is a <a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">fairly comprehensive list</a> on Wikipedia.</p>
 
 <hr />
 
@@ -365,6 +369,8 @@ Instance &hellip;">
 <p><strong><code>rails server -p 80</code></strong></p>
 
 <p>You might need to prepend it with <strong><code>bundle exec</code></strong>.</p>
+
+<p>You can use an alias if you plan on often changing your default development port: <strong><code>alias rails-server-port='rails server -p 80'</code></strong> (using <strong><code>nano .bash-profile</code></strong>)</p>
 
 <p>See documentation on it <a href="https://github.com/rails/rails/blob/4-2-stable/railties/lib/rails/commands/server.rb">here</a> as I could not find any actual description in Terminal:</p>
 
