@@ -9,7 +9,7 @@
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="There are multiple db namespace rake tasks, which are very useful for a Rails developer. I don&rsquo;t often see them covered in Rails tutorials as a &hellip;">
+  <meta name="description" content="Rails comes with a number of very convenient generators that can take a lot of work out of creating models, controllers, views, tests, corresponding &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +71,84 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-18T12:13:33-04:00" pubdate data-updated="true">Oct 18th, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Rails comes with a number of very convenient <a href="http://guides.rubyonrails.org/generators.html">generators</a> that can take a lot of work out of creating models, controllers, views, tests, corresponding database migrations, etc.</p>
+
+<p>Like many other developers, I use Rails scaffold generation as an efficient and convenient time-saver.</p>
+
+<p>From <a href="http://guides.rubyonrails.org/command_line.html">Guides</a>:</p>
+
+<blockquote><p>A scaffold in Rails is a full set of model, database migration for that model, controller to manipulate it, views to view and manipulate the data, and a test suite for each of the above.</p></blockquote>
+
+<p>Of course, you can generate all of those components individually as well, depending on your needs. But I think the scaffold generator in particular gets quite overused.</p>
+
+<p>A regular scaffold Terminal command looks like this: <code>rails g scaffold Model_Name column_name:column_type:optional_index</code></p>
+
+<p><img class="center" src="/images/scaffold_generate.png"></p>
+
+<p><code>Model_Name</code> should be in singular, either under_scored or CamelCased.</p>
+
+<p>Sometimes you hit the <code>return</code> button too soon, and deleting generated files by hand is just too much trouble.</p>
+
+<p>There is a way to undo your entire scaffold: <code>rails d scaffold Generated_Scaffold_Name</code>:</p>
+
+<p><img class="center" src="/images/scaffold_destroy.png"></p>
+
+<p>(You can type out <code>generate</code> instead of <code>g</code> and <code>destroy</code> instead of <code>d</code>.)</p>
+
+<p>Note that if you have already run <code>rake db:migrate</code> after generating your scaffold, the <code>destroy</code> command won&rsquo;t work. It will delete the files that the scaffold command has created, but it won&rsquo;t alter the schema and whatever alterations your migration has created will stay there. See my <a href="http://annaershova.github.io/blog/2015/10/15/rake-database-tasks/">previous post</a> on database-related rake commands to learn how to fix that (you will probably want <code>rake db:migrate:down</code> or <code>rake db:rollback</code>).</p>
+
+<p>And assuming you do version control, to see if the <code>destroy</code> command left any files, run <code>git status</code> or <code>git diff</code>.</p>
+
+<p>Realistically speaking, to create a scaffold that later needs to be edited (say, a new migration created etc &ndash; obviously a very common scenario) can cause more time-consuming bug-hunting than creating your MVC + other accoutrements from scratch.</p>
+
+<p>To generate a scaffold with tests (default option) stops a developer from proper test-driven development practices: writing a failing test first, and then making it pass.</p>
+
+<p>You can of course pass in an option to prevent tests from being generated when creating a scaffold. Run <code>rails generate scaffold -h</code> to see a list of options in your terminal:</p>
+
+<p><img class="center" src="/images/scaffold_options_1.png">
+<img class="center" src="/images/scaffold_options_2.png"></p>
+
+<p>The options above are for Rails 4.2.0 and might be quite different for your version of Rails.</p>
+
+<p>You can see that the command comes with a variety of options that allow for reasonable flexibility. For instance, to skip generating a migration, you can pass in <code>--skip-migration</code>. To skip creating tests, pass in <code>--no-test-framework</code>.</p>
+
+<p>Ultimately, once you know exactly what you are building to the extent that you end up passing in a lot of options, you don&rsquo;t really need generators anymore and can create files manually that fit your needs. You wouldn&rsquo;t want to use it for production. But if you are just learning Rails and experimenting with it, generators are very handy.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -819,69 +897,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/21/regex-is-just-like-mandarin-chinese/">RegEx Is Just Like Mandarin Chinese</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2015-07-21T08:26:33-04:00" pubdate data-updated="true">Jul 21st, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When I was in primary school in Russia, we had an intro to computer science class that taught up the basics of programming to produce good post-Communist STEM-oriented comrades. It used Basic to teach the fundamentals. As I spoke no English at the time, I spent more time memorizing words like GOTO and GOSUB than actually figuring out coding logic.</p>
-
-<p>English speakers have a very distinct advantage when it comes to programming in most languages: we know all the words already. One doesn&rsquo;t even have to be an actual native speaker: Ruby was famously written by a Japanese programmer.</p>
-
-<p>Whether a native speaker or not, it is a lot easier to memorize certain methods in Ruby (see: any?; none?; all?) when one actually understands how to use those words in a sentence.</p>
-
-<p>Learning to code is comparable to learning a foreign language: a large part of it is comprehending the principles and then complementing it with memorizing quirks of grammar.</p>
-
-<p>I compared SQL to German in class before. German is a very structured language where sentences have to be built and organized a very certain way, just like SQL.</p>
-
-<p>Compare that to an Eastern European language, where we take major liberties with positioning words in a sentence. I used to tutor Russian as an undergrad at Yale; I remember students coming to me panicking because they could not figure out why subjects and objects were creatively arranged in a sentence and what to do about it. All I could say at the time is they were lucky because they did not learn Ukrainian, which has same creativity, by more complex grammar.</p>
-
-<p>Ruby feels like an Eastern European language to me &ndash; there are many ways to write code, but there are still very specific &lsquo;grammar&rsquo; rules one needs to follow to make code &lsquo;grammatically correct.&rsquo; The stakes of course are differnet: while one can make oneself understood and convery the message well in broken Russian, Ruby won&rsquo;t run broken code at all or run it incorrectly.</p>
-
-<p>Here is the problem with RegEx: it is just like Mandarin Chinese. Judging by the number of desperate, hate-filled posts on StackOverflow, it is as hard to learn.</p>
-
-<p>Mandarin Chinese, and most its other dialects of Chinese actually have no well-developed grammar. There are ways to structure sentences, but there are no 7 cases of Ukrainian or 12 tenses of English. Past tense is barely denoted, yet alone formed in a miriad ways that hapless students of Germanic languages spend years memorizing.</p>
-
-<p>When I first started Ruby, I routinely had to spend a fair bit of time ensuring I had an appropriate number of &lsquo;end&rsquo; key words: one to end an if statement, one to end a do block, one to end a method, one to end a class&hellip; That&rsquo;s a lot of &lsquo;grammar&rsquo; to learn &ndash; but at least we all know what the word &lsquo;end&rsquo; means, so that makes it easier. With RegEx, you have to poke around various seemingly randomly assigned symbols and hope that they work. Just like with Mandarin, half the time you are hoping you are refering to the correct character that has no real linguistic content and that you are using it correctly.</p>
-
-<p>For a project in class, I had to write the following expression to validate a potential twitter handle: /^[A-Za-z0-9<em>]{1,15}|^@[A-Za-z0-9</em>]{1,15}/. It&rsquo;s not technically that difficult, but who decided that ^ stands for start of line? Or that $, for that matter, stands for end of line? Or that &lsquo;a?&rsquo;&lsquo; means zero or more of soemthing?</p>
-
-<p>There might be some internal logic to it, just like with Chinese (vestiges of old-school computer science perhaps?), but for a modern-day person without much linguistic&hellip;I mean computer science background, it is not intuitive.</p>
-
-<p>On top of that, to use RegEx is like writing an application without a good test suite: you think that you have thought of everything, but there is always that one edge case that can pop up and screw it over. I felt like that when learning Mandarin: something always pops up where the word has a diferent meaning or is really meant to be used with a different character to really &lsquo;work.&rsquo;</p>
-
-<p>The good news is that both RegEx and Mandarin are possible to master. Perseverance and a healthy amount of grunt work is key. But just like Mandarin is handy for freaking out Chinese restaurant employees and nail salon workers, RegEx is handy too &ndash; in fact, it might have a greater utility of being used oftenf or the rest of one&rsquo;s Web Development career.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="3">&larr; Older</a>
@@ -917,6 +932,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/11/03/ruby-loop-with-a-twist/">Ruby Loop -- With a Twist</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/26/variable-in-ruby/">Global Variables in Ruby</a>
       </li>
     
@@ -930,10 +949,6 @@
     
       <li class="post">
         <a href="/blog/2015/10/26/some-ruby-slash-rails-slash-general-coding-resources/">Some Ruby / Rails / General Coding Resources</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/10/25/csrf-part-ii-csrf-vs-xss/">CSRF Part II -- CSRF vs. XSS</a>
       </li>
     
   </ul>

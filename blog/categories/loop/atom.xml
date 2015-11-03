@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Loop, | Getting De-railed]]></title>
+  <link href="http://annaershova.github.io/blog/categories/loop/atom.xml" rel="self"/>
+  <link href="http://annaershova.github.io/"/>
+  <updated>2015-11-03T08:37:20-05:00</updated>
+  <id>http://annaershova.github.io/</id>
+  <author>
+    <name><![CDATA[Anna Ershova]]></name>
+    <email><![CDATA[anna.ershova@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Loop -- With a Twist]]></title>
+    <link href="http://annaershova.github.io/blog/2015/11/03/ruby-loop-with-a-twist/"/>
+    <updated>2015-11-03T07:40:33-05:00</updated>
+    <id>http://annaershova.github.io/blog/2015/11/03/ruby-loop-with-a-twist</id>
+    <content type="html"><![CDATA[<hr />
+
+<p><strong>Decrementing loop:</strong></p>
+
+<p>Let&rsquo;s start with a siimple decrementing loop in ruby:</p>
+
+<p><img class="center" src="/images/loop_1.png"></p>
+
+<p>This produces all integers from 100 to 1, each on a separate line:</p>
+
+<p><img class="center" src="/images/loop_1_output.png"></p>
+
+<p>To produce a slightly more legible output that does not crown our terminal, use <strong><code>print</code></strong> instead of <strong><code>puts</code></strong></p>
+
+<p><img class="center" src="/images/loop_2.png"></p>
+
+<p>Output:</p>
+
+<p><img class="center" src="/images/loop_2_output.png"></p>
+
+<p>There is also a <strong><code>downto</code></strong> method:</p>
+
+<p><img class="center" src="/images/loop_3.png"></p>
+
+<p>My favorite &ndash; that I always conveniently forget about on the spot &ndash; is <strong><code>reverse_each</code></strong></p>
+
+<p><img class="center" src="/images/loop_4.png"></p>
+
+<p><strong><code>reverse_each</code></strong> is really a play on the regular  <strong><code>each</code></strong> method used with a range, with would iterate through a loop in ascending order:</p>
+
+<p><img class="center" src="/images/loop_5.png"></p>
+
+<p>To go a little bit fancier and with needless amount of work really, populate and array from a range and then iterate over it:
+<img class="center" src="/images/loop_9.png"></p>
+
+<p>Let&rsquo;s not forget the <strong><code>step</code></strong> method:</p>
+
+<p><img class="center" src="/images/loop_4.png"></p>
+
+<hr />
+
+<p><strong>Decrementing | incrementing loop:</strong></p>
+
+<p>What if the task is to have the <strong><code>x</code></strong> counting <em>down</em>, but to have the integers in the output counting up?</p>
+
+<p>There is a very simple mathematical solution to the problem:</p>
+
+<p><img class="center" src="/images/loop_6.png"></p>
+
+<p>The result is exactly what we are looking for:</p>
+
+<p><img class="center" src="/images/loop_6_output.png"></p>
+
+<p>(Here I also added a newline so that it does not clash with terminal prompt.)</p>
+
+<p>I thought of this when asked on the spot, but it&rsquo;s not exactly an elegant solution:</p>
+
+<p><img class="center" src="/images/loop_7.png"></p>
+
+<hr />
+
+<p><strong>Incrementing counter | decrementing output:</strong></p>
+
+<p>Easy and more or less creative solution using a previously populated array for a counter that goes up from 1 to 100 and for an output that goes down from 100 to 1:</p>
+
+<p><img class="center" src="/images/loop_10.png"></p>
+
+<p>Output:</p>
+
+<p><img class="center" src="/images/loop_10_output.png"></p>
+]]></content>
+  </entry>
+  
+</feed>

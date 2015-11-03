@@ -9,9 +9,7 @@
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="Variables in Ruby and Their Scope: There are four major kinds of variables in Ruby, like in most object-oriented languages: Global
-Local
-Instance &hellip;">
+  <meta name="description" content="Decrementing loop: Let&rsquo;s start with a siimple decrementing loop in ruby: This produces all integers from 100 to 1, each on a separate line: To &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +71,112 @@ Instance &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/11/03/ruby-loop-with-a-twist/">Ruby Loop -- With a Twist</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-11-03T07:40:33-05:00" pubdate data-updated="true">Nov 3rd, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p><strong>Decrementing loop:</strong></p>
+
+<p>Let&rsquo;s start with a siimple decrementing loop in ruby:</p>
+
+<p><img class="center" src="/images/loop_1.png"></p>
+
+<p>This produces all integers from 100 to 1, each on a separate line:</p>
+
+<p><img class="center" src="/images/loop_1_output.png"></p>
+
+<p>To produce a slightly more legible output that does not crown our terminal, use <strong><code>print</code></strong> instead of <strong><code>puts</code></strong></p>
+
+<p><img class="center" src="/images/loop_2.png"></p>
+
+<p>Output:</p>
+
+<p><img class="center" src="/images/loop_2_output.png"></p>
+
+<p>There is also a <strong><code>downto</code></strong> method:</p>
+
+<p><img class="center" src="/images/loop_3.png"></p>
+
+<p>My favorite &ndash; that I always conveniently forget about on the spot &ndash; is <strong><code>reverse_each</code></strong></p>
+
+<p><img class="center" src="/images/loop_4.png"></p>
+
+<p><strong><code>reverse_each</code></strong> is really a play on the regular  <strong><code>each</code></strong> method used with a range, with would iterate through a loop in ascending order:</p>
+
+<p><img class="center" src="/images/loop_5.png"></p>
+
+<p>To go a little bit fancier and with needless amount of work really, populate and array from a range and then iterate over it:
+<img class="center" src="/images/loop_9.png"></p>
+
+<p>Let&rsquo;s not forget the <strong><code>step</code></strong> method:</p>
+
+<p><img class="center" src="/images/loop_4.png"></p>
+
+<hr />
+
+<p><strong>Decrementing | incrementing loop:</strong></p>
+
+<p>What if the task is to have the <strong><code>x</code></strong> counting <em>down</em>, but to have the integers in the output counting up?</p>
+
+<p>There is a very simple mathematical solution to the problem:</p>
+
+<p><img class="center" src="/images/loop_6.png"></p>
+
+<p>The result is exactly what we are looking for:</p>
+
+<p><img class="center" src="/images/loop_6_output.png"></p>
+
+<p>(Here I also added a newline so that it does not clash with terminal prompt.)</p>
+
+<p>I thought of this when asked on the spot, but it&rsquo;s not exactly an elegant solution:</p>
+
+<p><img class="center" src="/images/loop_7.png"></p>
+
+<hr />
+
+<p><strong>Incrementing counter | decrementing output:</strong></p>
+
+<p>Easy and more or less creative solution using a previously populated array for a counter that goes up from 1 to 100 and for an output that goes down from 100 to 1:</p>
+
+<p><img class="center" src="/images/loop_10.png"></p>
+
+<p>Output:</p>
+
+<p><img class="center" src="/images/loop_10_output.png"></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1102,84 +1206,6 @@ Instance &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">Rails Scaffold: Generating It, Deleting It, Evaluating Pros and Cons</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2015-10-18T12:13:33-04:00" pubdate data-updated="true">Oct 18th, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Rails comes with a number of very convenient <a href="http://guides.rubyonrails.org/generators.html">generators</a> that can take a lot of work out of creating models, controllers, views, tests, corresponding database migrations, etc.</p>
-
-<p>Like many other developers, I use Rails scaffold generation as an efficient and convenient time-saver.</p>
-
-<p>From <a href="http://guides.rubyonrails.org/command_line.html">Guides</a>:</p>
-
-<blockquote><p>A scaffold in Rails is a full set of model, database migration for that model, controller to manipulate it, views to view and manipulate the data, and a test suite for each of the above.</p></blockquote>
-
-<p>Of course, you can generate all of those components individually as well, depending on your needs. But I think the scaffold generator in particular gets quite overused.</p>
-
-<p>A regular scaffold Terminal command looks like this: <code>rails g scaffold Model_Name column_name:column_type:optional_index</code></p>
-
-<p><img class="center" src="/images/scaffold_generate.png"></p>
-
-<p><code>Model_Name</code> should be in singular, either under_scored or CamelCased.</p>
-
-<p>Sometimes you hit the <code>return</code> button too soon, and deleting generated files by hand is just too much trouble.</p>
-
-<p>There is a way to undo your entire scaffold: <code>rails d scaffold Generated_Scaffold_Name</code>:</p>
-
-<p><img class="center" src="/images/scaffold_destroy.png"></p>
-
-<p>(You can type out <code>generate</code> instead of <code>g</code> and <code>destroy</code> instead of <code>d</code>.)</p>
-
-<p>Note that if you have already run <code>rake db:migrate</code> after generating your scaffold, the <code>destroy</code> command won&rsquo;t work. It will delete the files that the scaffold command has created, but it won&rsquo;t alter the schema and whatever alterations your migration has created will stay there. See my <a href="http://annaershova.github.io/blog/2015/10/15/rake-database-tasks/">previous post</a> on database-related rake commands to learn how to fix that (you will probably want <code>rake db:migrate:down</code> or <code>rake db:rollback</code>).</p>
-
-<p>And assuming you do version control, to see if the <code>destroy</code> command left any files, run <code>git status</code> or <code>git diff</code>.</p>
-
-<p>Realistically speaking, to create a scaffold that later needs to be edited (say, a new migration created etc &ndash; obviously a very common scenario) can cause more time-consuming bug-hunting than creating your MVC + other accoutrements from scratch.</p>
-
-<p>To generate a scaffold with tests (default option) stops a developer from proper test-driven development practices: writing a failing test first, and then making it pass.</p>
-
-<p>You can of course pass in an option to prevent tests from being generated when creating a scaffold. Run <code>rails generate scaffold -h</code> to see a list of options in your terminal:</p>
-
-<p><img class="center" src="/images/scaffold_options_1.png">
-<img class="center" src="/images/scaffold_options_2.png"></p>
-
-<p>The options above are for Rails 4.2.0 and might be quite different for your version of Rails.</p>
-
-<p>You can see that the command comes with a variety of options that allow for reasonable flexibility. For instance, to skip generating a migration, you can pass in <code>--skip-migration</code>. To skip creating tests, pass in <code>--no-test-framework</code>.</p>
-
-<p>Ultimately, once you know exactly what you are building to the extent that you end up passing in a lot of options, you don&rsquo;t really need generators anymore and can create files manually that fit your needs. You wouldn&rsquo;t want to use it for production. But if you are just learning Rails and experimenting with it, generators are very handy.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="2">&larr; Older</a>
@@ -1213,6 +1239,10 @@ Instance &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/11/03/ruby-loop-with-a-twist/">Ruby Loop -- With a Twist</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/10/26/variable-in-ruby/">Global Variables in Ruby</a>
       </li>
     
@@ -1226,10 +1256,6 @@ Instance &hellip;">
     
       <li class="post">
         <a href="/blog/2015/10/26/some-ruby-slash-rails-slash-general-coding-resources/">Some Ruby / Rails / General Coding Resources</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/10/25/csrf-part-ii-csrf-vs-xss/">CSRF Part II -- CSRF vs. XSS</a>
       </li>
     
   </ul>

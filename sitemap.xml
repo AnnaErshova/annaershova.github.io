@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://annaershova.github.io/blog/2015/11/03/ruby-loop-with-a-twist/</loc>
+    <lastmod>2015-11-03T07:40:33-05:00</lastmod>
+  </url>
+  <url>
     <loc>http://annaershova.github.io/blog/2015/10/26/variable-in-ruby/</loc>
     <lastmod>2015-10-26T19:02:49-04:00</lastmod>
   </url>
@@ -206,6 +210,12 @@
   </url>
   <url>
     <loc>http://annaershova.github.io/blog/categories/constants/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/loop/</loc>
+  </url>
+  <url>
+    <loc>http://annaershova.github.io/blog/categories/ruby/</loc>
   </url>
   <url>
     <loc>http://annaershova.github.io/posts/2/</loc>
