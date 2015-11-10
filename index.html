@@ -9,7 +9,7 @@
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="Decrementing loop: Let&rsquo;s start with a siimple decrementing loop in ruby: This produces all integers from 100 to 1, each on a separate line: To &hellip;">
+  <meta name="description" content="Test-driven development has become quite a buzzword these days, with some companies produly announcing that they pursue it, some brushing it off as &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +71,121 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/11/10/some-thoughts-on-test-driven-development/">Some Thoughts on Test-Driven Development</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-11-10T09:14:57-05:00" pubdate data-updated="true">Nov 10th, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Test-driven development</em> has become quite a buzzword these days, with some companies produly announcing that they pursue it, some brushing it off as the latest coding fad, and some falling somewhere in between: writing and running some tests, but well after the code was actually written.</p>
+
+<hr />
+
+<p><strong>What does it Do?</strong></p>
+
+<p>Technically, it means writing both code and automated tests for it simultaneously.</p>
+
+<p>I like TDD for two main reasons:</p>
+
+<ul>
+<li><p>It forces you to think about your code and your product and be proactive about what could break.</p></li>
+<li><p>It does tell you when something breaks &ndash; why would you not want to pursue that?</p></li>
+<li><p>It helps you future-proof your code, especially if someone other than you might be using it. Seeing tests written for an app is a great way to understand how that app works.</p></li>
+</ul>
+
+
+<p>Rails comes with some <a href="http://guides.rubyonrails.org/testing.html">skeleton tests</a> that are designed when creating a new project or running a scaffold (run <strong><code>-T</code></strong> or <strong><code>--skip-test-unit</code></strong> to avoid having tests be created with <strong><code>rails new</code></strong>; run <strong><code>--no-test-framework</code></strong> when using a <a href="http://annaershova.github.io/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">generator</a>.) They are usually found in your <strong><code>test</code></strong> folder.</p>
+
+<p>Interestingly, DHH, the man who created Rails, does not practice TDD at all and <a href="http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html">advocates in favor of live testing</a>.</p>
+
+<p>While there are some good books on test-driven development on Amazon, there are a lot fewer of them than</p>
+
+<p>I have been thinking of good ways to frame test-driven development.</p>
+
+<p>Here are some things I have learned so far:</p>
+
+<hr />
+
+<p><strong>Write Tests First</strong></p>
+
+<p>I think the tricky thing is to actually pursue <em>test-driven</em> development &ndash; as in, to let the tests drive your code, and not write tests after you finish coding. I am most certainly guilty of the latter. Pursuing the latter is actually still better than not writing any tests, but to me, having the tests drive what you are building implies a much better understanding of your code.</p>
+
+<p>So that&rsquo;s the idea: write a test, write enough code for the test, repeat.</p>
+
+<hr />
+
+<p><strong>Red-Green-Refactor</strong></p>
+
+<p>There are multiple approaches to writing tests. Red-green refactoring is what I really like: make the test fail (show up as red in your Terminal depending on the language you are running) before you make it turn green / pass. That way, you are actually ensuring you understand what your test is doing by breaking it and assembling it back together. Then refactor your code if it can use optimization, and repeat.</p>
+
+<p>When writing tests that fail first is that the test is just an ideation of what your code is suppsoed to do, but the code is not there / ready yet, and your job is to make it pass.</p>
+
+<hr />
+
+<p><strong>Where Do I start?</strong></p>
+
+<p>I have found it helpful to start with accessing what the code has to accomplish. Outside of the generic &lsquo;this app has to serve as a social network for ferrets&rsquo; mission, it helps to go through the basic ideas:</p>
+
+<ul>
+<li>What are specific things my code / app needs to go?</li>
+<li>How should be able to manipulate my code / app?</li>
+<li>What are inputs and outputs that go into the code?</li>
+<li>What are the errors and some edge cases? (I always find I think of more edge cases and go back to add tests for them as I keep working on a project.)
+
+<ul>
+<li>With regard to errors, it is helpful to know some basic Ruby errors / exceptions so that you can speicficialyl test for them. Read more on exception handling <a href="http://ruby.bastardsbook.com/chapters/exception-handling/">here</a>.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Which brings me to:</p>
+
+<hr />
+
+<p><strong>How Do I run Tests?</strong></p>
+
+<p><a href="https://github.com/rspec/rspec">RSpec</a> is one of the most popular Ruby gems.</p>
+
+<p>Run <strong><code>rspec install</code></strong>, <strong><code>bundle</code></strong> and then <strong><code>rspec --init</code></strong>.</p>
+
+<p>There are a lot more laws, principles, and tips on how to actually use rspec out there, and I plan to talk more about it in the future.</p>
+
+<hr />
+
+<p><strong>Extra Credit</strong></p>
+
+<p>If you are looking for more detailed TDD steps, some good input can be found <a href="http://www.win.tue.nl/~wstomv/edu/2ip15/downloads/Series_02/test-driven-development.pdf">here</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1013,199 +1128,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/10/19/mastering-your-terminal-part-i/">Mastering Your Terminal -- Part I</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2015-10-19T16:15:58-04:00" pubdate data-updated="true">Oct 19th, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Developers tend to spend a lot of time in their Terminals, and while most know all the basic commands to run, there are some that are less commonly used, but quite nifty to know.</p>
-
-<p>In an <a href="http://annaershova.github.io/blog/2015/10/12/updating-os-x-from-your-command-line/">earlier post</a>, I mentioned that one can use command line to run a software update command: <code>softwareupdate -l</code> to see what updates are available:</p>
-
-<p><img class="center" src="/images/softwareupdate_list.png"></p>
-
-<p>Terminal, or more accurately, Terminal.app, is a terminal emulator program that provides a connection to your shell (most likely <strong><code>bash</code></strong>; run <strong><code>echo $0</code></strong> to see what yours is running).</p>
-
-<p>Technically speaking, running commands in Terminal is really running commands in a command-line interface that runs in a shell that runs in Terminal.</p>
-
-<p>Now that we got that out of the way &ndash;</p>
-
-<p><strong>Some basic tricks</strong>:</p>
-
-<ul>
-<li><p><strong><code>Up</code></strong> or <strong><code>down</code></strong> key to navigate between commands. I use <strong><code>up</code></strong> all the time when navigating to a previously used command that is too long to type again.</p></li>
-<li><p><strong><code>!!</code></strong> to repeat last command (this will be specific to your Terminal window or tab in which you run it)</p></li>
-</ul>
-
-
-<p><img class="center" src="/images/bang_bang.png"></p>
-
-<p>Ok, it is actually easier to press the <strong><code>up</code></strong> arrow once, but hey, saying <em>bang bang</em> out loud is a lot more fun.</p>
-
-<ul>
-<li>Drop file name from Finder into terminal to get its path &ndash; it can be then copy-pasted into a <strong><code>cd</code></strong> command etc.</li>
-</ul>
-
-
-<p><strong>More ways to navigate Terminal using familiar shortcuts</strong>:</p>
-
-<ul>
-<li><p><strong><code>Ctrl + T</code></strong> to open a new tab within the same Terminal session.</p></li>
-<li><p><strong><code>Ctrl + F</code></strong> to search your Terminal&rsquo;s tab or session (actual text output thereof).</p></li>
-<li><p><strong><code>Command + +</code></strong> or <strong><code>Command + -</code></strong> to zoom in or out.</p></li>
-<li><p><strong><code>Command + G</code></strong> to go to a next search match, <strong><code>Command + Shift + G</code></strong> to go to a previous match.</p></li>
-<li><p><strong><code>Control + C</code></strong> or <strong><code>Command + .</code></strong> to cancel a command. Rails developers use that a lot to stop Rails server from running, for instance.</p></li>
-<li><p>Use <strong><code>TAB</code></strong> to autocomplete a directory name. Use <strong><code>TAB</code></strong> <strong><code>TAB</code></strong> to show a list of options when there are multiple matches.</p></li>
-</ul>
-
-
-<p><strong>Who am I, where am I, and what time is it anyway?</strong></p>
-
-<ul>
-<li><strong><code>pwd</code></strong> to see user&rsquo;s current directory:</li>
-</ul>
-
-
-<p><img class="center" src="/images/pwd_use.png"></p>
-
-<ul>
-<li><strong><code>whoami</code></strong> to see username of the owner of the current login/connection session in the shell (or in manual&rsquo;s words, &ldquo;display effective user id&rdquo;)</li>
-</ul>
-
-
-<p><img class="center" src="/images/whoami.png"></p>
-
-<ul>
-<li>While <strong><code>whoami</code></strong> is a very commonly listed command in all of the top-20-Terminal-commands-you-must-learn-now list, its cousins <strong><code>WhoAmI</code></strong> and <strong><code>who am i</code></strong> are less known:</li>
-</ul>
-
-
-<p><img class="center" src="/images/whoami_variations.png"></p>
-
-<p>(There is no manual entry on <strong><code>WhoAmI</code></strong>, and that seems like a pretty rare command in general.)</p>
-
-<ul>
-<li>Another cousin <strong><code>who</code></strong> displays a more expanded version of <strong><code>who am i</code></strong>, effectivly showing all users that are currently logged in into a terminal session:</li>
-</ul>
-
-
-<p><img class="center" src="/images/who.png"></p>
-
-<ul>
-<li>And yet another cousin <strong><code>w</code></strong> &ldquo;displays who is logged in and what they are doing:</li>
-</ul>
-
-
-<p><img class="center" src="/images/w_command.png"></p>
-
-<ul>
-<li><strong><code>date</code></strong> to see current date and time:</li>
-</ul>
-
-
-<p><img class="center" src="/images/date_command.png"></p>
-
-<p><strong>How do I get around?</strong></p>
-
-<ul>
-<li><p><strong><code>cd directory_name</code></strong> or <strong><code>cd path/to/directory</code></strong> to move to a different directory</p></li>
-<li><p><strong><code>TAB</code></strong> can be used with <strong><code>cd</code></strong> to autocomplete a directory name, but using an asterix (*) as a wildcard also works:</p></li>
-</ul>
-
-
-<p><img class="center" src="/images/cd_wild_card.png"></p>
-
-<ul>
-<li><strong><code>?characters</code></strong> to search for a specific name:</li>
-</ul>
-
-
-<p><img class="center" src="/images/cd_wild_card.png"></p>
-
-<ul>
-<li><p><strong><code>cd ..</code></strong> to move up one directory, <strong><code>cd ../..</code></strong>  to move up two directories, and so forth.</p></li>
-<li><p><strong><code>cd ~</code></strong> or just <strong><code>cd</code></strong> to go to your home directory.</p></li>
-<li><p><strong><code>cd /</code></strong> to go to the level of your file hierarchy (this is not the same as home):</p></li>
-</ul>
-
-
-<p><img class="center" src="/images/root_vs_top.png"></p>
-
-<ul>
-<li><strong><code>cd -</code></strong> to go to the last visited directory:</li>
-</ul>
-
-
-<p><img class="center" src="/images/cd_minus.png"></p>
-
-<ul>
-<li>Note on case sensitivity: generally, names of files and directories (so that <strong><code>cd octopress</code></strong> is the same as <strong><code>cd Octopress</code></strong>) are not case sensitive unless you have specially set up your system to be that way.</li>
-</ul>
-
-
-<p><strong>So what am I seeing in here?</strong></p>
-
-<ul>
-<li><strong><code>ls</code></strong> to see a list of files in your directory (or <strong><code>ls directory/path</code></strong> for another directory)</li>
-</ul>
-
-
-<p><img class="center" src="/images/octopress_ls.png"></p>
-
-<ul>
-<li><strong><code>ls -l</code></strong> to see a <em>l</em>ong list of files, including creation dates and access permissions, number of links in the item, etc:</li>
-</ul>
-
-
-<p><img class="center" src="/images/du_sh.png"></p>
-
-<ul>
-<li><strong><code>ls -lh</code></strong> or <strong><code>ls -l -h</code></strong> (flags can be combined) to see a <em>h</em>uman readable output as long list. In this case, the only thing that changes is size in bytes is converted into units that make more sense such as kilobytes. Note that <strong><code>-h</code></strong> flag can be use with some other commands as well.</li>
-</ul>
-
-
-<p><img class="center" src="/images/ls_lh.png"></p>
-
-<p>(Try running <strong><code>ls</code></strong> first, then <strong><code>!! -l</code></strong>, then <strong><code>!! -h</code></strong> to stack these commands. Or just press an <strong><code>up</code></strong> key and add those flags before hitting enter).</p>
-
-<ul>
-<li><p><strong><code>ls /</code></strong> (or any other <strong><code>ls</code></strong> command with a <strong><code>flag</code></strong> and <strong><code>/</code></strong>) to see contents of home directory. Note that normally, you have to be in the directory which contents you are trying to view.</p></li>
-<li><p><strong><code>du -sh directory_name</code></strong> to see size of a directory:</p></li>
-</ul>
-
-
-<p><img class="center" src="/images/date_command.png"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="2">&larr; Older</a>
@@ -1239,6 +1161,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/11/10/some-thoughts-on-test-driven-development/">Some Thoughts on Test-Driven Development</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/11/03/ruby-loop-with-a-twist/">Ruby Loop -- With a Twist</a>
       </li>
     
@@ -1252,10 +1178,6 @@
     
       <li class="post">
         <a href="/blog/2015/10/26/what-about-localhost-3000/">What About Localhost:3000?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/10/26/some-ruby-slash-rails-slash-general-coding-resources/">Some Ruby / Rails / General Coding Resources</a>
       </li>
     
   </ul>

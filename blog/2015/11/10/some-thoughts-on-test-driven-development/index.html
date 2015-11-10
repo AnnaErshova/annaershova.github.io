@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mastering Your Terminal -- Part III - Getting De-railed</title>
+  <title>Some Thoughts on Test-Driven Development - Getting De-railed</title>
   <meta name="author" content="Anna Ershova">
 
   
-  <meta name="description" content="Shutting Down Your Mac From Your Terminal: sudo shutdown -r now shutdown is the command you need. Pass in the following options: -h &ndash; halt the &hellip;">
+  <meta name="description" content="Test-driven development has become quite a buzzword these days, with some companies produly announcing that they pursue it, some brushing it off as &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://annaershova.github.io/blog/2015/10/20/mastering-your-terminal-part-iii">
+  <link rel="canonical" href="http://annaershova.github.io/blog/2015/11/10/some-thoughts-on-test-driven-development">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Getting De-railed" type="application/atom+xml">
@@ -74,7 +74,7 @@
   
   <header>
     
-      <h1 class="entry-title">Mastering Your Terminal -- Part III</h1>
+      <h1 class="entry-title">Some Thoughts on Test-Driven Development</h1>
     
     
       <p class="meta">
@@ -91,71 +91,92 @@
 
 
 
-<time datetime="2015-10-20T23:24:26-04:00" pubdate data-updated="true">Oct 20th, 2015</time>
+<time datetime="2015-11-10T09:14:57-05:00" pubdate data-updated="true">Nov 10th, 2015</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><strong>Shutting Down Your Mac From Your Terminal:</strong></p>
-
-<p><strong><code>sudo shutdown -r now</code></strong></p>
-
-<p><strong><code>shutdown</code></strong> is the command you need.</p>
-
-<p>Pass in the following options:</p>
-
-<ul>
-<li><strong><code>-h</code></strong> &ndash; halt the session, re-starts the system</li>
-<li><strong><code>-s</code></strong> &ndash; sleep</li>
-<li><strong><code>-r</code></strong> &ndash; re-boot the system</li>
-<li><strong><code>-k</code></strong> &ndash; kick everyone off but the super-user</li>
-</ul>
-
-
-<p>And as for time options:</p>
-
-<ul>
-<li><strong><code>now</code></strong> &ndash; execute command immediately</li>
-<li><strong><code>+integer</code></strong> &ndash; execute command in x minutes (e.g., <strong><code>+10</code></strong> is in 10 minutes)</li>
-<li><strong><code>yymmddhhmm</code></strong> &ndash; execute command on a given time and date</li>
-</ul>
-
-
-<p>If you schedule a <strong><code>shutdown</code></strong> command, but decide to hold off of it, <strong><code>sudo shutdown -c</code></strong> will cancel it.</p>
-
-<p>In my understanding, <strong><code>sudo shutdown -r now</code></strong> is a functional equivalent of <strong><code>sudo reboot</code></strong></p>
-
-<p>All those commands can be followed by a message that can be seen by other users who are logged in, for instance, <strong><code>sudo shutdown -r now 'Re-starting Now'</code></strong>.</p>
+<div class="entry-content"><p><em>Test-driven development</em> has become quite a buzzword these days, with some companies produly announcing that they pursue it, some brushing it off as the latest coding fad, and some falling somewhere in between: writing and running some tests, but well after the code was actually written.</p>
 
 <hr />
 
-<p><strong>Changing What Your Power Button Does:</strong></p>
+<p><strong>What does it Do?</strong></p>
 
-<p>In the OS X prior to the 10.9 Maverick, a power button used to bring up a <strong><code>Restart</code></strong>, <strong><code>Sleep</code></strong>, <strong><code>Cancel</code></strong>, and <strong><code>Shut Down</code></strong> options.</p>
+<p>Technically, it means writing both code and automated tests for it simultaneously.</p>
 
-<p>In later OS X versions, pressing it just puts your machine to sleep. If you want to have it bring up an earlier options menu, run this:</p>
+<p>I like TDD for two main reasons:</p>
 
-<p><strong><code>defaults write com.apple.loginwindow PowerButtonSleepsSystem -bool FALSE</code></strong></p>
+<ul>
+<li><p>It forces you to think about your code and your product and be proactive about what could break.</p></li>
+<li><p>It does tell you when something breaks &ndash; why would you not want to pursue that?</p></li>
+<li><p>It helps you future-proof your code, especially if someone other than you might be using it. Seeing tests written for an app is a great way to understand how that app works.</p></li>
+</ul>
 
-<p>Pressing the power button will then bring up this dialog:</p>
 
-<p><img class="center" src="/images/powerbuttondialog.png"></p>
+<p>Rails comes with some <a href="http://guides.rubyonrails.org/testing.html">skeleton tests</a> that are designed when creating a new project or running a scaffold (run <strong><code>-T</code></strong> or <strong><code>--skip-test-unit</code></strong> to avoid having tests be created with <strong><code>rails new</code></strong>; run <strong><code>--no-test-framework</code></strong> when using a <a href="http://annaershova.github.io/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">generator</a>.) They are usually found in your <strong><code>test</code></strong> folder.</p>
 
-<p>If you want to switch back to the sleep-only option, run the same command with <strong><code>TRUE</code></strong> instead of <strong><code>FALSE</code></strong>.</p>
+<p>Interestingly, DHH, the man who created Rails, does not practice TDD at all and <a href="http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html">advocates in favor of live testing</a>.</p>
+
+<p>While there are some good books on test-driven development on Amazon, there are a lot fewer of them than</p>
+
+<p>I have been thinking of good ways to frame test-driven development.</p>
+
+<p>Here are some things I have learned so far:</p>
 
 <hr />
 
-<p><strong>Having Your System Restart Automatically If It Freezes:</strong></p>
+<p><strong>Write Tests First</strong></p>
 
-<p>While Macs tend to have relatively good uptimes (see <a href="http://annaershova.github.io/blog/2015/10/12/mac-uptime-and-reboot-stats/">here</a> for more info what that is and how to find it out), OS X can still freeze up. Most users press the power button for a couple of seconds to have it turn off, and then press it again to turn it back on. That generally works well, but you can also type this in your Terminal to have its equivalent happen automatically:</p>
+<p>I think the tricky thing is to actually pursue <em>test-driven</em> development &ndash; as in, to let the tests drive your code, and not write tests after you finish coding. I am most certainly guilty of the latter. Pursuing the latter is actually still better than not writing any tests, but to me, having the tests drive what you are building implies a much better understanding of your code.</p>
 
-<p><strong><code>sudo systemsetup -setrestartfreeze on</code></strong></p>
+<p>So that&rsquo;s the idea: write a test, write enough code for the test, repeat.</p>
 
-<p>(It&rsquo;s also useful if you are not there physically to press the restart button, for instance, if your Mac acts as a server.)</p>
+<hr />
 
-<p>To disable this option, run the same command with <strong><code>OFF</code></strong> instead of <strong><code>ON</code></strong>.</p>
+<p><strong>Red-Green-Refactor</strong></p>
+
+<p>There are multiple approaches to writing tests. Red-green refactoring is what I really like: make the test fail (show up as red in your Terminal depending on the language you are running) before you make it turn green / pass. That way, you are actually ensuring you understand what your test is doing by breaking it and assembling it back together. Then refactor your code if it can use optimization, and repeat.</p>
+
+<p>When writing tests that fail first is that the test is just an ideation of what your code is suppsoed to do, but the code is not there / ready yet, and your job is to make it pass.</p>
+
+<hr />
+
+<p><strong>Where Do I start?</strong></p>
+
+<p>I have found it helpful to start with accessing what the code has to accomplish. Outside of the generic &lsquo;this app has to serve as a social network for ferrets&rsquo; mission, it helps to go through the basic ideas:</p>
+
+<ul>
+<li>What are specific things my code / app needs to go?</li>
+<li>How should be able to manipulate my code / app?</li>
+<li>What are inputs and outputs that go into the code?</li>
+<li>What are the errors and some edge cases? (I always find I think of more edge cases and go back to add tests for them as I keep working on a project.)
+
+<ul>
+<li>With regard to errors, it is helpful to know some basic Ruby errors / exceptions so that you can speicficialyl test for them. Read more on exception handling <a href="http://ruby.bastardsbook.com/chapters/exception-handling/">here</a>.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Which brings me to:</p>
+
+<hr />
+
+<p><strong>How Do I run Tests?</strong></p>
+
+<p><a href="https://github.com/rspec/rspec">RSpec</a> is one of the most popular Ruby gems.</p>
+
+<p>Run <strong><code>rspec install</code></strong>, <strong><code>bundle</code></strong> and then <strong><code>rspec --init</code></strong>.</p>
+
+<p>There are a lot more laws, principles, and tips on how to actually use rspec out there, and I plan to talk more about it in the future.</p>
+
+<hr />
+
+<p><strong>Extra Credit</strong></p>
+
+<p>If you are looking for more detailed TDD steps, some good input can be found <a href="http://www.win.tue.nl/~wstomv/edu/2ip15/downloads/Series_02/test-driven-development.pdf">here</a>.</p>
 </div>
 
 
@@ -179,12 +200,12 @@
 
 
 
-<time datetime="2015-10-20T23:24:26-04:00" pubdate data-updated="true">Oct 20th, 2015</time>
+<time datetime="2015-11-10T09:14:57-05:00" pubdate data-updated="true">Nov 10th, 2015</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/terminal/'>terminal</a>
+    <a class='category' href='/blog/categories/tdd/'>tdd</a>
   
 </span>
 
@@ -193,7 +214,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/10/20/mastering-your-terminal-part-iii/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/10/20/mastering-your-terminal-part-iii/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://annaershova.github.io/blog/2015/11/10/some-thoughts-on-test-driven-development/" data-via="https://twitter.com/AnnaErshova" data-counturl="http://annaershova.github.io/blog/2015/11/10/some-thoughts-on-test-driven-development/" >Tweet</a>
   
   
   
@@ -204,10 +225,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/10/19/mastering-your-terminal-part-ii/" title="Previous Post: Mastering Your Terminal -- Part II">&laquo; Mastering Your Terminal -- Part II</a>
+        <a class="basic-alignment left" href="/blog/2015/11/03/ruby-loop-with-a-twist/" title="Previous Post: Ruby Loop -- With A Twist">&laquo; Ruby Loop -- With A Twist</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/10/25/whats-csrf-and-what-exactly-are-we-are-protecting-from-forgery-in-controllers/" title="Next Post: What's CSRF and What Exactly Are We Are Protecting From Forgery?">What's CSRF and What Exactly Are We Are Protecting From Forgery? &raquo;</a>
       
     </p>
   </footer>

@@ -4,7 +4,7 @@
   <title><![CDATA[Getting De-railed]]></title>
   <link href="http://annaershova.github.io/atom.xml" rel="self"/>
   <link href="http://annaershova.github.io/"/>
-  <updated>2015-11-03T08:37:20-05:00</updated>
+  <updated>2015-11-10T16:06:23-05:00</updated>
   <id>http://annaershova.github.io/</id>
   <author>
     <name><![CDATA[Anna Ershova]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Some Thoughts on Test-Driven Development]]></title>
+    <link href="http://annaershova.github.io/blog/2015/11/10/some-thoughts-on-test-driven-development/"/>
+    <updated>2015-11-10T09:14:57-05:00</updated>
+    <id>http://annaershova.github.io/blog/2015/11/10/some-thoughts-on-test-driven-development</id>
+    <content type="html"><![CDATA[<p><em>Test-driven development</em> has become quite a buzzword these days, with some companies produly announcing that they pursue it, some brushing it off as the latest coding fad, and some falling somewhere in between: writing and running some tests, but well after the code was actually written.</p>
+
+<hr />
+
+<p><strong>What does it Do?</strong></p>
+
+<p>Technically, it means writing both code and automated tests for it simultaneously.</p>
+
+<p>I like TDD for two main reasons:</p>
+
+<ul>
+<li><p>It forces you to think about your code and your product and be proactive about what could break.</p></li>
+<li><p>It does tell you when something breaks &ndash; why would you not want to pursue that?</p></li>
+<li><p>It helps you future-proof your code, especially if someone other than you might be using it. Seeing tests written for an app is a great way to understand how that app works.</p></li>
+</ul>
+
+
+<p>Rails comes with some <a href="http://guides.rubyonrails.org/testing.html">skeleton tests</a> that are designed when creating a new project or running a scaffold (run <strong><code>-T</code></strong> or <strong><code>--skip-test-unit</code></strong> to avoid having tests be created with <strong><code>rails new</code></strong>; run <strong><code>--no-test-framework</code></strong> when using a <a href="http://annaershova.github.io/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">generator</a>.) They are usually found in your <strong><code>test</code></strong> folder.</p>
+
+<p>Interestingly, DHH, the man who created Rails, does not practice TDD at all and <a href="http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html">advocates in favor of live testing</a>.</p>
+
+<p>While there are some good books on test-driven development on Amazon, there are a lot fewer of them than</p>
+
+<p>I have been thinking of good ways to frame test-driven development.</p>
+
+<p>Here are some things I have learned so far:</p>
+
+<hr />
+
+<p><strong>Write Tests First</strong></p>
+
+<p>I think the tricky thing is to actually pursue <em>test-driven</em> development &ndash; as in, to let the tests drive your code, and not write tests after you finish coding. I am most certainly guilty of the latter. Pursuing the latter is actually still better than not writing any tests, but to me, having the tests drive what you are building implies a much better understanding of your code.</p>
+
+<p>So that&rsquo;s the idea: write a test, write enough code for the test, repeat.</p>
+
+<hr />
+
+<p><strong>Red-Green-Refactor</strong></p>
+
+<p>There are multiple approaches to writing tests. Red-green refactoring is what I really like: make the test fail (show up as red in your Terminal depending on the language you are running) before you make it turn green / pass. That way, you are actually ensuring you understand what your test is doing by breaking it and assembling it back together. Then refactor your code if it can use optimization, and repeat.</p>
+
+<p>When writing tests that fail first is that the test is just an ideation of what your code is suppsoed to do, but the code is not there / ready yet, and your job is to make it pass.</p>
+
+<hr />
+
+<p><strong>Where Do I start?</strong></p>
+
+<p>I have found it helpful to start with accessing what the code has to accomplish. Outside of the generic &lsquo;this app has to serve as a social network for ferrets&rsquo; mission, it helps to go through the basic ideas:</p>
+
+<ul>
+<li>What are specific things my code / app needs to go?</li>
+<li>How should be able to manipulate my code / app?</li>
+<li>What are inputs and outputs that go into the code?</li>
+<li>What are the errors and some edge cases? (I always find I think of more edge cases and go back to add tests for them as I keep working on a project.)
+
+<ul>
+<li>With regard to errors, it is helpful to know some basic Ruby errors / exceptions so that you can speicficialyl test for them. Read more on exception handling <a href="http://ruby.bastardsbook.com/chapters/exception-handling/">here</a>.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Which brings me to:</p>
+
+<hr />
+
+<p><strong>How Do I run Tests?</strong></p>
+
+<p><a href="https://github.com/rspec/rspec">RSpec</a> is one of the most popular Ruby gems.</p>
+
+<p>Run <strong><code>rspec install</code></strong>, <strong><code>bundle</code></strong> and then <strong><code>rspec --init</code></strong>.</p>
+
+<p>There are a lot more laws, principles, and tips on how to actually use rspec out there, and I plan to talk more about it in the future.</p>
+
+<hr />
+
+<p><strong>Extra Credit</strong></p>
+
+<p>If you are looking for more detailed TDD steps, some good input can be found <a href="http://www.win.tue.nl/~wstomv/edu/2ip15/downloads/Series_02/test-driven-development.pdf">here</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Loop -- With a Twist]]></title>
@@ -1270,145 +1357,6 @@
 <p>And here is a link to the Github <a href="https://github.com/mitchellhart/twitter_analyzer">repo</a>.</p>
 
 <p>I will update this post once the app actually goes live as is our goal.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Rotate a Matrix in Ruby]]></title>
-    <link href="http://annaershova.github.io/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby/"/>
-    <updated>2015-07-22T17:58:06-04:00</updated>
-    <id>http://annaershova.github.io/blog/2015/07/22/how-to-rotate-a-matrix-in-ruby</id>
-    <content type="html"><![CDATA[<p>Here is a problem that I recently stumbled upon while researching something completely different, as these things usually go, &ndash; and down the rabbit hole I went.</p>
-
-<p>How does one rotate a matrix?</p>
-
-<p>First of all, let&rsquo;s define parameters of the exercise. We will take a matrix &ndash; an array of arrays &ndash; and turn it 90&deg; clockwise.</p>
-
-<p>So this is what it would look like, using Flatiron&rsquo;s whiteboard table tops (we are really a paper-free school):</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/matrix-rotation-example.png"></p>
-
-<p>As you can see, numbers 1 (position[0][0] in zero-indexed terms) and 9 (position [2][2]) traded places. One thing is immediately obvious: this would only work if the matrix in question is &lsquo;square&rsquo;: that is, if there are x many rows with x many elements each.</p>
-
-<p>Now that we have defined that condition, let&rsquo;s start with a simple 3x3 matrix.</p>
-
-<p>If the original array looks like this, Ruby-style:</p>
-
-<blockquote><p>my_array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</p></blockquote>
-
-<p>The modified array would look like this:</p>
-
-<blockquote><p>rotated_array = [[7, 4, 1], [8, 5, 2], [9, 6, 3]]</p></blockquote>
-
-<p>But how to get there?</p>
-
-<p>Ruby actually comes with default methods that allow one to manipulate arrays. Most people know <em>pop</em>, <em>shift</em>, <em>unshift</em>, and <em>drop</em>, but there are way more useful methods.</p>
-
-<p>I was only marginally familiar with <em>rotate</em>, so here is an example:</p>
-
-<p>According to the <a href="http://ruby-doc.org/core-2.2.2/Array.html#method-i-rotate">docs</a>:</p>
-
-<blockquote><p>Returns a new array by rotating self so that the element at count is the first element of the new array.</p></blockquote>
-
-<p>When using it without an argument (or rather with the default count of 1), it works like this:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/rotate_simple_example.png"></p>
-
-<p>It effectively takes the first part of the array and places it at the end of the array. If we use that 5 times on the array with 5 elements, we will arrive at the original array (well, it will return what looks like the original array as the original array does not get modified).</p>
-
-<p>If used with a count that is not 1, it will move the elements down by the count number of places:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/rotate_example_with_count2.png"></p>
-
-<p>(array.rotate(2) is the same as <em>array.rotate.rotate</em>)</p>
-
-<p>Count can also be negative, in which case it will rotate the array in the opposite direction, taking items from the end of the array and placing them in the front:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/rotate-example-count-negative.png"></p>
-
-<p>As many other methods, it can be used with the bang to modify the original array: <em>return!</em></p>
-
-<p>I played around with <em>rotate</em>, and it became clear that I was going to need something else to complete the task:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/rotate-example.png"></p>
-
-<p>It handily re-arranged the nested components in the array, moving each &lsquo;inner&rsquo; array over by 1 at a time.</p>
-
-<p>There is also <a href="http://apidock.com/ruby/Array/transpose">transpose</a>. It is actually a bit trickier to comprehend:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/transpose-simple-example.png"></p>
-
-<p>For a nested array that contains 2 array of 2 elements each, it seems like all it does is switch elements that are in the [1][0] and [0][1] position with each other &ndash; in case below, only 2 and 3 traded places. But what is actually does, as becomes more obvious in case of a larger array (nexted with 3 arrays of 3 elements each) is make columns rows and rows columns.</p>
-
-<p>Here is an example:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/transpose-example.png"></p>
-
-<p>Unlike <em>rotate</em>, <em>transpose</em> does not take any arguments.</p>
-
-<p>By the way, although I won&rsquo;t be using it here, one of my favorite array methods is also <em>flatten</em>, which is a handy way to get nesting out of arrays:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/flatten-example.png"></p>
-
-<p>As an aside, <em>flatten</em> is is also a handy way of converting a hash into a simple array:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/hash-flatten-example.png"></p>
-
-<p>But back to the task at hand:</p>
-
-<p>Upon experimenting with <em>rotate</em>, <em>flatten</em>, and <em>transpose</em>, I think I came up with a pretty efficient technique using <em>transpose</em> and then <em>reverse</em>:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/rotation-execution-example.png"></p>
-
-<p>The array is first transposed and then iterated over, and each of the nexted arrays inside it is reversed.</p>
-
-<p>Works like a charm. But if you want to do something slightly more exciting:</p>
-
-<p>Let&rsquo;s look at the origin array again:</p>
-
-<blockquote><p>my_array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</p></blockquote>
-
-<p>And at the rotated_array:</p>
-
-<blockquote><p>rotated_array = [[7, 4, 1], [8, 5, 2], [9, 6, 3]]</p></blockquote>
-
-<p>For a zero-indexed language, the nested array will look like this, positions-wise:</p>
-
-<p>[6,3,0]<br>
-[7,4,1]<br>
-[8,5,2]<br></p>
-
-<p>OR:</p>
-
-<p>(position of first element (0 in this case) + 2*3) + (position of first element + 3*1 ) + (position of first element + 3*0)
-(position of second element + 2*3) + (position of first element + 3*1 ) + (position of second element + 3*0)
-(position of third element + 2*3) + (position of third element + 3*1 ) + (position of third element + 3*0)</p>
-
-<p>Or for a nested array:</p>
-
-<p>[[2][0],[1][0],[0][0]],<br>
-[[2][1],[1][1],[0][1]],<br>
-[[2][2],[1][2],[0][2]]<br></p>
-
-<p>Which is:</p>
-
-<p>[[my_array.length-1][my_array.length-3],[my_array.length-2][my_array.length-3],[my_array.length-3][my_array.length-3]],<br>
-[[my_array.length-1][my_array.length-2],[my_array.length-2][my_array.length-2],[my_array.length-3][my_array.length-2]],<br>
-[[my_array.length-1][my_array.length-1],[my_array.length-2][my_array.length-1],[my_array.length-3][my_array.length-1]]<br></p>
-
-<p>This would be a cool structure to use if pushing things into the array (I am using absolute positions instead of array.length-related as it is easier in this example):</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/pushing-into-rotated-array.png"></p>
-
-<p>(as you can see I made a typo and then fixed it)</p>
-
-<p>All you need to do thereafter is convert it into a nested array.</p>
-
-<p>You can also do a chain of push statements:</p>
-
-<p><img class="center" src="http://annaershova.github.io/images/push-chain.png"></p>
-
-<p>All of these are pretty fun solutions to the problem.</p>
 ]]></content>
   </entry>
   

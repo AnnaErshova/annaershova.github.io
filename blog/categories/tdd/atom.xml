@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tdd | Getting De-railed]]></title>
+  <link href="http://annaershova.github.io/blog/categories/tdd/atom.xml" rel="self"/>
+  <link href="http://annaershova.github.io/"/>
+  <updated>2015-11-10T16:06:23-05:00</updated>
+  <id>http://annaershova.github.io/</id>
+  <author>
+    <name><![CDATA[Anna Ershova]]></name>
+    <email><![CDATA[anna.ershova@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Some Thoughts on Test-Driven Development]]></title>
+    <link href="http://annaershova.github.io/blog/2015/11/10/some-thoughts-on-test-driven-development/"/>
+    <updated>2015-11-10T09:14:57-05:00</updated>
+    <id>http://annaershova.github.io/blog/2015/11/10/some-thoughts-on-test-driven-development</id>
+    <content type="html"><![CDATA[<p><em>Test-driven development</em> has become quite a buzzword these days, with some companies produly announcing that they pursue it, some brushing it off as the latest coding fad, and some falling somewhere in between: writing and running some tests, but well after the code was actually written.</p>
+
+<hr />
+
+<p><strong>What does it Do?</strong></p>
+
+<p>Technically, it means writing both code and automated tests for it simultaneously.</p>
+
+<p>I like TDD for two main reasons:</p>
+
+<ul>
+<li><p>It forces you to think about your code and your product and be proactive about what could break.</p></li>
+<li><p>It does tell you when something breaks &ndash; why would you not want to pursue that?</p></li>
+<li><p>It helps you future-proof your code, especially if someone other than you might be using it. Seeing tests written for an app is a great way to understand how that app works.</p></li>
+</ul>
+
+
+<p>Rails comes with some <a href="http://guides.rubyonrails.org/testing.html">skeleton tests</a> that are designed when creating a new project or running a scaffold (run <strong><code>-T</code></strong> or <strong><code>--skip-test-unit</code></strong> to avoid having tests be created with <strong><code>rails new</code></strong>; run <strong><code>--no-test-framework</code></strong> when using a <a href="http://annaershova.github.io/blog/2015/10/18/generating-and-deleting-a-rails-scaffold/">generator</a>.) They are usually found in your <strong><code>test</code></strong> folder.</p>
+
+<p>Interestingly, DHH, the man who created Rails, does not practice TDD at all and <a href="http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html">advocates in favor of live testing</a>.</p>
+
+<p>While there are some good books on test-driven development on Amazon, there are a lot fewer of them than</p>
+
+<p>I have been thinking of good ways to frame test-driven development.</p>
+
+<p>Here are some things I have learned so far:</p>
+
+<hr />
+
+<p><strong>Write Tests First</strong></p>
+
+<p>I think the tricky thing is to actually pursue <em>test-driven</em> development &ndash; as in, to let the tests drive your code, and not write tests after you finish coding. I am most certainly guilty of the latter. Pursuing the latter is actually still better than not writing any tests, but to me, having the tests drive what you are building implies a much better understanding of your code.</p>
+
+<p>So that&rsquo;s the idea: write a test, write enough code for the test, repeat.</p>
+
+<hr />
+
+<p><strong>Red-Green-Refactor</strong></p>
+
+<p>There are multiple approaches to writing tests. Red-green refactoring is what I really like: make the test fail (show up as red in your Terminal depending on the language you are running) before you make it turn green / pass. That way, you are actually ensuring you understand what your test is doing by breaking it and assembling it back together. Then refactor your code if it can use optimization, and repeat.</p>
+
+<p>When writing tests that fail first is that the test is just an ideation of what your code is suppsoed to do, but the code is not there / ready yet, and your job is to make it pass.</p>
+
+<hr />
+
+<p><strong>Where Do I start?</strong></p>
+
+<p>I have found it helpful to start with accessing what the code has to accomplish. Outside of the generic &lsquo;this app has to serve as a social network for ferrets&rsquo; mission, it helps to go through the basic ideas:</p>
+
+<ul>
+<li>What are specific things my code / app needs to go?</li>
+<li>How should be able to manipulate my code / app?</li>
+<li>What are inputs and outputs that go into the code?</li>
+<li>What are the errors and some edge cases? (I always find I think of more edge cases and go back to add tests for them as I keep working on a project.)
+
+<ul>
+<li>With regard to errors, it is helpful to know some basic Ruby errors / exceptions so that you can speicficialyl test for them. Read more on exception handling <a href="http://ruby.bastardsbook.com/chapters/exception-handling/">here</a>.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Which brings me to:</p>
+
+<hr />
+
+<p><strong>How Do I run Tests?</strong></p>
+
+<p><a href="https://github.com/rspec/rspec">RSpec</a> is one of the most popular Ruby gems.</p>
+
+<p>Run <strong><code>rspec install</code></strong>, <strong><code>bundle</code></strong> and then <strong><code>rspec --init</code></strong>.</p>
+
+<p>There are a lot more laws, principles, and tips on how to actually use rspec out there, and I plan to talk more about it in the future.</p>
+
+<hr />
+
+<p><strong>Extra Credit</strong></p>
+
+<p>If you are looking for more detailed TDD steps, some good input can be found <a href="http://www.win.tue.nl/~wstomv/edu/2ip15/downloads/Series_02/test-driven-development.pdf">here</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>
